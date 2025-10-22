@@ -126,7 +126,7 @@ just preprocess-notebooks
 ```
 
 ```bash
-just convert_notebooks
+just convert-archived-notebooks
 ```
 
 ### Step 5: Run the Main Semantic Analysis
