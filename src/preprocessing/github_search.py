@@ -64,10 +64,7 @@ MIN_STARS = 30
 MIN_CONTRIBUTORS = 10
 MAX_INACTIVITY_MONTHS = 12
 
-EXCLUSION_KEYWORDS = [
-    "awesome-list",
-    "books"
-]
+EXCLUSION_KEYWORDS = ["awesome-list", "books"]
 
 OUTPUT_FOLDER = config.PROJECT_ROOT / "data"
 
@@ -113,7 +110,10 @@ def is_repo_relevant(repo):
     try:
         contributors_count = repo.get_contributors().totalCount
         if contributors_count < MIN_CONTRIBUTORS:
-            return False, f"Not enough contributors ({contributors_count} < {MIN_CONTRIBUTORS})"
+            return (
+                False,
+                f"Not enough contributors ({contributors_count} < {MIN_CONTRIBUTORS})",
+            )
     except GithubException as e:
         if e.status == 403:
             reason = f"Could not fetch contributors due to API limits ({e.status})"
@@ -124,7 +124,9 @@ def is_repo_relevant(repo):
     return True, contributors_count
 
 
-def generate_summary_file(total_candidates, final_repos, filtered_out_repos, output_folder, timestamp):
+def generate_summary_file(
+    total_candidates, final_repos, filtered_out_repos, output_folder, timestamp
+):
     """Generates a text summary of the GitHub search findings."""
     num_candidates = total_candidates
     num_final = len(final_repos)
@@ -135,7 +137,9 @@ def generate_summary_file(total_candidates, final_repos, filtered_out_repos, out
     with open(summary_file_path, "w", encoding="utf-8") as f:
         f.write("GitHub Quantum Projects Search Summary\n")
         f.write("=" * 40 + "\n")
-        f.write(f"Summary generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        f.write(
+            f"Summary generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n\n"
+        )
 
         f.write("--- Overall Statistics ---\n")
         f.write(f"Total unique projects found (candidates): {num_candidates}\n")
@@ -147,7 +151,9 @@ def generate_summary_file(total_candidates, final_repos, filtered_out_repos, out
         if not filtered_out_repos:
             f.write("No projects were filtered out.\n\n")
         else:
-            max_name_len = max((len(repo["full_name"]) for repo in filtered_out_repos), default=10)
+            max_name_len = max(
+                (len(repo["full_name"]) for repo in filtered_out_repos), default=10
+            )
             col1_width = max(len("Repository"), max_name_len) + 2
 
             header = f"{'Repository':<{col1_width}}{'Reason for Filtering'}\n"
@@ -191,23 +197,35 @@ def search_github_for_qc_frameworks():
                 repo_candidates[repo.full_name] = repo
                 print(f"  [OK] Fetched {repo.full_name}")
             except GithubException as e:
-                print(f"Warning: Could not fetch known repo '{repo_name}': {e.status}", file=sys.stderr)
+                print(
+                    f"Warning: Could not fetch known repo '{repo_name}': {e.status}",
+                    file=sys.stderr,
+                )
 
         print("\n--- Phase 2: Discovering new repositories via search ---")
         for query in search_queries:
             print(f"Searching with query: '{query}'...")
             try:
-                repositories = g.search_repositories(query=query, sort=SORT_BY, order=SORT_ORDER)
+                repositories = g.search_repositories(
+                    query=query, sort=SORT_BY, order=SORT_ORDER
+                )
                 for repo in repositories[:200]:
                     if repo.full_name not in repo_candidates:
                         repo_candidates[repo.full_name] = repo
             except GithubException as e:
-                print(f"Warning: Search query '{query}' failed: {e.status}", file=sys.stderr)
+                print(
+                    f"Warning: Search query '{query}' failed: {e.status}",
+                    file=sys.stderr,
+                )
 
-        print(f"\nGathered a total of {len(repo_candidates)} unique candidate repositories.")
+        print(
+            f"\nGathered a total of {len(repo_candidates)} unique candidate repositories."
+        )
 
         print("\n--- Phase 3: Applying quality filters ---")
-        print(f" - Min Stars: {MIN_STARS}, Min Contributors: {MIN_CONTRIBUTORS}, Last push <= {MAX_INACTIVITY_MONTHS} months")
+        print(
+            f" - Min Stars: {MIN_STARS}, Min Contributors: {MIN_CONTRIBUTORS}, Last push <= {MAX_INACTIVITY_MONTHS} months"
+        )
         print(f" - Excluding keywords: {', '.join(EXCLUSION_KEYWORDS[:4])}...")
         print("-" * 70)
 
@@ -222,7 +240,9 @@ def search_github_for_qc_frameworks():
             else:
                 if detail != "Is a fork":  # Don't print for silent fork filtering
                     print(f"[SKIPPING] {repo.full_name}: {detail}.")
-                filtered_out_repos.append({"full_name": repo.full_name, "reason": detail})
+                filtered_out_repos.append(
+                    {"full_name": repo.full_name, "reason": detail}
+                )
 
         # Sort the final list by stars and handle truncation
         final_repos.sort(key=lambda r: r.stargazers_count, reverse=True)
@@ -231,29 +251,41 @@ def search_github_for_qc_frameworks():
         # Add repos that passed filters but were not in the top N to the filtered list
         repos_culled_by_rank = final_repos[TARGET_RESULT_COUNT:]
         for repo in repos_culled_by_rank:
-            filtered_out_repos.append({
-                "full_name": repo.full_name,
-                "reason": f"Passed filters but not in top {TARGET_RESULT_COUNT} by stars ({repo.stargazers_count} stars)"
-            })
+            filtered_out_repos.append(
+                {
+                    "full_name": repo.full_name,
+                    "reason": f"Passed filters but not in top {TARGET_RESULT_COUNT} by stars ({repo.stargazers_count} stars)",
+                }
+            )
 
         print("-" * 70)
-        print(f"Found {len(top_repos)} matching repositories after filtering {len(repo_candidates)} candidates.\n")
+        print(
+            f"Found {len(top_repos)} matching repositories after filtering {len(repo_candidates)} candidates.\n"
+        )
 
         structured_results = []
         for i, repo in enumerate(top_repos):
-            structured_results.append({
-                "rank": i + 1,
-                "full_name": repo.full_name,
-                "stargazers_count": repo.stargazers_count,
-                "contributors_count": repo.contributors_count,
-                "forks_count": repo.forks_count,
-                "pushed_at": repo.pushed_at.isoformat(),
-                "description": repo.description,
-                "html_url": repo.html_url,
-            })
-            print(f"{i+1}. {repo.full_name}")
-            print(f"   Stars: {repo.stargazers_count:<6} | Contributors: {str(repo.contributors_count):<6} | Forks: {repo.forks_count:<6} | Last Push: {repo.pushed_at.date()}")
-            desc = (repo.description[:120] + "...") if repo.description and len(repo.description) > 120 else repo.description
+            structured_results.append(
+                {
+                    "rank": i + 1,
+                    "full_name": repo.full_name,
+                    "stargazers_count": repo.stargazers_count,
+                    "contributors_count": repo.contributors_count,
+                    "forks_count": repo.forks_count,
+                    "pushed_at": repo.pushed_at.isoformat(),
+                    "description": repo.description,
+                    "html_url": repo.html_url,
+                }
+            )
+            print(f"{i + 1}. {repo.full_name}")
+            print(
+                f"   Stars: {repo.stargazers_count:<6} | Contributors: {str(repo.contributors_count):<6} | Forks: {repo.forks_count:<6} | Last Push: {repo.pushed_at.date()}"
+            )
+            desc = (
+                (repo.description[:120] + "...")
+                if repo.description and len(repo.description) > 120
+                else repo.description
+            )
             print(f"   Description: {desc}")
             print(f"   URL: {repo.html_url}\n")
 
@@ -262,7 +294,9 @@ def search_github_for_qc_frameworks():
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
         # Save structured JSON results
-        structured_output_file = OUTPUT_FOLDER / f"quantum_frameworks_structured_{timestamp}.json"
+        structured_output_file = (
+            OUTPUT_FOLDER / f"quantum_frameworks_structured_{timestamp}.json"
+        )
         with open(structured_output_file, "w", encoding="utf-8") as f:
             json.dump(structured_results, f, indent=2, ensure_ascii=False)
         print(f"Structured results saved to: {structured_output_file}")
@@ -287,7 +321,10 @@ def search_github_for_qc_frameworks():
         print("Search complete.")
 
     except GithubException as e:
-        print(f"An error occurred with the GitHub API: {e.status} {e.data}", file=sys.stderr)
+        print(
+            f"An error occurred with the GitHub API: {e.status} {e.data}",
+            file=sys.stderr,
+        )
     except Exception as e:
         print(f"An unexpected error occurred: {e}", file=sys.stderr)
 

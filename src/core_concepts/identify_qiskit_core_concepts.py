@@ -187,7 +187,7 @@ def deduplicate_by_naming_convention(
                 removed_concepts.append(
                     {
                         "removed": func_to_discard["name"],
-                        "reason": f'Wrapper for class {class_concept["name"]}',
+                        "reason": f"Wrapper for class {class_concept['name']}",
                         "summary": func_to_discard["summary"],
                     }
                 )

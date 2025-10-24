@@ -18,13 +18,13 @@ CONCEPT_FILES = [
     config.RESULTS_DIR / "classiq_quantum_concepts.json",
     config.RESULTS_DIR / "pennylane_quantum_concepts.json",
     config.RESULTS_DIR / "qiskit_quantum_concepts.json",
-    ]
+]
 
 PATTERN_FILES = [
     config.RESULTS_DIR / "knowledge_base/enriched_classiq_quantum_patterns.csv",
     config.RESULTS_DIR / "knowledge_base/enriched_pennylane_quantum_patterns.csv",
     config.RESULTS_DIR / "knowledge_base/enriched_qiskit_quantum_patterns.csv",
-    ]
+]
 
 
 class CodeElementVisitor(ast.NodeVisitor):
@@ -93,7 +93,7 @@ def load_patterns_map(file_paths: list[Path]) -> dict[str, str]:
 
 
 def load_quantum_concepts(
-        file_paths: list[Path], pattern_map: dict[str, str]
+    file_paths: list[Path], pattern_map: dict[str, str]
 ) -> list[dict]:
     concepts = []
     pattern_map_by_short_name = {
@@ -164,7 +164,9 @@ def extract_and_save_unique_patterns(input_files: list[Path], output_file: Path)
     unique_patterns = set()
     for path in input_files:
         if not path.exists():
-            print(f"Warning: Pattern file not found, skipping for unique pattern extraction: {path}")
+            print(
+                f"Warning: Pattern file not found, skipping for unique pattern extraction: {path}"
+            )
             continue
         try:
             with open(path, encoding="utf-8") as f:

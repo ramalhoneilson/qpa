@@ -22,14 +22,14 @@ class TestConvertSingleNotebook:
         """Test skipping conversion when target file is newer."""
         ipynb_path = Path("test.ipynb")
         py_path = Path("test.py")
-        
+
         with patch("pathlib.Path.exists", return_value=True):
             with patch("pathlib.Path.stat") as mock_stat:
                 # Mock stat to return different mtimes
                 mock_stat.return_value.st_mtime = 1000  # py file is newer
                 with patch("pathlib.Path.stat") as mock_ipynb_stat:
                     mock_ipynb_stat.return_value.st_mtime = 500  # ipynb file is older
-                    
+
                     result = convert_single_notebook(ipynb_path, py_path)
                     assert result == "SKIPPED"
 
@@ -37,7 +37,7 @@ class TestConvertSingleNotebook:
         """Test conversion error handling."""
         ipynb_path = Path("test.ipynb")
         py_path = Path("test.py")
-        
+
         with patch("pathlib.Path.exists", return_value=False):
             with patch("pathlib.Path.parent") as mock_parent:
                 mock_parent.mkdir = MagicMock()
@@ -49,17 +49,19 @@ class TestConvertSingleNotebook:
 class TestProcessAllNotebooks:
     """Test the process_all_notebooks function."""
 
-
     def test_no_notebooks_found(self):
         """Test handling when no notebooks are found."""
         source_dir = Path("empty_dir")
         dest_dir = Path("output")
-        
+
         with patch("pathlib.Path.is_dir", return_value=True):
             with patch("pathlib.Path.glob", return_value=[]):
                 with patch("builtins.print") as mock_print:
                     process_all_notebooks(source_dir, dest_dir)
-                    assert any("No .ipynb files found" in str(call) for call in mock_print.call_args_list)
+                    assert any(
+                        "No .ipynb files found" in str(call)
+                        for call in mock_print.call_args_list
+                    )
 
 
 class TestConstants:

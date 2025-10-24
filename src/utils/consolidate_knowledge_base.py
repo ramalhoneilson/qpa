@@ -1,5 +1,4 @@
 import pandas as pd
-from pathlib import Path
 from src.conf import config
 
 KB_DIR = config.RESULTS_DIR / "knowledge_base"

@@ -96,24 +96,30 @@ class TestMain:
     def test_successful_execution(self):
         """Test successful main execution."""
         test_file_content = "org1/repo1\norg2/repo2\ntensorflow/quantum\n"
-        
+
         with patch("sys.argv", ["script.py", "repos.txt"]):
             with patch("pathlib.Path.is_file", return_value=True):
                 with patch("pathlib.Path.mkdir") as mock_mkdir:
                     with patch("builtins.open", create=True) as mock_open:
-                        mock_open.return_value.__enter__.return_value.read.return_value = test_file_content
-                        with patch("src.preprocessing.clone_repos.run_command") as mock_run_command:
+                        mock_open.return_value.__enter__.return_value.read.return_value = (
+                            test_file_content
+                        )
+                        with patch(
+                            "src.preprocessing.clone_repos.run_command"
+                        ) as mock_run_command:
                             mock_run_command.return_value = True
                             with patch("builtins.print") as mock_print:
                                 with patch("pathlib.Path.is_dir", return_value=False):
                                     main()
-                                    
+
                                     # Verify target directory creation
-                                    mock_mkdir.assert_called_once_with(parents=True, exist_ok=True)
-                                    
+                                    mock_mkdir.assert_called_once_with(
+                                        parents=True, exist_ok=True
+                                    )
+
                                     # Verify file reading (Path object is passed to open)
                                     assert mock_open.call_count >= 1
-                                    
+
                                     # The main function should have processed the file content
                                     # We can't easily test the exact run_command calls due to the complex logic
                                     # but we can verify the function completed without errors
@@ -121,18 +127,22 @@ class TestMain:
     def test_repo_update_existing_directory(self):
         """Test updating existing repository."""
         test_file_content = "org1/repo1\n"
-        
+
         with patch("sys.argv", ["script.py", "repos.txt"]):
             with patch("pathlib.Path.is_file", return_value=True):
                 with patch("pathlib.Path.mkdir"):
                     with patch("builtins.open", create=True) as mock_open:
-                        mock_open.return_value.__enter__.return_value.read.return_value = test_file_content
-                        with patch("src.preprocessing.clone_repos.run_command") as mock_run_command:
+                        mock_open.return_value.__enter__.return_value.read.return_value = (
+                            test_file_content
+                        )
+                        with patch(
+                            "src.preprocessing.clone_repos.run_command"
+                        ) as mock_run_command:
                             mock_run_command.return_value = True
                             with patch("builtins.print"):
                                 with patch("pathlib.Path.is_dir", return_value=True):
                                     main()
-                                    
+
                                     # The main function should have processed the file content
                                     # We can verify the function completed without errors
                                     assert mock_open.call_count >= 1
@@ -140,18 +150,22 @@ class TestMain:
     def test_git_pull_failure(self):
         """Test git pull failure handling."""
         test_file_content = "org1/repo1\n"
-        
+
         with patch("sys.argv", ["script.py", "repos.txt"]):
             with patch("pathlib.Path.is_file", return_value=True):
                 with patch("pathlib.Path.mkdir"):
                     with patch("builtins.open", create=True) as mock_open:
-                        mock_open.return_value.__enter__.return_value.read.return_value = test_file_content
-                        with patch("src.preprocessing.clone_repos.run_command") as mock_run_command:
+                        mock_open.return_value.__enter__.return_value.read.return_value = (
+                            test_file_content
+                        )
+                        with patch(
+                            "src.preprocessing.clone_repos.run_command"
+                        ) as mock_run_command:
                             mock_run_command.return_value = False  # git pull fails
                             with patch("builtins.print") as mock_print:
                                 with patch("pathlib.Path.is_dir", return_value=True):
                                     main()
-                                    
+
                                     # The main function should have processed the file content
                                     # We can verify the function completed without errors
                                     assert mock_open.call_count >= 1

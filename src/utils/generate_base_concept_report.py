@@ -114,9 +114,12 @@ def analyze_pattern_coverage() -> dict:
 
     # Define enriched files for each framework
     enriched_files = {
-        "Classiq": config.RESULTS_DIR / "knowledge_base/enriched_classiq_quantum_patterns.csv",
-        "PennyLane": config.RESULTS_DIR / "knowledge_base/enriched_pennylane_quantum_patterns.csv",
-        "Qiskit": config.RESULTS_DIR / "knowledge_base/enriched_qiskit_quantum_patterns.csv"
+        "Classiq": config.RESULTS_DIR
+        / "knowledge_base/enriched_classiq_quantum_patterns.csv",
+        "PennyLane": config.RESULTS_DIR
+        / "knowledge_base/enriched_pennylane_quantum_patterns.csv",
+        "Qiskit": config.RESULTS_DIR
+        / "knowledge_base/enriched_qiskit_quantum_patterns.csv",
     }
 
     # Extract patterns from each framework
@@ -140,11 +143,17 @@ def analyze_pattern_coverage() -> dict:
         "all_found_patterns": all_found_patterns,
         "missing_patterns": missing_patterns,
         "extra_patterns": extra_patterns,
-        "coverage_percentage": len(all_found_patterns & base_pattern_names) / len(base_pattern_names) * 100 if base_pattern_names else 0
+        "coverage_percentage": (
+            len(all_found_patterns & base_pattern_names) / len(base_pattern_names) * 100
+            if base_pattern_names
+            else 0
+        ),
     }
 
 
-def extract_framework_patterns_with_sources(enriched_file_path: Path) -> dict[str, set[str]]:
+def extract_framework_patterns_with_sources(
+    enriched_file_path: Path,
+) -> dict[str, set[str]]:
     """Extract patterns from an enriched framework CSV file with their sources."""
     patterns_with_sources = {}
     try:
@@ -170,9 +179,12 @@ def analyze_pattern_coverage_with_sources() -> dict:
 
     # Define enriched files for each framework
     enriched_files = {
-        "Classiq": config.RESULTS_DIR / "knowledge_base/enriched_classiq_quantum_patterns.csv",
-        "PennyLane": config.RESULTS_DIR / "knowledge_base/enriched_pennylane_quantum_patterns.csv",
-        "Qiskit": config.RESULTS_DIR / "knowledge_base/enriched_qiskit_quantum_patterns.csv"
+        "Classiq": config.RESULTS_DIR
+        / "knowledge_base/enriched_classiq_quantum_patterns.csv",
+        "PennyLane": config.RESULTS_DIR
+        / "knowledge_base/enriched_pennylane_quantum_patterns.csv",
+        "Qiskit": config.RESULTS_DIR
+        / "knowledge_base/enriched_qiskit_quantum_patterns.csv",
     }
 
     # Extract patterns from each framework with sources
@@ -196,7 +208,11 @@ def analyze_pattern_coverage_with_sources() -> dict:
         "all_found_patterns": all_found_patterns,
         "missing_patterns": missing_patterns,
         "extra_patterns": extra_patterns,
-        "coverage_percentage": len(all_found_patterns & base_pattern_names) / len(base_pattern_names) * 100 if base_pattern_names else 0
+        "coverage_percentage": (
+            len(all_found_patterns & base_pattern_names) / len(base_pattern_names) * 100
+            if base_pattern_names
+            else 0
+        ),
     }
 
 
@@ -208,7 +224,7 @@ def generate_pattern_coverage_section() -> str:
     sections = [
         "## Pattern Coverage Analysis\n",
         f"This analysis compares the quantum patterns found in the three frameworks against the base list of {len(coverage_data['base_patterns'])} patterns from `quantum_patterns.json`.\n",
-        f"**Coverage: {coverage_data['coverage_percentage']:.1f}%** ({len(coverage_data['all_found_patterns'] & coverage_data['base_patterns'])}/{len(coverage_data['base_patterns'])} base patterns found)\n"
+        f"**Coverage: {coverage_data['coverage_percentage']:.1f}%** ({len(coverage_data['all_found_patterns'] & coverage_data['base_patterns'])}/{len(coverage_data['base_patterns'])} base patterns found)\n",
     ]
 
     # Framework-specific pattern counts
@@ -216,55 +232,65 @@ def generate_pattern_coverage_section() -> str:
     sections.append("| Framework | Patterns Found |")
     sections.append("|-----------|----------------|")
 
-    for framework, patterns in coverage_data['framework_patterns_with_sources'].items():
+    for framework, patterns in coverage_data["framework_patterns_with_sources"].items():
         sections.append(f"| {framework} | {len(patterns)} |")
 
     # Complete list of patterns found in each framework
     sections.append("\n### Complete List of Patterns Found\n")
 
-    for framework, patterns_with_sources in coverage_data['framework_patterns_with_sources'].items():
+    for framework, patterns_with_sources in coverage_data[
+        "framework_patterns_with_sources"
+    ].items():
         sections.append(f"#### {framework} Patterns\n")
         if patterns_with_sources:
             sections.append("| Pattern | Concepts |")
             sections.append("|---------|----------|")
             for pattern in sorted(patterns_with_sources.keys()):
                 concepts = sorted(patterns_with_sources[pattern])
-                concepts_str = ", ".join([f"`{c.split('/')[-1]}`" for c in concepts[:3]])  # Show first 3 concepts
+                concepts_str = ", ".join(
+                    [f"`{c.split('/')[-1]}`" for c in concepts[:3]]
+                )  # Show first 3 concepts
                 if len(concepts) > 3:
-                    concepts_str += f" (+{len(concepts)-3} more)"
+                    concepts_str += f" (+{len(concepts) - 3} more)"
                 sections.append(f"| {pattern} | {concepts_str} |")
         else:
             sections.append("*No patterns found.*")
         sections.append("")
 
     # Missing patterns
-    if coverage_data['missing_patterns']:
-        sections.extend([
-            "### Missing Patterns\n",
-            f"The following {len(coverage_data['missing_patterns'])} patterns from the base list were not found in any of the three frameworks:\n"
-        ])
+    if coverage_data["missing_patterns"]:
+        sections.extend(
+            [
+                "### Missing Patterns\n",
+                f"The following {len(coverage_data['missing_patterns'])} patterns from the base list were not found in any of the three frameworks:\n",
+            ]
+        )
 
-        for pattern in sorted(coverage_data['missing_patterns']):
+        for pattern in sorted(coverage_data["missing_patterns"]):
             sections.append(f"- {pattern}")
         sections.append("")
 
     # New patterns (extra patterns) with their sources
-    if coverage_data['extra_patterns']:
-        sections.extend([
-            "### New Patterns Created\n",
-            f"The following {len(coverage_data['extra_patterns'])} patterns were found in the frameworks but are not in the base list:\n"
-        ])
+    if coverage_data["extra_patterns"]:
+        sections.extend(
+            [
+                "### New Patterns Created\n",
+                f"The following {len(coverage_data['extra_patterns'])} patterns were found in the frameworks but are not in the base list:\n",
+            ]
+        )
 
-        for pattern in sorted(coverage_data['extra_patterns']):
+        for pattern in sorted(coverage_data["extra_patterns"]):
             sections.append(f"#### {pattern}\n")
             sections.append("**Observed in:**\n")
 
-            for framework, patterns_with_sources in coverage_data['framework_patterns_with_sources'].items():
+            for framework, patterns_with_sources in coverage_data[
+                "framework_patterns_with_sources"
+            ].items():
                 if pattern in patterns_with_sources:
                     concepts = sorted(patterns_with_sources[pattern])
                     sections.append(f"- **{framework}**: {len(concepts)} concepts")
                     for concept in concepts:
-                        concept_name = concept.split('/')[-1]
+                        concept_name = concept.split("/")[-1]
                         sections.append(f"  - `{concept_name}`")
             sections.append("")
 

@@ -174,7 +174,8 @@ coverage-summary:
 
 # Format all Python files with Black
 format:
-    @echo ">>> Formatting all Python files with Black..."
+    @echo ">>> Formatting all Python files..."
+    uvx ruff format
     @{{VENV}}/bin/black .
 
 # Format specific file or directory

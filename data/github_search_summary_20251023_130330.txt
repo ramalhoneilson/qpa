@@ -1,0 +1,461 @@
+GitHub Quantum Projects Search Summary
+========================================
+Summary generated on: 2025-10-23 13:03:30
+
+--- Overall Statistics ---
+Total unique projects found (candidates): 444
+Projects filtered out:                    364
+Final projects considered for analysis:   80
+
+--- Filtered-Out Projects ---
+Repository                                                                                         Reason for Filtering
+--------------------------------------------------------------------------------------------------------------------------------------------
+0xReLogic/Chaos                                                                                    Not enough stars (8 < 30)
+1chooo/quantum-oracle                                                                              Not enough stars (1 < 30)
+2forts/hateval-trainer                                                                             Not enough stars (0 < 30)
+4d6174686973/circuit-design                                                                        Not enough stars (0 < 30)
+abc8255/Q-Array-Multiplier                                                                         Not enough stars (1 < 30)
+Abhishektatavarthy/Quantumprojects                                                                 Not enough stars (3 < 30)
+aboev/quantum-job-scheduler                                                                        Not enough stars (3 < 30)
+adamisntdead/QuSimPy                                                                               Inactive since 2021-06-04
+adelshb/hidden-shift-problem-on-quantum-computer                                                   Not enough stars (1 < 30)
+adelshb/quantum-portfolio-optimization                                                             Not enough stars (15 < 30)
+Adem-rahal/QML_first_circuit                                                                       Not enough stars (0 < 30)
+adgt/pulsemaker                                                                                    Not enough stars (25 < 30)
+AgnostiqHQ/covalent-braket-plugin                                                                  Not enough stars (8 < 30)
+AgnostiqHQ/covalent-slurm-plugin                                                                   Not enough stars (26 < 30)
+ahmed19999520-alt/EQST-GP-thory                                                                    Not enough stars (2 < 30)
+ahmed19999520-alt/Veronica-X-Pro-open-source-code-2.0                                              Not enough stars (1 < 30)
+AhmeedAdelMahmoud/HQECC-Threshold                                                                  Not enough stars (5 < 30)
+ahmeterdempmk/Quantum-Safe-Cryptography                                                            Not enough stars (1 < 30)
+AI4Finance-Foundation/Quantum-Tensor-Networks-for-Variational-Reinforcement-Learning-NeurIPS-2020  Not enough stars (13 < 30)
+Airscker/TorchQPT                                                                                  Not enough stars (0 < 30)
+albertnieto/qcml                                                                                   Not enough stars (7 < 30)
+AlejandroJRosales/QuantumNeuralNetwork                                                             Not enough stars (0 < 30)
+alessandrosebastianelli/hqm                                                                        Not enough stars (3 < 30)
+Alexdruso/II2202-Research-Quantum-ML-Sanvito-Stuart                                                Not enough stars (1 < 30)
+Alice-Bob-SW/qiskit-alice-bob-provider                                                             Not enough contributors (7 < 10)
+altanai/cirq_quantum_programming                                                                   Not enough stars (4 < 30)
+amazon-braket/amazon-braket-examples                                                               Excluded by Keyword 'books' in name/description
+aMorteza/Quantum-Computing-Search-Algorithms                                                       Not enough stars (3 < 30)
+AmrMKayid/KayQRL                                                                                   Not enough stars (2 < 30)
+Anish-M-code/pqcrypt                                                                               Not enough contributors (3 < 10)
+Anonymous0-0paper/QUEST                                                                            Not enough stars (0 < 30)
+antonin-lfv/QMeans                                                                                 Not enough stars (1 < 30)
+Aqasch/KANQAS_code                                                                                 Not enough stars (15 < 30)
+ArlineQ/arline_benchmarks                                                                          Inactive since 2022-03-02
+artificial-brain/quantumcat                                                                        Not enough stars (27 < 30)
+aru71727/bb84_protocol                                                                             Not enough stars (18 < 30)
+aru71727/Secure-Communication-using-QKD                                                            Not enough stars (21 < 30)
+Ashad001/2Q48                                                                                      Not enough stars (1 < 30)
+Aurux/quantum-tsp                                                                                  Not enough stars (1 < 30)
+avimallick/quantum-simulator                                                                       Not enough stars (0 < 30)
+aw-junaid/Quantum-Mechanics                                                                        Not enough stars (11 < 30)
+BenjaminDecker/quantum-cellular-automaton                                                          Archived repository
+bestquark/mentpy                                                                                   Archived repository
+Bmete7/QuantumNeuralNet                                                                            Not enough stars (11 < 30)
+BOHRTECHNOLOGY/public_research                                                                     Not enough stars (17 < 30)
+BOHRTECHNOLOGY/quantum_tsp                                                                         Inactive since 2019-09-14
+BOHRTECHNOLOGY/yellow_submarine                                                                    Not enough stars (11 < 30)
+BQSKit/qsearch                                                                                     Archived repository
+bqth29/simulated-bifurcation-algorithm                                                             Not enough contributors (4 < 10)
+brunorijsman/cascade-python                                                                        Not enough stars (21 < 30)
+Canoming/VariationalQCircuit                                                                       Not enough stars (1 < 30)
+CarloLepelaars/skq                                                                                 Not enough stars (1 < 30)
+cda-tum/mqt-qubomaker                                                                              Not enough stars (29 < 30)
+cduck/bloch_sphere                                                                                 Inactive since 2023-02-27
+cduck/feynman_path                                                                                 Inactive since 2023-02-26
+centralesupelec-projects/st7-quantum-computing-labs                                                Not enough stars (0 < 30)
+CERN-IT-INNOVATION/gqc                                                                             Not enough stars (4 < 30)
+ChiShengChen/QuantumEEGNet                                                                         Not enough stars (5 < 30)
+chizuchizu/amplify-hackathon                                                                       Inactive since 2021-03-29
+christorange/QC-CNN                                                                                Archived repository
+circa10a/blockerized-dockchain                                                                     Inactive since 2022-07-22
+cirKITers/masKIT                                                                                   Not enough stars (2 < 30)
+cirKITers/mind-the-qapp                                                                            Not enough stars (2 < 30)
+cirKITers/qml-essentials                                                                           Not enough stars (5 < 30)
+corbett/QuantumComputing                                                                           Inactive since 2022-12-29
+CQCL/Quixer                                                                                        Not enough contributors (2 < 10)
+Cyberheroess/Quze                                                                                  Not enough stars (13 < 30)
+dabacon/qsel                                                                                       Inactive since 2023-02-26
+dakk/qlasskit                                                                                      Not enough contributors (4 < 10)
+DanieleCucurachi/quantum-pde-solver                                                                Not enough stars (0 < 30)
+danieletrisciani/qaoa-excited-states-calculation                                                   Not enough stars (0 < 30)
+DarkStarStrix/QSolvers                                                                             Archived repository
+Data-Science-Big-Data-Research-Lab/GATE_GSI                                                        Not enough stars (0 < 30)
+davidedellagiustina/qasp-solver                                                                    Not enough stars (1 < 30)
+dcavar/nlqk                                                                                        Not enough stars (3 < 30)
+DeathReaper42/Quantum-CoinFlipper                                                                  Not enough stars (0 < 30)
+devilkiller-ag/UnravelQuantum                                                                      Not enough stars (6 < 30)
+duartefrazao/Quantum-Finance-Algorithms                                                            Not enough stars (3 < 30)
+dwavesystems/docs                                                                                  Inactive since 2020-02-25
+dwavesystems/dwave-cloud-client                                                                    Not enough contributors (8 < 10)
+dwavesystems/dwave-hybrid                                                                          Not enough contributors (5 < 10)
+dwavesystems/dwave-pytorch-plugin                                                                  Not enough stars (26 < 30)
+entropicalabs/openqaoa                                                                             Inactive since 2024-08-29
+erikrecio/learning-complexity-gradually                                                            Not enough stars (1 < 30)
+F-a-b-r-i-z-i-o/VQE-PFSP                                                                           Not enough stars (1 < 30)
+Farquhar13/QNN-Gen                                                                                 Not enough stars (7 < 30)
+farukalpay/quantumlib                                                                              Not enough stars (0 < 30)
+fedem96/barren-plateaus                                                                            Not enough stars (1 < 30)
+federicogallina/qsextra                                                                            Not enough stars (3 < 30)
+fedimser/quantum_decomp                                                                            Not enough stars (27 < 30)
+FerjaniMY/BB84_protocol_v1                                                                         Not enough stars (7 < 30)
+FilipeChagasDev/register-by-constant-qft-adder                                                     Not enough stars (0 < 30)
+flynnbr11/QMLA                                                                                     Not enough stars (22 < 30)
+fobos123deimos/fast-wave                                                                           Not enough stars (12 < 30)
+FrancoisPorcher/Simulated-Bifurcation                                                              Archived repository
+Frank-LIU-520/DeepMoleNet                                                                          Inactive since 2021-04-14
+fraserlove/pylab                                                                                   Not enough stars (21 < 30)
+Fraunhofer-AISEC/qml-playground                                                                    Not enough stars (28 < 30)
+GabrieleMessina/qutes_lang                                                                         Not enough stars (8 < 30)
+gamatos/qnlp-binary-classification                                                                 Not enough stars (2 < 30)
+gameywinehouse/Superposition_generator                                                             Not enough stars (2 < 30)
+gamy703/titanic_machine_learning                                                                   Not enough stars (0 < 30)
+gecrooks/quantumflow                                                                               Not enough contributors (3 < 10)
+GeorgeDavila/QuantumMatrixProductStates                                                            Not enough stars (6 < 30)
+gerardPlanella/QGNN                                                                                Not enough stars (7 < 30)
+giorgosgiapis/pqc-attacks                                                                          Not enough stars (3 < 30)
+godly-raam/Quantum_QRC                                                                             Not enough stars (0 < 30)
+google/qhbm-library                                                                                Archived repository
+grageragarces/Quantum-tech-papers                                                                  Not enough contributors (6 < 10)
+grapheneaffiliate/quantum-room-temperature-superconductor-protocol                                 Not enough stars (1 < 30)
+grayalienventures/gav_quantum                                                                      Not enough stars (0 < 30)
+GroenteLepel/qiskit-quantum-knn                                                                    Archived repository
+gstenzel/qandle                                                                                    Not enough stars (8 < 30)
+GuptaPurab/realtime-dynamic-parking-pricing                                                        Not enough stars (0 < 30)
+HaoranLiao/dephased_ttn_mera                                                                       Not enough stars (5 < 30)
+heet25itachi/Quantum_Computing-                                                                    Not enough stars (1 < 30)
+helloerikaaa/quweeting                                                                             Not enough stars (13 < 30)
+HermiTech-L3C/QSys-Design                                                                          Not enough stars (0 < 30)
+hhat-lang/hhat_lang                                                                                Not enough contributors (5 < 10)
+hornc/quantum-isbn-validator                                                                       Not enough stars (1 < 30)
+HRL-Laboratories/spinqick                                                                          Not enough stars (29 < 30)
+hydraresearch/qzkp                                                                                 Not enough stars (1 < 30)
+hyperfi/Maximum-Entangled-States                                                                   Not enough stars (1 < 30)
+IDouble/Python-Scripts                                                                             Inactive since 2024-02-29
+IgorBrandao42/Quantum-Gaussian-Information-Toolbox                                                 Not enough stars (26 < 30)
+iitis/ec-qaoa-code                                                                                 Not enough stars (3 < 30)
+indian-institute-of-science-qc/qiskit-aakash                                                       Inactive since 2024-06-02
+instance01/qubo-nn                                                                                 Inactive since 2021-09-29
+Interlin-q/Interlin-q                                                                              Inactive since 2021-09-26
+ionq/blqs                                                                                          Inactive since 2023-11-21
+iqm-finland/cirq-on-iqm                                                                            Archived repository
+iqm-finland/qiskit-on-iqm                                                                          Archived repository
+IVerse-VDV/QubitLab                                                                                Not enough stars (5 < 30)
+jackaraz/qvae-anomaly                                                                              Not enough stars (0 < 30)
+JackHCC/Quantum-Neural-Network                                                                     Not enough stars (10 < 30)
+javier-lazaro/SimplyQRL                                                                            Not enough stars (0 < 30)
+Jayshah25/Quantum-Reinforcement-Learning                                                           Not enough stars (20 < 30)
+JeremieGince/MNIST_classification_using_Quantum_Machine_Learning                                   Not enough stars (14 < 30)
+jfold/navqt                                                                                        Not enough stars (0 < 30)
+jganley/quantum-algorithms                                                                         Not enough stars (1 < 30)
+Jim137/qkan                                                                                        Not enough stars (12 < 30)
+jorgevazquezperez/Quantum-image-classifier                                                         Not enough stars (1 < 30)
+joshpxyne/Quantum-Graph-Spectra                                                                    Not enough stars (5 < 30)
+jtiosue/qubovert                                                                                   Not enough contributors (1 < 10)
+justinamiller/qiskit-superposition-demo                                                            Not enough stars (1 < 30)
+justinbrianhwang/qiskit-utils-sj                                                                   Not enough stars (0 < 30)
+JustWhit3/quantum-algorithms                                                                       Not enough stars (0 < 30)
+jwoehr/qisjob                                                                                      Archived repository
+kennyZhangsky/Quantum-Delta-Encoding                                                               Not enough stars (0 < 30)
+kiruthikpurpose/QuantumPositioningSystem                                                           Not enough stars (1 < 30)
+klebermagno/Quantum-Algorithm                                                                      Not enough stars (1 < 30)
+knyliu/AI-Aided-Systems                                                                            Not enough stars (0 < 30)
+KOSASIH/Decentralized-Quantum-Internet-Core                                                        Not enough stars (22 < 30)
+KOSASIH/GalacticNexus-Core                                                                         Not enough contributors (1 < 10)
+KOSASIH/quantum-sentinel                                                                           Not enough stars (23 < 30)
+KOSASIH/QuantumNet-Core                                                                            Not enough stars (14 < 30)
+KOSASIH/QuantumNexus-Core                                                                          Not enough stars (25 < 30)
+KOSASIH/quantumpi-nexus                                                                            Not enough contributors (1 < 10)
+KOSASIH/stable-pi-core                                                                             Not enough contributors (4 < 10)
+KOSASIH/UniversalQuantumNetwork                                                                    Not enough stars (21 < 30)
+Krastanov/neural-decoder                                                                           Inactive since 2018-01-17
+lanl/qmasm                                                                                         Inactive since 2021-02-28
+latticesurgery-com/lattice-surgery-compiler                                                        Not enough contributors (8 < 10)
+LegacYFTw/QuDiet                                                                                   Not enough stars (22 < 30)
+lewis-od/QNN                                                                                       Not enough stars (11 < 30)
+libtangle/qcgpu                                                                                    Inactive since 2023-07-06
+LILY-QML/LLY-GP                                                                                    Not enough stars (2 < 30)
+lockwo/rl_qvc_opt                                                                                  Not enough stars (19 < 30)
+luca-parisi/quantum_relu                                                                           Not enough stars (17 < 30)
+lucasfriedrich97/Evolution-strategies-application-in-hybrid-quantum-classical-neural-networks      Not enough stars (3 < 30)
+lucasponteslpa/QHybridNet                                                                          Not enough stars (0 < 30)
+lucasponteslpa/QOCClassifier                                                                       Not enough stars (1 < 30)
+m-stack-org/rho_learn                                                                              Archived repository
+mabuchilab/QNET                                                                                    Inactive since 2018-12-18
+Mackachoo/Quantum-Computing-Project                                                                Not enough stars (2 < 30)
+MadhavJivrajani/QInfo                                                                              Not enough stars (2 < 30)
+mahendraai/logiquant                                                                               Not enough stars (3 < 30)
+maherabdelsamie/Active-Time-Theory                                                                 Not enough stars (1 < 30)
+maherabdelsamie/Active-Time-Theory-Atomic-Clocks                                                   Not enough stars (2 < 30)
+maherabdelsamie/Active-Time-Theory-Quantum-Tunneling                                               Not enough stars (2 < 30)
+maherabdelsamie/Active-Time-Theory-Time-Dilation                                                   Not enough stars (3 < 30)
+maloleroy/TIPE                                                                                     Not enough stars (1 < 30)
+maniraman-periyasamy/QKNN                                                                          Not enough stars (10 < 30)
+maniraman-periyasamy/QPattern                                                                      Not enough stars (0 < 30)
+maniraman-periyasamy/Simple-TFQuantum                                                              Not enough stars (1 < 30)
+ManuelZierl/quantum_computing                                                                      Not enough stars (1 < 30)
+markolalovic/quantum-circuit                                                                       Not enough stars (1 < 30)
+MatchCake/MatchCake                                                                                Not enough stars (12 < 30)
+matt-lourens/hierarqcal                                                                            Not enough contributors (8 < 10)
+Mattbusel/Quantum-Neural-Network-Model-The-Future-of-AI-Cognition                                  Not enough stars (4 < 30)
+mcoggins96/Quantum-Computing-UK-Repository                                                         Inactive since 2023-12-06
+mcpeixoto/QML-HEP                                                                                  Not enough stars (9 < 30)
+meet-c-viradiya/quantum-workflow                                                                   Not enough stars (0 < 30)
+MeforgersDev/AixrOptima                                                                            Not enough stars (2 < 30)
+merQlab/geqie                                                                                      Not enough stars (3 < 30)
+mghibaudi/OpenFermion-ProjectQ                                                                     Archived repository
+Mhackiori/ATTAQ                                                                                    Not enough stars (1 < 30)
+mhasan08/quantum-machine-learning                                                                  Not enough stars (0 < 30)
+Miatto-research-group/bolt                                                                         Not enough stars (2 < 30)
+Miatto-research-group/Poenta                                                                       Not enough stars (8 < 30)
+michaeljakee/DSA                                                                                   Not enough stars (0 < 30)
+michelbarbeau/Quantum-Machine-Learning                                                             Not enough stars (6 < 30)
+Miguell-J/FeynmS                                                                                   Not enough stars (5 < 30)
+Mikhaela-Paige/Qiskit-Algorithms                                                                   Not enough stars (0 < 30)
+mishka2808/STMC-and-QMHA-Code                                                                      Not enough stars (0 < 30)
+Moke2001/Moke                                                                                      Not enough stars (1 < 30)
+Moozzii/Quantum-Similarity-Matrics                                                                 Not enough stars (0 < 30)
+moth-quantum/quantum-audio                                                                         Not enough contributors (3 < 10)
+MrPrinceRawat/Quantum-Computering-Simulator                                                        Not enough stars (0 < 30)
+mrtkp9993/QuantumComputingExamples                                                                 Not enough contributors (2 < 10)
+mspronesti/qlearnkit                                                                               Inactive since 2024-04-14
+mstechly/vqf                                                                                       Inactive since 2023-06-17
+munich-quantum-toolkit/.github                                                                     Not enough stars (25 < 30)
+MuonRay/QuantumNetworkSimulations                                                                  Not enough stars (14 < 30)
+nasa/hybridq                                                                                       Inactive since 2023-12-27
+NatanRRocha/Quantum                                                                                Not enough stars (0 < 30)
+natestemen/qhack                                                                                   Not enough stars (1 < 30)
+nelimee/qtoolkit                                                                                   Archived repository
+Next-di-mension/qnn-qhw                                                                            Not enough stars (12 < 30)
+NickGut0711/qrc-robustness                                                                         Not enough stars (0 < 30)
+Nikait/QISA                                                                                        Not enough stars (3 < 30)
+Nikoraii/quantum-hashing                                                                           Not enough stars (0 < 30)
+noobyogi0010/quantum-explorer                                                                      Not enough stars (0 < 30)
+obliviateandsurrender/Distance-Based-Quantum-Classifier                                            Not enough stars (4 < 30)
+obliviateandsurrender/Quantum-Boltzmann-Machine                                                    Not enough stars (14 < 30)
+obliviateandsurrender/Quantum-Circuit-Learning                                                     Not enough stars (5 < 30)
+olekssy/qiskit-shors                                                                               Not enough stars (18 < 30)
+ollpu/qml                                                                                          Not enough stars (1 < 30)
+OminiaVincit/hqrc-qtasks                                                                           Not enough stars (3 < 30)
+OMRinger/Multiverse-Sim                                                                            Not enough stars (1 < 30)
+opendev-labs/Quantum-ML                                                                            Not enough stars (3 < 30)
+openqasm/oqpy                                                                                      Not enough stars (27 < 30)
+openql-org/quantpy                                                                                 Not enough stars (14 < 30)
+OpenQuantumComputing/QAOA                                                                          Not enough contributors (7 < 10)
+OxfordIonTrapGroup/ndscan                                                                          Not enough stars (25 < 30)
+ozaner/qRNG                                                                                        Inactive since 2023-06-02
+pablovegan/QubitApproximant                                                                        Not enough stars (0 < 30)
+pasqal-io/horqrux                                                                                  Not enough stars (26 < 30)
+pasqal-io/perceptrain                                                                              Not enough stars (6 < 30)
+pasqal-io/quantum-evolution-kernel                                                                 Not enough contributors (6 < 10)
+PECOS-packages/PECOS                                                                               Not enough contributors (3 < 10)
+pedrorrivero/qrand                                                                                 Not enough stars (27 < 30)
+phonegapX/frr-qa                                                                                   Inactive since 2023-04-18
+picapiedra123/quantum                                                                              Not enough stars (0 < 30)
+PietroZanotta/quantum-algorithms                                                                   Not enough stars (5 < 30)
+polydoros123/Quantum-Morse-Teleportation                                                           Not enough stars (1 < 30)
+PranithChowdary/QuantumLeap                                                                        Not enough stars (0 < 30)
+primaryobjects/flying-unicorn                                                                      Not enough stars (2 < 30)
+primaryobjects/oracle                                                                              Not enough stars (13 < 30)
+primaryobjects/quantum                                                                             Not enough stars (14 < 30)
+princekfred/q-sc-EOM                                                                               Not enough stars (0 < 30)
+Pruneye/Quantifyr                                                                                  Not enough stars (0 < 30)
+PsiQ/qref                                                                                          Not enough contributors (8 < 10)
+Pxie024/quantum_circuit_optimization                                                               Not enough stars (0 < 30)
+pykao/QuantumMolGAN-PyTorch                                                                        Not enough stars (26 < 30)
+pyRiemann/pyRiemann-qiskit                                                                         Not enough contributors (8 < 10)
+q-optimize/c3                                                                                      Inactive since 2024-03-05
+QANTLabs/QHUB                                                                                      Not enough stars (0 < 30)
+QANTLabs/QMTLib                                                                                    Not enough stars (0 < 30)
+qBraid/pyqasm                                                                                      Not enough stars (21 < 30)
+QCFD-Lab/qlbm                                                                                      Not enough stars (21 < 30)
+qdevpsi3/qml-qcnn                                                                                  Not enough stars (3 < 30)
+qdevpsi3/qrl-dqn-gym                                                                               Inactive since 2023-03-15
+qdevpsi3/quantum-arch-search                                                                       Inactive since 2021-04-22
+qdevpsi3/quantum-nearest-classifier                                                                Not enough stars (4 < 30)
+qDNA-yonsei/qdna-lib                                                                               Not enough stars (3 < 30)
+qec-codes/qec                                                                                      Not enough stars (23 < 30)
+Qentora/quoptuna                                                                                   Not enough stars (1 < 30)
+qiboteam/qibojit                                                                                   Not enough stars (16 < 30)
+qiskit-community/prototype-entanglement-forging                                                    Archived repository
+qiskit-community/prototype-qrao                                                                    Archived repository
+qiskit-community/prototype-quantum-kernel-training                                                 Inactive since 2024-03-31
+qiskit-community/prototype-zne                                                                     Not enough contributors (4 < 10)
+qiskit-community/qiskit-aqua                                                                       Archived repository
+qiskit-community/qiskit-toqm                                                                       Not enough stars (9 < 30)
+qiskit-community/quantum-prototype-template                                                        Inactive since 2024-09-11
+Qiskit/qiskit-qasm3-import                                                                         Not enough stars (26 < 30)
+qiskrypt/qiskrypt                                                                                  Inactive since 2022-04-25
+qlan3/QuantumExplorer                                                                              Not enough stars (29 < 30)
+qmatter-labs/symmer                                                                                Not enough contributors (9 < 10)
+qonwaygameoflife/qonwaygameoflife                                                                  Not enough contributors (4 < 10)
+QPong/QPong                                                                                        Inactive since 2024-06-15
+Quang00/dqsweep                                                                                    Not enough stars (0 < 30)
+QuantaScriptor/AI-Driven-Risk-Management-System-AIDRMS                                             Not enough stars (0 < 30)
+QuantaScriptor/Quantum-Based-Fraud-Detection-QBFD                                                  Not enough stars (0 < 30)
+QuantaScriptor/Quantum-Based-Portfolio-Diversification-QBPD                                        Not enough stars (0 < 30)
+quantum-plugins/aer-plugin                                                                         Not enough stars (0 < 30)
+Quantum4HEP/QUnfold                                                                                Not enough stars (23 < 30)
+quantumlib/chromobius                                                                              Not enough stars (21 < 30)
+quantumlib/OpenFermion-Cirq                                                                        Archived repository
+quantumlib/OpenFermion-PySCF                                                                       Not enough contributors (9 < 10)
+quarktetra23/pre-stock-qnn                                                                         Not enough stars (0 < 30)
+qubit-science-club/quantum_reinforcement_learning                                                  Not enough stars (18 < 30)
+qucontrol/krotov                                                                                   Not enough contributors (4 < 10)
+Qulacs-Osaka/scikit-qulacs                                                                         Not enough stars (23 < 30)
+QuSTaR/kaleidoscope                                                                                Not enough stars (24 < 30)
+QutacQuantum/effective_inequality_embedding                                                        Not enough stars (2 < 30)
+Qyusu/astronaut                                                                                    Not enough stars (2 < 30)
+Qyusu/qxmt                                                                                         Not enough stars (4 < 30)
+R-D-BioTech-Alaska/Qelm                                                                            Not enough stars (24 < 30)
+Rachit1980/EQST-GP-thory                                                                           Not enough stars (0 < 30)
+radosnystudent/Quantum-algorithms                                                                  Not enough stars (0 < 30)
+rasidi3112/Advanced-Quantum-App                                                                    Not enough stars (0 < 30)
+rasidi3112/Quantum-GAN                                                                             Not enough stars (1 < 30)
+rbnx/skewboost                                                                                     Not enough stars (8 < 30)
+redx94/QuantumAI                                                                                   Not enough stars (3 < 30)
+rigetti/forest-benchmarking                                                                        Inactive since 2024-10-18
+rigetti/forest-openfermion                                                                         Inactive since 2021-11-30
+rigetti/grove                                                                                      Inactive since 2021-12-02
+rigetti/quantumflow                                                                                Inactive since 2019-06-03
+ritu-thombre99/QHack-2022-Coding-Challenge-Solutions                                               Not enough stars (3 < 30)
+ritu-thombre99/QNim-App                                                                            Not enough stars (12 < 30)
+Rohanberiwal/Quantum-Computing-and-Quantum-Information-Theory                                      Not enough stars (0 < 30)
+rossy-awan/quantum-computing                                                                       Not enough stars (0 < 30)
+RQC-QApp/QuantumComputingBot                                                                       Not enough stars (22 < 30)
+rsngmson/IonBatteryML                                                                              Not enough stars (0 < 30)
+rubenguevara/QuantumMachineLearning                                                                Not enough stars (1 < 30)
+rylanturner02/quantum-circuit-compiler                                                             Not enough stars (0 < 30)
+SaashaJoshi/piQture                                                                                Not enough contributors (9 < 10)
+Samantha-norrie/QNotation                                                                          Not enough stars (5 < 30)
+samn33/qlazy                                                                                       Not enough stars (23 < 30)
+satwiksps/quantum-mlops-pipeline                                                                   Not enough stars (1 < 30)
+scottwn/PyNewHope                                                                                  Not enough stars (21 < 30)
+seanpm2001/Bliss_Browser                                                                           Not enough stars (21 < 30)
+SEDSCelestiaBPGC/quantum-chess                                                                     Not enough stars (21 < 30)
+seif-007/Quantum_Long_Short_Term_Memory                                                            Not enough stars (1 < 30)
+serkosi/quantum-entanglement                                                                       Not enough stars (0 < 30)
+sethuiyer/QuHabiton                                                                                Not enough stars (0 < 30)
+SimoneGasperini/qiskit-symb                                                                        Not enough contributors (3 < 10)
+SourangshuGhosh/QuantumComputing                                                                   Not enough stars (4 < 30)
+sqdlab/SQDMetal                                                                                    Not enough stars (22 < 30)
+sradgowski/qaoa-redesign                                                                           Not enough stars (0 < 30)
+steinbrecher/bosonic                                                                               Not enough stars (29 < 30)
+SuperSonnix71/Shors-quantum-algorithm                                                              Not enough stars (0 < 30)
+tanlin2013/tnpy                                                                                    Not enough stars (3 < 30)
+tcNickolas/quantum-programming-in-depth                                                            Not enough contributors (2 < 10)
+tencent-quantum-lab/TenCirChem                                                                     Not enough contributors (3 < 10)
+tensorly/quantum                                                                                   Inactive since 2023-06-07
+terrordayvg/Authentication-of-QKD                                                                  Not enough stars (1 < 30)
+tiagomsleao/ShorAlgQiskit                                                                          Inactive since 2019-03-02
+TimeDelta/q-vs-c_enc_dec_nonstationary                                                             Not enough stars (0 < 30)
+TNO-Quantum/ml.classifiers.vc                                                                      Not enough stars (6 < 30)
+tomiock/quantum-GAN                                                                                Not enough stars (11 < 30)
+towynlin/quantum-max-qosf                                                                          Not enough stars (0 < 30)
+tqec/topologiq                                                                                     Not enough contributors (1 < 10)
+TuringQ/deepquantum                                                                                Not enough contributors (5 < 10)
+turingsecurity/QMR                                                                                 Not enough stars (8 < 30)
+vbelis/latent-ad-qml                                                                               Not enough stars (17 < 30)
+videlanicolas/QKD                                                                                  Archived repository
+vladimirdabic/qipy                                                                                 Not enough stars (0 < 30)
+XanaduAI/constrained-quantum-learning                                                              Not enough stars (22 < 30)
+XanaduAI/QHack2022                                                                                 Archived repository
+XanaduAI/QMLT                                                                                      Archived repository
+XanaduAI/quantum-neural-networks                                                                   Inactive since 2023-03-24
+XanaduAI/SFOpenBoson                                                                               Inactive since 2023-07-06
+xiaoyu2018/QuantumCnn-NetworkAttackDetection                                                       Inactive since 2022-01-27
+yazhsab/open-quantum-AI-for-legal-reasoning                                                        Not enough stars (0 < 30)
+ycchen1989/Quantum_Long_Short_Term_Memory                                                          Not enough stars (6 < 30)
+ycchen1989/Var-QuantumCircuits-DeepRL                                                              Inactive since 2021-04-12
+yeray142/quantum-nerf                                                                              Not enough stars (1 < 30)
+yifan1207/Quantum-Based-Machine-Learning-Simulation                                                Not enough contributors (0 < 10)
+zapatacomputing/cusp_cirq_demo                                                                     Inactive since 2018-07-31
+zhenhouhong/QSpeech                                                                                Not enough stars (6 < 30)
+zlatko-minev/zlatko-minev-quantum-repository                                                       Not enough contributors (1 < 10)
+
+--- Final Considered Projects (Top 80) ---
+1. Qiskit/qiskit
+2. quantumlib/Cirq
+3. PennyLaneAI/pennylane
+4. tensorflow/quantum
+5. Classiq/classiq-library
+6. qutip/qutip
+7. quantumlib/OpenFermion
+8. mit-han-lab/torchquantum
+9. rigetti/pyquil
+10. openqasm/openqasm
+11. ProjectQ-Framework/ProjectQ
+12. qiskit-community/qiskit-machine-learning
+13. AgnostiqHQ/covalent
+14. XanaduAI/strawberryfields
+15. PennyLaneAI/qml
+16. jcmgray/quimb
+17. dwavesystems/dwave-ocean-sdk
+18. m-labs/artiq
+19. unitaryfoundation/mitiq
+20. discopy/discopy
+21. blueqat/blueqatSDK
+22. usnistgov/jarvis
+23. qiskit-community/qiskit-nature
+24. amazon-braket/amazon-braket-sdk-python
+25. qiskit-community/qiskit-metal
+26. tencent-quantum-lab/tensorcircuit
+27. qiboteam/qibo
+28. quantumlib/ReCirq
+29. qiskit-community/qiskit-finance
+30. tqec/tqec
+31. qiskit-community/qiskit-optimization
+32. vprusso/toqito
+33. quantumlib/Qualtran
+34. pasqal-io/Pulser
+35. open-quantum-safe/liboqs-python
+36. PennyLaneAI/catalyst
+37. zlatko-minev/pyEPR
+38. qiskit-community/qiskit-experiments
+39. Quandela/Perceval
+40. eclipse-qrisp/Qrisp
+41. munich-quantum-toolkit/qecc
+42. PIQuIL/QuCumber
+43. iqm-finland/KQCircuits
+44. qiskit-community/qiskit-algorithms
+45. Qiskit/ecosystem
+46. sandbox-quantum/Tangelo
+47. qiskit-community/qiskit-dynamics
+48. nikolasibalic/ARC-Alkali-Rydberg-Calculator
+49. amazon-braket/amazon-braket-algorithm-library
+50. Infleqtion/client-superstaq
+51. XanaduAI/thewalrus
+52. munich-quantum-toolkit/bench
+53. Qiskit/qiskit-serverless
+54. dwavesystems/dwave-system
+55. qBraid/qBraid
+56. Qiskit/qiskit-addon-cutting
+57. sQUlearn/squlearn
+58. CQCL/guppylang
+59. TeamGraphix/graphix
+60. XanaduAI/MrMustard
+61. oqtopus-team/oqtopus-cloud
+62. pasqal-io/qadence
+63. quantumlib/OpenFermion-Psi4
+64. QuEraComputing/bloqade-analog
+65. Qiskit/qiskit-addon-sqd
+66. awslabs/quantum-computing-exploration-for-drug-discovery-on-aws
+67. qiskit-community/qiskit-braket-provider
+68. quantumlib/OpenFermion-FQE
+69. errorcorrectionzoo/eczoo_data
+70. PennyLaneAI/pennylane-cirq
+71. XanaduAI/flamingpy
+72. qiboteam/qibolab
+73. Budapest-Quantum-Computing-Group/piquasso
+74. pasqal-io/pyqtorch
+75. PennyLaneAI/pennylane-rigetti
+76. Qiskit/qiskit-addon-obp
+77. qclib/qclib
+78. tensorcircuit/tensorcircuit-ng
+79. qiboteam/qibocal
+80. BBN-Q/QGL
+
+========================================
+End of Summary

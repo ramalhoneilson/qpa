@@ -35,28 +35,24 @@ class TestDownloadQuantumPatternDetails:
     def test_invalid_pattern_skipped(self):
         """Test skipping invalid pattern entries."""
         pattern_summaries = [
-            {
-                "id": "pattern1",
-                "name": "Valid Pattern",
-                "patternLanguageId": "lang1"
-            },
+            {"id": "pattern1", "name": "Valid Pattern", "patternLanguageId": "lang1"},
             {
                 "id": None,  # Invalid - missing required field
                 "name": "Invalid Pattern",
-                "patternLanguageId": "lang2"
-            }
+                "patternLanguageId": "lang2",
+            },
         ]
-        
+
         with patch("requests.get") as mock_get:
             mock_response = MagicMock()
             mock_response.json.return_value = {"renderedContent": {}}
             mock_response.raise_for_status.return_value = None
             mock_get.return_value = mock_response
-            
+
             with patch("time.sleep"):
                 with patch("builtins.print") as mock_print:
                     result = download_quantum_pattern_details(pattern_summaries)
-                    
+
                     # Should process some patterns (may be 0 or 1 depending on implementation)
                     assert isinstance(result, list)
 

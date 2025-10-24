@@ -1,4 +1,18 @@
 name;summary
+/qiskit/qiskit.circuit.library.generalized_gates.uc_pauli_rot.UCPauliRotGate;Uniformly controlled Pauli rotations.
+/qiskit/qiskit.circuit.library.arithmetic.linear_amplitude_function.LinearAmplitudeFunctionGate;A circuit implementing a (piecewise) linear function on qubit amplitudes.
+/qiskit/qiskit.circuit.library.arithmetic.linear_pauli_rotations.LinearPauliRotationsGate;Linearly-controlled X, Y or Z rotation.
+/qiskit/qiskit.circuit.library.arithmetic.multipliers.multiplier.MultiplierGate;Compute the product of two equally sized qubit registers into a new register.
+/qiskit/qiskit.circuit.library.arithmetic.piecewise_chebyshev.PiecewiseChebyshevGate;Piecewise Chebyshev approximation to an input function.
+/qiskit/qiskit.circuit.library.arithmetic.piecewise_linear_pauli_rotations.PiecewiseLinearPauliRotationsGate;Piecewise-linearly-controlled Pauli rotations.
+/qiskit/qiskit.circuit.library.arithmetic.piecewise_polynomial_pauli_rotations.PiecewisePolynomialPauliRotationsGate;Piecewise-polynomially-controlled Pauli rotations.
+/qiskit/qiskit.circuit.library.arithmetic.quadratic_form.QuadraticFormGate;Implements a quadratic form on binary variables encoded in qubit registers.
+/qiskit/qiskit.circuit.library.boolean_logic.inner_product.InnerProductGate;A 2n-qubit Boolean function that computes the inner product of two n-qubit vectors over :math:`F_2`.
+/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AndGate;A gate representing the logical AND operation on a number of qubits.
+/qiskit/qiskit.circuit.library.boolean_logic.quantum_xor.BitwiseXorGate;An n-qubit gate for bitwise xor-ing the input with some integer ``amount``.
+/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.z_feature_map;The first order Pauli Z-evolution circuit.
+/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.zz_feature_map;Second-order Pauli-Z evolution circuit.
+/qiskit/qiskit.circuit.library.generalized_gates.mcmt.MCMTGate;The multi-controlled multi-target gate, for an arbitrary singly controlled target gate.
 /qiskit/qiskit.circuit.library.arithmetic.adders.adder.Adder;Compute the sum of two equally sized qubit registers.
 /qiskit/qiskit.circuit.library.arithmetic.adders.adder.HalfAdderGate;Compute the sum of two equally-sized qubit registers, including a carry-out bit.
 /qiskit/qiskit.circuit.library.arithmetic.adders.adder.ModularAdderGate;Compute the sum modulo :math:`2^n` of two :math:`n`-sized qubit registers.
@@ -11,31 +25,19 @@ name;summary
 /qiskit/qiskit.circuit.library.arithmetic.functional_pauli_rotations.FunctionalPauliRotations;Base class for functional Pauli rotations.
 /qiskit/qiskit.circuit.library.arithmetic.integer_comparator.IntegerComparator;Integer Comparator.
 /qiskit/qiskit.circuit.library.arithmetic.integer_comparator.IntegerComparatorGate;Perform a :math:`\geq` (or :math:`<`) on a qubit register against a classical integer.
-/qiskit/qiskit.circuit.library.arithmetic.linear_amplitude_function.LinearAmplitudeFunctionGate;A circuit implementing a (piecewise) linear function on qubit amplitudes.
-/qiskit/qiskit.circuit.library.arithmetic.linear_pauli_rotations.LinearPauliRotationsGate;Linearly-controlled X, Y or Z rotation.
 /qiskit/qiskit.circuit.library.arithmetic.multipliers.hrs_cumulative_multiplier.HRSCumulativeMultiplier;A multiplication circuit to store product of two input registers out-of-place.
-/qiskit/qiskit.circuit.library.arithmetic.multipliers.multiplier.MultiplierGate;Compute the product of two equally sized qubit registers into a new register.
 /qiskit/qiskit.circuit.library.arithmetic.multipliers.rg_qft_multiplier.RGQFTMultiplier;A QFT multiplication circuit to store product of two input registers out-of-place.
-/qiskit/qiskit.circuit.library.arithmetic.piecewise_chebyshev.PiecewiseChebyshevGate;Piecewise Chebyshev approximation to an input function.
-/qiskit/qiskit.circuit.library.arithmetic.piecewise_linear_pauli_rotations.PiecewiseLinearPauliRotationsGate;Piecewise-linearly-controlled Pauli rotations.
-/qiskit/qiskit.circuit.library.arithmetic.piecewise_polynomial_pauli_rotations.PiecewisePolynomialPauliRotationsGate;Piecewise-polynomially-controlled Pauli rotations.
 /qiskit/qiskit.circuit.library.arithmetic.polynomial_pauli_rotations.PolynomialPauliRotations;A circuit implementing polynomial Pauli rotations.
 /qiskit/qiskit.circuit.library.arithmetic.polynomial_pauli_rotations.PolynomialPauliRotationsGate;A gate implementing polynomial Pauli rotations.
-/qiskit/qiskit.circuit.library.arithmetic.quadratic_form.QuadraticFormGate;Implements a quadratic form on binary variables encoded in qubit registers.
 /qiskit/qiskit.circuit.library.arithmetic.weighted_adder.WeightedAdder;A circuit to compute the weighted sum of qubit registers.
 /qiskit/qiskit.circuit.library.arithmetic.weighted_adder.WeightedSumGate;A gate to compute the weighted sum of qubit registers.
 /qiskit/qiskit.circuit.library.basis_change.qft.QFT;Quantum Fourier Transform Circuit.
 /qiskit/qiskit.circuit.library.basis_change.qft.QFTGate;Quantum Fourier Transform Gate.
 /qiskit/qiskit.circuit.library.bit_flip_oracle.BitFlipOracleGate;Implements a bit-flip oracle
 /qiskit/qiskit.circuit.library.blueprintcircuit.BlueprintCircuit;Blueprint circuit object.
-/qiskit/qiskit.circuit.library.boolean_logic.inner_product.InnerProductGate;A 2n-qubit Boolean function that computes the inner product of two n-qubit vectors over :math:`F_2`.
 /qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;A circuit implementing the logical AND operation on a number of qubits.
-/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AndGate;A gate representing the logical AND operation on a number of qubits.
 /qiskit/qiskit.circuit.library.boolean_logic.quantum_or.OR;A circuit implementing the logical OR operation on a number of qubits.
-/qiskit/qiskit.circuit.library.boolean_logic.quantum_xor.BitwiseXorGate;An n-qubit gate for bitwise xor-ing the input with some integer ``amount``.
 /qiskit/qiskit.circuit.library.boolean_logic.quantum_xor.random_bitwise_xor;Create a random BitwiseXorGate.
-/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.z_feature_map;The first order Pauli Z-evolution circuit.
-/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.zz_feature_map;Second-order Pauli-Z evolution circuit.
 /qiskit/qiskit.circuit.library.data_preparation.initializer.Initialize;Complex amplitude initialization.
 /qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.PauliFeatureMap;The Pauli Expansion circuit.
 /qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.self_product;Define a function map from R^n to R.
@@ -53,14 +55,12 @@ name;summary
 /qiskit/qiskit.circuit.library.generalized_gates.isometry.Isometry;Decomposition of arbitrary isometries from :math:`m` to :math:`n` qubits.
 /qiskit/qiskit.circuit.library.generalized_gates.linear_function.LinearFunction;A linear reversible circuit on n qubits.
 /qiskit/qiskit.circuit.library.generalized_gates.mcg_up_to_diagonal.MCGupDiag;Decomposes a multi-controlled gate :math:`U` up to a diagonal :math:`D` acting on the control and target qubit (but not on the ancilla qubits), i.e., it implements a circuit corresponding to a unitary :math:`U'`, such that :math:`U = D U'`.
-/qiskit/qiskit.circuit.library.generalized_gates.mcmt.MCMTGate;The multi-controlled multi-target gate, for an arbitrary singly controlled target gate.
 /qiskit/qiskit.circuit.library.generalized_gates.mcmt.MCMTVChain;The MCMT implementation using the CCX V-chain.
 /qiskit/qiskit.circuit.library.generalized_gates.pauli.PauliGate;A multi-qubit Pauli gate.
 /qiskit/qiskit.circuit.library.generalized_gates.permutation.Permutation;An n_qubit circuit that permutes qubits.
 /qiskit/qiskit.circuit.library.generalized_gates.permutation.PermutationGate;A gate that permutes qubits.
 /qiskit/qiskit.circuit.library.generalized_gates.rv.RVGate;Rotation around arbitrary rotation axis :math:`\vec{v}` where :math:`\|\vec{v}\|_2` is angle of rotation in radians.
 /qiskit/qiskit.circuit.library.generalized_gates.uc.UCGate;Uniformly controlled gate (also called multiplexed gate).
-/qiskit/qiskit.circuit.library.generalized_gates.uc_pauli_rot.UCPauliRotGate;Uniformly controlled Pauli rotations.
 /qiskit/qiskit.circuit.library.generalized_gates.ucrz.UCRZGate;Uniformly controlled Pauli-Z rotations.
 /qiskit/qiskit.circuit.library.generalized_gates.unitary.UnitaryGate;Class quantum gates specified by a unitary matrix.
 /qiskit/qiskit.circuit.library.graph_state.GraphState;Circuit to prepare a graph state.

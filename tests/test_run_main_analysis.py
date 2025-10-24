@@ -38,28 +38,30 @@ class TestCodeElementVisitor:
     def test_visit_call_with_name(self):
         """Test visiting function calls with names."""
         visitor = CodeElementVisitor()
-        
+
         # Create a real AST node for function call
         import ast
+
         tree = ast.parse("test_function()")
         call_node = tree.body[0].value  # This is the Call node
-        
+
         # Mock generic_visit to avoid recursion
-        with patch.object(visitor, 'generic_visit'):
+        with patch.object(visitor, "generic_visit"):
             visitor.visit_Call(call_node)
             assert "test_function" in visitor.found_elements
 
     def test_visit_call_with_attribute(self):
         """Test visiting function calls with attributes."""
         visitor = CodeElementVisitor()
-        
+
         # Create a real AST node for method call
         import ast
+
         tree = ast.parse("obj.test_method()")
         call_node = tree.body[0].value  # This is the Call node
-        
+
         # Mock generic_visit to avoid recursion
-        with patch.object(visitor, 'generic_visit'):
+        with patch.object(visitor, "generic_visit"):
             visitor.visit_Call(call_node)
             assert "test_method" in visitor.found_elements
 
@@ -70,23 +72,25 @@ class TestHelperFunctions:
     def test_get_code_elements_from_script(self):
         """Test extracting code elements from script."""
         script_content = "def test_func():\n    return test_function()"
-        
+
         with patch("ast.parse") as mock_parse:
             mock_tree = MagicMock()
             mock_parse.return_value = mock_tree
-            
-            with patch("src.workflows.run_main_analysis.CodeElementVisitor") as mock_visitor_class:
+
+            with patch(
+                "src.workflows.run_main_analysis.CodeElementVisitor"
+            ) as mock_visitor_class:
                 mock_visitor = MagicMock()
                 mock_visitor.found_elements = {"test_function"}
                 mock_visitor_class.return_value = mock_visitor
-                
+
                 result = get_code_elements_from_script(script_content)
                 assert result == ["test_function"]
 
     def test_get_code_elements_syntax_error(self):
         """Test handling syntax errors in script parsing."""
         script_content = "invalid syntax here"
-        
+
         with patch("ast.parse", side_effect=SyntaxError("Invalid syntax")):
             result = get_code_elements_from_script(script_content)
             assert result == []
@@ -97,9 +101,9 @@ class TestHelperFunctions:
             "# This is a comment",
             "def test():",
             "# Another comment",
-            "    pass"
+            "    pass",
         ]
-        
+
         with patch("builtins.open", mock_open(read_data="\n".join(mock_file_content))):
             result = extract_comments_from_script(Path("test.py"))
             assert "This is a comment" in result
@@ -125,11 +129,13 @@ class TestHelperFunctions:
         mock_csv_content = [
             "concept_name,summary,pattern",
             "concept1,summary1,pattern1",
-            "concept2,summary2,pattern2"
+            "concept2,summary2,pattern2",
         ]
-        
+
         with patch("pathlib.Path.exists", return_value=True):
-            with patch("builtins.open", mock_open(read_data="\n".join(mock_csv_content))):
+            with patch(
+                "builtins.open", mock_open(read_data="\n".join(mock_csv_content))
+            ):
                 result = load_patterns_map([Path("test.csv")])
                 assert result["concept1"] == "pattern1"
                 assert result["concept2"] == "pattern2"
@@ -140,7 +146,9 @@ class TestHelperFunctions:
             with patch("builtins.print") as mock_print:
                 result = load_patterns_map([Path("nonexistent.csv")])
                 assert result == {}
-                mock_print.assert_called_with("Warning: Pattern file not found: nonexistent.csv")
+                mock_print.assert_called_with(
+                    "Warning: Pattern file not found: nonexistent.csv"
+                )
 
     def test_load_patterns_map_error(self):
         """Test handling errors in pattern loading."""
@@ -155,13 +163,15 @@ class TestHelperFunctions:
         """Test loading quantum concepts from JSON files."""
         mock_json_data = [
             {"name": "concept1", "summary": "summary1"},
-            {"name": "concept2", "summary": "summary2"}
+            {"name": "concept2", "summary": "summary2"},
         ]
-        
+
         pattern_map = {"concept1": "pattern1"}
-        
+
         with patch("pathlib.Path.exists", return_value=True):
-            with patch("builtins.open", mock_open(read_data=json.dumps(mock_json_data))):
+            with patch(
+                "builtins.open", mock_open(read_data=json.dumps(mock_json_data))
+            ):
                 result = load_quantum_concepts([Path("test.json")], pattern_map)
                 assert len(result) == 2
                 assert result[0]["name"] == "concept1"
@@ -186,35 +196,42 @@ class TestHelperFunctions:
     def test_save_unclassified_concepts_empty(self):
         """Test saving unclassified concepts when none exist."""
         concepts = [{"name": "concept1", "pattern": "pattern1"}]
-        
+
         with patch("pathlib.Path.exists", return_value=True):
             with patch("pathlib.Path.unlink"):
                 with patch("builtins.print") as mock_print:
                     _save_unclassified_concepts(concepts, Path("test.csv"))
-                    mock_print.assert_called_with("All concepts are classified. No 'unclassified_concepts.csv' needed.")
+                    mock_print.assert_called_with(
+                        "All concepts are classified. No 'unclassified_concepts.csv' needed."
+                    )
 
     def test_save_unclassified_concepts_with_data(self):
         """Test saving unclassified concepts when they exist."""
         concepts = [
             {"name": "concept1", "summary": "summary1", "pattern": "N/A"},
-            {"name": "concept2", "summary": "summary2", "pattern": "pattern2"}
+            {"name": "concept2", "summary": "summary2", "pattern": "pattern2"},
         ]
-        
+
         with patch("builtins.open", mock_open()) as mock_file:
             with patch("builtins.print") as mock_print:
                 _save_unclassified_concepts(concepts, Path("test.csv"))
                 mock_file.assert_called()
                 # Check that the warning message was printed
-                assert any("Found 1 unclassified concepts" in str(call) for call in mock_print.call_args_list)
+                assert any(
+                    "Found 1 unclassified concepts" in str(call)
+                    for call in mock_print.call_args_list
+                )
 
     def test_save_unclassified_concepts_error(self):
         """Test handling errors in saving unclassified concepts."""
         concepts = [{"name": "concept1", "summary": "summary1", "pattern": "N/A"}]
-        
+
         with patch("builtins.open", side_effect=OSError("File error")):
             with patch("builtins.print") as mock_print:
                 _save_unclassified_concepts(concepts, Path("test.csv"))
-                mock_print.assert_called_with("  - Error writing unclassified concepts file: File error")
+                mock_print.assert_called_with(
+                    "  - Error writing unclassified concepts file: File error"
+                )
 
 
 class TestMainFunction:
@@ -222,55 +239,103 @@ class TestMainFunction:
 
     def test_main_no_concepts_loaded(self):
         """Test main function when no concepts are loaded."""
-        with patch("src.workflows.run_main_analysis.load_patterns_map", return_value={}):
-            with patch("src.workflows.run_main_analysis.load_quantum_concepts", return_value=[]):
+        with patch(
+            "src.workflows.run_main_analysis.load_patterns_map", return_value={}
+        ):
+            with patch(
+                "src.workflows.run_main_analysis.load_quantum_concepts", return_value=[]
+            ):
                 with patch("builtins.print") as mock_print:
                     main()
-                    mock_print.assert_called_with("No quantum concepts loaded. Exiting.")
+                    mock_print.assert_called_with(
+                        "No quantum concepts loaded. Exiting."
+                    )
 
     def test_main_successful_execution(self):
         """Test successful main execution."""
         mock_concepts = [
-            {"name": "concept1", "summary": "summary1", "short_name": "concept1", "pattern": "pattern1"}
+            {
+                "name": "concept1",
+                "summary": "summary1",
+                "short_name": "concept1",
+                "pattern": "pattern1",
+            }
         ]
-        
-        with patch("src.workflows.run_main_analysis.load_patterns_map", return_value={"concept1": "pattern1"}):
-            with patch("src.workflows.run_main_analysis.load_quantum_concepts", return_value=mock_concepts):
-                with patch("src.workflows.run_main_analysis._save_unclassified_concepts"):
-                    with patch("src.workflows.run_main_analysis.SentenceTransformer") as mock_model_class:
+
+        with patch(
+            "src.workflows.run_main_analysis.load_patterns_map",
+            return_value={"concept1": "pattern1"},
+        ):
+            with patch(
+                "src.workflows.run_main_analysis.load_quantum_concepts",
+                return_value=mock_concepts,
+            ):
+                with patch(
+                    "src.workflows.run_main_analysis._save_unclassified_concepts"
+                ):
+                    with patch(
+                        "src.workflows.run_main_analysis.SentenceTransformer"
+                    ) as mock_model_class:
                         mock_model = MagicMock()
                         mock_model_class.return_value = mock_model
                         mock_model.encode.return_value = MagicMock()
-                        
-                        with patch("pathlib.Path.rglob", return_value=[Path("test.py")]):
-                            with patch("pathlib.Path.read_text", return_value="def test(): pass"):
+
+                        with patch(
+                            "pathlib.Path.rglob", return_value=[Path("test.py")]
+                        ):
+                            with patch(
+                                "pathlib.Path.read_text",
+                                return_value="def test(): pass",
+                            ):
                                 with patch("builtins.open", mock_open()) as mock_file:
                                     with patch("builtins.print"):
                                         main()
-                                        
+
                                         # Should have processed the file
                                         mock_file.assert_called()
 
     def test_main_file_reading_error(self):
         """Test main function when file reading fails."""
         mock_concepts = [
-            {"name": "concept1", "summary": "summary1", "short_name": "concept1", "pattern": "pattern1"}
+            {
+                "name": "concept1",
+                "summary": "summary1",
+                "short_name": "concept1",
+                "pattern": "pattern1",
+            }
         ]
-        
-        with patch("src.workflows.run_main_analysis.load_patterns_map", return_value={}):
-            with patch("src.workflows.run_main_analysis.load_quantum_concepts", return_value=mock_concepts):
-                with patch("src.workflows.run_main_analysis._save_unclassified_concepts"):
-                    with patch("src.workflows.run_main_analysis.SentenceTransformer") as mock_model_class:
+
+        with patch(
+            "src.workflows.run_main_analysis.load_patterns_map", return_value={}
+        ):
+            with patch(
+                "src.workflows.run_main_analysis.load_quantum_concepts",
+                return_value=mock_concepts,
+            ):
+                with patch(
+                    "src.workflows.run_main_analysis._save_unclassified_concepts"
+                ):
+                    with patch(
+                        "src.workflows.run_main_analysis.SentenceTransformer"
+                    ) as mock_model_class:
                         mock_model = MagicMock()
                         mock_model_class.return_value = mock_model
                         mock_model.encode.return_value = MagicMock()
-                        
-                        with patch("pathlib.Path.rglob", return_value=[Path("test.py")]):
-                            with patch("pathlib.Path.read_text", side_effect=Exception("Read error")):
+
+                        with patch(
+                            "pathlib.Path.rglob", return_value=[Path("test.py")]
+                        ):
+                            with patch(
+                                "pathlib.Path.read_text",
+                                side_effect=Exception("Read error"),
+                            ):
                                 with patch("builtins.print") as mock_print:
                                     main()
                                     # Should handle the error gracefully
-                                    assert any("Could not read file" in str(call) for call in mock_print.call_args_list)
+                                    assert any(
+                                        "Could not read file" in str(call)
+                                        for call in mock_print.call_args_list
+                                    )
 
 
 class TestConstants:

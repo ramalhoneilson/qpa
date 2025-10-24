@@ -85,9 +85,7 @@ def process_all_notebooks(source_dir: Path, dest_dir: Path):
                     results[status] += 1
             except Exception as exc:
                 results["ERROR"] += 1
-                print(
-                    f"[CRITICAL ERROR] {path.relative_to(source_dir)}: {exc}"
-                )
+                print(f"[CRITICAL ERROR] {path.relative_to(source_dir)}: {exc}")
 
     print("\n--- Conversion Summary ---")
     print(f"Successfully converted: {results['SUCCESS']}")

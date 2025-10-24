@@ -1,0 +1,23 @@
+pattern,count
+Basis Change,161
+Quantum Phase Estimation (QPE),57
+Domain Specific Application,53
+Quantum Arithmetic,43
+Circuit Construction Utility,40
+Data Encoding,37
+Amplitude Amplification,26
+Initialization,26
+Hamiltonian Simulation,20
+Variational Quantum Algorithm (VQA),19
+Oracle,13
+Quantum Logical Operators,13
+Quantum Neural Network (QNN),11
+Grover,10
+Quantum Approximate Optimization Algorithm (QAOA),10
+Linear Combination of Unitaries,7
+Dynamic Circuit,6
+SWAP Test,6
+Variational Quantum Eigensolver (VQE),5
+Creating Entanglement,5
+Phase Shift,4
+Quantum Amplitude Estimation,1

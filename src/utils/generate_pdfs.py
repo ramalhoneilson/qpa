@@ -21,7 +21,7 @@ def get_markdown_files(docs_dir: Path) -> List[Path]:
 def read_markdown_file(file_path: Path) -> str:
     """Read and return the content of a markdown file."""
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, "r", encoding="utf-8") as f:
             return f.read()
     except Exception as e:
         print(f"Error reading {file_path}: {e}")
@@ -33,16 +33,16 @@ def markdown_to_html(markdown_content: str) -> str:
     # Configure markdown with extensions for better rendering
     md = markdown.Markdown(
         extensions=[
-            'markdown.extensions.tables',
-            'markdown.extensions.fenced_code',
-            'markdown.extensions.codehilite',
-            'markdown.extensions.toc',
-            'markdown.extensions.attr_list'
+            "markdown.extensions.tables",
+            "markdown.extensions.fenced_code",
+            "markdown.extensions.codehilite",
+            "markdown.extensions.toc",
+            "markdown.extensions.attr_list",
         ]
     )
-    
+
     html_content = md.convert(markdown_content)
-    
+
     # Wrap in a complete HTML document with CSS styling
     full_html = f"""
     <!DOCTYPE html>
@@ -169,7 +169,7 @@ def markdown_to_html(markdown_content: str) -> str:
     </body>
     </html>
     """
-    
+
     return full_html
 
 
@@ -177,34 +177,34 @@ def convert_md_to_pdf(md_file: Path, output_dir: Path) -> bool:
     """Convert a single markdown file to PDF."""
     try:
         print(f"Converting {md_file.name}...")
-        
+
         # Read markdown content
         markdown_content = read_markdown_file(md_file)
         if not markdown_content:
             print(f"  Warning: Empty or unreadable file {md_file.name}")
             return False
-        
+
         # Convert to HTML
         html_content = markdown_to_html(markdown_content)
-        
+
         # Generate output filename
         pdf_filename = md_file.stem + ".pdf"
         pdf_path = output_dir / pdf_filename
-        
+
         # Convert HTML to PDF using WeasyPrint
         font_config = FontConfiguration()
         html_doc = HTML(string=html_content)
-        
+
         # Generate PDF with proper page handling
         html_doc.write_pdf(
             pdf_path,
             font_config=font_config,
-            stylesheets=[]  # We're using inline CSS
+            stylesheets=[],  # We're using inline CSS
         )
-        
+
         print(f"  ✓ Generated: {pdf_path}")
         return True
-        
+
     except Exception as e:
         print(f"  ✗ Error converting {md_file.name}: {e}")
         return False
@@ -213,44 +213,44 @@ def convert_md_to_pdf(md_file: Path, output_dir: Path) -> bool:
 def main():
     """Main function to convert all markdown files to PDF."""
     print("=== Markdown to PDF Converter ===\n")
-    
+
     # Set up paths
     project_root = Path(__file__).parent.parent.parent
     docs_dir = project_root / "docs"
     output_dir = docs_dir / "pdfs"
-    
+
     # Create output directory if it doesn't exist
     output_dir.mkdir(exist_ok=True)
-    
+
     # Get all markdown files
     md_files = get_markdown_files(docs_dir)
-    
+
     if not md_files:
         print("No markdown files found in docs directory.")
         return
-    
+
     print(f"Found {len(md_files)} markdown files:")
     for md_file in md_files:
         print(f"  - {md_file.name}")
     print()
-    
+
     # Convert each file
     successful_conversions = 0
     failed_conversions = 0
-    
+
     for md_file in md_files:
         if convert_md_to_pdf(md_file, output_dir):
             successful_conversions += 1
         else:
             failed_conversions += 1
-    
+
     # Summary
     print(f"\n=== Conversion Summary ===")
     print(f"Successful: {successful_conversions}")
     print(f"Failed: {failed_conversions}")
     print(f"Total: {len(md_files)}")
     print(f"\nPDF files saved to: {output_dir}")
-    
+
     if successful_conversions > 0:
         print(f"\nGenerated PDF files:")
         for pdf_file in sorted(output_dir.glob("*.pdf")):

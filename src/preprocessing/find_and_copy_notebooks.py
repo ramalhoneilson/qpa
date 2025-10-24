@@ -24,7 +24,9 @@ def archive_notebooks():
         project_name_for_dir = project_subpath.strip("/").replace("/", "_")
 
         if not source_project_path.is_dir():
-            print(f"\n[WARNING] Project path not found, skipping: {source_project_path}")
+            print(
+                f"\n[WARNING] Project path not found, skipping: {source_project_path}"
+            )
             continue
 
         print(f"\nProcessing project: {project_subpath}...")

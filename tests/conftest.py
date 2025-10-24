@@ -234,4 +234,3 @@ def create_temp_directory_structure(base_path: Path, structure: dict[str, Any]) 
 
 # Test markers for different test categories
 pytestmark = [pytest.mark.unit, pytest.mark.core_concepts]
-

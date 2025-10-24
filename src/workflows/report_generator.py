@@ -13,10 +13,10 @@ from .statistics_calculator import StatisticsCalculator
 
 class ReportGenerator:
     """Handles generation of text and markdown reports."""
-    
+
     def __init__(self, statistics: StatisticsCalculator):
         """Initialize the report generator.
-        
+
         Args:
             statistics: StatisticsCalculator instance with calculated statistics
         """
@@ -29,17 +29,19 @@ class ReportGenerator:
         self.avg_score_by_type = statistics.avg_score_by_type
         self.matches_by_framework = statistics.matches_by_framework
         self.matches_by_project = statistics.matches_by_project
-        self.source_table = getattr(statistics, 'source_table', None)
-        self.adoption_table = getattr(statistics, 'adoption_table', None)
-        self.matches_by_pattern = getattr(statistics, 'matches_by_pattern', None)
-        self.avg_score_by_pattern = getattr(statistics, 'avg_score_by_pattern', None)
-        self.patterns_in_frameworks = getattr(statistics, 'patterns_in_frameworks', None)
+        self.source_table = getattr(statistics, "source_table", None)
+        self.adoption_table = getattr(statistics, "adoption_table", None)
+        self.matches_by_pattern = getattr(statistics, "matches_by_pattern", None)
+        self.avg_score_by_pattern = getattr(statistics, "avg_score_by_pattern", None)
+        self.patterns_in_frameworks = getattr(
+            statistics, "patterns_in_frameworks", None
+        )
         self.top_20_table_data = statistics.top_20_table_data
         self.unmatched_patterns = statistics.unmatched_patterns
-    
+
     def generate_txt_report(self, path: Path):
         """Generate a text report and save it to the specified path.
-        
+
         Args:
             path: Path to save the text report
         """
@@ -49,10 +51,10 @@ class ReportGenerator:
             self._write_report_content(is_md=False)
         sys.stdout = original_stdout
         print(f"Text report successfully generated at '{path}'")
-    
+
     def generate_md_report(self, path: Path):
         """Generate a markdown report and save it to the specified path.
-        
+
         Args:
             path: Path to save the markdown report
         """
@@ -63,14 +65,15 @@ class ReportGenerator:
 
             self._write_report_content(is_md=True, md_print=md_print)
         print(f"Markdown report successfully generated at '{path}'")
-    
+
     def _write_report_content(self, is_md: bool, md_print=print):
         """Write the report content, adapting format for TXT or MD.
-        
+
         Args:
             is_md: Whether to generate markdown format
             md_print: Print function to use (default: built-in print)
         """
+
         # Helper to format tables
         def to_format(df_or_series, headers=None):
             if isinstance(df_or_series, list):
@@ -83,20 +86,25 @@ class ReportGenerator:
                 df = df_or_series.reset_index()
             else:
                 df = df_or_series.copy()
-            
+
             if headers and not isinstance(df_or_series, list):
                 df.columns = headers
-            
+
             if is_md:
                 return df.to_markdown(index=False)
             else:
                 return df.to_string(index=False)
-        
+
         # I. Summary Statistics
         md_print(
             "# Final Pattern Analysis Report"
             if is_md
-            else "=" * 80 + "\n" + " " * 20 + "FINAL PATTERN ANALYSIS REPORT" + "\n" + "=" * 80
+            else "=" * 80
+            + "\n"
+            + " " * 20
+            + "FINAL PATTERN ANALYSIS REPORT"
+            + "\n"
+            + "=" * 80
         )
         md_print(
             "\n## I. Summary Statistics\n"

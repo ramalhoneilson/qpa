@@ -1,0 +1,20 @@
+line-length = 120
+
+[format]
+docstring-code-format = true
+
+[lint]
+select = [
+    "E", "W", "F", "I", "B",
+    "C901",
+    # to be added later if we agree on the rules
+#    "UP",    # pyupgrade: aautomatically uses modern Python syntax
+#    "SIM",   # flake8-simplify: suggests simpler more idiomatic ways to write code
+#    "TID",   # flake8-tidy-imports: Prevents relative imports and bans certain modules. good for consistency.
+#    "ARG",   # flake8-unused-arguments: flags unused function or method arguments. Helps keep signatures clean.
+#    "RET",   # flake8-return: Catches issues like unnecessary elses after a return
+#    "PERF",  # Perflint: Checks for performance anti-patterns like unnecessary list copies in loops
+]
+
+[lint.mccabe]
+max-complexity = 10

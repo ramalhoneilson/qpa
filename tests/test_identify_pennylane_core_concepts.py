@@ -12,6 +12,7 @@ from unittest.mock import patch, MagicMock
 
 # Import the module under test
 import sys
+
 sys.path.append(str(Path(__file__).parent.parent / "src"))
 
 from src.core_concepts.identify_pennylane_core_concepts import (
@@ -48,9 +49,7 @@ class AnotherClass:
     def test_visitor_initialization(self):
         """Test visitor initialization."""
         visitor = _PennylaneConceptVisitor(
-            self.source_text,
-            self.file_path,
-            self.sdk_root
+            self.source_text, self.file_path, self.sdk_root
         )
         assert visitor.source_text == self.source_text
         assert visitor.file_path == self.file_path
@@ -60,13 +59,11 @@ class AnotherClass:
     def test_visit_class_with_docstring(self):
         """Test visiting a class with docstring."""
         visitor = _PennylaneConceptVisitor(
-            self.source_text,
-            self.file_path,
-            self.sdk_root
+            self.source_text, self.file_path, self.sdk_root
         )
         tree = ast.parse(self.source_text)
         visitor.visit(tree)
-        
+
         assert len(visitor.found_concepts) == 1
         concept_name = list(visitor.found_concepts.keys())[0]
         assert "QuantumTemplate" in concept_name
@@ -77,13 +74,11 @@ class AnotherClass:
     def test_visit_class_without_docstring(self):
         """Test that classes without docstrings are ignored."""
         visitor = _PennylaneConceptVisitor(
-            self.source_text,
-            self.file_path,
-            self.sdk_root
+            self.source_text, self.file_path, self.sdk_root
         )
         tree = ast.parse(self.source_text)
         visitor.visit(tree)
-        
+
         # Only the class with docstring should be found
         assert len(visitor.found_concepts) == 1
         concept_name = list(visitor.found_concepts.keys())[0]
@@ -92,13 +87,11 @@ class AnotherClass:
     def test_concept_name_formatting(self):
         """Test that concept names are formatted correctly."""
         visitor = _PennylaneConceptVisitor(
-            self.source_text,
-            self.file_path,
-            self.sdk_root
+            self.source_text, self.file_path, self.sdk_root
         )
         tree = ast.parse(self.source_text)
         visitor.visit(tree)
-        
+
         concept_name = list(visitor.found_concepts.keys())[0]
         assert concept_name.startswith("/pennylane/")
         assert "templates.test_file.QuantumTemplate" in concept_name
@@ -120,7 +113,7 @@ class QuantumTemplate:
             file_path = sdk_root / "templates" / "test_file.py"
             file_path.parent.mkdir(parents=True, exist_ok=True)
             file_path.write_text(source_text)
-            
+
             concepts = _find_concepts_in_file(file_path, sdk_root)
             assert len(concepts) == 1
             assert concepts[0]["name"].endswith("QuantumTemplate")
@@ -128,10 +121,10 @@ class QuantumTemplate:
     def test_parse_error(self):
         """Test handling of parse errors."""
         source_text = "invalid python syntax {"
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.py', delete=False) as f:
+        with tempfile.NamedTemporaryFile(mode="w", suffix=".py", delete=False) as f:
             f.write(source_text)
             f.flush()
-            
+
             try:
                 concepts = _find_concepts_in_file(Path(f.name), Path("/test/pennylane"))
                 assert concepts == []
@@ -141,8 +134,7 @@ class QuantumTemplate:
     def test_file_not_found(self):
         """Test handling of non-existent file."""
         concepts = _find_concepts_in_file(
-            Path("/non/existent/file.py"),
-            Path("/test/pennylane")
+            Path("/non/existent/file.py"), Path("/test/pennylane")
         )
         assert concepts == []
 
@@ -150,20 +142,23 @@ class QuantumTemplate:
 class TestExtractPennylaneConcepts:
     """Test cases for extract_pennylane_concepts function."""
 
-    @patch('src.core_concepts.identify_pennylane_core_concepts.PENNYLANE_PROJECT_ROOT')
+    @patch("src.core_concepts.identify_pennylane_core_concepts.PENNYLANE_PROJECT_ROOT")
     def test_project_root_not_found(self, mock_root):
         """Test when project root doesn't exist."""
         mock_root.is_dir.return_value = False
         result = extract_pennylane_concepts()
         assert result == []
 
-    @patch('src.core_concepts.identify_pennylane_core_concepts.PENNYLANE_PROJECT_ROOT')
+    @patch("src.core_concepts.identify_pennylane_core_concepts.PENNYLANE_PROJECT_ROOT")
     def test_no_python_files_found(self, mock_root):
         """Test when no Python files are found."""
         mock_root.is_dir.return_value = True
         mock_root.rglob.return_value = []
-        
-        with patch('src.core_concepts.identify_pennylane_core_concepts.SEARCH_SUBDIRS', ['nonexistent/']):
+
+        with patch(
+            "src.core_concepts.identify_pennylane_core_concepts.SEARCH_SUBDIRS",
+            ["nonexistent/"],
+        ):
             result = extract_pennylane_concepts()
             assert result == []
 
@@ -173,20 +168,21 @@ class TestSaveSourceCodeSnippets:
 
     def test_empty_data(self):
         """Test with empty data."""
-        with patch('src.core_concepts.identify_pennylane_core_concepts.SOURCE_SNIPPETS_DIR') as mock_dir:
+        with patch(
+            "src.core_concepts.identify_pennylane_core_concepts.SOURCE_SNIPPETS_DIR"
+        ) as mock_dir:
             _save_source_code_snippets([])
             # Should not raise any exceptions
 
     def test_save_snippets(self):
         """Test saving source code snippets."""
-        concepts_data = [{
-            "name": "test_concept",
-            "source_code": "class Test: pass"
-        }]
-        
-        with patch('src.core_concepts.identify_pennylane_core_concepts.SOURCE_SNIPPETS_DIR') as mock_dir:
+        concepts_data = [{"name": "test_concept", "source_code": "class Test: pass"}]
+
+        with patch(
+            "src.core_concepts.identify_pennylane_core_concepts.SOURCE_SNIPPETS_DIR"
+        ) as mock_dir:
             mock_dir.mkdir.return_value = None
-            with patch('builtins.open', MagicMock()) as mock_open:
+            with patch("builtins.open", MagicMock()) as mock_open:
                 _save_source_code_snippets(concepts_data)
                 mock_dir.mkdir.assert_called_once_with(parents=True, exist_ok=True)
 
@@ -196,22 +192,23 @@ class TestSaveConceptsToCsv:
 
     def test_empty_data(self):
         """Test with empty data."""
-        with patch('src.core_concepts.identify_pennylane_core_concepts.OUTPUT_JSON_PATH') as mock_path:
+        with patch(
+            "src.core_concepts.identify_pennylane_core_concepts.OUTPUT_JSON_PATH"
+        ) as mock_path:
             _save_concepts_to_csv([])
             # Should not raise any exceptions
 
     def test_save_csv(self):
         """Test saving concepts to CSV."""
-        concepts_data = [{
-            "name": "test_concept",
-            "summary": "Test summary"
-        }]
-        
-        with patch('src.core_concepts.identify_pennylane_core_concepts.OUTPUT_JSON_PATH') as mock_path:
+        concepts_data = [{"name": "test_concept", "summary": "Test summary"}]
+
+        with patch(
+            "src.core_concepts.identify_pennylane_core_concepts.OUTPUT_JSON_PATH"
+        ) as mock_path:
             mock_csv_path = MagicMock()
             mock_path.with_suffix.return_value = mock_csv_path
             mock_csv_path.parent.mkdir.return_value = None
-            with patch('builtins.open', MagicMock()) as mock_open:
+            with patch("builtins.open", MagicMock()) as mock_open:
                 _save_concepts_to_csv(concepts_data)
                 # The function should not call mkdir on the CSV path since it doesn't exist in the function
 
@@ -219,13 +216,15 @@ class TestSaveConceptsToCsv:
 class TestMainFunction:
     """Test cases for main function."""
 
-    @patch('src.core_concepts.identify_pennylane_core_concepts.extract_pennylane_concepts')
+    @patch(
+        "src.core_concepts.identify_pennylane_core_concepts.extract_pennylane_concepts"
+    )
     def test_main_without_data(self, mock_extract):
         """Test main function without data."""
         mock_extract.return_value = []
-        
+
         main()
-        
+
         mock_extract.assert_called_once()
 
 
