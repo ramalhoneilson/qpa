@@ -3,11 +3,8 @@ Test suite for src/preprocessing/clone_repos.py
 """
 
 import subprocess
-import sys
 from pathlib import Path
 from unittest.mock import MagicMock, patch
-
-import pytest
 
 from src.preprocessing.clone_repos import TARGET_DIR, main, run_command
 
@@ -119,10 +116,6 @@ class TestMain:
 
                                     # Verify file reading (Path object is passed to open)
                                     assert mock_open.call_count >= 1
-
-                                    # The main function should have processed the file content
-                                    # We can't easily test the exact run_command calls due to the complex logic
-                                    # but we can verify the function completed without errors
 
     def test_repo_update_existing_directory(self):
         """Test updating existing repository."""

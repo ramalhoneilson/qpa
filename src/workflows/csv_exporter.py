@@ -114,3 +114,4 @@ class CSVExporter:
                 {"unmatched_patterns": list(statistics.unmatched_patterns)}
             )
             unmatched_df.to_csv(self.output_dir / "unmatched_patterns.csv", index=False)
+

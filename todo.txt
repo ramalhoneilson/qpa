@@ -1,0 +1,10 @@
+Fix tests after refactoring:
+    OK - src/core_concepts/extractor/processors.py
+    OK - src/core_concepts/extractor/storage.py
+    OK = src/core_concepts/pipelines/qiskit_filters.py
+    OK - src/core_concepts/extractor/visitors.py
+    src/core_concepts/extractor/extractor.py
+    src/core_concepts/pipelines/extract_classiq.py
+    src/core_concepts/pipelines/extract_pennylane.py
+    src/core_concepts/pipelines/extract_qiskit.py
+    src/workflows/run_extraction_workflow.py
