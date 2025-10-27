@@ -31,7 +31,7 @@ identify-concepts: install
 
 preprocess-notebooks:
     @echo "\n>>> Preprocessing notebooks (converting to .py and archiving)..."
-    @{{VENV}}/bin/python -m src.preprocessing.find_and_copy_notebooks
+    @{{VENV}}/bin/python -m src.preprocessing.extract_notebooks
 
 # Utility to convert notebooks from the archive folder to a separate output folder.
 convert-archived-notebooks:
@@ -41,15 +41,15 @@ convert-archived-notebooks:
 # Downloads the pattern list from the patternatlas.planqk.de website
 download_pattern_list:
     @echo "\n>>> Downloading pattern list from patternatlas website..."
-    @{{VENV}}/bin/python -m src.preprocessing.download_resources_quantum_patterns
+    @{{VENV}}/bin/python -m src.data_acquisition.download_patterns
 
 run_main:
     @echo "\n>>> Running main analysis..."
-    @{{VENV}}/bin/python -m src.workflows.run_main_analysis
+    @{{VENV}}/bin/python -m src.analysis.run_analysis
 
 report:
     @echo "\n>>> Generating final report..."
-    @{{VENV}}/bin/python -m src.workflows.generate_final_report
+    @{{VENV}}/bin/python -m src.analysis.generate_report
 
 # Analyze extended pattern coverage across frameworks and target projects
 extended-patterns:
@@ -70,7 +70,7 @@ experimental-data:
 search-repos:
     @echo ">>> Running GitHub search to find and filter top quantum projects..."
     @if [ ! -d "{{VENV}}" ]; then just _bootstrap-tools; fi
-    @{{VENV}}/bin/python -m src.preprocessing.github_search
+    @{{VENV}}/bin/python -m src.data_acquisition.discover_projects
 
 # Clones/updates repositories listed in the dynamically generated file.
 clone-filtered:
@@ -116,6 +116,29 @@ clean:
 
 upgrade:
   uv lock --upgrade
+
+# == Workflow Orchestration ==================================================
+
+# Run the complete workflow using Prefect orchestration
+workflow:
+    @echo ">>> Starting Quantum Patterns Analysis Workflow..."
+    @{{VENV}}/bin/python run_workflow.py
+
+# Run workflow with Prefect UI (starts local server)
+workflow-ui:
+    @echo ">>> Starting Prefect UI server..."
+    @echo ">>> Open http://localhost:4200 in your browser to monitor the workflow"
+    @{{VENV}}/bin/prefect server start --host 0.0.0.0 --port 4200
+
+# Run workflow and deploy to Prefect Cloud (requires account)
+workflow-deploy:
+    @echo ">>> Deploying workflow to Prefect Cloud..."
+    @{{VENV}}/bin/prefect deploy src/workflows/quantum_patterns_flow.py:quantum_patterns_flow --name quantum-patterns-analysis
+
+# Run individual workflow steps for debugging
+workflow-step step:
+    @echo ">>> Running workflow step: {{step}}"
+    @{{VENV}}/bin/python -c "from src.workflows.quantum_patterns_flow import {{step}}; {{step}}()"
 
 # == Testing =================================================================
 

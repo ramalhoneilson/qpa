@@ -180,3 +180,4 @@ class StatisticsCalculator:
         """
         return self.unmatched_patterns
 
+

@@ -29,8 +29,8 @@ quantumlib/ReCirq
 qiskit-community/qiskit-finance
 tqec/tqec
 qiskit-community/qiskit-optimization
-vprusso/toqito
 quantumlib/Qualtran
+vprusso/toqito
 pasqal-io/Pulser
 open-quantum-safe/liboqs-python
 PennyLaneAI/catalyst
@@ -50,9 +50,9 @@ amazon-braket/amazon-braket-algorithm-library
 Infleqtion/client-superstaq
 XanaduAI/thewalrus
 munich-quantum-toolkit/bench
+qBraid/qBraid
 Qiskit/qiskit-serverless
 dwavesystems/dwave-system
-qBraid/qBraid
 Qiskit/qiskit-addon-cutting
 sQUlearn/squlearn
 CQCL/guppylang

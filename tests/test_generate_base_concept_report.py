@@ -204,3 +204,4 @@ class TestConstants:
         assert classiq_config["delimiter"] == ","
         assert "classiq_quantum_concepts.csv" in str(classiq_config["path"])
 
+

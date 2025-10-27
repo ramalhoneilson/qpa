@@ -588,3 +588,4 @@ class TestIntegration:
             assert result["framework_coverage"]["PennyLane"]["total_found"] == 2
             assert result["framework_coverage"]["Qiskit"]["total_found"] == 2
             assert result["target_coverage"]["total_found"] == 2
+

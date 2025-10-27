@@ -1,69 +1,69 @@
-name,summary
-/pennylane/pennylane.templates.embeddings.amplitude.AmplitudeEmbedding,Encodes :math:`2^n` features into the amplitude vector of :math:`n` qubits.
-/pennylane/pennylane.templates.embeddings.angle.AngleEmbedding,"Encodes :math:`N` features into the rotation angles of :math:`n` qubits, where :math:`N \leq n`."
-/pennylane/pennylane.templates.embeddings.basis.BasisEmbedding,Encodes :math:`n` binary features into a basis state of :math:`n` qubits.
-/pennylane/pennylane.templates.embeddings.displacement.DisplacementEmbedding,"Encodes :math:`N` features into the displacement amplitudes :math:`r` or phases :math:`\phi` of :math:`M` modes, where :math:`N\leq M`."
-/pennylane/pennylane.templates.embeddings.iqp.IQPEmbedding,Encodes :math:`n` features into :math:`n` qubits using diagonal gates of an IQP circuit.
-/pennylane/pennylane.templates.embeddings.qaoaembedding.QAOAEmbedding,"Encodes :math:`N` features into :math:`n>N` qubits, using a layered, trainable quantum circuit that is inspired by the QAOA ansatz proposed by `Killoran et al. (2020) <https://arxiv.org/abs/2001.03622>`_."
-/pennylane/pennylane.templates.embeddings.squeezing.SqueezingEmbedding,"Encodes :math:`N` features into the squeezing amplitudes :math:`r \geq 0` or phases :math:`\phi \in [0, 2\pi)` of :math:`M` modes, where :math:`N\leq M`."
-/pennylane/pennylane.templates.layers.basic_entangler.BasicEntanglerLayers,"Layers consisting of one-parameter single-qubit rotations on each qubit, followed by a closed chain or *ring* of CNOT gates."
-/pennylane/pennylane.templates.layers.cv_neural_net.CVNeuralNetLayers,"A sequence of layers of a continuous-variable quantum neural network, as specified in `Killoran et al. (2019) <https://doi.org/10.1103/PhysRevResearch.1.033063>`_."
-/pennylane/pennylane.templates.layers.gate_fabric.GateFabric,"Implements a local, expressive, and quantum-number-preserving ansatz proposed by `Anselmetti et al. (2021) <https://doi.org/10.1088/1367-2630/ac2cb3>`_."
-/pennylane/pennylane.templates.layers.particle_conserving_u1.ParticleConservingU1,"Implements the heuristic VQE ansatz for quantum chemistry simulations using the particle-conserving gate :math:`U_{1,\mathrm{ex}}` proposed by Barkoutsos *et al.* in `arXiv:1805.04340 <https://arxiv.org/abs/1805.04340>`_."
-/pennylane/pennylane.templates.layers.particle_conserving_u2.ParticleConservingU2,"Implements the heuristic VQE ansatz for Quantum Chemistry simulations using the particle-conserving entangler :math:`U_\mathrm{ent}(\vec{\theta}, \vec{\phi})` proposed in `arXiv:1805.04340 <https://arxiv.org/abs/1805.04340>`__."
-/pennylane/pennylane.templates.layers.random.RandomLayers,"Layers of randomly chosen single qubit rotations and 2-qubit entangling gates, acting on randomly chosen qubits."
-/pennylane/pennylane.templates.layers.simplified_two_design.SimplifiedTwoDesign,Layers consisting of a simplified 2-design architecture of Pauli-Y rotations and controlled-Z entanglers proposed in `Cerezo et al. (2021) <https://doi.org/10.1038/s41467-021-21728-w>`_.
-/pennylane/pennylane.templates.layers.strongly_entangling.StronglyEntanglingLayers,"Layers consisting of single qubit rotations and entanglers, inspired by the circuit-centric classifier design `arXiv:1804.00633 <https://arxiv.org/abs/1804.00633>`_."
-/pennylane/pennylane.templates.state_preparations.arbitrary_state_preparation.ArbitraryStatePreparation,Implements an arbitrary state preparation on the specified wires.
-/pennylane/pennylane.templates.state_preparations.basis_qutrit.QutritBasisStatePreparation,Prepares a basis state on the given wires using a sequence of TShift gates.
-/pennylane/pennylane.templates.state_preparations.cosine_window.CosineWindow,CosineWindow(wires) Prepares an initial state with a cosine wave function.
-/pennylane/pennylane.templates.state_preparations.mottonen.MottonenStatePreparation,Prepares an arbitrary state on the given wires using a decomposition into gates developed by `Möttönen et al. (2004) <https://arxiv.org/abs/quant-ph/0407010>`_.
-/pennylane/pennylane.templates.state_preparations.qrom_state_prep.QROMStatePreparation,Prepares a quantum state using Quantum Read-Only Memory (QROM).
-/pennylane/pennylane.templates.state_preparations.state_prep_mps.MPSPrep,Prepares an initial state from a matrix product state (MPS) representation.
-/pennylane/pennylane.templates.state_preparations.superposition.Superposition,Prepare a superposition of computational basis states.
-/pennylane/pennylane.templates.subroutines.amplitude_amplification.AmplitudeAmplification,Applies amplitude amplification.
-/pennylane/pennylane.templates.subroutines.aqft.AQFT,"AQFT(order, wires) Apply an approximate quantum Fourier transform (AQFT)."
-/pennylane/pennylane.templates.subroutines.arbitrary_unitary.ArbitraryUnitary,Implements an arbitrary unitary on the specified wires.
-/pennylane/pennylane.templates.subroutines.arithmetic.adder.Adder,Performs the in-place modular addition operation.
-/pennylane/pennylane.templates.subroutines.arithmetic.mod_exp.ModExp,Performs the out-place modular exponentiation operation.
-/pennylane/pennylane.templates.subroutines.arithmetic.multiplier.Multiplier,Performs the in-place modular multiplication operation.
-/pennylane/pennylane.templates.subroutines.arithmetic.out_adder.OutAdder,Performs the out-place modular addition operation.
-/pennylane/pennylane.templates.subroutines.arithmetic.out_multiplier.OutMultiplier,Performs the out-place modular multiplication operation.
-/pennylane/pennylane.templates.subroutines.arithmetic.out_poly.OutPoly,Performs the out-of-place polynomial operation.
-/pennylane/pennylane.templates.subroutines.arithmetic.phase_adder.PhaseAdder,Performs the in-place modular phase addition operation.
-/pennylane/pennylane.templates.subroutines.arithmetic.semi_adder.SemiAdder,This operator performs the plain addition of two integers :math:`x` and :math:`y` in the computational basis:
-/pennylane/pennylane.templates.subroutines.arithmetic.temporary_and.TemporaryAND,"TemporaryAND(wires, control_values)"
-/pennylane/pennylane.templates.subroutines.controlled_sequence.ControlledSequence,Creates a sequence of controlled gates raised to decreasing powers of 2. Can be used as a sub-block in building a `quantum phase estimation <https://en.wikipedia.org/wiki/Quantum_phase_estimation_algorithm>`__ circuit.
-/pennylane/pennylane.templates.subroutines.fable.FABLE,Construct a unitary with the fast approximate block encoding method.
-/pennylane/pennylane.templates.subroutines.flip_sign.FlipSign,Flips the sign of a given basis state.
-/pennylane/pennylane.templates.subroutines.gqsp.GQSP,Implements the generalized quantum signal processing (GQSP) circuit.
-/pennylane/pennylane.templates.subroutines.grover.GroverOperator,Performs the Grover Diffusion Operator.
-/pennylane/pennylane.templates.subroutines.hilbert_schmidt.HilbertSchmidt,Create a Hilbert-Schmidt template that can be used to compute the Hilbert-Schmidt Test (HST).
-/pennylane/pennylane.templates.subroutines.hilbert_schmidt.LocalHilbertSchmidt,Create a Local Hilbert-Schmidt template that can be used to compute the Local Hilbert-Schmidt Test (LHST).
-/pennylane/pennylane.templates.subroutines.interferometer.Interferometer,"General linear interferometer, an array of beamsplitters and phase shifters."
-/pennylane/pennylane.templates.subroutines.permute.Permute,Applies a permutation to a set of wires.
-/pennylane/pennylane.templates.subroutines.prepselprep.PrepSelPrep,Implements a block-encoding of a linear combination of unitaries.
-/pennylane/pennylane.templates.subroutines.qchem.all_singles_doubles.AllSinglesDoubles,Builds a quantum circuit to prepare correlated states of molecules by applying all :class:`~.pennylane.SingleExcitation` and :class:`~.pennylane.DoubleExcitation` operations to the initial Hartree-Fock state.
-/pennylane/pennylane.templates.subroutines.qchem.basis_rotation.BasisRotation,Implements a circuit that performs an exact single-body basis rotation using Givens rotations and phase shifts.
-/pennylane/pennylane.templates.subroutines.qchem.fermionic_double_excitation.FermionicDoubleExcitation,Circuit to exponentiate the tensor product of Pauli matrices representing the double-excitation operator entering the Unitary Coupled-Cluster Singles and Doubles (UCCSD) ansatz. UCCSD is a VQE ansatz commonly used to run quantum chemistry simulations.
-/pennylane/pennylane.templates.subroutines.qchem.fermionic_single_excitation.FermionicSingleExcitation,Circuit to exponentiate the tensor product of Pauli matrices representing the single-excitation operator entering the Unitary Coupled-Cluster Singles and Doubles (UCCSD) ansatz. UCCSD is a VQE ansatz commonly used to run quantum chemistry simulations.
-/pennylane/pennylane.templates.subroutines.qchem.kupccgsd.kUpCCGSD,Implements the k-Unitary Pair Coupled-Cluster Generalized Singles and Doubles (k-UpCCGSD) ansatz.
-/pennylane/pennylane.templates.subroutines.qchem.uccsd.UCCSD,Implements the Unitary Coupled-Cluster Singles and Doubles (UCCSD) ansatz.
-/pennylane/pennylane.templates.subroutines.qft.QFT,QFT(wires) Apply a quantum Fourier transform (QFT).
-/pennylane/pennylane.templates.subroutines.qmc.QuantumMonteCarlo,Performs the `quantum Monte Carlo estimation <https://arxiv.org/abs/1805.00109>`__ algorithm.
-/pennylane/pennylane.templates.subroutines.qpe.QuantumPhaseEstimation,Performs the `quantum phase estimation <https://en.wikipedia.org/wiki/Quantum_phase_estimation_algorithm>`__ circuit.
-/pennylane/pennylane.templates.subroutines.qrom.QROM,Applies the QROM operator.
-/pennylane/pennylane.templates.subroutines.qsvt.QSVT,"QSVT(UA,projectors) Implements the `quantum singular value transformation <https://arxiv.org/abs/1806.01838>`__ (QSVT) circuit."
-/pennylane/pennylane.templates.subroutines.qubitization.Qubitization,Applies the `Qubitization <https://arxiv.org/abs/2204.11890>`__ operator.
-/pennylane/pennylane.templates.subroutines.reflection.Reflection,Apply a reflection about a state :math:`|\Psi\rangle`.
-/pennylane/pennylane.templates.subroutines.select.Select,"The ``Select`` operator, also known as multiplexer or multiplexed operation, applies different operations depending on the state of designated control wires."
-/pennylane/pennylane.templates.subroutines.select_pauli_rot.SelectPauliRot,Applies individual single-qubit Pauli rotations depending on the state of designated control qubits.
-/pennylane/pennylane.templates.subroutines.time_evolution.approx_time_evolution.ApproxTimeEvolution,"Applies the Trotterized time-evolution operator for an arbitrary Hamiltonian, expressed in terms of Pauli gates."
-/pennylane/pennylane.templates.subroutines.time_evolution.commuting_evolution.CommutingEvolution,Applies the time-evolution operator for a Hamiltonian expressed as a linear combination of mutually commuting Pauli words.
-/pennylane/pennylane.templates.subroutines.time_evolution.qdrift.QDrift,An operation representing the QDrift approximation for the complex matrix exponential of a given Hamiltonian.
-/pennylane/pennylane.templates.subroutines.time_evolution.trotter.TrotterProduct,An operation representing the Suzuki-Trotter product approximation for the complex matrix exponential of a given Hamiltonian.
-/pennylane/pennylane.templates.subroutines.time_evolution.trotter.TrotterizedQfunc,An operation representing the Suzuki-Trotter product approximation applied to a set of operations defined in a function.
-/pennylane/pennylane.templates.swapnetworks.ccl2.TwoLocalSwapNetwork,Apply two-local gate operations using a canonical 2-complete linear (2-CCL) swap network.
-/pennylane/pennylane.templates.tensornetworks.mera.MERA,The MERA template broadcasts an input circuit across many wires following the architecture of a multi-scale entanglement renormalization ansatz tensor network. This architecture can be found in `arXiv:quant-ph/0610099 <https://arxiv.org/abs/quant-ph/0610099>`_ and closely resembles `quantum convolutional neural networks <https://arxiv.org/abs/1810.03787>`_.
-/pennylane/pennylane.templates.tensornetworks.mps.MPS,The MPS template broadcasts an input circuit across many wires following the architecture of a Matrix Product State tensor network. The result is similar to the architecture in `arXiv:1803.11537 <https://arxiv.org/abs/1803.11537>`_.
-/pennylane/pennylane.templates.tensornetworks.ttn.TTN,The TTN template broadcasts an input circuit across many wires following the architecture of a tree tensor network. The result is similar to the architecture in `arXiv:1803.11537 <https://arxiv.org/abs/1803.11537>`_.
+name;summary
+/pennylane/pennylane.templates.embeddings.amplitude.AmplitudeEmbedding;Encodes :math:`2^n` features into the amplitude vector of :math:`n` qubits.
+/pennylane/pennylane.templates.embeddings.angle.AngleEmbedding;Encodes :math:`N` features into the rotation angles of :math:`n` qubits, where :math:`N \leq n`.
+/pennylane/pennylane.templates.embeddings.basis.BasisEmbedding;Encodes :math:`n` binary features into a basis state of :math:`n` qubits.
+/pennylane/pennylane.templates.embeddings.displacement.DisplacementEmbedding;Encodes :math:`N` features into the displacement amplitudes :math:`r` or phases :math:`\phi` of :math:`M` modes, where :math:`N\leq M`.
+/pennylane/pennylane.templates.embeddings.iqp.IQPEmbedding;Encodes :math:`n` features into :math:`n` qubits using diagonal gates of an IQP circuit.
+/pennylane/pennylane.templates.embeddings.qaoaembedding.QAOAEmbedding;Encodes :math:`N` features into :math:`n>N` qubits, using a layered, trainable quantum circuit that is inspired by the QAOA ansatz proposed by `Killoran et al. (2020) <https://arxiv.org/abs/2001.03622>`_.
+/pennylane/pennylane.templates.embeddings.squeezing.SqueezingEmbedding;Encodes :math:`N` features into the squeezing amplitudes :math:`r \geq 0` or phases :math:`\phi \in [0, 2\pi)` of :math:`M` modes, where :math:`N\leq M`.
+/pennylane/pennylane.templates.layers.basic_entangler.BasicEntanglerLayers;Layers consisting of one-parameter single-qubit rotations on each qubit, followed by a closed chain or *ring* of CNOT gates.
+/pennylane/pennylane.templates.layers.cv_neural_net.CVNeuralNetLayers;A sequence of layers of a continuous-variable quantum neural network, as specified in `Killoran et al. (2019) <https://doi.org/10.1103/PhysRevResearch.1.033063>`_.
+/pennylane/pennylane.templates.layers.gate_fabric.GateFabric;Implements a local, expressive, and quantum-number-preserving ansatz proposed by `Anselmetti et al. (2021) <https://doi.org/10.1088/1367-2630/ac2cb3>`_.
+/pennylane/pennylane.templates.layers.particle_conserving_u1.ParticleConservingU1;Implements the heuristic VQE ansatz for quantum chemistry simulations using the particle-conserving gate :math:`U_{1,\mathrm{ex}}` proposed by Barkoutsos *et al.* in `arXiv:1805.04340 <https://arxiv.org/abs/1805.04340>`_.
+/pennylane/pennylane.templates.layers.particle_conserving_u2.ParticleConservingU2;Implements the heuristic VQE ansatz for Quantum Chemistry simulations using the particle-conserving entangler :math:`U_\mathrm{ent}(\vec{\theta}, \vec{\phi})` proposed in `arXiv:1805.04340 <https://arxiv.org/abs/1805.04340>`__.
+/pennylane/pennylane.templates.layers.random.RandomLayers;Layers of randomly chosen single qubit rotations and 2-qubit entangling gates, acting on randomly chosen qubits.
+/pennylane/pennylane.templates.layers.simplified_two_design.SimplifiedTwoDesign;Layers consisting of a simplified 2-design architecture of Pauli-Y rotations and controlled-Z entanglers proposed in `Cerezo et al. (2021) <https://doi.org/10.1038/s41467-021-21728-w>`_.
+/pennylane/pennylane.templates.layers.strongly_entangling.StronglyEntanglingLayers;Layers consisting of single qubit rotations and entanglers, inspired by the circuit-centric classifier design `arXiv:1804.00633 <https://arxiv.org/abs/1804.00633>`_.
+/pennylane/pennylane.templates.state_preparations.arbitrary_state_preparation.ArbitraryStatePreparation;Implements an arbitrary state preparation on the specified wires.
+/pennylane/pennylane.templates.state_preparations.basis_qutrit.QutritBasisStatePreparation;Prepares a basis state on the given wires using a sequence of TShift gates.
+/pennylane/pennylane.templates.state_preparations.cosine_window.CosineWindow;CosineWindow(wires) Prepares an initial state with a cosine wave function.
+/pennylane/pennylane.templates.state_preparations.mottonen.MottonenStatePreparation;Prepares an arbitrary state on the given wires using a decomposition into gates developed by `Möttönen et al. (2004) <https://arxiv.org/abs/quant-ph/0407010>`_.
+/pennylane/pennylane.templates.state_preparations.qrom_state_prep.QROMStatePreparation;Prepares a quantum state using Quantum Read-Only Memory (QROM).
+/pennylane/pennylane.templates.state_preparations.state_prep_mps.MPSPrep;Prepares an initial state from a matrix product state (MPS) representation.
+/pennylane/pennylane.templates.state_preparations.superposition.Superposition;Prepare a superposition of computational basis states.
+/pennylane/pennylane.templates.subroutines.amplitude_amplification.AmplitudeAmplification;Applies amplitude amplification.
+/pennylane/pennylane.templates.subroutines.aqft.AQFT;AQFT(order, wires) Apply an approximate quantum Fourier transform (AQFT).
+/pennylane/pennylane.templates.subroutines.arbitrary_unitary.ArbitraryUnitary;Implements an arbitrary unitary on the specified wires.
+/pennylane/pennylane.templates.subroutines.arithmetic.adder.Adder;Performs the in-place modular addition operation.
+/pennylane/pennylane.templates.subroutines.arithmetic.mod_exp.ModExp;Performs the out-place modular exponentiation operation.
+/pennylane/pennylane.templates.subroutines.arithmetic.multiplier.Multiplier;Performs the in-place modular multiplication operation.
+/pennylane/pennylane.templates.subroutines.arithmetic.out_adder.OutAdder;Performs the out-place modular addition operation.
+/pennylane/pennylane.templates.subroutines.arithmetic.out_multiplier.OutMultiplier;Performs the out-place modular multiplication operation.
+/pennylane/pennylane.templates.subroutines.arithmetic.out_poly.OutPoly;Performs the out-of-place polynomial operation.
+/pennylane/pennylane.templates.subroutines.arithmetic.phase_adder.PhaseAdder;Performs the in-place modular phase addition operation.
+/pennylane/pennylane.templates.subroutines.arithmetic.semi_adder.SemiAdder;This operator performs the plain addition of two integers :math:`x` and :math:`y` in the computational basis:
+/pennylane/pennylane.templates.subroutines.arithmetic.temporary_and.TemporaryAND;TemporaryAND(wires, control_values)
+/pennylane/pennylane.templates.subroutines.controlled_sequence.ControlledSequence;Creates a sequence of controlled gates raised to decreasing powers of 2. Can be used as a sub-block in building a `quantum phase estimation <https://en.wikipedia.org/wiki/Quantum_phase_estimation_algorithm>`__ circuit.
+/pennylane/pennylane.templates.subroutines.fable.FABLE;Construct a unitary with the fast approximate block encoding method.
+/pennylane/pennylane.templates.subroutines.flip_sign.FlipSign;Flips the sign of a given basis state.
+/pennylane/pennylane.templates.subroutines.gqsp.GQSP;Implements the generalized quantum signal processing (GQSP) circuit.
+/pennylane/pennylane.templates.subroutines.grover.GroverOperator;Performs the Grover Diffusion Operator.
+/pennylane/pennylane.templates.subroutines.hilbert_schmidt.HilbertSchmidt;Create a Hilbert-Schmidt template that can be used to compute the Hilbert-Schmidt Test (HST).
+/pennylane/pennylane.templates.subroutines.hilbert_schmidt.LocalHilbertSchmidt;Create a Local Hilbert-Schmidt template that can be used to compute the Local Hilbert-Schmidt Test (LHST).
+/pennylane/pennylane.templates.subroutines.interferometer.Interferometer;General linear interferometer, an array of beamsplitters and phase shifters.
+/pennylane/pennylane.templates.subroutines.permute.Permute;Applies a permutation to a set of wires.
+/pennylane/pennylane.templates.subroutines.prepselprep.PrepSelPrep;Implements a block-encoding of a linear combination of unitaries.
+/pennylane/pennylane.templates.subroutines.qchem.all_singles_doubles.AllSinglesDoubles;Builds a quantum circuit to prepare correlated states of molecules by applying all :class:`~.pennylane.SingleExcitation` and :class:`~.pennylane.DoubleExcitation` operations to the initial Hartree-Fock state.
+/pennylane/pennylane.templates.subroutines.qchem.basis_rotation.BasisRotation;Implements a circuit that performs an exact single-body basis rotation using Givens rotations and phase shifts.
+/pennylane/pennylane.templates.subroutines.qchem.fermionic_double_excitation.FermionicDoubleExcitation;Circuit to exponentiate the tensor product of Pauli matrices representing the double-excitation operator entering the Unitary Coupled-Cluster Singles and Doubles (UCCSD) ansatz. UCCSD is a VQE ansatz commonly used to run quantum chemistry simulations.
+/pennylane/pennylane.templates.subroutines.qchem.fermionic_single_excitation.FermionicSingleExcitation;Circuit to exponentiate the tensor product of Pauli matrices representing the single-excitation operator entering the Unitary Coupled-Cluster Singles and Doubles (UCCSD) ansatz. UCCSD is a VQE ansatz commonly used to run quantum chemistry simulations.
+/pennylane/pennylane.templates.subroutines.qchem.kupccgsd.kUpCCGSD;Implements the k-Unitary Pair Coupled-Cluster Generalized Singles and Doubles (k-UpCCGSD) ansatz.
+/pennylane/pennylane.templates.subroutines.qchem.uccsd.UCCSD;Implements the Unitary Coupled-Cluster Singles and Doubles (UCCSD) ansatz.
+/pennylane/pennylane.templates.subroutines.qft.QFT;QFT(wires) Apply a quantum Fourier transform (QFT).
+/pennylane/pennylane.templates.subroutines.qmc.QuantumMonteCarlo;Performs the `quantum Monte Carlo estimation <https://arxiv.org/abs/1805.00109>`__ algorithm.
+/pennylane/pennylane.templates.subroutines.qpe.QuantumPhaseEstimation;Performs the `quantum phase estimation <https://en.wikipedia.org/wiki/Quantum_phase_estimation_algorithm>`__ circuit.
+/pennylane/pennylane.templates.subroutines.qrom.QROM;Applies the QROM operator.
+/pennylane/pennylane.templates.subroutines.qsvt.QSVT;QSVT(UA,projectors) Implements the `quantum singular value transformation <https://arxiv.org/abs/1806.01838>`__ (QSVT) circuit.
+/pennylane/pennylane.templates.subroutines.qubitization.Qubitization;Applies the `Qubitization <https://arxiv.org/abs/2204.11890>`__ operator.
+/pennylane/pennylane.templates.subroutines.reflection.Reflection;Apply a reflection about a state :math:`|\Psi\rangle`.
+/pennylane/pennylane.templates.subroutines.select.Select;The ``Select`` operator, also known as multiplexer or multiplexed operation, applies different operations depending on the state of designated control wires.
+/pennylane/pennylane.templates.subroutines.select_pauli_rot.SelectPauliRot;Applies individual single-qubit Pauli rotations depending on the state of designated control qubits.
+/pennylane/pennylane.templates.subroutines.time_evolution.approx_time_evolution.ApproxTimeEvolution;Applies the Trotterized time-evolution operator for an arbitrary Hamiltonian, expressed in terms of Pauli gates.
+/pennylane/pennylane.templates.subroutines.time_evolution.commuting_evolution.CommutingEvolution;Applies the time-evolution operator for a Hamiltonian expressed as a linear combination of mutually commuting Pauli words.
+/pennylane/pennylane.templates.subroutines.time_evolution.qdrift.QDrift;An operation representing the QDrift approximation for the complex matrix exponential of a given Hamiltonian.
+/pennylane/pennylane.templates.subroutines.time_evolution.trotter.TrotterProduct;An operation representing the Suzuki-Trotter product approximation for the complex matrix exponential of a given Hamiltonian.
+/pennylane/pennylane.templates.subroutines.time_evolution.trotter.TrotterizedQfunc;An operation representing the Suzuki-Trotter product approximation applied to a set of operations defined in a function.
+/pennylane/pennylane.templates.swapnetworks.ccl2.TwoLocalSwapNetwork;Apply two-local gate operations using a canonical 2-complete linear (2-CCL) swap network.
+/pennylane/pennylane.templates.tensornetworks.mera.MERA;The MERA template broadcasts an input circuit across many wires following the architecture of a multi-scale entanglement renormalization ansatz tensor network. This architecture can be found in `arXiv:quant-ph/0610099 <https://arxiv.org/abs/quant-ph/0610099>`_ and closely resembles `quantum convolutional neural networks <https://arxiv.org/abs/1810.03787>`_.
+/pennylane/pennylane.templates.tensornetworks.mps.MPS;The MPS template broadcasts an input circuit across many wires following the architecture of a Matrix Product State tensor network. The result is similar to the architecture in `arXiv:1803.11537 <https://arxiv.org/abs/1803.11537>`_.
+/pennylane/pennylane.templates.tensornetworks.ttn.TTN;The TTN template broadcasts an input circuit across many wires following the architecture of a tree tensor network. The result is similar to the architecture in `arXiv:1803.11537 <https://arxiv.org/abs/1803.11537>`_.

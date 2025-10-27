@@ -184,3 +184,4 @@ class TestStatisticsCalculator:
         assert calculator.df_with_patterns.empty
         assert len(calculator.found_patterns) == 0
 
+

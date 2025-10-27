@@ -46,6 +46,53 @@ The analysis reveals several important patterns in quantum software development:
 
 
 
+## 🚀 Workflow Orchestration (NEW!)
+
+This project now includes **Prefect** for lightweight workflow orchestration, providing automatic dependency management, error handling, and real-time monitoring.
+
+### Quick Start with Orchestration
+
+```bash
+# Run the complete workflow with automatic orchestration
+just workflow
+
+# Monitor progress in real-time
+just workflow-ui
+# Open http://localhost:4200 in your browser
+```
+
+### Benefits of Orchestrated Execution
+
+| **Manual Execution** | **Prefect Orchestration** |
+|---------------------|---------------------------|
+| Manual dependency tracking | Automatic dependency resolution |
+| No retry logic | Built-in retry with exponential backoff |
+| No progress monitoring | Real-time progress dashboard |
+| Manual error handling | Automatic failure recovery |
+| Sequential execution only | Parallel execution where possible |
+| No execution history | Complete execution logs and history |
+
+### Workflow Architecture
+
+The Prefect workflow automatically handles the dependency graph:
+
+```
+┌─────────────────┐    ┌─────────────────┐
+│   Step 1-2      │    │   Step 3-4      │
+│ Data Acquisition│───▶│ Preprocessing    │
+│ (Parallel)      │    │ (Sequential)    │
+└─────────────────┘    └─────────────────┘
+         │                       │
+         ▼                       ▼
+┌─────────────────┐    ┌─────────────────┐
+│   Step 5        │    │   Step 7-8      │
+│ Extraction      │───▶│ Analysis        │
+│                 │    │ (Sequential)    │
+└─────────────────┘    └─────────────────┘
+```
+
+For detailed workflow documentation, see [docs/workflow_orchestration.md](docs/workflow_orchestration.md).
+
 ## 🛠 Project Setup & Installation
 
 ### Prerequisites
@@ -114,8 +161,11 @@ This is the only manual step in the workflow. The goal is to classify the concep
     2.  Add your classification data to the rows.
     3.  Save the modified files with the `enriched_` prefix (e.g., `data/enriched_qiskit_quantum_patterns.csv`).
 
-### Step 4.0: Download list of repost from Github
-src/preprocessing/github_search.py
+### Step 4.0: Discover Target Projects from GitHub
+```bash
+just search-repos
+```
+This runs `src/data_acquisition/discover_projects.py` to find and filter quantum projects.
 
 ### Step 4.1: Preprocess Jupyter Notebooks
 
@@ -211,13 +261,22 @@ You can always run `just` to see an interactive list of available commands.
 *   `identify-concepts`: Runs the core concept extraction for Qiskit, PennyLane, and Classiq.
 *   `run_main`: Executes the primary semantic analysis workflow.
 *   `report`: Generates the final summary report.
+*   `workflow`: **NEW!** Runs the complete workflow using Prefect orchestration (recommended).
+
+### Workflow Orchestration (NEW!)
+
+*   `workflow`: Run the complete analysis pipeline with automatic dependency management and monitoring.
+*   `workflow-ui`: Start Prefect UI server for real-time workflow monitoring.
+*   `workflow-deploy`: Deploy workflow to Prefect Cloud (requires account).
+*   `workflow-step <step>`: Run individual workflow steps for debugging.
 
 ### Individual Data & Preprocessing Steps
 
-*   `download_pattern_list`: Fetches pattern definitions from the PlanQK Pattern Atlas.
+*   `download_pattern_list`: Fetches pattern definitions from the PlanQK Pattern Atlas (`src/data_acquisition/download_patterns.py`).
+*   `search-repos`: Runs GitHub search to find quantum projects (`src/data_acquisition/discover_projects.py`).
 *   `discover-and-clone`: Runs only the GitHub search and cloning steps.
-*   `preprocess-notebooks`: Converts `.ipynb` files to `.py` and creates an archive.
-*   `convert-archived-notebooks`: A separate utility to convert notebooks from the archive folder.
+*   `preprocess-notebooks`: Converts `.ipynb` files to `.py` and creates an archive (`src/preprocessing/extract_notebooks.py`).
+*   `convert-archived-notebooks`: A separate utility to convert notebooks from the archive folder (`src/preprocessing/convert_notebooks.py`).
 
 ### Utility Commands
 
@@ -272,16 +331,47 @@ just experimental-data
 
 ## 🏗 Project Architecture
 
+### Workflow Overview
+
+The project follows a clear 8-step workflow organized into logical phases:
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Step 1-2      │    │   Step 3-4      │    │   Step 5        │    │   Step 7-8      │
+│ Data Acquisition│    │ Preprocessing    │    │ Extraction      │    │ Analysis        │
+│                 │    │                 │    │                 │    │                 │
+│ • Download      │───▶│ • Extract        │───▶│ • Extract       │───▶│ • Run Analysis  │
+│   Patterns      │    │   Notebooks      │    │   Concepts      │    │ • Generate      │
+│ • Discover      │    │ • Convert        │    │                 │    │   Report        │
+│   Projects      │    │   Notebooks      │    │                 │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+### Workflow Dependencies
+
+| **Step** | **Phase** | **File** | **Dependencies** | **Description** |
+|----------|-----------|----------|-------------------|-----------------|
+| 1 | Data Acquisition | `download_patterns.py` | None | Download quantum patterns from PlanQK Atlas |
+| 2 | Data Acquisition | `discover_projects.py` | None | Search GitHub for quantum projects |
+| 3 | Preprocessing | `extract_notebooks.py` | Step 2 | Extract notebooks from discovered projects |
+| 4 | Preprocessing | `convert_notebooks.py` | Step 3 | Convert `.ipynb` to `.py` files |
+| 5 | Extraction | `extract_concepts.py` | Step 2 | Extract quantum concepts from frameworks |
+| 6 | Manual | Classification | Step 1, Step 5 | Manual classification of concepts |
+| 7 | Analysis | `run_analysis.py` | Step 1, Step 4, Step 6 | Run main semantic analysis |
+| 8 | Analysis | `generate_report.py` | Step 7 | Generate final analysis report |
+
 ### Core Components
 
 **Data Processing:**
-- `src/core_concepts/` - Framework concept extraction
+- `src/data_acquisition/` - External data collection (patterns, projects)
 - `src/preprocessing/` - Data preparation and notebook conversion
-- `src/workflows/` - Main analysis workflows
+- `src/extraction/` - Quantum concept extraction workflows
+- `src/analysis/` - Main analysis and reporting workflows
 
 **Utilities:**
 - `src/utils/` - Report generation and data export
 - `src/conf/` - Configuration management
+- `src/core_concepts/` - Framework-specific concept extraction
 
 **Testing:**
 - `tests/` - Comprehensive test suite
@@ -302,10 +392,20 @@ just experimental-data
 ```
 quantum_patterns/
 ├── src/                          # Source code
-│   ├── core_concepts/           # Concept extraction
-│   ├── preprocessing/           # Data preparation  
-│   ├── workflows/              # Analysis workflows
-│   └── utils/                  # Utilities
+│   ├── data_acquisition/         # Steps 1-2: External data collection
+│   │   ├── download_patterns.py  # Download quantum patterns
+│   │   └── discover_projects.py  # GitHub search for projects
+│   ├── preprocessing/            # Steps 3-4: Data preparation
+│   │   ├── extract_notebooks.py  # Extract notebooks from projects
+│   │   └── convert_notebooks.py  # Convert .ipynb to .py files
+│   ├── extraction/              # Step 5: Concept extraction
+│   │   └── extract_concepts.py  # Extract quantum concepts
+│   ├── analysis/                # Steps 7-8: Analysis and reporting
+│   │   ├── run_analysis.py      # Main analysis workflow
+│   │   └── generate_report.py   # Generate final report
+│   ├── core_concepts/           # Framework-specific extraction
+│   ├── utils/                   # Utilities and helpers
+│   └── conf/                    # Configuration management
 ├── tests/                       # Test suite
 ├── docs/                       # Documentation
 ├── data/                       # Generated data
