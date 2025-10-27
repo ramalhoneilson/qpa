@@ -47,7 +47,7 @@ class PDFGenerator:
             if self.convert_md_to_pdf(md_file):
                 success_count += 1
         
-        print(f"\n📊 Conversion Summary:")
+        print(f"\nConversion Summary:")
         print(f"  • Total files: {len(markdown_files)}")
         print(f"  • Successful: {success_count}")
         print(f"  • Failed: {len(markdown_files) - success_count}")
@@ -203,11 +203,11 @@ class PDFGenerator:
             
             html_doc.write_pdf(pdf_path, font_config=font_config)
             
-            print(f"  ✓ Converted {md_file.name} → {pdf_filename}")
+            print(f"  SUCCESS: Converted {md_file.name} -> {pdf_filename}")
             return True
             
         except Exception as e:
-            print(f"  ✗ Error converting {md_file.name}: {e}")
+            print(f"  ERROR: Error converting {md_file.name}: {e}")
             return False
 
 

@@ -90,7 +90,7 @@ class ReportGenerator:
         print("Generating pattern report...")
         
         if not self.patterns_file.exists():
-            print(f"⚠️ Pattern file not found: {self.patterns_file}")
+            print(f"WARNING: Pattern file not found: {self.patterns_file}")
             return None
         
         # Create output directory
@@ -111,7 +111,7 @@ class ReportGenerator:
             return output_file
             
         except Exception as e:
-            print(f"❌ Error generating pattern report: {e}")
+            print(f"ERROR: Error generating pattern report: {e}")
             return None
 
     def generate_extended_pattern_analysis(self) -> Path:
@@ -158,12 +158,12 @@ class ReportGenerator:
         reports["pattern"] = self.generate_pattern_report()
         reports["extended_pattern"] = self.generate_extended_pattern_analysis()
         
-        print(f"\n📊 Generated {len(reports)} reports:")
+        print(f"\nGenerated {len(reports)} reports:")
         for report_type, path in reports.items():
             if path:
-                print(f"  ✓ {report_type}: {path.name}")
+                print(f"  SUCCESS: {report_type}: {path.name}")
             else:
-                print(f"  ✗ {report_type}: Failed to generate")
+                print(f"  FAILED: {report_type}: Failed to generate")
         
         return reports
 
@@ -252,7 +252,7 @@ class ReportGenerator:
                 content.extend([
                     f"## {framework} Quantum Concepts",
                     "",
-                    f"⚠️ **Note**: The {framework} concepts file was not found at `{file_path}`",
+                    f"**Note**: The {framework} concepts file was not found at `{file_path}`",
                     "",
                 ])
         
@@ -269,7 +269,7 @@ class ReportGenerator:
                 content.extend([
                     f"## {framework} Quantum Concepts",
                     "",
-                    f"⚠️ **Note**: The {framework} concepts file was not found at `{file_path}`",
+                    f"**Note**: The {framework} concepts file was not found at `{file_path}`",
                     "",
                 ])
         
@@ -316,7 +316,7 @@ class ReportGenerator:
             content = [
                 f"## {framework} Quantum Concepts",
                 "",
-                f"❌ **Error**: Could not read {framework} concepts file: {e}",
+                f"**Error**: Could not read {framework} concepts file: {e}",
                 "",
             ]
         
@@ -379,7 +379,7 @@ class ReportGenerator:
             content = [
                 "### Top Matched Quantum Concepts",
                 "",
-                f"❌ **Error**: Could not read top concepts file: {e}",
+                f"**Error**: Could not read top concepts file: {e}",
                 "",
             ]
         
@@ -415,7 +415,7 @@ class ReportGenerator:
             content = [
                 "### Match Type Analysis",
                 "",
-                f"❌ **Error**: Could not read match type file: {e}",
+                f" **Error**: Could not read match type file: {e}",
                 "",
             ]
         
@@ -451,7 +451,7 @@ class ReportGenerator:
             content = [
                 "### Framework Analysis",
                 "",
-                f"❌ **Error**: Could not read framework analysis file: {e}",
+                f"**Error**: Could not read framework analysis file: {e}",
                 "",
             ]
         
@@ -487,7 +487,7 @@ class ReportGenerator:
             content = [
                 "### Pattern Frequency Analysis",
                 "",
-                f"❌ **Error**: Could not read pattern frequency file: {e}",
+                f"**Error**: Could not read pattern frequency file: {e}",
                 "",
             ]
         
@@ -543,10 +543,10 @@ class ReportGenerator:
                 content.extend(["", ""])
                 
             except Exception as e:
-                content.extend([f"❌ **Error**: Could not read patterns file: {e}", ""])
+                content.extend([f"**Error**: Could not read patterns file: {e}", ""])
         else:
             content.extend([
-                f"⚠️ **Note**: The patterns file was not found at `{self.patterns_file}`",
+                f"**Note**: The patterns file was not found at `{self.patterns_file}`",
                 "",
             ])
         

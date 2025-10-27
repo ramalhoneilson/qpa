@@ -111,7 +111,7 @@ class TestBaseConceptReportGenerator:
             })
             
             assert isinstance(result, list)
-            assert "❌ **Error**:" in result[2]
+            assert "**Error**:" in result[2]
 
     def test_read_concepts_from_csv_success(self):
         """Test successful CSV reading."""

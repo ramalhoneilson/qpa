@@ -149,7 +149,7 @@ def _save_unclassified_concepts(concepts: list[dict], output_path: Path):
         return
 
     print(
-        f"\n⚠ Found {len(unclassified)} unclassified concepts. Saving to-do list to '{output_path}'..."
+        f"\nWARNING: Found {len(unclassified)} unclassified concepts. Saving to-do list to '{output_path}'..."
     )
     try:
         with open(output_path, "w", newline="", encoding="utf-8") as f:

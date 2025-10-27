@@ -185,7 +185,7 @@ class TestExperimentalDataReportGenerator:
         with patch("pathlib.Path.exists", return_value=False):
             result = self.generator._generate_pattern_atlas_section()
 
-            assert "⚠️ **Note**: The patterns file was not found" in " ".join(result)
+            assert "**Note**: The patterns file was not found" in " ".join(result)
 
     def test_generate_pattern_atlas_section_error(self):
         """Test _generate_pattern_atlas_section with error."""
