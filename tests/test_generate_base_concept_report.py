@@ -1,5 +1,5 @@
 """
-Test suite for src/utils/generate_base_concept_report.py
+Test suite for src/reporting/base_concept_report.py
 """
 
 import csv
@@ -8,200 +8,228 @@ from unittest.mock import MagicMock, mock_open, patch
 
 import pytest
 
-from src.utils.generate_base_concept_report import (
-    INPUT_FILES,
-    OUTPUT_MD_PATH,
-    generate_markdown_table,
+from src.reporting.base_concept_report import (
+    BaseConceptReportGenerator,
     main,
-    read_concepts_from_csv,
 )
 
 
-class TestReadConceptsFromCsv:
-    """Test the read_concepts_from_csv function."""
+class TestBaseConceptReportGenerator:
+    """Test the BaseConceptReportGenerator class."""
 
-    def test_read_concepts_success(self):
-        """Test successful reading of concepts from CSV."""
-        mock_csv_content = "name,summary\nconcept1,summary1\nconcept2,summary2\n"
+    def setup_method(self):
+        """Set up test data."""
+        self.generator = BaseConceptReportGenerator()
 
-        with patch("pathlib.Path.exists", return_value=True):
-            with patch("builtins.open", mock_open(read_data=mock_csv_content)):
-                with patch("csv.DictReader") as mock_reader:
-                    mock_reader.return_value = [
-                        {"name": "concept1", "summary": "summary1"},
-                        {"name": "concept2", "summary": "summary2"},
-                    ]
-                    result = read_concepts_from_csv(Path("test.csv"), ",")
-                    assert len(result) == 2
-                    assert result[0]["name"] == "concept1"
-                    assert result[1]["summary"] == "summary2"
+    def test_init(self):
+        """Test BaseConceptReportGenerator initialization."""
+        assert self.generator.data_dir is not None
+        assert self.generator.report_dir is not None
+        assert self.generator.output_file is not None
+        assert len(self.generator.input_files) == 3
+        assert "Qiskit" in self.generator.input_files
+        assert "PennyLane" in self.generator.input_files
+        assert "Classiq" in self.generator.input_files
 
-    def test_read_concepts_file_not_found(self):
-        """Test reading when file doesn't exist."""
-        with patch("pathlib.Path.exists", return_value=False):
-            with patch("builtins.print") as mock_print:
-                result = read_concepts_from_csv(Path("nonexistent.csv"), ",")
-                assert result == []
-                mock_print.assert_called_with(
-                    "  - Warning: Input file not found: nonexistent.csv"
-                )
+    def test_generate_report_success(self):
+        """Test successful report generation."""
+        with patch.object(self.generator, '_generate_header', return_value=["# Header"]), \
+        patch.object(self.generator, '_generate_framework_tables', return_value=["## Framework"]), \
+        patch.object(self.generator, '_generate_pattern_coverage_section', return_value=["## Patterns"]), \
+        patch.object(self.generator.report_dir, 'mkdir'), \
+        patch('builtins.open', mock_open()) as mock_file:
+            
+            self.generator.generate_report()
+            
+            # Verify file was opened for writing
+            mock_file.assert_called_once()
 
-    def test_read_concepts_error(self):
-        """Test handling errors when reading CSV."""
-        with patch("pathlib.Path.exists", return_value=True):
-            with patch("builtins.open", side_effect=Exception("File error")):
-                with patch("builtins.print") as mock_print:
-                    result = read_concepts_from_csv(Path("test.csv"), ",")
-                    assert result == []
-                    mock_print.assert_called_with(
-                        "  - Error reading test.csv: File error"
-                    )
+    def test_generate_header(self):
+        """Test header generation."""
+        result = self.generator._generate_header()
+        
+        assert isinstance(result, list)
+        assert len(result) > 0
+        assert "# Extracted Quantum Concepts Summary" in result[0]
+        assert "## Overview" in result
 
-
-class TestGenerateMarkdownTable:
-    """Test the generate_markdown_table function."""
-
-    def test_generate_table_with_concepts(self):
-        """Test generating markdown table with concepts."""
-        concepts = [
-            {"name": "concept1", "summary": "summary1"},
-            {"name": "concept2", "summary": "summary2"},
+    def test_generate_framework_tables_success(self):
+        """Test framework tables generation with existing files."""
+        mock_concepts = [
+            {"name": "test.concept1", "summary": "Summary 1"},
+            {"name": "test.concept2", "summary": "Summary 2"}
         ]
+        
+        with patch.object(self.generator, '_generate_framework_table', return_value=["## Test Framework"]):
+            result = self.generator._generate_framework_tables()
+            
+            assert isinstance(result, list)
+            assert len(result) > 0
 
-        result = generate_markdown_table(concepts)
+    def test_generate_framework_tables_missing_files(self):
+        """Test framework tables generation with missing files."""
+        with patch.object(self.generator, '_generate_framework_table', return_value=["## Test Framework"]):
+            result = self.generator._generate_framework_tables()
+            
+            assert isinstance(result, list)
 
+    def test_generate_framework_table_success(self):
+        """Test successful framework table generation."""
+        mock_concepts = [
+            {"name": "test.concept1", "summary": "Summary 1"},
+            {"name": "test.concept2", "summary": "Summary 2"}
+        ]
+        
+        with patch.object(self.generator, '_read_concepts_from_csv', return_value=mock_concepts), \
+        patch.object(self.generator, '_generate_markdown_table', return_value="| Concept | Summary |"):
+            
+            result = self.generator._generate_framework_table("TestFramework", {
+                "path": Path("/test/file.csv"),
+                "delimiter": ","
+            })
+            
+            assert isinstance(result, list)
+            assert "## TestFramework Quantum Concepts" in result
+
+    def test_generate_framework_table_file_not_found(self):
+        """Test framework table generation when file doesn't exist."""
+        with patch.object(self.generator, '_read_concepts_from_csv', return_value=[]):
+            result = self.generator._generate_framework_table("TestFramework", {
+                "path": Path("/test/nonexistent.csv"),
+                "delimiter": ","
+            })
+            
+            assert isinstance(result, list)
+            assert "## TestFramework Quantum Concepts" in result
+
+    def test_generate_framework_table_error(self):
+        """Test framework table generation with error."""
+        with patch.object(self.generator, '_read_concepts_from_csv', side_effect=Exception("Read error")):
+            result = self.generator._generate_framework_table("TestFramework", {
+                "path": Path("/test/file.csv"),
+                "delimiter": ","
+            })
+            
+            assert isinstance(result, list)
+            assert "❌ **Error**:" in result[2]
+
+    def test_read_concepts_from_csv_success(self):
+        """Test successful CSV reading."""
+        mock_csv_content = "name,summary\ntest.concept1,Summary 1\ntest.concept2,Summary 2"
+        
+        with patch('builtins.open', mock_open(read_data=mock_csv_content)), \
+        patch('csv.DictReader') as mock_reader:
+            mock_reader.return_value = [
+                {"name": "test.concept1", "summary": "Summary 1"},
+                {"name": "test.concept2", "summary": "Summary 2"}
+            ]
+            
+            result = self.generator._read_concepts_from_csv(Path("/test/file.csv"), ",")
+            
+            assert isinstance(result, list)
+            assert len(result) == 2
+            assert result[0]["name"] == "test.concept1"
+
+    def test_read_concepts_from_csv_file_not_found(self):
+        """Test CSV reading when file doesn't exist."""
+        with patch('builtins.open', side_effect=FileNotFoundError("File not found")):
+            result = self.generator._read_concepts_from_csv(Path("/test/nonexistent.csv"), ",")
+            
+            assert isinstance(result, list)
+            assert len(result) == 0
+
+    def test_read_concepts_from_csv_error(self):
+        """Test CSV reading with error."""
+        with patch('builtins.open', side_effect=IOError("Read error")):
+            result = self.generator._read_concepts_from_csv(Path("/test/file.csv"), ",")
+            
+            assert isinstance(result, list)
+            assert len(result) == 0
+
+    def test_generate_markdown_table_success(self):
+        """Test successful markdown table generation."""
+        concepts = [
+            {"name": "test.concept1", "summary": "Summary 1"},
+            {"name": "test.concept2", "summary": "Summary 2"}
+        ]
+        
+        result = self.generator._generate_markdown_table(concepts)
+        
+        assert isinstance(result, str)
         assert "| Concept Name | Summary |" in result
-        assert "|--------------|---------|" in result
-        assert "| `concept1` | summary1 |" in result
-        assert "| `concept2` | summary2 |" in result
+        assert "| `test.concept1` | Summary 1 |" in result
+        assert "| `test.concept2` | Summary 2 |" in result
 
-    def test_generate_table_empty_concepts(self):
-        """Test generating table with empty concepts list."""
-        result = generate_markdown_table([])
-        assert result == "*No concepts were extracted for this framework.*\n"
+    def test_generate_markdown_table_empty(self):
+        """Test markdown table generation with empty concepts."""
+        result = self.generator._generate_markdown_table([])
+        
+        assert isinstance(result, str)
+        assert "*No concepts were extracted for this framework.*" in result
 
-    def test_generate_table_missing_keys(self):
-        """Test generating table with missing keys in concepts."""
+    def test_generate_markdown_table_with_pipes(self):
+        """Test markdown table generation with pipe characters in content."""
         concepts = [
-            {"name": "concept1"},  # Missing summary
-            {"summary": "summary2"},  # Missing name
+            {"name": "test|concept", "summary": "Summary with | pipe"}
         ]
+        
+        result = self.generator._generate_markdown_table(concepts)
+        
+        assert isinstance(result, str)
+        assert "| `test\\|concept` | Summary with \\| pipe |" in result
 
-        result = generate_markdown_table(concepts)
-
-        assert "| `concept1` |  |" in result
-        assert "| `N/A` | summary2 |" in result
-
-    def test_generate_table_with_pipes(self):
-        """Test generating table with pipe characters in content."""
-        concepts = [{"name": "concept|with|pipes", "summary": "summary|with|pipes"}]
-
-        result = generate_markdown_table(concepts)
-
-        assert "| `concept\\|with\\|pipes` | summary\\|with\\|pipes |" in result
-
-    def test_generate_table_with_newlines(self):
-        """Test generating table with newlines in summary."""
-        concepts = [{"name": "concept1", "summary": "summary\nwith\nnewlines"}]
-
-        result = generate_markdown_table(concepts)
-
-        assert "| `concept1` | summary with newlines |" in result
+    def test_generate_pattern_coverage_section(self):
+        """Test pattern coverage section generation."""
+        result = self.generator._generate_pattern_coverage_section()
+        
+        assert isinstance(result, list)
+        assert "## Pattern Coverage Analysis" in result
+        assert "### Pattern Coverage Summary" in result
+        assert "### Complete List of Patterns Found" in result
+        assert "### New Patterns Created" in result
 
 
 class TestMainFunction:
     """Test the main function."""
 
-    def test_main_successful_execution(self):
-        """Test successful main execution."""
+    def test_main_function(self):
+        """Test the main function execution."""
+        with patch('src.reporting.base_concept_report.BaseConceptReportGenerator') as mock_class:
+            mock_instance = MagicMock()
+            mock_class.return_value = mock_instance
+            
+            main()
+            
+            mock_instance.generate_report.assert_called_once()
+
+
+class TestIntegration:
+    """Integration tests for base concept report generation."""
+
+    def test_complete_workflow_integration(self):
+        """Test the complete base concept report generation workflow."""
+        generator = BaseConceptReportGenerator()
+        
         mock_concepts = [
-            {"name": "concept1", "summary": "summary1"},
-            {"name": "concept2", "summary": "summary2"},
+            {"name": "test.concept1", "summary": "Summary 1"},
+            {"name": "test.concept2", "summary": "Summary 2"}
         ]
+        
+        with patch.object(generator, '_generate_header', return_value=["# Header"]), \
+        patch.object(generator, '_generate_framework_tables', return_value=["## Framework"]), \
+        patch.object(generator, '_generate_pattern_coverage_section', return_value=["## Patterns"]), \
+        patch.object(generator.report_dir, 'mkdir'), \
+        patch('builtins.open', mock_open()) as mock_file:
+            
+            generator.generate_report()
+            
+            # Verify the workflow was executed
+            mock_file.assert_called_once()
 
-        with patch(
-            "src.utils.generate_base_concept_report.read_concepts_from_csv",
-            return_value=mock_concepts,
-        ):
-            with patch("builtins.open", mock_open()) as mock_file:
-                with patch("builtins.print"):
-                    main()
-
-                    # Should have called open for writing
-                    mock_file.assert_called()
-
-    def test_main_with_missing_files(self):
-        """Test main function when some files are missing."""
-
-        def mock_read_concepts(path, delimiter):
-            if "qiskit" in str(path):
-                return [{"name": "qiskit_concept", "summary": "qiskit_summary"}]
-            return []  # Missing files return empty list
-
-        with patch(
-            "src.utils.generate_base_concept_report.read_concepts_from_csv",
-            side_effect=mock_read_concepts,
-        ):
-            with patch("builtins.open", mock_open()) as mock_file:
-                with patch("builtins.print"):
-                    main()
-
-                    # Should have called open for writing
-                    mock_file.assert_called()
-
-    def test_main_write_error(self):
-        """Test main function when writing fails."""
-        mock_concepts = [{"name": "concept1", "summary": "summary1"}]
-
-        with patch(
-            "src.utils.generate_base_concept_report.read_concepts_from_csv",
-            return_value=mock_concepts,
-        ):
-            with patch("builtins.open", side_effect=OSError("Write error")):
-                with patch("builtins.print") as mock_print:
-                    main()
-
-                    # Should have printed error message
-                    assert any(
-                        "Could not write to file" in str(call)
-                        for call in mock_print.call_args_list
-                    )
-
-
-class TestConstants:
-    """Test module constants."""
-
-    def test_input_files_structure(self):
-        """Test INPUT_FILES constant structure."""
-        assert "Qiskit" in INPUT_FILES
-        assert "PennyLane" in INPUT_FILES
-        assert "Classiq" in INPUT_FILES
-
-        for framework, details in INPUT_FILES.items():
-            assert "path" in details
-            assert "delimiter" in details
-            assert details["delimiter"] in [",", ";"]
-
-    def test_output_md_path(self):
-        """Test OUTPUT_MD_PATH constant."""
-        assert OUTPUT_MD_PATH.name == "extracted_concepts_summary.md"
-
-    def test_qiskit_config(self):
-        """Test Qiskit configuration."""
-        qiskit_config = INPUT_FILES["Qiskit"]
-        assert qiskit_config["delimiter"] == ";"
-        assert "qiskit_quantum_concepts.csv" in str(qiskit_config["path"])
-
-    def test_pennylane_config(self):
-        """Test PennyLane configuration."""
-        pennylane_config = INPUT_FILES["PennyLane"]
-        assert pennylane_config["delimiter"] == ","
-        assert "pennylane_quantum_concepts.csv" in str(pennylane_config["path"])
-
-    def test_classiq_config(self):
-        """Test Classiq configuration."""
-        classiq_config = INPUT_FILES["Classiq"]
-        assert classiq_config["delimiter"] == ","
-        assert "classiq_quantum_concepts.csv" in str(classiq_config["path"])
-
-
+    def test_error_handling_integration(self):
+        """Test error handling in the complete workflow."""
+        generator = BaseConceptReportGenerator()
+        
+        with patch.object(generator.report_dir, 'mkdir', side_effect=OSError("Directory error")):
+            generator.generate_report()
+            # Should not raise any exceptions

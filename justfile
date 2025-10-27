@@ -54,17 +54,37 @@ report:
 # Analyze extended pattern coverage across frameworks and target projects
 extended-patterns:
     @echo "\n>>> Analyzing extended pattern coverage..."
-    @{{VENV}}/bin/python -m src.utils.analyze_extended_patterns
+    @{{VENV}}/bin/python -c "from src.reporting import generate_extended_pattern_analysis; generate_extended_pattern_analysis()"
 
 # Generate PDF files from all Markdown files in docs folder
 pdf:
     @echo "\n>>> Generating PDFs from Markdown files..."
-    @{{VENV}}/bin/python -m src.utils.generate_pdfs
+    @{{VENV}}/bin/python -c "from src.reporting import generate_pdfs; generate_pdfs()"
 
 # Generate experimental data report with complete datasets
 experimental-data:
     @echo "\n>>> Generating experimental data report..."
-    @{{VENV}}/bin/python -m src.utils.generate_experimental_data_report
+    @{{VENV}}/bin/python -c "from src.reporting import generate_experimental_data_report; generate_experimental_data_report()"
+
+# Generate base concept report from framework extractions
+base-concept-report:
+    @echo "\n>>> Generating base concept report..."
+    @{{VENV}}/bin/python -c "from src.reporting import generate_base_concept_report; generate_base_concept_report()"
+
+# Generate pattern report from PlanQK Pattern Atlas
+pattern-report:
+    @echo "\n>>> Generating pattern report..."
+    @{{VENV}}/bin/python -c "from src.reporting import generate_pattern_report; generate_pattern_report()"
+
+# Generate all reports at once
+all-reports:
+    @echo "\n>>> Generating all reports..."
+    @{{VENV}}/bin/python -c "from src.reporting import generate_all_reports; generate_all_reports()"
+
+# Consolidate knowledge base from framework data
+consolidate-knowledge-base:
+    @echo "\n>>> Consolidating knowledge base..."
+    @{{VENV}}/bin/python -m src.preprocessing.knowledge_base_consolidator
 
 # Runs the GitHub search script to find and filter top quantum projects.
 search-repos:
@@ -139,6 +159,11 @@ workflow-deploy:
 workflow-step step:
     @echo ">>> Running workflow step: {{step}}"
     @{{VENV}}/bin/python -c "from src.workflows.quantum_patterns_flow import {{step}}; {{step}}()"
+
+# Convert Mermaid diagrams to PDF for LaTeX
+convert-diagrams:
+    @echo ">>> Converting Mermaid diagrams to PDF..."
+    @{{VENV}}/bin/python docs/convert_to_pdf.py
 
 # == Testing =================================================================
 

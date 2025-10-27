@@ -93,6 +93,18 @@ The Prefect workflow automatically handles the dependency graph:
 
 For detailed workflow documentation, see [docs/workflow_orchestration.md](docs/workflow_orchestration.md).
 
+### Visual Workflow Diagrams
+
+Interactive Mermaid diagrams are available in the `docs/` directory:
+
+- **[workflow_overview.mermaid](docs/workflow_overview.mermaid)** - High-level workflow with step descriptions
+- **[prefect_workflow.mermaid](docs/prefect_workflow.mermaid)** - Prefect orchestration details with parallel execution
+- **[data_flow.mermaid](docs/data_flow.mermaid)** - Data flow and file dependencies
+- **[workflow_latex.mermaid](docs/workflow_latex.mermaid)** - LaTeX-optimized compact version for academic papers
+- **[workflow_diagrams.md](docs/workflow_diagrams.md)** - Complete diagram documentation
+
+View these diagrams in VS Code, GitHub, or [Mermaid Live Editor](https://mermaid.live/).
+
 ## 🛠 Project Setup & Installation
 
 ### Prerequisites
@@ -277,6 +289,16 @@ You can always run `just` to see an interactive list of available commands.
 *   `discover-and-clone`: Runs only the GitHub search and cloning steps.
 *   `preprocess-notebooks`: Converts `.ipynb` files to `.py` and creates an archive (`src/preprocessing/extract_notebooks.py`).
 *   `convert-archived-notebooks`: A separate utility to convert notebooks from the archive folder (`src/preprocessing/convert_notebooks.py`).
+*   `consolidate-knowledge-base`: Consolidates framework-specific data into unified knowledge base (`src/preprocessing/knowledge_base_consolidator.py`).
+
+### Reporting Commands
+
+*   `experimental-data`: Generates complete experimental datasets report (`src/reporting/report_generator.py`).
+*   `base-concept-report`: Generates framework concept extraction summary (`src/reporting/report_generator.py`).
+*   `pattern-report`: Generates PlanQK Pattern Atlas report (`src/reporting/report_generator.py`).
+*   `extended-patterns`: Analyzes extended pattern coverage across frameworks (`src/reporting/pattern_analyzer.py`).
+*   `pdf`: Generates PDF files from all Markdown documents (`src/reporting/pdf_generator.py`).
+*   `all-reports`: Generates all reports at once (`src/reporting/report_generator.py`).
 
 ### Utility Commands
 
@@ -325,6 +347,8 @@ just experimental-data
 
 - **Main README**: This file - project overview and setup
 - **Experimental Data**: `docs/experimental_data.md` - Complete datasets
+- **Workflow Orchestration**: `docs/workflow_orchestration.md` - Prefect setup and usage
+- **Workflow Diagrams**: `docs/workflow_diagrams.md` - Visual workflow documentation
 - **Coverage Report**: `docs/COVERAGE.md` - Testing documentation
 - **Formatting Guide**: `docs/FORMATTING.md` - Code style guidelines
 - **Refactoring Summary**: `docs/refactoring_summary.md` - Architecture documentation
@@ -369,7 +393,7 @@ The project follows a clear 8-step workflow organized into logical phases:
 - `src/analysis/` - Main analysis and reporting workflows
 
 **Utilities:**
-- `src/utils/` - Report generation and data export
+- `src/reporting/` - Report generation and data export
 - `src/conf/` - Configuration management
 - `src/core_concepts/` - Framework-specific concept extraction
 
@@ -397,14 +421,19 @@ quantum_patterns/
 │   │   └── discover_projects.py  # GitHub search for projects
 │   ├── preprocessing/            # Steps 3-4: Data preparation
 │   │   ├── extract_notebooks.py  # Extract notebooks from projects
-│   │   └── convert_notebooks.py  # Convert .ipynb to .py files
+│   │   ├── convert_notebooks.py  # Convert .ipynb to .py files
+│   │   └── knowledge_base_consolidator.py  # Consolidate framework data
 │   ├── extraction/              # Step 5: Concept extraction
 │   │   └── extract_concepts.py  # Extract quantum concepts
 │   ├── analysis/                # Steps 7-8: Analysis and reporting
 │   │   ├── run_analysis.py      # Main analysis workflow
 │   │   └── generate_report.py   # Generate final report
+│   ├── reporting/               # Report generation utilities
+│   │   ├── report_generator.py         # Unified report generation system
+│   │   ├── pattern_analyzer.py         # Pattern analysis and statistics
+│   │   └── pdf_generator.py            # PDF generation from Markdown
 │   ├── core_concepts/           # Framework-specific extraction
-│   ├── utils/                   # Utilities and helpers
+│   ├── workflows/               # Workflow orchestration
 │   └── conf/                    # Configuration management
 ├── tests/                       # Test suite
 ├── docs/                       # Documentation

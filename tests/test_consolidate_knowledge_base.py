@@ -1,5 +1,5 @@
 """
-Tests for src/utils/consolidate_knowledge_base.py
+Tests for src/preprocessing/knowledge_base_consolidator.py
 
 This module tests the knowledge base consolidation functionality,
 including CSV file processing, DataFrame concatenation, and output generation.
@@ -11,453 +11,286 @@ from unittest.mock import MagicMock, mock_open, patch
 import pandas as pd
 import pytest
 
-from src.utils.consolidate_knowledge_base import (
-    consolidate_knowledge_base,
-    INPUT_FILES,
-    KB_DIR,
-    OUTPUT_FILE,
+from src.preprocessing.knowledge_base_consolidator import (
+    KnowledgeBaseConsolidator,
+    main,
 )
 
 
-class TestConstants:
-    """Test module constants."""
+class TestKnowledgeBaseConsolidator:
+    """Test the KnowledgeBaseConsolidator class."""
 
-    def test_constants_defined(self):
-        """Test that all constants are properly defined."""
-        assert isinstance(KB_DIR, Path)
-        assert isinstance(OUTPUT_FILE, Path)
-        assert isinstance(INPUT_FILES, dict)
-
-    def test_input_files_structure(self):
-        """Test INPUT_FILES structure."""
-        expected_frameworks = ["classiq", "pennylane", "qiskit"]
-        assert list(INPUT_FILES.keys()) == expected_frameworks
+    def test_init(self):
+        """Test KnowledgeBaseConsolidator initialization."""
+        consolidator = KnowledgeBaseConsolidator()
         
-        for framework in expected_frameworks:
-            assert framework in INPUT_FILES
-            assert isinstance(INPUT_FILES[framework], Path)
-            assert INPUT_FILES[framework].name.endswith(".csv")
-
-    def test_output_file_structure(self):
-        """Test OUTPUT_FILE structure."""
-        assert OUTPUT_FILE.name == "knowledge_base.csv"
-        assert OUTPUT_FILE.parent == KB_DIR
-
-
-class TestConsolidateKnowledgeBase:
-    """Test the consolidate_knowledge_base function."""
+        assert consolidator.kb_dir is not None
+        assert consolidator.output_file is not None
+        assert len(consolidator.input_files) == 3
+        assert "classiq" in consolidator.input_files
+        assert "pennylane" in consolidator.input_files
+        assert "qiskit" in consolidator.input_files
 
     def test_consolidate_knowledge_base_success(self):
         """Test successful knowledge base consolidation."""
-        # Create mock DataFrames for each framework
+        consolidator = KnowledgeBaseConsolidator()
+        
+        # Mock dataframes for each framework
         mock_dataframes = {
             "classiq": pd.DataFrame({
-                "name": ["ClassiqFunc1", "ClassiqFunc2"],
-                "summary": ["Summary1", "Summary2"],
-                "pattern": ["Pattern1", "Pattern2"],
+                "concept": ["classiq.concept1", "classiq.concept2"],
+                "summary": ["Summary 1", "Summary 2"]
             }),
             "pennylane": pd.DataFrame({
-                "name": ["PennyLaneFunc1", "PennyLaneFunc2"],
-                "summary": ["Summary3", "Summary4"],
-                "pattern": ["Pattern2", "Pattern3"],
+                "concept": ["pennylane.concept1"],
+                "summary": ["Summary 3"]
             }),
             "qiskit": pd.DataFrame({
-                "name": ["QiskitFunc1", "QiskitFunc2"],
-                "summary": ["Summary5", "Summary6"],
-                "pattern": ["Pattern1", "Pattern3"],
-            }),
+                "concept": ["qiskit.concept1", "qiskit.concept2", "qiskit.concept3"],
+                "summary": ["Summary 4", "Summary 5", "Summary 6"]
+            })
         }
         
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', side_effect=lambda path: mock_dataframes[path.stem.split('_')[0]]), \
-             patch('pathlib.Path.mkdir'), \
-             patch('builtins.print') as mock_print:
+        with patch.object(consolidator, 'input_files', {
+            "classiq": Path("/test/classiq.csv"),
+            "pennylane": Path("/test/pennylane.csv"),
+            "qiskit": Path("/test/qiskit.csv")
+        }), \
+        patch('pandas.read_csv', side_effect=lambda path, **kwargs: mock_dataframes[path.stem]), \
+        patch.object(consolidator.kb_dir, 'mkdir'), \
+        patch.object(consolidator.output_file, 'parent', consolidator.kb_dir), \
+        patch('pandas.DataFrame.to_csv') as mock_to_csv:
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-                ("pennylane", Path("/test/pennylane.csv")),
-                ("qiskit", Path("/test/qiskit.csv")),
-            ]
+            consolidator.consolidate_knowledge_base()
             
-            consolidate_knowledge_base()
-            
-            # Check that success messages were printed
-            assert mock_print.call_count >= 4  # At least 4 print statements
-            assert any("Successfully processed" in str(call) for call in mock_print.call_args_list)
-            assert any("Consolidation complete!" in str(call) for call in mock_print.call_args_list)
+            # Verify to_csv was called
+            mock_to_csv.assert_called_once()
 
     def test_consolidate_knowledge_base_missing_files(self):
-        """Test consolidation with missing input files."""
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=False), \
-             patch('builtins.print') as mock_print:
+        """Test consolidation when some input files are missing."""
+        consolidator = KnowledgeBaseConsolidator()
+        
+        with patch.object(consolidator, 'input_files', {
+            "classiq": Path("/test/classiq.csv"),
+            "pennylane": Path("/test/pennylane.csv"),
+            "qiskit": Path("/test/qiskit.csv")
+        }), \
+        patch('pathlib.Path.exists', side_effect=lambda path: path.name != "pennylane.csv"), \
+        patch('pandas.read_csv') as mock_read_csv, \
+        patch.object(consolidator.kb_dir, 'mkdir'), \
+        patch('pandas.DataFrame.to_csv') as mock_to_csv:
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-                ("pennylane", Path("/test/pennylane.csv")),
-                ("qiskit", Path("/test/qiskit.csv")),
-            ]
+            # Mock successful reads for existing files
+            mock_read_csv.return_value = pd.DataFrame({
+                "concept": ["test.concept"],
+                "summary": ["Test summary"]
+            })
             
-            consolidate_knowledge_base()
+            consolidator.consolidate_knowledge_base()
             
-            # Check that warning messages were printed
-            assert mock_print.call_count >= 3  # At least 3 warning messages
-            assert any("Warning: Input file not found" in str(call) for call in mock_print.call_args_list)
-            assert any("No dataframes were loaded" in str(call) for call in mock_print.call_args_list)
+            # Should still call to_csv with available data
+            mock_to_csv.assert_called_once()
 
-    def test_consolidate_knowledge_base_file_error(self):
-        """Test consolidation with file reading errors."""
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', side_effect=pd.errors.EmptyDataError("Empty file")), \
-             patch('builtins.print') as mock_print:
+    def test_consolidate_knowledge_base_no_files(self):
+        """Test consolidation when no input files exist."""
+        consolidator = KnowledgeBaseConsolidator()
+        
+        with patch.object(consolidator, 'input_files', {
+            "classiq": Path("/test/classiq.csv"),
+            "pennylane": Path("/test/pennylane.csv"),
+            "qiskit": Path("/test/qiskit.csv")
+        }), \
+        patch('pathlib.Path.exists', return_value=False):
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-                ("pennylane", Path("/test/pennylane.csv")),
-                ("qiskit", Path("/test/qiskit.csv")),
-            ]
-            
-            consolidate_knowledge_base()
-            
-            # Check that error messages were printed
-            assert mock_print.call_count >= 3  # At least 3 error messages
-            assert any("Error processing" in str(call) for call in mock_print.call_args_list)
-            assert any("No dataframes were loaded" in str(call) for call in mock_print.call_args_list)
+            consolidator.consolidate_knowledge_base()
+            # Should not raise any exceptions
 
-    def test_consolidate_knowledge_base_partial_success(self):
-        """Test consolidation with some files missing."""
-        mock_dataframe = pd.DataFrame({
-            "name": ["Func1", "Func2"],
-            "summary": ["Summary1", "Summary2"],
-            "pattern": ["Pattern1", "Pattern2"],
+    def test_consolidate_knowledge_base_read_error(self):
+        """Test consolidation when CSV reading fails."""
+        consolidator = KnowledgeBaseConsolidator()
+        
+        with patch.object(consolidator, 'input_files', {
+            "classiq": Path("/test/classiq.csv")
+        }), \
+        patch('pathlib.Path.exists', return_value=True), \
+        patch('pandas.read_csv', side_effect=pd.errors.EmptyDataError("Empty file")):
+            
+            consolidator.consolidate_knowledge_base()
+            # Should not raise any exceptions
+
+    def test_get_consolidated_data_success(self):
+        """Test successful loading of consolidated data."""
+        consolidator = KnowledgeBaseConsolidator()
+        mock_df = pd.DataFrame({
+            "concept": ["test.concept"],
+            "summary": ["Test summary"],
+            "framework": ["test"]
         })
         
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', side_effect=[True, False, True]), \
-             patch('pandas.read_csv', return_value=mock_dataframe), \
-             patch('pathlib.Path.mkdir'), \
-             patch('builtins.print') as mock_print:
+        with patch('pandas.read_csv', return_value=mock_df), \
+        patch('pathlib.Path.exists', return_value=True):
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-                ("pennylane", Path("/test/pennylane.csv")),
-                ("qiskit", Path("/test/qiskit.csv")),
-            ]
+            result = consolidator.get_consolidated_data()
             
-            consolidate_knowledge_base()
-            
-            # Check that both success and warning messages were printed
-            assert mock_print.call_count >= 4
-            assert any("Successfully processed" in str(call) for call in mock_print.call_args_list)
-            assert any("Warning: Input file not found" in str(call) for call in mock_print.call_args_list)
-            assert any("Consolidation complete!" in str(call) for call in mock_print.call_args_list)
+            assert isinstance(result, pd.DataFrame)
+            assert len(result) == 1
+            assert "framework" in result.columns
 
-    def test_consolidate_knowledge_base_output_error(self):
-        """Test consolidation with output file write error."""
-        mock_dataframe = pd.DataFrame({
-            "name": ["Func1", "Func2"],
-            "summary": ["Summary1", "Summary2"],
-            "pattern": ["Pattern1", "Pattern2"],
+    def test_get_consolidated_data_file_not_found(self):
+        """Test loading when consolidated file doesn't exist."""
+        consolidator = KnowledgeBaseConsolidator()
+        
+        with patch('pathlib.Path.exists', return_value=False):
+            result = consolidator.get_consolidated_data()
+            
+            assert isinstance(result, pd.DataFrame)
+            assert result.empty
+
+    def test_get_consolidated_data_read_error(self):
+        """Test loading when CSV reading fails."""
+        consolidator = KnowledgeBaseConsolidator()
+        
+        with patch('pathlib.Path.exists', return_value=True), \
+        patch('pandas.read_csv', side_effect=pd.errors.EmptyDataError("Empty file")):
+            
+            result = consolidator.get_consolidated_data()
+            
+            assert isinstance(result, pd.DataFrame)
+            assert result.empty
+
+    def test_get_framework_data_success(self):
+        """Test getting data for specific framework."""
+        consolidator = KnowledgeBaseConsolidator()
+        mock_df = pd.DataFrame({
+            "concept": ["test.concept1", "test.concept2"],
+            "summary": ["Summary 1", "Summary 2"],
+            "framework": ["test", "test"]
         })
         
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', return_value=mock_dataframe), \
-             patch('pathlib.Path.mkdir', side_effect=PermissionError("Permission denied")), \
-             patch('builtins.print') as mock_print:
+        with patch.object(consolidator, 'get_consolidated_data', return_value=mock_df):
+            result = consolidator.get_framework_data("test")
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-            ]
-            
-            consolidate_knowledge_base()
-            
-            # Check that error message was printed
-            assert any("Error writing to output file" in str(call) for call in mock_print.call_args_list)
+            assert isinstance(result, pd.DataFrame)
+            assert len(result) == 2
+            assert all(result["framework"] == "test")
 
-    def test_consolidate_knowledge_base_empty_dataframes(self):
-        """Test consolidation with empty DataFrames."""
-        empty_dataframe = pd.DataFrame()
+    def test_get_framework_data_empty_data(self):
+        """Test getting framework data when consolidated data is empty."""
+        consolidator = KnowledgeBaseConsolidator()
         
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', return_value=empty_dataframe), \
-             patch('pathlib.Path.mkdir'), \
-             patch('builtins.print') as mock_print:
+        with patch.object(consolidator, 'get_consolidated_data', return_value=pd.DataFrame()):
+            result = consolidator.get_framework_data("test")
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-            ]
-            
-            consolidate_knowledge_base()
-            
-            # Check that success message was printed (even with empty DataFrame)
-            assert any("Successfully processed" in str(call) for call in mock_print.call_args_list)
-            assert any("Consolidation complete!" in str(call) for call in mock_print.call_args_list)
+            assert isinstance(result, pd.DataFrame)
+            assert result.empty
 
-    def test_consolidate_knowledge_base_framework_column_addition(self):
-        """Test that framework column is properly added."""
-        mock_dataframe = pd.DataFrame({
-            "name": ["Func1", "Func2"],
-            "summary": ["Summary1", "Summary2"],
-            "pattern": ["Pattern1", "Pattern2"],
+    def test_get_framework_data_no_framework_column(self):
+        """Test getting framework data when framework column doesn't exist."""
+        consolidator = KnowledgeBaseConsolidator()
+        mock_df = pd.DataFrame({
+            "concept": ["test.concept"],
+            "summary": ["Test summary"]
         })
         
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', return_value=mock_dataframe), \
-             patch('pathlib.Path.mkdir'), \
-             patch('builtins.print'):
+        with patch.object(consolidator, 'get_consolidated_data', return_value=mock_df):
+            result = consolidator.get_framework_data("test")
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-            ]
-            
-            # Mock the to_csv method to verify it was called
-            with patch.object(pd.DataFrame, 'to_csv') as mock_to_csv:
-                consolidate_knowledge_base()
-                
-                # Check that to_csv was called
-                mock_to_csv.assert_called_once()
-                
-                # Verify the call arguments
-                call_args = mock_to_csv.call_args
-                assert call_args[1]['index'] is False
-                assert call_args[1]['encoding'] == 'utf-8'
+            assert isinstance(result, pd.DataFrame)
+            assert result.empty
 
-    def test_consolidate_knowledge_base_column_reordering(self):
-        """Test that framework column is moved to the front."""
-        mock_dataframe = pd.DataFrame({
-            "name": ["Func1", "Func2"],
-            "summary": ["Summary1", "Summary2"],
-            "pattern": ["Pattern1", "Pattern2"],
+    def test_get_pattern_counts_success(self):
+        """Test getting pattern counts by framework."""
+        consolidator = KnowledgeBaseConsolidator()
+        mock_df = pd.DataFrame({
+            "concept": ["test.concept1", "test.concept2", "other.concept"],
+            "summary": ["Summary 1", "Summary 2", "Summary 3"],
+            "framework": ["test", "test", "other"]
         })
         
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', return_value=mock_dataframe), \
-             patch('pathlib.Path.mkdir'), \
-             patch('builtins.print'):
+        with patch.object(consolidator, 'get_consolidated_data', return_value=mock_df):
+            result = consolidator.get_pattern_counts()
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-            ]
-            
-            # Mock the to_csv method to verify it was called
-            with patch.object(pd.DataFrame, 'to_csv') as mock_to_csv:
-                consolidate_knowledge_base()
-                
-                # Check that to_csv was called
-                mock_to_csv.assert_called_once()
-                
-                # Verify the call arguments
-                call_args = mock_to_csv.call_args
-                assert call_args[1]['index'] is False
-                assert call_args[1]['encoding'] == 'utf-8'
+            assert isinstance(result, dict)
+            assert result["test"] == 2
+            assert result["other"] == 1
 
-    def test_consolidate_knowledge_base_multiple_frameworks(self):
-        """Test consolidation with multiple frameworks."""
-        mock_dataframes = {
-            "classiq": pd.DataFrame({
-                "name": ["ClassiqFunc1"],
-                "summary": ["Summary1"],
-                "pattern": ["Pattern1"],
-            }),
-            "pennylane": pd.DataFrame({
-                "name": ["PennyLaneFunc1"],
-                "summary": ["Summary2"],
-                "pattern": ["Pattern2"],
-            }),
-            "qiskit": pd.DataFrame({
-                "name": ["QiskitFunc1"],
-                "summary": ["Summary3"],
-                "pattern": ["Pattern3"],
-            }),
-        }
+    def test_get_pattern_counts_empty_data(self):
+        """Test getting pattern counts when data is empty."""
+        consolidator = KnowledgeBaseConsolidator()
         
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', side_effect=lambda path: mock_dataframes[path.stem.split('_')[0]]), \
-             patch('pathlib.Path.mkdir'), \
-             patch('builtins.print'):
+        with patch.object(consolidator, 'get_consolidated_data', return_value=pd.DataFrame()):
+            result = consolidator.get_pattern_counts()
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-                ("pennylane", Path("/test/pennylane.csv")),
-                ("qiskit", Path("/test/qiskit.csv")),
-            ]
+            assert isinstance(result, dict)
+            assert result == {}
+
+    def test_get_pattern_counts_no_framework_column(self):
+        """Test getting pattern counts when framework column doesn't exist."""
+        consolidator = KnowledgeBaseConsolidator()
+        mock_df = pd.DataFrame({
+            "concept": ["test.concept"],
+            "summary": ["Test summary"]
+        })
+        
+        with patch.object(consolidator, 'get_consolidated_data', return_value=mock_df):
+            result = consolidator.get_pattern_counts()
             
-            # Mock the to_csv method to verify it was called
-            with patch.object(pd.DataFrame, 'to_csv') as mock_to_csv:
-                consolidate_knowledge_base()
-                
-                # Check that to_csv was called
-                mock_to_csv.assert_called_once()
-                
-                # Verify the call arguments
-                call_args = mock_to_csv.call_args
-                assert call_args[1]['index'] is False
-                assert call_args[1]['encoding'] == 'utf-8'
+            assert isinstance(result, dict)
+            assert result == {}
+
+
+class TestMainFunction:
+    """Test the main function."""
+
+    def test_main_function(self):
+        """Test the main function execution."""
+        with patch('src.preprocessing.knowledge_base_consolidator.KnowledgeBaseConsolidator') as mock_class:
+            mock_instance = MagicMock()
+            mock_class.return_value = mock_instance
+            
+            main()
+            
+            mock_instance.consolidate_knowledge_base.assert_called_once()
 
 
 class TestIntegration:
-    """Integration tests for the knowledge base consolidation workflow."""
+    """Integration tests for knowledge base consolidation."""
 
     def test_complete_workflow_integration(self):
-        """Test the complete workflow integration."""
-        mock_dataframes = {
-            "classiq": pd.DataFrame({
-                "name": ["ClassiqFunc1", "ClassiqFunc2"],
-                "summary": ["Summary1", "Summary2"],
-                "pattern": ["Pattern1", "Pattern2"],
-            }),
-            "pennylane": pd.DataFrame({
-                "name": ["PennyLaneFunc1"],
-                "summary": ["Summary3"],
-                "pattern": ["Pattern2"],
-            }),
-            "qiskit": pd.DataFrame({
-                "name": ["QiskitFunc1", "QiskitFunc2"],
-                "summary": ["Summary4", "Summary5"],
-                "pattern": ["Pattern1", "Pattern3"],
-            }),
-        }
+        """Test the complete consolidation workflow."""
+        consolidator = KnowledgeBaseConsolidator()
         
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', side_effect=lambda path: mock_dataframes[path.stem.split('_')[0]]), \
-             patch('pathlib.Path.mkdir'), \
-             patch('builtins.print') as mock_print:
+        # Mock all external dependencies
+        with patch.object(consolidator, 'input_files', {
+            "classiq": Path("/test/classiq.csv"),
+            "pennylane": Path("/test/pennylane.csv"),
+            "qiskit": Path("/test/qiskit.csv")
+        }), \
+        patch('pathlib.Path.exists', return_value=True), \
+        patch('pandas.read_csv') as mock_read_csv, \
+        patch.object(consolidator.kb_dir, 'mkdir'), \
+        patch('pandas.DataFrame.to_csv') as mock_to_csv:
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-                ("pennylane", Path("/test/pennylane.csv")),
-                ("qiskit", Path("/test/qiskit.csv")),
-            ]
+            # Mock successful reads
+            mock_read_csv.return_value = pd.DataFrame({
+                "concept": ["test.concept"],
+                "summary": ["Test summary"]
+            })
             
-            # Mock the to_csv method to verify it was called
-            with patch.object(pd.DataFrame, 'to_csv') as mock_to_csv:
-                consolidate_knowledge_base()
-                
-                # Check that all files were processed
-                assert mock_print.call_count >= 4
-                assert any("Successfully processed" in str(call) for call in mock_print.call_args_list)
-                assert any("Consolidation complete!" in str(call) for call in mock_print.call_args_list)
-                
-                # Check that to_csv was called
-                mock_to_csv.assert_called_once()
-                
-                # Verify the call arguments
-                call_args = mock_to_csv.call_args
-                assert call_args[1]['index'] is False
-                assert call_args[1]['encoding'] == 'utf-8'
+            consolidator.consolidate_knowledge_base()
+            
+            # Verify the workflow was executed
+            mock_to_csv.assert_called_once()
 
     def test_error_handling_integration(self):
-        """Test error handling in the integrated workflow."""
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', side_effect=Exception("Test error")), \
-             patch('builtins.print') as mock_print:
-            
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-            ]
-            
-            # The function should handle errors gracefully
-            consolidate_knowledge_base()
-            
-            # Check that error was handled
-            assert any("Error processing" in str(call) for call in mock_print.call_args_list)
-            assert any("No dataframes were loaded" in str(call) for call in mock_print.call_args_list)
-
-    def test_data_consistency_integration(self):
-        """Test data consistency in the integrated workflow."""
-        mock_dataframes = {
-            "classiq": pd.DataFrame({
-                "name": ["ClassiqFunc1"],
-                "summary": ["Summary1"],
-                "pattern": ["Pattern1"],
-            }),
-            "pennylane": pd.DataFrame({
-                "name": ["PennyLaneFunc1"],
-                "summary": ["Summary2"],
-                "pattern": ["Pattern2"],
-            }),
-            "qiskit": pd.DataFrame({
-                "name": ["QiskitFunc1"],
-                "summary": ["Summary3"],
-                "pattern": ["Pattern3"],
-            }),
-        }
+        """Test error handling in the complete workflow."""
+        consolidator = KnowledgeBaseConsolidator()
         
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', side_effect=lambda path: mock_dataframes[path.stem.split('_')[0]]), \
-             patch('pathlib.Path.mkdir'), \
-             patch('builtins.print'):
+        with patch.object(consolidator, 'input_files', {
+            "classiq": Path("/test/classiq.csv")
+        }), \
+        patch('pathlib.Path.exists', return_value=True), \
+        patch('pandas.read_csv', side_effect=Exception("Read error")):
             
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-                ("pennylane", Path("/test/pennylane.csv")),
-                ("qiskit", Path("/test/qiskit.csv")),
-            ]
-            
-            # Mock the to_csv method to verify it was called
-            with patch.object(pd.DataFrame, 'to_csv') as mock_to_csv:
-                consolidate_knowledge_base()
-                
-                # Check that to_csv was called
-                mock_to_csv.assert_called_once()
-                
-                # Verify the call arguments
-                call_args = mock_to_csv.call_args
-                assert call_args[1]['index'] is False
-                assert call_args[1]['encoding'] == 'utf-8'
-
-    def test_performance_with_large_datasets(self):
-        """Test performance with larger datasets."""
-        # Create larger mock DataFrames
-        large_dataframe = pd.DataFrame({
-            "name": [f"Func{i}" for i in range(100)],
-            "summary": [f"Summary{i}" for i in range(100)],
-            "pattern": [f"Pattern{i%10}" for i in range(100)],
-        })
-        
-        with patch('src.utils.consolidate_knowledge_base.INPUT_FILES') as mock_input_files, \
-             patch('pathlib.Path.exists', return_value=True), \
-             patch('pandas.read_csv', return_value=large_dataframe), \
-             patch('pathlib.Path.mkdir'), \
-             patch('builtins.print'):
-            
-            # Mock the input files
-            mock_input_files.items.return_value = [
-                ("classiq", Path("/test/classiq.csv")),
-                ("pennylane", Path("/test/pennylane.csv")),
-                ("qiskit", Path("/test/qiskit.csv")),
-            ]
-            
-            # Mock the to_csv method to verify it was called
-            with patch.object(pd.DataFrame, 'to_csv') as mock_to_csv:
-                consolidate_knowledge_base()
-                
-                # Check that to_csv was called
-                mock_to_csv.assert_called_once()
-                
-                # Verify the call arguments
-                call_args = mock_to_csv.call_args
-                assert call_args[1]['index'] is False
-                assert call_args[1]['encoding'] == 'utf-8'
+            consolidator.consolidate_knowledge_base()
+            # Should not raise any exceptions

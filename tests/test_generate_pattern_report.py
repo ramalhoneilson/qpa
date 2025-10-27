@@ -1,5 +1,5 @@
 """
-Test suite for src/utils/generate_pattern_report.py
+Test suite for src/reporting/pattern_report.py
 """
 
 import json
@@ -8,279 +8,220 @@ from unittest.mock import MagicMock, mock_open, patch
 
 import pytest
 
-from src.utils.generate_pattern_report import (
-    INPUT_JSON_PATH,
-    OUTPUT_MD_PATH,
-    generate_markdown_for_pattern,
+from src.reporting.pattern_report import (
+    PatternReportGenerator,
     main,
 )
 
 
-class TestGenerateMarkdownForPattern:
-    """Test the generate_markdown_for_pattern function."""
+class TestPatternReportGenerator:
+    """Test the PatternReportGenerator class."""
 
-    def test_generate_markdown_complete_pattern(self):
-        """Test generating markdown for a complete pattern."""
+    def setup_method(self):
+        """Set up test data."""
+        self.generator = PatternReportGenerator()
+
+    def test_init(self):
+        """Test PatternReportGenerator initialization."""
+        assert self.generator.data_dir is not None
+        assert self.generator.report_dir is not None
+        assert self.generator.input_file is not None
+        assert self.generator.output_file is not None
+
+    def test_generate_report_success(self):
+        """Test successful report generation."""
+        mock_patterns = [
+            {
+                "name": "Test Pattern 1",
+                "alias": "TP1",
+                "intent": "Test intent 1",
+                "context": "Test context 1",
+                "solution": "Test solution 1",
+                "consequences": "Test consequences 1",
+                "related_patterns": "Related pattern 1",
+                "implementation_notes": "Implementation notes 1",
+                "examples": "Example 1"
+            },
+            {
+                "name": "Test Pattern 2",
+                "alias": "TP2",
+                "intent": "Test intent 2",
+                "context": "Test context 2",
+                "solution": "Test solution 2"
+            }
+        ]
+        
+        with patch('builtins.open', mock_open()) as mock_file, \
+        patch.object(self.generator.input_file, 'exists', return_value=True), \
+        patch.object(self.generator.report_dir, 'mkdir'), \
+        patch('json.load', return_value=mock_patterns):
+            
+            self.generator.generate_report()
+            
+            # Verify file was opened for writing
+            mock_file.assert_called_once()
+
+    def test_generate_report_file_not_found(self):
+        """Test report generation when input file doesn't exist."""
+        with patch.object(self.generator.input_file, 'exists', return_value=False):
+            self.generator.generate_report()
+            # Should not raise any exceptions
+
+    def test_generate_report_json_error(self):
+        """Test report generation when JSON loading fails."""
+        with patch.object(self.generator.input_file, 'exists', return_value=True), \
+        patch('builtins.open', side_effect=json.JSONDecodeError("Invalid JSON", "doc", 0)):
+            
+            self.generator.generate_report()
+            # Should not raise any exceptions
+
+    def test_generate_header(self):
+        """Test header generation."""
+        result = self.generator._generate_header(5)
+        
+        assert isinstance(result, list)
+        assert len(result) > 0
+        assert "# Quantum Patterns Report" in result[0]
+        assert "**Total Patterns**: 5" in result
+
+    def test_generate_pattern_details(self):
+        """Test pattern details generation."""
+        mock_patterns = [
+            {
+                "name": "Test Pattern",
+                "alias": "TP",
+                "intent": "Test intent",
+                "context": "Test context",
+                "solution": "Test solution"
+            }
+        ]
+        
+        result = self.generator._generate_pattern_details(mock_patterns)
+        
+        assert isinstance(result, list)
+        assert len(result) > 0
+        assert "## Test Pattern" in result
+
+    def test_generate_pattern_section_complete(self):
+        """Test pattern section generation with complete data."""
         pattern = {
             "name": "Test Pattern",
-            "alias": "Test Alias",
+            "alias": "TP",
             "intent": "Test intent",
             "context": "Test context",
-            "forces": "Test forces",
             "solution": "Test solution",
-            "result": "Test result",
+            "consequences": "Test consequences",
+            "related_patterns": "Related pattern",
+            "implementation_notes": "Implementation notes",
+            "examples": "Example"
         }
-
-        result = generate_markdown_for_pattern(pattern)
-
+        
+        result = self.generator._generate_pattern_section(pattern)
+        
+        assert isinstance(result, list)
         assert "## Test Pattern" in result
-        assert "***Also known as:** Test Alias*" in result
+        assert "**Alias**: TP" in result
         assert "### Intent" in result
-        assert "Test intent" in result
         assert "### Context" in result
-        assert "Test context" in result
-        assert "### Problem & Forces" in result
-        assert "Test forces" in result
         assert "### Solution" in result
-        assert "Test solution" in result
-        assert "### Resulting Context" in result
-        assert "Test result" in result
+        assert "### Consequences" in result
+        assert "### Related Patterns" in result
+        assert "### Implementation Notes" in result
+        assert "### Examples" in result
 
-    def test_generate_markdown_minimal_pattern(self):
-        """Test generating markdown for a minimal pattern."""
-        pattern = {"name": "Minimal Pattern"}
-
-        result = generate_markdown_for_pattern(pattern)
-
-        assert "## Minimal Pattern" in result
-        assert "***Also known as:**" not in result
+    def test_generate_pattern_section_minimal(self):
+        """Test pattern section generation with minimal data."""
+        pattern = {
+            "name": "Test Pattern"
+        }
+        
+        result = self.generator._generate_pattern_section(pattern)
+        
+        assert isinstance(result, list)
+        assert "## Test Pattern" in result
+        assert "**Alias**:" not in result
         assert "### Intent" not in result
 
-    def test_generate_markdown_with_placeholder_alias(self):
-        """Test generating markdown with placeholder alias."""
-        pattern = {"name": "Test Pattern", "alias": "—"}  # Placeholder alias
-
-        result = generate_markdown_for_pattern(pattern)
-
-        assert "## Test Pattern" in result
-        assert "***Also known as:**" not in result
-
-    def test_generate_markdown_with_empty_alias(self):
-        """Test generating markdown with empty alias."""
-        pattern = {"name": "Test Pattern", "alias": ""}
-
-        result = generate_markdown_for_pattern(pattern)
-
-        assert "## Test Pattern" in result
-        assert "***Also known as:**" not in result
-
-    def test_generate_markdown_with_whitespace_alias(self):
-        """Test generating markdown with whitespace-only alias."""
-        pattern = {"name": "Test Pattern", "alias": "   "}
-
-        result = generate_markdown_for_pattern(pattern)
-
-        assert "## Test Pattern" in result
-        # The function doesn't strip whitespace, so it will include the alias
-        assert "***Also known as:**" in result
-
-    def test_generate_markdown_with_missing_name(self):
-        """Test generating markdown with missing name."""
-        pattern = {"intent": "Test intent"}
-
-        result = generate_markdown_for_pattern(pattern)
-
-        assert "## Unnamed Pattern" in result
-
-    def test_generate_markdown_with_whitespace_content(self):
-        """Test generating markdown with whitespace content."""
+    def test_generate_pattern_section_with_alias_placeholder(self):
+        """Test pattern section generation with placeholder alias."""
         pattern = {
             "name": "Test Pattern",
-            "intent": "   Test intent   ",
-            "context": "Test context\n\n",
+            "alias": "—"
         }
+        
+        result = self.generator._generate_pattern_section(pattern)
+        
+        assert isinstance(result, list)
+        assert "## Test Pattern" in result
+        assert "**Alias**:" not in result
 
-        result = generate_markdown_for_pattern(pattern)
-
-        assert "### Intent" in result
-        assert "Test intent" in result
-        assert "### Context" in result
-        assert "Test context" in result
-
-    def test_generate_markdown_with_empty_sections(self):
-        """Test generating markdown with empty sections."""
+    def test_generate_pattern_section_empty_fields(self):
+        """Test pattern section generation with empty fields."""
         pattern = {
             "name": "Test Pattern",
+            "alias": "",
             "intent": "",
-            "context": None,
-            "forces": "Test forces",
+            "context": "",
+            "solution": ""
         }
-
-        result = generate_markdown_for_pattern(pattern)
-
+        
+        result = self.generator._generate_pattern_section(pattern)
+        
+        assert isinstance(result, list)
         assert "## Test Pattern" in result
+        assert "**Alias**:" not in result
         assert "### Intent" not in result
         assert "### Context" not in result
-        assert "### Problem & Forces" in result
-        assert "Test forces" in result
+        assert "### Solution" not in result
 
 
 class TestMainFunction:
     """Test the main function."""
 
-    def test_main_successful_execution(self):
-        """Test successful main execution."""
-        mock_patterns = [
-            {"name": "Pattern 1", "intent": "Intent 1", "solution": "Solution 1"},
-            {"name": "Pattern 2", "intent": "Intent 2", "solution": "Solution 2"},
-        ]
-
-        with patch("pathlib.Path.exists", return_value=True):
-            with patch("builtins.open", mock_open(read_data=json.dumps(mock_patterns))):
-                with patch("builtins.print"):
-                    main()
-
-    def test_main_file_not_found(self):
-        """Test main function when input file doesn't exist."""
-        with patch("pathlib.Path.exists", return_value=False):
-            with patch("builtins.print") as mock_print:
-                main()
-
-                assert any(
-                    "Input file not found" in str(call)
-                    for call in mock_print.call_args_list
-                )
-                assert any(
-                    "Please run 'just download_pattern_list' first" in str(call)
-                    for call in mock_print.call_args_list
-                )
-
-    def test_main_json_decode_error(self):
-        """Test main function with invalid JSON."""
-        with patch("pathlib.Path.exists", return_value=True):
-            with patch("builtins.open", mock_open(read_data="invalid json")):
-                with patch("builtins.print") as mock_print:
-                    main()
-
-                    assert any(
-                        "Could not parse JSON file" in str(call)
-                        for call in mock_print.call_args_list
-                    )
-
-    def test_main_write_error(self):
-        """Test main function when writing fails."""
-        mock_patterns = [{"name": "Test Pattern", "intent": "Test intent"}]
-
-        with patch("pathlib.Path.exists", return_value=True):
-            with patch("builtins.open", mock_open(read_data=json.dumps(mock_patterns))):
-                with patch(
-                    "builtins.open",
-                    side_effect=[
-                        mock_open(read_data=json.dumps(mock_patterns)).return_value,
-                        OSError("Write error"),
-                    ],
-                ):
-                    with patch("builtins.print") as mock_print:
-                        main()
-
-                        assert any(
-                            "Could not write to file" in str(call)
-                            for call in mock_print.call_args_list
-                        )
-
-    def test_main_with_single_pattern(self):
-        """Test main function with single pattern (no horizontal rule)."""
-        mock_patterns = [{"name": "Single Pattern", "intent": "Single intent"}]
-
-        with patch("pathlib.Path.exists", return_value=True):
-            with patch("builtins.open", mock_open(read_data=json.dumps(mock_patterns))):
-                with patch("builtins.print"):
-                    main()
-
-    def test_main_with_multiple_patterns(self):
-        """Test main function with multiple patterns (horizontal rules)."""
-        mock_patterns = [
-            {"name": "Pattern 1", "intent": "Intent 1"},
-            {"name": "Pattern 2", "intent": "Intent 2"},
-            {"name": "Pattern 3", "intent": "Intent 3"},
-        ]
-
-        with patch("pathlib.Path.exists", return_value=True):
-            with patch("builtins.open", mock_open(read_data=json.dumps(mock_patterns))):
-                with patch("builtins.print"):
-                    main()
-
-
-class TestConstants:
-    """Test module constants."""
-
-    def test_input_json_path(self):
-        """Test INPUT_JSON_PATH constant."""
-        assert INPUT_JSON_PATH.name == "quantum_patterns.json"
-
-    def test_output_md_path(self):
-        """Test OUTPUT_MD_PATH constant."""
-        assert OUTPUT_MD_PATH.name == "quantum_patterns_report.md"
-
-    def test_paths_are_path_objects(self):
-        """Test that paths are Path objects."""
-        assert isinstance(INPUT_JSON_PATH, Path)
-        assert isinstance(OUTPUT_MD_PATH, Path)
+    def test_main_function(self):
+        """Test the main function execution."""
+        with patch('src.reporting.pattern_report.PatternReportGenerator') as mock_class:
+            mock_instance = MagicMock()
+            mock_class.return_value = mock_instance
+            
+            main()
+            
+            mock_instance.generate_report.assert_called_once()
 
 
 class TestIntegration:
-    """Integration tests for the pattern report generator."""
+    """Integration tests for pattern report generation."""
 
-    def test_full_workflow_simulation(self):
-        """Test the full workflow with realistic data."""
+    def test_complete_workflow_integration(self):
+        """Test the complete pattern report generation workflow."""
+        generator = PatternReportGenerator()
+        
         mock_patterns = [
             {
-                "name": "Quantum Amplitude Amplification",
-                "alias": "QAA",
-                "intent": "Amplify the amplitude of a target state in a quantum superposition",
-                "context": "You have a quantum algorithm that needs to find a specific state",
-                "forces": "The target state has low amplitude, making it hard to measure",
-                "solution": "Apply iterative rotations to amplify the target state",
-                "result": "The target state becomes measurable with high probability",
-            },
-            {
-                "name": "Quantum Error Correction",
-                "intent": "Protect quantum information from decoherence and errors",
-                "context": "Quantum systems are prone to errors from environmental noise",
-                "forces": "Quantum information is fragile and cannot be copied",
-                "solution": "Use quantum error correcting codes to detect and correct errors",
-                "result": "Quantum information becomes more robust against errors",
-            },
+                "name": "Test Pattern",
+                "alias": "TP",
+                "intent": "Test intent",
+                "context": "Test context",
+                "solution": "Test solution"
+            }
         ]
+        
+        with patch.object(generator.input_file, 'exists', return_value=True), \
+        patch.object(generator.report_dir, 'mkdir'), \
+        patch('builtins.open', mock_open()) as mock_file, \
+        patch('json.load', return_value=mock_patterns):
+            
+            generator.generate_report()
+            
+            # Verify the workflow was executed
+            mock_file.assert_called_once()
 
-        with patch("pathlib.Path.exists", return_value=True):
-            with patch("builtins.open", mock_open(read_data=json.dumps(mock_patterns))):
-                with patch("builtins.print"):
-                    main()
-
-    def test_pattern_with_all_fields(self):
-        """Test pattern with all possible fields."""
-        pattern = {
-            "name": "Complete Pattern",
-            "alias": "CP",
-            "intent": "Test intent",
-            "context": "Test context",
-            "forces": "Test forces",
-            "solution": "Test solution",
-            "result": "Test result",
-            "extra_field": "Should be ignored",
-        }
-
-        result = generate_markdown_for_pattern(pattern)
-
-        # Should contain all expected sections
-        assert "## Complete Pattern" in result
-        assert "***Also known as:** CP*" in result
-        assert "### Intent" in result
-        assert "### Context" in result
-        assert "### Problem & Forces" in result
-        assert "### Solution" in result
-        assert "### Resulting Context" in result
-
-        # Should not contain extra fields
-        assert "extra_field" not in result
+    def test_error_handling_integration(self):
+        """Test error handling in the complete workflow."""
+        generator = PatternReportGenerator()
+        
+        with patch.object(generator.input_file, 'exists', return_value=True), \
+        patch('builtins.open', side_effect=IOError("File error")):
+            
+            generator.generate_report()
+            # Should not raise any exceptions
