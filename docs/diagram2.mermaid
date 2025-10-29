@@ -1,0 +1,36 @@
+---
+title: 'Figure 2: Project and Concept Processing Stage (Compact Version)'
+---
+%%{init: {'flowchart': {'nodeSpacing': 15, 'rankSpacing': 40}}}%%
+%% nodeSpacing controls horizontal space between nodes
+%% rankSpacing controls vertical space between ranks
+
+graph TD
+%% Input Data Artifacts from Previous Stage
+    B1[<strong>Project List</strong><br/><i>Quantum computing repositories</i>]
+    A1[<strong>Pattern Definitions</strong><br/><i>59 patterns</i>]
+
+%% Processing Steps
+    C[<strong>3. Extract Notebooks</strong><br/><i>notebooks/ directory</i>]
+    D[<strong>4. Convert Notebooks</strong><br/><i>converted_notebooks/ folder</i>]
+    E[<strong>5. Extract Concepts</strong><br/><i>*_quantum_concepts.csv</i>]
+    F[<strong>6. Manual Classification</strong><br/><i>enriched_*.csv files</i>]
+
+%% Intermediate & Final Data Artifacts of this stage
+    D1[<strong>Python Files</strong><br/><i>Converted .py files</i>]
+    F1[<strong>Classified Concepts</strong><br/><i>Concepts with patterns</i>]
+
+%% Connections
+    B1 --> C --> D --> D1
+    A1 --> F --> F1
+    B1 --> E --> F
+
+
+%% Styling with larger fonts
+%% Font sizes have been increased for better readability within a column.
+    classDef process fill:white,color:black,stroke:black,stroke-width:2px,font-size:20px
+    classDef data fill:white,color:black,stroke:black,stroke-width:1px,stroke-dasharray: 3 3,font-size:20px
+
+%% Apply styles
+    class B1,A1,D1,F1 data
+    class C,D,E,F process

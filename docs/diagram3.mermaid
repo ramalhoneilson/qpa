@@ -1,0 +1,33 @@
+---
+title: 'Figure 3: Analysis and Reporting Stage'
+---
+graph TD
+%% Input Data Artifacts from Previous Stages
+    D1[<strong>Python Files</strong><br/><i>Converted .py files</i>]
+    F1[<strong>Classified Concepts</strong><br/><i>Concepts mapped to patterns</i>]
+    A1[<strong>Pattern Definitions</strong><br/><i>59 quantum patterns</i>]
+
+%% Analysis and Reporting Process
+    G[<strong>7. Run Analysis</strong><br/><i>quantum_concept_matches_with_patterns.csv</i>]
+    H[<strong>8. Generate Report</strong><br/><i>Multiple output formats</i>]
+
+%% Final Output Artifacts
+    G1[<strong>Pattern Matches</strong><br/><i>Concepts matched to patterns</i>]
+    H1[<strong>Markdown Report</strong><br/><i>docs/final_pattern_report.md</i>]
+    H2[<strong>CSV Tables</strong><br/><i>data/report/ directory</i>]
+    H3[<strong>Experimental Data</strong><br/><i>docs/experimental_data.md</i>]
+
+%% Connections
+    D1 --> G
+    F1 --> G
+    A1 --> G
+    G --> G1 --> H
+    H --> H1 & H2 & H3
+
+%% Styling
+    classDef process fill:white,color:black,stroke:black,stroke-width:2px,font-size:14px
+    classDef data fill:white,color:black,stroke:black,stroke-width:1px,stroke-dasharray: 3 3,font-size:12px
+
+%% Apply styles
+    class D1,F1,A1,G1,H1,H2,H3 data
+    class G,H process

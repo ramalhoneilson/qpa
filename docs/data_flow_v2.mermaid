@@ -1,0 +1,53 @@
+graph TD
+%% External Sources
+    EXT1[<strong>PlanQK Pattern Atlas</strong><br/><i>External API</i>]
+    EXT2[<strong>GitHub API</strong><br/><i>External API</i>]
+
+%% Main Process Flow
+    subgraph "Data Acquisition"
+        A[<strong>1. Download Patterns</strong><br/><i>quantum_patterns.json</i>]
+        B[<strong>2. Discover Projects</strong><br/><i>filtered_repo_list.txt</i>]
+    end
+
+%% Intermediate Data
+    A1[<strong>Pattern Definitions</strong><br/><i>59 quantum patterns</i>]
+    B1[<strong>Project List</strong><br/><i>Quantum computing repositories</i>]
+
+%% Processing Stages
+    subgraph "Project and Concept Processing"
+        C[<strong>3. Extract Notebooks</strong><br/><i>notebooks/ directory</i>]
+        D[<strong>4. Convert Notebooks</strong><br/><i>converted_notebooks/ directory</i>]
+        E[<strong>5. Extract Concepts</strong><br/><i>*\_quantum\_concepts.csv</i>]
+        F[<strong>6. Manual Classification</strong><br/><i>enriched_*.csv files</i>]
+    end
+
+%% Analysis and Reporting
+    subgraph "Analysis and Reporting"
+        G[<strong>7. Run Analysis</strong><br/><i>quantum_concept_matches_with_patterns.csv</i>]
+        H[<strong>8. Generate Report</strong><br/><i>Multiple output formats</i>]
+    end
+
+%% Final Outputs
+    H1[<strong>Markdown Report</strong><br/><i>docs/final_pattern_report.md</i>]
+    H2[<strong>CSV Tables</strong><br/><i>data/report/ directory</i>]
+    H3[<strong>Experimental Data</strong><br/><i>docs/experimental_data.md</i>]
+
+%% Define Connections
+    EXT1 --> A --> A1 --> F
+    EXT2 --> B --> B1
+    B1 --> C --> D --> G
+    B1 --> E --> F
+    F --> G --> H
+    H --> H1
+    H --> H2
+    H --> H3
+
+%% Styling
+    classDef external fill:white,color:black,stroke:black,stroke-width:2px,font-size:14px
+    classDef process fill:white,color:black,stroke:black,stroke-width:2px,font-size:14px
+    classDef data fill:white,color:black,stroke:black,stroke-width:1px,stroke-dasharray: 3 3,font-size:12px
+
+%% Apply styles
+    class EXT1,EXT2 external
+    class A,B,C,D,E,F,G,H process
+    class A1,B1,H1,H2,H3 data

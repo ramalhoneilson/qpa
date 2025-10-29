@@ -1,0 +1,29 @@
+---
+title: 'Figure 1: Data Acquisition Stage'
+---
+graph TD
+%% External Sources
+    EXT1[<strong>PlanQK Pattern Atlas</strong><br/><i>External API</i>]
+    EXT2[<strong>GitHub API</strong><br/><i>External API</i>]
+
+%% Data Acquisition Process
+    A[<strong>1. Download Patterns</strong><br/><i>quantum_patterns.json</i>]
+    B[<strong>2. Discover Projects</strong><br/><i>filtered_repo_list.txt</i>]
+
+%% Output Data Artifacts
+    A1[<strong>Pattern Definitions</strong><br/><i>59 quantum patterns</i>]
+    B1[<strong>Project List</strong><br/><i>Quantum computing repositories</i>]
+
+%% Connections
+    EXT1 --> A --> A1
+    EXT2 --> B --> B1
+
+%% Styling
+    classDef external fill:white,color:black,stroke:black,stroke-width:2px,font-size:14px
+    classDef process fill:white,color:black,stroke:black,stroke-width:2px,font-size:14px
+    classDef data fill:white,color:black,stroke:black,stroke-width:1px,stroke-dasharray: 3 3,font-size:12px
+
+%% Apply styles
+    class EXT1,EXT2 external
+    class A,B process
+    class A1,B1 data
