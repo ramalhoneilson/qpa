@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Test runner script for the quantum_patterns project.
+Test runner script for the QPA (Quantum Patterns Analyser) project.
 
 This script provides a convenient way to run tests with different configurations
 and options.
@@ -62,7 +62,7 @@ def run_tests(
 def main():
     """Main function to parse arguments and run tests."""
     parser = argparse.ArgumentParser(
-        description="Run tests for quantum_patterns project"
+        description="Run tests for QPA (Quantum Patterns Analyser) project"
     )
     parser.add_argument(
         "test_path", nargs="?", help="Specific test file or directory to run"

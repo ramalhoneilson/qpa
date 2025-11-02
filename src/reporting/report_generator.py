@@ -1,5 +1,5 @@
 """
-Unified report generation system for quantum patterns analysis.
+Unified report generation system for QPA: Quantum Patterns Analyser.
 
 This module provides a comprehensive reporting system that can generate
 different types of reports from the analysis data, including:

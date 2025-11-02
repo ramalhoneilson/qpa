@@ -1,7 +1,7 @@
-# Reporting module for quantum patterns analysis
+# Reporting module for QPA: Quantum Patterns Analyser
 
 """
-This module contains all reporting functionality for the quantum patterns analysis project.
+This module contains all reporting functionality for the QPA: Quantum Patterns Analyser project.
 
 The reporting module provides:
 - Unified report generation system

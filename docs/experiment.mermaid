@@ -1,33 +1,53 @@
-%%{init: {
-    'flowchart': {'useMaxWidth': true},
-    'themeVariables': {
-        'primaryColor': '#ffffff',
-        'primaryBorderColor': '#2c3e50',
-        'lineColor': '#2c3e50',
-        'textColor': '#000000',
-        'mainBkg': '#ffffff'
-    }
-}}%%
-graph TD
-    A["<b>Stage 1: Identify Framework-Specific <br/> Concepts</b><br/>(PennyLane, Qiskit, and Classiq SDK)"] -->|Extract QC concepts| B["<b>Output:</b><br/>3 CSV files"]
+%%{init: {'flowchart': {'nodeSpacing': 15, 'rankSpacing': 40, 'curve': 'basis'}, 'themeVariables': {'fontSize': '10px'}}}%%
 
-    B --> C["<b>Stage 2: Pattern Matching</b><br/>Compare against Quantum <br/>Computing Patterns Atlas"]
+graph LR
+%% External Sources
+    EXT1[<strong>PlanQK Pattern Atlas</strong>]
+    EXT2[<strong>GitHub API</strong>]
 
-    C -->|Manual classification by 3 authors| D["<b>Output:</b><br/>3 Concept lists linked to QC patterns"]
+%% Main Process Flow
+    subgraph DA["Data Acquisition"]
+        A[<strong>1. Download Patterns</strong>]
+        B[<strong>2. Discover Projects</strong>]
+    end
 
-    E["<b>Stage 3: GitHub Search</b><br/>Search for QC repositories<br/> using GitHub API"] -->|Clone repositories| F["<b>Output:</b><br/>Collection of GitHub QC projects"]
+%% Intermediate Data
+    A1[<strong>Pattern Definitions</strong>]
+    B1[<strong>Project List</strong>]
 
-    D --> G["<b>Stage 4: Pattern Matching in Repositories</b><br/>Match concepts and patterns against GitHub code"]
+%% Processing Stages
+    subgraph PCP["Project Processing"]
+        C[<strong>3. Extract Notebooks</strong>]
+        D[<strong>4. Convert Notebooks</strong>]
+        E[<strong>5. Extract Concepts</strong>]
+        F[<strong>6. Manual Classification</strong>]
+    end
 
-    F --> G
+%% Analysis and Reporting
+    subgraph AR["Analysis & Reporting"]
+        G[<strong>7. Run Analysis</strong>]
+        H[<strong>8. Generate Report</strong>]
+    end
 
-    G -->|Analysis complete| H["<b>Final Output:</b><br/>QC patterns identified across open-source frameworks"]
+%% Final Outputs
+    H1[<strong>MD Report</strong>]
+    H2[<strong>CSV Tables</strong>]
+    H3[<strong>Exp. Data</strong>]
 
-    style A fill:#ecf0f1,stroke:#2c3e50,stroke-width:2px,color:#000
-    style B fill:#ecf0f1,stroke:#2c3e50,stroke-width:2px,color:#000
-    style C fill:#ecf0f1,stroke:#2c3e50,stroke-width:2px,color:#000
-    style D fill:#ecf0f1,stroke:#2c3e50,stroke-width:2px,color:#000
-    style E fill:#ecf0f1,stroke:#2c3e50,stroke-width:2px,color:#000
-    style F fill:#ecf0f1,stroke:#2c3e50,stroke-width:2px,color:#000
-    style G fill:#ecf0f1,stroke:#2c3e50,stroke-width:2px,color:#000
-    style H fill:#ecf0f1,stroke:#2c3e50,stroke-width:2px,color:#000
+%% Define Connections
+    EXT1 --> A --> A1 --> F
+    EXT2 --> B --> B1
+    B1 --> C --> D --> G
+    B1 --> E --> F
+    F --> G --> H
+    H --> H1 & H2 & H3
+
+%% Styling
+    classDef external fill:white,color:black,stroke:black,stroke-width:1.5px,font-size:9px
+    classDef process fill:white,color:black,stroke:black,stroke-width:1.5px,font-size:9px
+    classDef data fill:white,color:black,stroke:black,stroke-width:1px,stroke-dasharray: 3 3,font-size:8px
+
+%% Apply styles
+    class EXT1,EXT2 external
+    class A,B,C,D,E,F,G,H process
+    class A1,B1,H1,H2,H3 data

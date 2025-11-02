@@ -1,5 +1,5 @@
 """
-Test configuration and shared fixtures for the quantum_patterns test suite.
+Test configuration and shared fixtures for the QPA (Quantum Patterns Analyser) test suite.
 """
 
 import shutil

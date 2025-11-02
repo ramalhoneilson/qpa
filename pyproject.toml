@@ -1,7 +1,7 @@
 [project]
-name = "quantum_patterns"
+name = "qpa"
 version = "0.1.0"
-description = "A quantum vs classical test classifier using an LLM ensemble."
+description = "Quantum Patterns Analyser: Automated framework for mining and analyzing recurring software patterns across quantum computing libraries."
 requires-python = ">=3.12"
 
 dependencies = [

@@ -141,7 +141,7 @@ upgrade:
 
 # Run the complete workflow using Prefect orchestration
 workflow:
-    @echo ">>> Starting Quantum Patterns Analysis Workflow..."
+    @echo ">>> Starting QPA: Quantum Patterns Analyser Workflow..."
     @{{VENV}}/bin/python run_workflow.py
 
 # Run workflow with Prefect UI (starts local server)
@@ -153,12 +153,12 @@ workflow-ui:
 # Run workflow and deploy to Prefect Cloud (requires account)
 workflow-deploy:
     @echo ">>> Deploying workflow to Prefect Cloud..."
-    @{{VENV}}/bin/prefect deploy src/workflows/quantum_patterns_flow.py:quantum_patterns_flow --name quantum-patterns-analysis
+    @{{VENV}}/bin/prefect deploy src/workflows/qpa_flow.py:qpa_flow --name qpa-analysis
 
 # Run individual workflow steps for debugging
 workflow-step step:
     @echo ">>> Running workflow step: {{step}}"
-    @{{VENV}}/bin/python -c "from src.workflows.quantum_patterns_flow import {{step}}; {{step}}()"
+    @{{VENV}}/bin/python -c "from src.workflows.qpa_flow import {{step}}; {{step}}()"
 
 # Convert Mermaid diagrams to PDF for LaTeX
 convert-diagrams:

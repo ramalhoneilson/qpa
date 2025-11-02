@@ -185,3 +185,4 @@ class TestStatisticsCalculator:
         assert len(calculator.found_patterns) == 0
 
 
+

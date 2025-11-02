@@ -1,5 +1,5 @@
 """
-Pattern analysis utilities for quantum patterns analysis.
+Pattern analysis utilities for QPA: Quantum Patterns Analyser.
 
 This module provides pattern analysis functionality that was previously
 scattered across different modules, now consolidated for better organization.
@@ -269,3 +269,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

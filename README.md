@@ -1,4 +1,4 @@
-# Quantum Software Analysis Project
+# QPA: Quantum Patterns Analyser
 
 This project provides an automated framework and toolchain for analyzing the source code of popular quantum computing libraries to identify recurring software patterns. It uses `just` as a command runner to orchestrate the entire pipeline, from data collection to final analysis and reporting.
 
@@ -414,7 +414,7 @@ The project follows a clear 8-step workflow organized into logical phases:
 ### File Structure
 
 ```
-quantum_patterns/
+qpa/
 ├── src/                          # Source code
 │   ├── data_acquisition/         # Steps 1-2: External data collection
 │   │   ├── download_patterns.py  # Download quantum patterns
