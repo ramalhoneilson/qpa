@@ -1,0 +1,12 @@
+graph TD
+    A["<strong>3.1 Data acquisition</strong><br/>Gather pattern definitions from the Atlas<br/>and discover quantum projects from GitHub"]
+    B["<strong>3.2 Concept extraction and classification</strong><br/>Process project code, convert notebooks,<br/>and manually map concepts to patterns"]
+    C["<strong>3.3 Analysis and reporting</strong><br/>Run automated pattern matching on the codebase<br/>and generate final reports and datasets"]
+
+    A --> B --> C
+
+%% Styling
+    classDef process fill:white,color:black,stroke:black,stroke-width:2px,font-size:14px
+
+%% Apply styles
+    class A,B,C process
