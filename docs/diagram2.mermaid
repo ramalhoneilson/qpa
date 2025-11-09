@@ -1,37 +1,31 @@
 ---
 title: 'Figure 2: Project and Concept Processing Stage (Compact Version)'
 ---
-%%{init: {'flowchart': {'nodeSpacing': 40, 'rankSpacing': 25}}}%%
+%%{init: {'flowchart': {'nodeSpacing': 14, 'rankSpacing': 0}}}%%
 
 graph TD
 %% Input Data Artifacts from Previous Stage
-    B1[<strong>Project List</strong><br/><i>Quantum computing repositories</i>]
-    A1[<strong>Pattern Definitions</strong><br/><i>59 patterns</i>]
+    B1[<strong>Project<br/>List</strong>]
+    A1[<strong>Pattern Definitions</strong><br/>]
 
 %% Processing Steps
-    C[<strong>3. Extract Concepts</strong><br/><i>*_quantum_concepts.csv</i>]
-    D[<strong>4. Manual Classification</strong><br/><i>enriched_*.csv files</i>]
-    E[<strong>5. Extract Notebooks</strong><br/><i>notebooks/ directory</i>]
-    F[<strong>6. Convert Notebooks</strong><br/><i>converted_notebooks/ folder</i>]
+    C[<strong>3. Extract <br/>Concepts</strong><br/>]
+    D[<strong>4. Manual <br/>Classification</strong><br/>]
+    E[<strong>5. Extract <br/>Notebooks</strong><br/>]
+    F[<strong>6. Convert <br/>Notebooks</strong><br/>]
 
 
 %% Intermediate & Final Data Artifacts of this stage
-    D1[<strong>Python Files</strong><br/><i>Converted .py files</i>]
-    F1[<strong>Classified Concepts</strong><br/><i>Concepts with patterns</i>]
+    D1[<strong>Python <br/>Files</strong><br/>]
+    F1[<strong>Classified <br/>Concepts</strong><br/>]
 
-%% --- CORRECTED CONNECTIONS ---
-%% Concept Processing Workflow
+%% Connections
     B1 --> C --> D
-    A1 --> D
-    D --> F1
-
-%% Notebook Processing Workflow
-    B1 --> E --> F
-    F --> D1
-%% --------------------------
+    A1 --> D --> F1
+    B1 --> E --> F --> D1
 
 
-%% Styling with larger fonts
+
     classDef process fill:white,color:black,stroke:black,stroke-width:2px,font-size:20px
     classDef data fill:white,color:black,stroke:black,stroke-width:1px,stroke-dasharray: 3 3,font-size:20px
 
