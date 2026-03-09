@@ -18,59 +18,41 @@ SORT_ORDER = "desc"
 
 
 search_queries = [
-    "topic:quantum-computing language:Python",
-    "topic:quantum-machine-learning language:Python",
-    "topic:quantum-algorithms language:Python",
-]
-
-# Important frameworks are never missed by topic searches.
-known_repos = [
-    # Qiskit repos
-    "Qiskit/qiskit",
-    "qiskit-community/qiskit-algorithms",
-    "qiskit-community/qiskit-machine-learning",
-    "qiskit-community/qiskit-nature",
-    "qiskit-community/qiskit-finance",
-    "qiskit-community/qiskit-optimization",
-    "qiskit-community/qiskit-dynamics",
-    "qiskit-community/qiskit-experiments",
-    # Cirq
-    "quantumlib/Cirq",
-    "quantumlib/ReCirq",
-    "quantumlib/Qualtran",
-    "quantumlib/OpenFermion",
-    # PennyLane
-    "PennyLaneAI/pennylane",
-    # Rigetti Ecosystem
-    "rigetti/pyquil",
-    # Other Major Frameworks & Libraries
-    "qutip/qutip",
-    "qiboteam/qibo",
-    "ProjectQ-Framework/ProjectQ",
-    "XanaduAI/strawberryfields",
-    "eclipse-qrisp/Qrisp",
-    "jcmgray/quimb",
-    "tencent-quantum-lab/tensorcircuit",
-    "Classiq/classiq-library",
-    "tensorflow/quantum",
-    "mit-han-lab/torchquantum",
-    # Amazon Braket Libraries
-    "amazon-braket/amazon-braket-sdk-python",
-    "amazon-braket/amazon-braket-examples",
-    "amazon-braket/amazon-braket-algorithm-library",
+    "topic:quantum-computing",
+    "topic:quantum-machine-learning",
+    "topic:quantum-algorithms",
+    "topic:quantum-simulation",
+    "topic:quantum-error-correction",
+    "topic:quantum-circuit",
 ]
 
 MIN_STARS = 30
 MIN_CONTRIBUTORS = 10
 MAX_INACTIVITY_MONTHS = 12
 
-EXCLUSION_KEYWORDS = ["awesome-list", "books"]
+EXCLUSION_KEYWORDS = [
+    "awesome-list",
+    "awesome",
+    "books",
+    "book",
+    "tutorial",
+    "tutorials",
+    "course",
+    "learning",
+    "learn",
+    "textbook",
+    "lecture",
+    "lectures",
+    "education",
+    "cheatsheet",
+]
 
 OUTPUT_FOLDER = config.PROJECT_ROOT / "data"
 
 
 def check_for_exclusion(repo):
-    """Checks if a repository should be excluded based on keywords."""
+    """Checks if a repository should be excluded based on keywords indicating
+    books, awesome-lists, or educational/tutorial content."""
     repo_name = repo.full_name.lower()
     description = repo.description.lower() if repo.description else ""
     topics = [topic.lower() for topic in repo.topics]
@@ -181,7 +163,7 @@ def generate_summary_file(
 
 
 def search_github_for_qc_frameworks():
-    """Searches GitHub using multiple queries and a known list, then filters."""
+    """Searches GitHub using topic-based queries and applies quality filters."""
     if not GITHUB_TOKEN:
         print("Error: GitHub PAT/TOKEN not found.", file=sys.stderr)
         return
@@ -190,19 +172,7 @@ def search_github_for_qc_frameworks():
         g = Github(GITHUB_TOKEN)
         repo_candidates = {}
 
-        print("--- Phase 1: Fetching known repositories ---")
-        for repo_name in known_repos:
-            try:
-                repo = g.get_repo(repo_name)
-                repo_candidates[repo.full_name] = repo
-                print(f"  [OK] Fetched {repo.full_name}")
-            except GithubException as e:
-                print(
-                    f"Warning: Could not fetch known repo '{repo_name}': {e.status}",
-                    file=sys.stderr,
-                )
-
-        print("\n--- Phase 2: Discovering new repositories via search ---")
+        print("--- Phase 1: Discovering repositories via GitHub search ---")
         for query in search_queries:
             print(f"Searching with query: '{query}'...")
             try:
@@ -222,7 +192,7 @@ def search_github_for_qc_frameworks():
             f"\nGathered a total of {len(repo_candidates)} unique candidate repositories."
         )
 
-        print("\n--- Phase 3: Applying quality filters ---")
+        print("\n--- Phase 2: Applying quality filters ---")
         print(
             f" - Min Stars: {MIN_STARS}, Min Contributors: {MIN_CONTRIBUTORS}, Last push <= {MAX_INACTIVITY_MONTHS} months"
         )
@@ -275,6 +245,7 @@ def search_github_for_qc_frameworks():
                     "pushed_at": repo.pushed_at.isoformat(),
                     "description": repo.description,
                     "html_url": repo.html_url,
+                    "topics": repo.topics,
                 }
             )
             print(f"{i + 1}. {repo.full_name}")

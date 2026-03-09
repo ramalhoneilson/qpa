@@ -1,12 +1,13 @@
 # justfile
 
 set shell := ["bash", "-c"]
+export PATH := env_var('PATH') + ":" + env_var('HOME') + "/.local/bin:" + env_var('HOME') + "/.cargo/bin"
 
 VENV            := ".venv"
 REPO_LIST_FILE  := "data/filtered_repo_list.txt"
 
 # It creates the venv, installs ALL dependencies, and clones the repos.
-install: discover-and-clone
+install: ensure-uv discover-and-clone
     @echo "\n>>> Setting up the project environment in '{{VENV}}'..."
     @uv venv --clear --seed {{VENV}}
 
@@ -46,6 +47,10 @@ download_pattern_list:
 run_main:
     @echo "\n>>> Running main analysis..."
     @{{VENV}}/bin/python -m src.analysis.run_analysis
+
+analyze-projects:
+    @echo "\n>>> Running project categorization analysis..."
+    @{{VENV}}/bin/python -m src.analysis.analyze_projects
 
 report:
     @echo "\n>>> Generating final report..."
@@ -309,3 +314,11 @@ _setup-linux:
 _setup-windows:
     @echo "Installing uv for Windows..."
     @powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+ensure-uv:
+    @if ! command -v uv >/dev/null 2>&1; then \
+        echo "uv not found. Installing..."; \
+        curl -LsSf https://astral.sh/uv/install.sh | sh; \
+    else \
+        echo "uv is already installed."; \
+    fi
