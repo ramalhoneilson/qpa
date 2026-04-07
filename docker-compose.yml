@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  qpa:
+    build: .
+    image: qpa-analysis:latest
+    container_name: qpa-runner
+    # This keeps the container running so you can execute commands inside it
+    # without having to rebuild or restart the container every time.
+    command: tail -f /dev/null
+    # Pass through the GitHub token from your host's .env file
+    env_file:
+      - .env
+    volumes:
+      # Mount the data directories so that outputs are saved to your host machine
+      - ./data:/app/data
+      - ./docs:/app/docs
+      - ./notebooks:/app/notebooks
+      - ./converted_notebooks:/app/converted_notebooks
+      - ./target_github_projects:/app/target_github_projects
