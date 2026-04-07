@@ -18,12 +18,12 @@ SORT_ORDER = "desc"
 
 
 search_queries = [
-    "topic:quantum-computing",
-    "topic:quantum-machine-learning",
-    "topic:quantum-algorithms",
-    "topic:quantum-simulation",
-    "topic:quantum-error-correction",
-    "topic:quantum-circuit",
+    "topic:quantum-computing language:python",
+    "topic:quantum-machine-learning language:python",
+    "topic:quantum-algorithms language:python",
+    "topic:quantum-simulation language:python",
+    "topic:quantum-error-correction language:python",
+    "topic:quantum-circuit language:python",
 ]
 
 MIN_STARS = 30

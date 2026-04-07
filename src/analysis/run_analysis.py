@@ -1,3 +1,4 @@
+import argparse
 import ast
 import csv
 import json
@@ -192,7 +193,10 @@ def extract_and_save_unique_patterns(input_files: list[Path], output_file: Path)
         print(f"Error saving unique patterns to {output_file}: {e}")
 
 
-def main():
+def main(target_dir: Path | None = None, output_file: Path | None = None):
+    scan_dir = target_dir if target_dir else NOTEBOOKS_ROOT_DIR
+    out_csv = output_file if output_file else OUTPUT_CSV_FILE
+
     OUTPUT_PATTERN_FILE = config.RESULTS_DIR / "patterns_used_in_categorization.csv"
     extract_and_save_unique_patterns(PATTERN_FILES, OUTPUT_PATTERN_FILE)
 
@@ -217,6 +221,9 @@ def main():
     )
     print("-----------------------\n")
 
+    print(f"Scanning directory: '{scan_dir}'")
+    print(f"Output file: '{out_csv}'")
+
     print(f"Loading embedding model '{config.EMBEDDING_MODEL_NAME}'...")
     model = SentenceTransformer(config.EMBEDDING_MODEL_NAME)
 
@@ -225,7 +232,9 @@ def main():
     concept_name_embeddings = model.encode(concept_short_names, convert_to_tensor=True)
     concept_summary_embeddings = model.encode(concept_summaries, convert_to_tensor=True)
 
-    with open(OUTPUT_CSV_FILE, "w", newline="", encoding="utf-8") as f:
+    out_csv.parent.mkdir(parents=True, exist_ok=True)
+
+    with open(out_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=";")
         writer.writerow(
             [
@@ -238,7 +247,7 @@ def main():
             ]
         )
 
-        script_files = list(NOTEBOOKS_ROOT_DIR.rglob("*.py"))
+        script_files = list(scan_dir.rglob("*.py"))
         total_files = len(script_files)
         print(f"Found {total_files} Python files to analyze.")
 
@@ -268,7 +277,7 @@ def main():
                         if score >= SIMILARITY_THRESHOLDS["name"]:
                             writer.writerow(
                                 [
-                                    str(file_path.relative_to(NOTEBOOKS_ROOT_DIR)),
+                                    str(file_path.relative_to(scan_dir)),
                                     concept["name"],
                                     concept["pattern"],
                                     "name",
@@ -295,7 +304,7 @@ def main():
                         )
                         writer.writerow(
                             [
-                                str(file_path.relative_to(NOTEBOOKS_ROOT_DIR)),
+                                str(file_path.relative_to(scan_dir)),
                                 concept["name"],
                                 concept["pattern"],
                                 "summary",
@@ -304,8 +313,36 @@ def main():
                             ]
                         )
 
-    print(f"Analysis complete. Results saved to '{OUTPUT_CSV_FILE}'.")
+    print(f"Analysis complete. Results saved to '{out_csv}'.")
+
+
+def _parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Run quantum concept semantic analysis on Python files."
+    )
+    parser.add_argument(
+        "--target-dir",
+        type=str,
+        default=None,
+        help=(
+            "Path to the directory of Python files to analyze. "
+            "Defaults to 'converted_notebooks/' if not specified."
+        ),
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        default=None,
+        help=(
+            "Path for the output CSV file. "
+            "Defaults to 'data/quantum_concept_matches_with_patterns.csv'."
+        ),
+    )
+    return parser.parse_args()
 
 
 if __name__ == "__main__":
-    main()
+    args = _parse_args()
+    target = Path(args.target_dir).resolve() if args.target_dir else None
+    output = Path(args.output).resolve() if args.output else None
+    main(target_dir=target, output_file=output)
