@@ -1,0 +1,79 @@
+File Name,Pattern Match,Artifact (Class/Method/Function)
+qiskit_algorithms/variational_algorithm.py,Variational Quantum Eigensolver (VQE),VariationalAlgorithm
+qiskit_algorithms/amplitude_amplifiers/amplification_problem.py,Grover,AmplificationProblem
+qiskit_algorithms/amplitude_amplifiers/amplification_problem.py,Initialization,AmplificationProblem.__init__
+qiskit_algorithms/amplitude_amplifiers/amplification_problem.py,Oracle,AmplificationProblem.oracle
+qiskit_algorithms/amplitude_amplifiers/amplification_problem.py,Amplitude Amplification,AmplificationProblem.grover_operator
+qiskit_algorithms/amplitude_amplifiers/amplitude_amplifier.py,Oracle,AmplitudeAmplifier.amplify
+qiskit_algorithms/amplitude_amplifiers/__init__.py,Grover,Grover
+qiskit_algorithms/amplitude_amplifiers/grover.py,Grover,Grover
+qiskit_algorithms/amplitude_amplifiers/grover.py,Initialization,Grover.__init__
+qiskit_algorithms/amplitude_amplifiers/grover.py,Oracle,Grover.amplify
+qiskit_algorithms/amplitude_amplifiers/grover.py,Amplitude Amplification,Grover.construct_circuit
+qiskit_algorithms/time_evolvers/pvqd/pvqd.py,Uncompute,PVQD.get_loss
+qiskit_algorithms/time_evolvers/pvqd/pvqd.py,Variational Quantum Eigensolver (VQE),PVQD.evolve
+qiskit_algorithms/amplitude_estimators/amplitude_estimator.py,Initialization,AmplitudeEstimator.estimate
+qiskit_algorithms/amplitude_estimators/amplitude_estimator.py,Oracle,AmplitudeEstimator.estimate
+qiskit_algorithms/amplitude_estimators/amplitude_estimator.py,Grover,AmplitudeEstimator.estimate
+qiskit_algorithms/amplitude_estimators/fae.py,Amplitude Amplification,FasterAmplitudeEstimation.estimate
+qiskit_algorithms/amplitude_estimators/fae.py,Initialization,FasterAmplitudeEstimation.__init__
+qiskit_algorithms/amplitude_estimators/fae.py,Angle Encoding,FasterAmplitudeEstimation.construct_circuit
+qiskit_algorithms/amplitude_estimators/fae.py,Oracle,FasterAmplitudeEstimation._cos_estimate
+qiskit_algorithms/amplitude_estimators/fae.py,Quantum Phase Estimation (QPE),FasterAmplitudeEstimation.estimate
+qiskit_algorithms/amplitude_estimators/fae.py,Grover,FasterAmplitudeEstimation.construct_circuit
+qiskit_algorithms/amplitude_estimators/mlae.py,Amplitude Amplification,MaximumLikelihoodAmplitudeEstimation.estimate
+qiskit_algorithms/amplitude_estimators/mlae.py,Initialization,MaximumLikelihoodAmplitudeEstimation.__init__
+qiskit_algorithms/amplitude_estimators/mlae.py,Oracle,MaximumLikelihoodAmplitudeEstimation.estimate
+qiskit_algorithms/amplitude_estimators/mlae.py,Quantum Phase Estimation (QPE),MaximumLikelihoodAmplitudeEstimation.estimate
+qiskit_algorithms/amplitude_estimators/mlae.py,Grover,MaximumLikelihoodAmplitudeEstimation.construct_circuits
+qiskit_algorithms/amplitude_estimators/estimation_problem.py,Initialization,EstimationProblem.__init__
+qiskit_algorithms/amplitude_estimators/estimation_problem.py,Angle Encoding,EstimationProblem.state_preparation
+qiskit_algorithms/amplitude_estimators/estimation_problem.py,Oracle,EstimationProblem.is_good_state
+qiskit_algorithms/amplitude_estimators/estimation_problem.py,Grover,EstimationProblem.grover_operator
+qiskit_algorithms/amplitude_estimators/ae.py,Amplitude Amplification,AmplitudeEstimation.estimate
+qiskit_algorithms/amplitude_estimators/ae.py,Initialization,AmplitudeEstimation.__init__
+qiskit_algorithms/amplitude_estimators/ae.py,Oracle,AmplitudeEstimation.estimate
+qiskit_algorithms/amplitude_estimators/ae.py,Quantum Phase Estimation (QPE),AmplitudeEstimation.construct_circuit
+qiskit_algorithms/amplitude_estimators/ae.py,Grover,AmplitudeEstimation.construct_circuit
+qiskit_algorithms/amplitude_estimators/iae.py,Amplitude Amplification,IterativeAmplitudeEstimation.estimate
+qiskit_algorithms/amplitude_estimators/iae.py,Initialization,IterativeAmplitudeEstimation.__init__
+qiskit_algorithms/amplitude_estimators/iae.py,Angle Encoding,IterativeAmplitudeEstimation.construct_circuit
+qiskit_algorithms/amplitude_estimators/iae.py,Oracle,IterativeAmplitudeEstimation._good_state_probability
+qiskit_algorithms/amplitude_estimators/iae.py,Quantum Phase Estimation (QPE),IterativeAmplitudeEstimation.estimate
+qiskit_algorithms/amplitude_estimators/iae.py,Grover,IterativeAmplitudeEstimation.construct_circuit
+qiskit_algorithms/eigensolvers/vqd.py,Initialization,VQD.__init__
+qiskit_algorithms/eigensolvers/vqd.py,Angle Encoding,VQD.compute_eigenvalues
+qiskit_algorithms/state_fidelities/__init__.py,Uncompute,ComputeUncompute
+qiskit_algorithms/state_fidelities/compute_uncompute.py,Uncompute,ComputeUncompute.create_fidelity_circuit
+qiskit_algorithms/optimizers/gsls.py,Angle Encoding,GSLS.optimize
+qiskit_algorithms/optimizers/qnspsa.py,Uncompute,QNSPSA._get_overlap
+qiskit_algorithms/optimizers/__init__.py,Variational Quantum Eigensolver (VQE),Optimizer
+qiskit_algorithms/optimizers/spsa.py,Variational Quantum Eigensolver (VQE),SPSA.minimize
+qiskit_algorithms/optimizers/optimizer.py,Variational Quantum Eigensolver (VQE),Optimizer.minimize
+qiskit_algorithms/optimizers/umda.py,Initialization,UMDA.__init__
+qiskit_algorithms/optimizers/umda.py,Quantum Approximate Optimization Algorithm (QAOA),UMDA.optimize
+qiskit_algorithms/optimizers/umda.py,Alternating Operator Ansatz (AOA),UMDA.optimize
+qiskit_algorithms/optimizers/umda.py,Variational Quantum Eigensolver (VQE),UMDA.minimize
+qiskit_algorithms/minimum_eigensolvers/vqe.py,Initialization,VQE.__init__
+qiskit_algorithms/minimum_eigensolvers/vqe.py,Variational Quantum Eigensolver (VQE),VQE.compute_minimum_eigenvalue
+qiskit_algorithms/minimum_eigensolvers/__init__.py,Variational Quantum Eigensolver (VQE),VQE
+qiskit_algorithms/minimum_eigensolvers/__init__.py,Quantum Approximate Optimization Algorithm (QAOA),QAOA
+qiskit_algorithms/minimum_eigensolvers/__init__.py,Alternating Operator Ansatz (AOA),QAOA
+qiskit_algorithms/minimum_eigensolvers/adapt_vqe.py,Angle Encoding,AdaptVQE.compute_minimum_eigenvalue
+qiskit_algorithms/minimum_eigensolvers/adapt_vqe.py,Variational Quantum Eigensolver (VQE),AdaptVQE.compute_minimum_eigenvalue
+qiskit_algorithms/minimum_eigensolvers/qaoa.py,Variational Quantum Eigensolver (VQE),QAOA
+qiskit_algorithms/minimum_eigensolvers/qaoa.py,Angle Encoding,QAOA._check_operator_ansatz
+qiskit_algorithms/minimum_eigensolvers/qaoa.py,Quantum Approximate Optimization Algorithm (QAOA),QAOA
+qiskit_algorithms/minimum_eigensolvers/qaoa.py,Alternating Operator Ansatz (AOA),QAOA
+qiskit_algorithms/minimum_eigensolvers/sampling_vqe.py,Initialization,SamplingVQE.__init__
+qiskit_algorithms/minimum_eigensolvers/sampling_vqe.py,Variational Quantum Eigensolver (VQE),SamplingVQE.compute_minimum_eigenvalue
+qiskit_algorithms/utils/optionals.py,Oracle,HAS_CPLEX / HAS_TWEEDLEDUM
+qiskit_algorithms/gradients/reverse/reverse_gradient.py,Variational Quantum Algorithm (VQA),ReverseEstimatorGradient._run_unique
+qiskit_algorithms/phase_estimators/phase_estimation_result.py,Quantum Phase Estimation (QPE),PhaseEstimationResult
+qiskit_algorithms/phase_estimators/ipe.py,Initialization,IterativePhaseEstimation.__init__
+qiskit_algorithms/phase_estimators/ipe.py,Quantum Phase Estimation (QPE),IterativePhaseEstimation.estimate
+qiskit_algorithms/phase_estimators/phase_estimator.py,Initialization,PhaseEstimator
+qiskit_algorithms/phase_estimators/phase_estimation.py,Initialization,PhaseEstimation.__init__
+qiskit_algorithms/phase_estimators/phase_estimation.py,Quantum Phase Estimation (QPE),PhaseEstimation.estimate
+qiskit_algorithms/phase_estimators/hamiltonian_phase_estimation.py,Initialization,HamiltonianPhaseEstimation.__init__
+qiskit_algorithms/phase_estimators/hamiltonian_phase_estimation.py,Quantum Phase Estimation (QPE),HamiltonianPhaseEstimation.estimate
