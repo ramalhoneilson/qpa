@@ -107,11 +107,16 @@ View these diagrams in VS Code, GitHub, or [Mermaid Live Editor](https://mermaid
 
 ## 🛠 Project Setup & Installation
 
-### Prerequisites
+You have two options for setting up this project: **Native Installation** (recommended for speed) or **Docker Installation** (recommended for zero-configuration and strict isolation).
+
+### Option A: Native Installation (Recommended)
 
 Before you begin, ensure you have the following installed:
 
 *   **Python 3.12+**
+*   **Rust**: Required for some core dependencies.
+    *   **Linux/macOS**: Run `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh` in your terminal.
+    *   **Windows**: Download and run `rustup-init.exe` from [rustup.rs](https://rustup.rs/).
 *   **Just**: A modern command runner. If you don't have it, you can find installation instructions [here](https://github.com/casey/just#installation).
 *   **Git**: For cloning the target repositories.
 *   **A GitHub Personal Access Token (PAT)**: The discovery script requires a GitHub token to avoid API rate limits. Create a token and save it in a `.env` file in the project root:
@@ -120,6 +125,30 @@ Before you begin, ensure you have the following installed:
     # in .env file
     GITHUB_TOKEN="ghp_YourTokenHere"
     ```
+
+### Option B: Docker Installation (Zero-Configuration)
+
+If you'd rather not install system dependencies like Rust or Just on your host machine, you can run the entire pipeline inside Docker. This ensures perfect reproducibility across any operating system.
+
+**Prerequisites for Docker:**
+*   **Docker** and **Docker Compose** installed on your system.
+*   **A GitHub Personal Access Token (PAT)**: Save this in a `.env` file in the project root (see Option A).
+
+**Running via Docker:**
+
+1.  Build the Docker image and start the container in the background (this will copy the code and install all dependencies automatically):
+    ```bash
+    docker-compose up -d --build
+    ```
+2.  Now you can use `docker-compose exec` to run any of the `just` workflow commands inside the isolated container. For example:
+    ```bash
+    # Run the initial setup (only needed once if not built correctly)
+    docker-compose exec qpa just install
+    
+    # Run the full workflow
+    docker-compose exec qpa just workflow
+    ```
+3.  All generated outputs (data, reports, converted notebooks) are automatically synced back to your host machine via Docker volumes.
 
 ## Replication Workflow: Step-by-Step Guide
 

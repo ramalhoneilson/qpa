@@ -48,6 +48,16 @@ run_main:
     @echo "\n>>> Running main analysis..."
     @{{VENV}}/bin/python -m src.analysis.run_analysis
 
+# Run main analysis on a specific target directory
+# Usage: just run_main_target <target_dir> [output_file]
+run_main_target target_dir output_file="":
+    @echo "\n>>> Running main analysis on '{{target_dir}}'..."
+    @if [ -z "{{output_file}}" ]; then \
+        {{VENV}}/bin/python -m src.analysis.run_analysis --target-dir "{{target_dir}}"; \
+    else \
+        {{VENV}}/bin/python -m src.analysis.run_analysis --target-dir "{{target_dir}}" --output "{{output_file}}"; \
+    fi
+
 analyze-projects:
     @echo "\n>>> Running project categorization analysis..."
     @{{VENV}}/bin/python -m src.analysis.analyze_projects
@@ -55,6 +65,12 @@ analyze-projects:
 report:
     @echo "\n>>> Generating final report..."
     @{{VENV}}/bin/python -m src.analysis.generate_report
+
+# Aggregates patterns found in each file into a single sequence
+aggregate-sequences:
+    @echo "\n>>> Aggregating pattern sequences..."
+    @{{VENV}}/bin/python -m src.analysis.aggregate_pattern_sequences
+
 
 # Analyze extended pattern coverage across frameworks and target projects
 extended-patterns:
@@ -111,17 +127,17 @@ discover-and-clone: search-repos clone-filtered
 # Identifies and extracts core concepts from the Qiskit source code.
 identify-qiskit:
     @echo "\n--- Identifying core concepts in Qiskit ---"
-    @{{VENV}}/bin/python -m src.core_concepts.identify_qiskit_core_concepts
+    @{{VENV}}/bin/python -m src.core_concepts.pipelines.extract_qiskit
 
 # Identifies and extracts core concepts from the PennyLane source code.
 identify-pennylane:
     @echo "\n--- Identifying core concepts in PennyLane ---"
-    @{{VENV}}/bin/python -m src.core_concepts.identify_pennylane_core_concepts
+    @{{VENV}}/bin/python -m src.core_concepts.pipelines.extract_pennylane
 
 # Identifies and extracts core concepts from the Classiq source code.
 identify-classiq:
     @echo "\n--- Identifying core concepts in Classiq ---"
-    @{{VENV}}/bin/python -m src.core_concepts.identify_classiq_core_concepts
+    @{{VENV}}/bin/python -m src.core_concepts.pipelines.extract_classiq
 
 
 # A special recipe to create a  venv just for the data acquisition scripts.
@@ -147,7 +163,7 @@ upgrade:
 # Run the complete workflow using Prefect orchestration
 workflow:
     @echo ">>> Starting QPA: Quantum Patterns Analyser Workflow..."
-    @{{VENV}}/bin/python run_workflow.py
+    @{{VENV}}/bin/python -c "from src.workflows.qpa_flow import qpa_flow; qpa_flow()"
 
 # Run workflow with Prefect UI (starts local server)
 workflow-ui:
@@ -164,11 +180,6 @@ workflow-deploy:
 workflow-step step:
     @echo ">>> Running workflow step: {{step}}"
     @{{VENV}}/bin/python -c "from src.workflows.qpa_flow import {{step}}; {{step}}()"
-
-# Convert Mermaid diagrams to PDF for LaTeX
-convert-diagrams:
-    @echo ">>> Converting Mermaid diagrams to PDF..."
-    @{{VENV}}/bin/python docs/convert_to_pdf.py
 
 # == Testing =================================================================
 
