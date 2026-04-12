@@ -1,23 +1,23 @@
 pattern,Project Coverage,Found In Projects
-Circuit Construction Utility,11,"Cirq, OpenFermion, Perceval, Qualtran, ReCirq, amazon-braket-algorithm-library, amazon-braket-examples, classiq-library, covalent, qiskit-optimization, thewalrus"
-Variational Quantum Algorithm (VQA),8,"Perceval, amazon-braket-examples, classiq-library, covalent, qiskit-addon-cutting, qiskit-finance, qiskit-nature, torchquantum"
-Domain Specific Application,8,"Qrisp, Qualtran, amazon-braket-algorithm-library, amazon-braket-examples, classiq-library, guppylang, qibo, qiskit-finance"
-Quantum Phase Estimation (QPE),8,"ProjectQ, Qrisp, Qualtran, amazon-braket-algorithm-library, amazon-braket-examples, classiq-library, guppylang, qiskit-finance"
-Basis Change,8,"Cirq, Qrisp, Qualtran, amazon-braket-algorithm-library, amazon-braket-examples, catalyst, classiq-library, qibo"
-Quantum Arithmetic,7,"Cirq, Qrisp, Qualtran, amazon-braket-examples, catalyst, classiq-library, qiskit-finance"
-Amplitude Amplification,6,"Cirq, Qrisp, amazon-braket-examples, classiq-library, grove, qiskit-algorithms"
-Quantum Approximate Optimization Algorithm (QAOA),6,"ProjectQ, catalyst, classiq-library, qiskit-machine-learning, quimb, tensorcircuit"
-Data Encoding,6,"Cirq, Qualtran, catalyst, classiq-library, covalent, qiskit-machine-learning"
-Grover,5,"amazon-braket-algorithm-library, catalyst, classiq-library, qiskit-algorithms, qiskit-optimization"
-Quantum Neural Network (QNN),5,"Cirq, classiq-library, qiskit-machine-learning, quimb, tensorcircuit"
-Initialization,5,"ProjectQ, Qualtran, amazon-braket-examples, classiq-library, covalent"
-Quantum Logical Operators,3,"Qualtran, amazon-braket-examples, classiq-library"
-Oracle,3,"Cirq, classiq-library, qiskit-algorithms"
+Variational Quantum Algorithm (VQA),11,"Perceval, Pulser, classiq-library, covalent, qiskit-addon-cutting, qiskit-braket-provider, qiskit-finance, qiskit-nature, squlearn, tensorcircuit-ng, torchquantum"
+Circuit Construction Utility,10,"OpenFermion, Perceval, Qualtran, ReCirq, amazon-braket-algorithm-library, classiq-library, covalent, qiskit-braket-provider, qiskit-optimization, thewalrus"
+Quantum Approximate Optimization Algorithm (QAOA),8,"ProjectQ, catalyst, classiq-library, qiskit-machine-learning, quimb, squlearn, tensorcircuit, tensorcircuit-ng"
+Domain Specific Application,8,"Qrisp, Qualtran, amazon-braket-algorithm-library, classiq-library, guppylang, piquasso, qibo, qiskit-finance"
+Data Encoding,7,"Qrisp, Qualtran, catalyst, classiq-library, covalent, qiskit-machine-learning, squlearn"
+Quantum Phase Estimation (QPE),7,"ProjectQ, Qrisp, Qualtran, amazon-braket-algorithm-library, classiq-library, guppylang, qiskit-finance"
+Basis Change,6,"Qrisp, Qualtran, amazon-braket-algorithm-library, catalyst, classiq-library, qibo"
+Grover,6,"Qrisp, amazon-braket-algorithm-library, catalyst, classiq-library, qiskit-algorithms, qiskit-optimization"
+Quantum Arithmetic,5,"Qrisp, Qualtran, catalyst, classiq-library, qiskit-finance"
+Quantum Neural Network (QNN),5,"Cirq, classiq-library, qiskit-machine-learning, tensorcircuit, tensorcircuit-ng"
+Initialization,4,"ProjectQ, Qualtran, classiq-library, covalent"
+Amplitude Amplification,3,"Qrisp, classiq-library, qiskit-algorithms"
 Dynamic Circuit,3,"Cirq, classiq-library, quimb"
-Variational Quantum Eigensolver (VQE),3,"amazon-braket-examples, classiq-library, qiskit-nature"
-Phase Shift,2,"catalyst, classiq-library"
 Hamiltonian Simulation,2,"classiq-library, qiskit-algorithms"
-Quantum Amplitude Estimation,1,classiq-library
-Linear Combination of Unitaries,1,classiq-library
-SWAP Test,1,classiq-library
+Variational Quantum Eigensolver (VQE),2,"classiq-library, qiskit-nature"
+Quantum Logical Operators,2,"Qualtran, classiq-library"
+Phase Shift,2,"catalyst, classiq-library"
+Oracle,2,"classiq-library, qiskit-algorithms"
 Creating Entanglement,1,classiq-library
+Linear Combination of Unitaries,1,classiq-library
+Quantum Amplitude Estimation,1,classiq-library
+SWAP Test,1,classiq-library

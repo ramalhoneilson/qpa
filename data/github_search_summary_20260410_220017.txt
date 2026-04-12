@@ -1,0 +1,17 @@
+GitHub Quantum Projects Search Summary
+========================================
+Summary generated on: 2026-04-10 22:00:17
+
+--- Overall Statistics ---
+Total unique projects found (candidates): 0
+Projects filtered out:                    0
+Final projects considered for analysis:   0
+
+--- Filtered-Out Projects ---
+No projects were filtered out.
+
+--- Final Considered Projects (Top 0) ---
+No projects met the criteria.
+
+========================================
+End of Summary

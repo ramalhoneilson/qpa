@@ -1,0 +1,265 @@
+file_path;pattern_sequence
+torchquantum/sec1_basic.py;Variational Quantum Algorithm (VQA)
+torchquantum/sec2_gate.py;Variational Quantum Algorithm (VQA)
+qiskit-algorithms/docs/tutorials/13_trotterQRTE.py;Hamiltonian Simulation
+qiskit-algorithms/docs/tutorials/06_grover.py;Oracle -> Grover -> Amplitude Amplification
+qiskit-algorithms/docs/tutorials/07_grover_examples.py;Oracle
+qiskit-machine-learning/docs/tutorials/03_quantum_kernel.py;Data Encoding
+qiskit-machine-learning/docs/tutorials/07_pegasos_qsvc.py;Data Encoding
+qiskit-machine-learning/docs/tutorials/05_torch_connector.py;Data Encoding
+qiskit-machine-learning/docs/tutorials/02_neural_network_classifier_and_regressor.py;Data Encoding -> Quantum Approximate Optimization Algorithm (QAOA)
+qiskit-machine-learning/docs/tutorials/01_neural_networks.py;Quantum Approximate Optimization Algorithm (QAOA) -> Quantum Neural Network (QNN)
+qiskit-machine-learning/docs/tutorials/02a_training_a_quantum_model_on_a_real_dataset.py;Data Encoding
+qiskit-machine-learning/docs/tutorials/08_quantum_kernel_trainer.py;Data Encoding
+qiskit-machine-learning/docs/tutorials/10_effective_dimension.py;Data Encoding
+qiskit-machine-learning/docs/tutorials/11_quantum_convolutional_neural_networks.py;Data Encoding
+qiskit-addon-cutting/docs/how-tos/how_to_provide_multiple_observables.py;Variational Quantum Algorithm (VQA)
+catalyst/demos/qml/tutorial_learningshallow.py;Quantum Approximate Optimization Algorithm (QAOA)
+catalyst/demos/qml/tutorial_qft_arithmetics.py;Phase Shift -> Grover -> Basis Change -> Data Encoding -> Quantum Arithmetic
+squlearn/examples/qnn/example_qcnn_encoding_circuit.py;Data Encoding -> Quantum Approximate Optimization Algorithm (QAOA) -> Variational Quantum Algorithm (VQA)
+squlearn/examples/encoding_circuits/various_encoding_circuit.py;Variational Quantum Algorithm (VQA)
+tensorcircuit-ng/docs/source/tutorials/nnvqe_cn.py;Quantum Neural Network (QNN)
+tensorcircuit-ng/docs/source/tutorials/qaoa_nae3sat.py;Quantum Approximate Optimization Algorithm (QAOA)
+tensorcircuit-ng/docs/source/tutorials/nnvqe.py;Quantum Neural Network (QNN)
+tensorcircuit-ng/docs/source/tutorials/qaoa_bo.py;Quantum Approximate Optimization Algorithm (QAOA)
+tensorcircuit-ng/docs/source/tutorials/qaoa.py;Quantum Approximate Optimization Algorithm (QAOA)
+tensorcircuit-ng/docs/source/tutorials/mera.py;Quantum Neural Network (QNN)
+tensorcircuit-ng/docs/source/tutorials/circuit_qudit_basics.py;Variational Quantum Algorithm (VQA)
+tensorcircuit-ng/docs/source/tutorials/mera_cn.py;Quantum Neural Network (QNN)
+tensorcircuit-ng/docs/source/tutorials/qml_scenarios.py;Quantum Approximate Optimization Algorithm (QAOA)
+qiskit-optimization/docs/tutorials/04_grover_optimizer.py;Grover
+qiskit-optimization/docs/tutorials/06_examples_max_cut_and_tsp.py;Circuit Construction Utility
+torchquantum/examples/QCE22_tutorial/sec1_basic.py;Variational Quantum Algorithm (VQA)
+torchquantum/examples/QCE22_tutorial/sec2_gate.py;Variational Quantum Algorithm (VQA)
+torchquantum/examples/quanvolution/quanvolution.py;Variational Quantum Algorithm (VQA)
+torchquantum/examples/ICCAD22_tutorial/sec1_basic.py;Variational Quantum Algorithm (VQA)
+torchquantum/examples/ICCAD22_tutorial/sec3_gate.py;Variational Quantum Algorithm (VQA)
+qiskit-finance/docs/tutorials/00_amplitude_estimation.py;Quantum Phase Estimation (QPE) -> Domain Specific Application
+qiskit-finance/docs/tutorials/09_credit_risk_analysis.py;Quantum Arithmetic -> Domain Specific Application
+qiskit-finance/docs/tutorials/07_asian_barrier_spread_pricing.py;Quantum Arithmetic
+qiskit-finance/docs/tutorials/01_portfolio_optimization.py;Variational Quantum Algorithm (VQA)
+qiskit-finance/docs/tutorials/10_qgan_option_pricing.py;Variational Quantum Algorithm (VQA)
+qiskit-finance/docs/tutorials/06_basket_option_pricing.py;Quantum Arithmetic -> Domain Specific Application
+qiskit-finance/docs/tutorials/02_portfolio_diversification.py;Variational Quantum Algorithm (VQA)
+Qualtran/qualtran/Adjoint.py;Quantum Logical Operators
+Qualtran/dev_tools/ui-export.py;Quantum Arithmetic
+Qualtran/qualtran/resource_counting/call_graph.py;Quantum Logical Operators
+Qualtran/qualtran/simulation/tensor.py;Quantum Logical Operators
+Qualtran/qualtran/simulation/MBUC.py;Quantum Logical Operators
+Qualtran/qualtran/cirq_interop/t_complexity.py;Quantum Logical Operators
+Qualtran/qualtran/cirq_interop/cirq_interop.py;Quantum Arithmetic
+Qualtran/qualtran/surface_code/msft_resource_estimator_interop.py;Quantum Arithmetic
+Qualtran/qualtran/_infra/Bloqs-Tutorial.py;Quantum Arithmetic
+Qualtran/qualtran/bloqs/block_encoding/block_encoding.py;Data Encoding
+Qualtran/qualtran/bloqs/block_encoding/linear_combination.py;Data Encoding
+Qualtran/qualtran/bloqs/block_encoding/tensor_product.py;Data Encoding
+Qualtran/qualtran/bloqs/swap_network/swap_network.py;Circuit Construction Utility
+Qualtran/qualtran/bloqs/qft/qft_phase_gradient.py;Basis Change
+Qualtran/qualtran/bloqs/qft/qft_text_book.py;Basis Change
+Qualtran/qualtran/bloqs/phase_estimation/kaiser_window_state.py;Quantum Phase Estimation (QPE)
+Qualtran/qualtran/bloqs/phase_estimation/phase_estimation_of_quantum_walk.py;Basis Change
+Qualtran/qualtran/bloqs/phase_estimation/text_book_qpe.py;Quantum Phase Estimation (QPE)
+Qualtran/qualtran/bloqs/phase_estimation/qubitization_qpe.py;Data Encoding -> Quantum Phase Estimation (QPE)
+Qualtran/qualtran/bloqs/qsp/generalized_qsp.py;Domain Specific Application -> Basis Change
+Qualtran/qualtran/bloqs/basic_gates/identity.py;Quantum Logical Operators
+Qualtran/qualtran/bloqs/basic_gates/rotation.py;Circuit Construction Utility -> Quantum Arithmetic
+Qualtran/qualtran/bloqs/data_loading/qrom.py;Data Encoding -> Initialization
+Qualtran/qualtran/bloqs/bookkeeping/always.py;Quantum Logical Operators
+Qualtran/qualtran/bloqs/multiplexers/unary_iteration.py;Quantum Logical Operators
+Qualtran/qualtran/bloqs/mcmt/and_bloq.py;Quantum Logical Operators
+Qualtran/qualtran/bloqs/gf_arithmetic/gf2_addition.py;Quantum Arithmetic
+Qualtran/qualtran/bloqs/gf_arithmetic/gf2_multiplication.py;Quantum Arithmetic
+Qualtran/qualtran/bloqs/gf_arithmetic/gf2_square.py;Quantum Arithmetic
+Qualtran/qualtran/bloqs/state_preparation/state_preparation_via_rotation_tutorial.py;Data Encoding -> Circuit Construction Utility
+Qualtran/qualtran/bloqs/arithmetic/controlled_addition.py;Quantum Arithmetic
+Qualtran/qualtran/bloqs/arithmetic/t_complexity_of_comparison_gates.py;Quantum Logical Operators
+Qualtran/qualtran/bloqs/arithmetic/addition.py;Quantum Arithmetic
+Qualtran/qualtran/bloqs/arithmetic/permutation.py;Circuit Construction Utility
+Qualtran/qualtran/bloqs/cryptography/rsa/factoring-via-modexp.py;Quantum Arithmetic
+Qualtran/qualtran/bloqs/cryptography/rsa/rsa.py;Quantum Arithmetic
+Qualtran/qualtran/bloqs/chemistry/trotter/grid_ham/trotter_costs.py;Quantum Logical Operators
+Qualtran/tutorials/quantum-programming/1-wiring-up.py;Quantum Arithmetic
+Qualtran/tutorials/quantum-programming/2-bloqs.py;Quantum Arithmetic
+Cirq/cirq-core/cirq/contrib/quimb/Cirq-to-Tensor-Networks.py;Dynamic Circuit -> Quantum Neural Network (QNN)
+covalent/doc/source/tutorials/1_QuantumMachineLearning/pennylane_iris_classification/source.py;Initialization -> Circuit Construction Utility
+covalent/doc/source/tutorials/1_QuantumMachineLearning/pennylane_parity_classifier/source.py;Initialization -> Variational Quantum Algorithm (VQA)
+covalent/doc/source/tutorials/1_QuantumMachineLearning/pennylane_kernel/source.py;Data Encoding -> Variational Quantum Algorithm (VQA)
+covalent/doc/source/tutorials/1_QuantumMachineLearning/pennylane_ensemble_classification/source.py;Circuit Construction Utility
+qiskit-nature/docs/tutorials/04_excited_states_solvers.py;Variational Quantum Eigensolver (VQE)
+qiskit-nature/docs/tutorials/12_deuteron_binding_energy.py;Variational Quantum Algorithm (VQA)
+qiskit-nature/docs/tutorials/03_ground_state_solvers.py;Variational Quantum Eigensolver (VQE) -> Variational Quantum Algorithm (VQA)
+amazon-braket-algorithm-library/notebooks/auxiliary_functions/Random_Circuit.py;Circuit Construction Utility
+amazon-braket-algorithm-library/notebooks/advanced_algorithms/HHL_Algorithm.py;Quantum Phase Estimation (QPE) -> Domain Specific Application
+amazon-braket-algorithm-library/notebooks/textbook/Quantum_Fourier_Transform.py;Basis Change -> Quantum Phase Estimation (QPE)
+amazon-braket-algorithm-library/notebooks/textbook/Grovers_Search.py;Grover
+amazon-braket-algorithm-library/notebooks/textbook/Quantum_Phase_Estimation_Algorithm.py;Quantum Phase Estimation (QPE) -> Domain Specific Application
+ProjectQ/examples/spectral_measurement.py;Initialization -> Quantum Phase Estimation (QPE)
+ProjectQ/examples/mapper_tutorial.py;Quantum Approximate Optimization Algorithm (QAOA)
+OpenFermion/docs/fqe/tutorials/fermi_hubbard.py;Circuit Construction Utility
+piquasso/docs/tutorials/gaussian-boson-sampling.py;Domain Specific Application
+piquasso/docs/tutorials/boson-sampling.py;Domain Specific Application
+Qrisp/documentation/source/general/tutorial/QMCItutorial.py;Domain Specific Application
+Qrisp/documentation/source/general/tutorial/tutorial.py;Quantum Phase Estimation (QPE) -> Basis Change -> Amplitude Amplification -> Domain Specific Application
+Qrisp/documentation/source/general/tutorial/Shor.py;Basis Change
+Qrisp/documentation/source/general/tutorial/GQSP_filtering.py;Domain Specific Application -> Basis Change -> Grover
+Qrisp/documentation/source/general/tutorial/FT_compilation.py;Basis Change
+Qrisp/documentation/source/general/tutorial/TSP.py;Quantum Phase Estimation (QPE)
+Qrisp/documentation/source/general/tutorial/HHL.py;Quantum Phase Estimation (QPE)
+Qrisp/documentation/source/general/tutorial/Jasp.py;Quantum Arithmetic
+Qrisp/documentation/source/general/tutorial/BigInteger.py;Basis Change
+Qrisp/documentation/source/general/tutorial/BE_tutorial/BE_vol2.py;Data Encoding -> Domain Specific Application
+Perceval/docs/source/notebooks/Graph_States_Tutorial.py;Circuit Construction Utility
+Perceval/docs/source/notebooks/QLOQ_QUBO_tutorial.py;Variational Quantum Algorithm (VQA)
+tensorcircuit/docs/source/tutorials/nnvqe_cn.py;Quantum Neural Network (QNN)
+tensorcircuit/docs/source/tutorials/qaoa_nae3sat.py;Quantum Approximate Optimization Algorithm (QAOA)
+tensorcircuit/docs/source/tutorials/nnvqe.py;Quantum Neural Network (QNN)
+tensorcircuit/docs/source/tutorials/qaoa_bo.py;Quantum Approximate Optimization Algorithm (QAOA)
+tensorcircuit/docs/source/tutorials/qaoa.py;Quantum Approximate Optimization Algorithm (QAOA)
+tensorcircuit/docs/source/tutorials/mera.py;Quantum Neural Network (QNN)
+tensorcircuit/docs/source/tutorials/mera_cn.py;Quantum Neural Network (QNN)
+tensorcircuit/docs/source/tutorials/qml_scenarios.py;Quantum Approximate Optimization Algorithm (QAOA)
+qibo/examples/circuit-draw-mpl/qibo-draw-circuit-matplotlib.py;Basis Change
+qibo/examples/qfiae/qfiae_demo.py;Domain Specific Application
+qibo/doc/source/code-examples/tutorials/qfiae/qfiae_demo.py;Domain Specific Application
+ReCirq/docs/qaoa/binary_paintshop.py;Circuit Construction Utility
+guppylang/examples/canonical-qpe.py;Quantum Phase Estimation (QPE) -> Domain Specific Application
+guppylang/examples/adaptive-qpe.py;Quantum Phase Estimation (QPE) -> Domain Specific Application
+qiskit-braket-provider/docs/tutorials/4_tutorial_native_programming.py;Circuit Construction Utility
+qiskit-braket-provider/docs/tutorials/2_tutorial_hybrid_jobs.py;Variational Quantum Algorithm (VQA)
+thewalrus/docs/gallery/hafnian_tutorial.py;Circuit Construction Utility
+thewalrus/docs/gallery/permanent_tutorial.py;Circuit Construction Utility
+classiq-library/community/basic_examples/superposition/superposition.py;Circuit Construction Utility -> Basis Change
+classiq-library/community/basic_examples/logical_qubits/logical_qubits_by_alice_and_bob.py;SWAP Test
+classiq-library/community/Hackathons/iQuHack_2025/Workshop/WS_iQuHack_2025_final.py;Basis Change
+classiq-library/community/Hackathons/iQuHack_2025/Challenge/classiq_iQuHack_2025_final.py;Basis Change
+classiq-library/community/Hackathons/iQuHack_2025/Challenge_solution/our_solution/classiq_iQuHack_2025_final_sol.py;Basis Change -> Amplitude Amplification
+classiq-library/community/Hackathons/QInnovision_2025/advection_equation/advection_equation_2nd_place_submission.py;Basis Change
+classiq-library/community/Hackathons/QInnovision_2025/advection_equation/advection_equation_winning_submission.py;Hamiltonian Simulation
+classiq-library/community/paper_implementation_project/block_encoding/select_structures_BE.py;Circuit Construction Utility -> Domain Specific Application -> Data Encoding
+classiq-library/community/paper_implementation_project/bpde/bpde.py;Hamiltonian Simulation -> Initialization
+classiq-library/community/paper_implementation_project/explicit_quantum_circuits_for_block_encoding/quantum_walks_via_efficient_blockencoding.py;Basis Change -> Data Encoding
+classiq-library/community/paper_implementation_project/classical_shadows/classical_shadows.py;Creating Entanglement
+classiq-library/community/paper_implementation_project/quantum_state_preparation_without_coherent_arithmetic/stateprep_guassian_using_qsvt.py;Basis Change -> Domain Specific Application -> Amplitude Amplification
+classiq-library/community/paper_implementation_project/quantum_compression_algorithm_for_symmetric_states/quantum_compression_algorithm_for_symmetric_states.py;Basis Change -> Circuit Construction Utility
+classiq-library/community/paper_implementation_project/Block_encoding-ND_Laplacian/ND_Laplacian_BE.py;Circuit Construction Utility -> Data Encoding
+classiq-library/applications/telecom/resiliency_planning/resiliency_planning_AMD.py;Circuit Construction Utility -> Basis Change
+classiq-library/applications/telecom/resiliency_planning/resiliency_planning.py;Circuit Construction Utility -> Basis Change
+classiq-library/applications/telecom/network_traffic_optimization/network_traffic_optimization.py;Circuit Construction Utility -> Basis Change
+classiq-library/applications/plasma/vlasov_ampere/vlasov_ampere_qiskit.py;Phase Shift -> Initialization
+classiq-library/applications/plasma/vlasov_ampere/vlasov_ampere.py;Circuit Construction Utility -> Domain Specific Application -> Basis Change -> Linear Combination of Unitaries
+classiq-library/applications/physical_systems/quantum_chaos/quantum_sawtooth_map.py;Basis Change
+classiq-library/applications/physical_systems/hhl_lanchester/hhl_lanchester.py;SWAP Test -> Quantum Phase Estimation (QPE)
+classiq-library/applications/cybersecurity/whitebox_fuzzing/whitebox_fuzzing.py;Basis Change -> Amplitude Amplification
+classiq-library/applications/optimization/variational_quantum_imaginary_time_evolution/variational_quantum_imaginary_time_evolution.py;Basis Change
+classiq-library/applications/optimization/adapt_qaoa/adapt_qaoa.py;Hamiltonian Simulation -> Circuit Construction Utility -> Basis Change
+classiq-library/applications/chemistry/molecule_eigensolver/molecule_eigensolver.py;Initialization -> Variational Quantum Algorithm (VQA)
+classiq-library/applications/chemistry/classiq_chemistry_application/classiq_chemistry_application.py;Initialization -> Variational Quantum Eigensolver (VQE)
+classiq-library/applications/chemistry/tensor_hypercontraction/tensor_hypercontraction.py;Circuit Construction Utility -> Basis Change -> Dynamic Circuit
+classiq-library/applications/chemistry/molecular_energy_curve/molecular_energy_curve.py;Initialization
+classiq-library/applications/chemistry/second_quantized_hamiltonian/second_quantized_hamiltonian.py;Variational Quantum Algorithm (VQA)
+classiq-library/applications/chemistry/qpe_for_molecules/qpe_for_molecules.py;Hamiltonian Simulation -> Initialization -> Quantum Phase Estimation (QPE)
+classiq-library/applications/cfd/qlbm/qlbm.py;Grover
+classiq-library/applications/cfd/double_slit_experiment/quantum_double_slit_experiment.py;Domain Specific Application
+classiq-library/applications/cfd/qls_for_hybrid_solvers/verify_block_encoding.py;Domain Specific Application
+classiq-library/applications/cfd/qls_for_hybrid_solvers/qls_qsvt.py;Domain Specific Application
+classiq-library/applications/cfd/heat_eq_qsvt/heat_eq_qsvt.py;Data Encoding -> Domain Specific Application -> Phase Shift
+classiq-library/applications/automotive/cooling_systems_optimization/cooling_systems_optimization.py;Quantum Approximate Optimization Algorithm (QAOA) -> Amplitude Amplification -> Linear Combination of Unitaries -> Initialization -> Domain Specific Application -> Basis Change -> Quantum Amplitude Estimation
+classiq-library/applications/finance/brownian_chebyshev_polynomials/brownian_chebyshev_polynomials.py;Basis Change
+classiq-library/applications/finance/autocallable_options/partial_exponential_state_preparation.py;Oracle -> Amplitude Amplification -> Initialization
+classiq-library/applications/finance/autocallable_options/quantum_autocallable_option_pricing.py;Initialization
+classiq-library/applications/finance/portfolio_optimization_hhl/HHL_portfolio.py;Quantum Phase Estimation (QPE)
+classiq-library/applications/finance/hybrid_hhl_for_portfolio_optimization/portfolio_optimization_with_hhl.py;SWAP Test -> Quantum Phase Estimation (QPE)
+classiq-library/applications/finance/credit_card_fraud/credit_card_fraud.py;Basis Change
+classiq-library/applications/finance/option_pricing/option_pricing.py;Domain Specific Application
+classiq-library/applications/finance/rainbow_options/rainbow_options_integration_method.py;Initialization
+classiq-library/applications/finance/rainbow_options/rainbow_options_direct_method.py;Circuit Construction Utility
+classiq-library/applications/logistics/vehicle_routing_problem/vehicle_routing_problem.py;Circuit Construction Utility -> Basis Change
+classiq-library/tutorials/technology_demonstrations/hhl/hhl_example.py;Quantum Phase Estimation (QPE)
+classiq-library/tutorials/technology_demonstrations/oracle_generation/3sat_oracles.py;Oracle -> Circuit Construction Utility
+classiq-library/tutorials/technology_demonstrations/hamiltonian_evolution/hamiltonian_evolution.py;Hamiltonian Simulation
+classiq-library/tutorials/technology_demonstrations/classiq_paper/qsvt/classiq_qsvt.py;Amplitude Amplification -> Phase Shift -> Basis Change -> Domain Specific Application
+classiq-library/tutorials/technology_demonstrations/classiq_paper/qsvt/qiskit_qsvt.py;Domain Specific Application
+classiq-library/tutorials/technology_demonstrations/qpe/qpe_for_grover_operator/qpe_for_grover_operator.py;Basis Change -> Quantum Phase Estimation (QPE)
+classiq-library/tutorials/technology_demonstrations/qpe/qpe_for_unitary_matrix/qpe_for_unitary_matrix.py;Quantum Phase Estimation (QPE) -> Domain Specific Application
+classiq-library/tutorials/workshops/oracle_workshop/oracles_workshop.py;Oracle -> Basis Change -> Grover
+classiq-library/tutorials/workshops/finance_workshops/combi_workshop_Inequality_constriants_PO.py;Circuit Construction Utility -> Basis Change
+classiq-library/tutorials/workshops/finance_workshops/combi_workshop_equality_constriants_PO.py;Circuit Construction Utility -> Basis Change
+classiq-library/tutorials/workshops/algo_design_QCE_tutorial/algo_design_QCE_tutorial_part_I.py;Oracle -> Basis Change -> Creating Entanglement -> Amplitude Amplification
+classiq-library/tutorials/workshops/algo_design_QCE_tutorial/algo_design_QCE_tutorial_part_II.py;Circuit Construction Utility
+classiq-library/tutorials/workshops/grover_workshop/grover_workshop.py;Circuit Construction Utility -> Amplitude Amplification
+classiq-library/tutorials/workshops/combinatorial_workshop/combinatorial_qmod_workshop_for_maxcut.py;Circuit Construction Utility -> Basis Change
+classiq-library/tutorials/workshops/hhl_workshop/hhl_workshop.py;Quantum Phase Estimation (QPE)
+classiq-library/tutorials/advanced_tutorials/discrete_quantum_walk_2d/discrete_time_quantum_walk.py;Amplitude Amplification -> Basis Change
+classiq-library/tutorials/advanced_tutorials/high_level_modeling_flexible_qpe/high_level_modeling_flexible_qpe.py;Hamiltonian Simulation -> Quantum Phase Estimation (QPE) -> Circuit Construction Utility -> Basis Change -> SWAP Test
+classiq-library/tutorials/advanced_tutorials/discrete_quantum_walk/discrete_quantum_walk.py;Amplitude Amplification -> Initialization
+classiq-library/tutorials/basic_tutorials/grover_graph_coloring/grover_graph_coloring.py;Oracle -> Grover
+classiq-library/tutorials/basic_tutorials/the_classiq_tutorial/execution_tutorial.py;Basis Change
+classiq-library/tutorials/basic_tutorials/the_classiq_tutorial/Qmod_tutorial_part1.py;Basis Change
+classiq-library/tutorials/basic_tutorials/the_classiq_tutorial/synthesis_tutorial.py;Basis Change
+classiq-library/tutorials/basic_tutorials/the_classiq_tutorial/classiq_overview_tutorial.py;Basis Change
+classiq-library/tutorials/basic_tutorials/the_classiq_tutorial/Qmod_tutorial_part2.py;Hamiltonian Simulation -> Basis Change
+classiq-library/tutorials/basic_tutorials/quantumwalk_complex_network/quantumwalk_complex_network.py;Amplitude Amplification -> Circuit Construction Utility -> Basis Change
+classiq-library/tutorials/basic_tutorials/exponentiation/example_exponentiation.py;Hamiltonian Simulation
+classiq-library/tutorials/basic_tutorials/quantum_primitives/linear_combination_of_unitaries/linear_combination_of_unitaries.py;Basis Change -> Circuit Construction Utility -> Dynamic Circuit -> Linear Combination of Unitaries
+classiq-library/tutorials/basic_tutorials/quantum_primitives/hadamard_test_tutorial/hadamard_test_tutorial.py;Basis Change
+classiq-library/algorithms/quantum_phase_estimation/qpe_for_matrix/qpe_for_matrix.py;Hamiltonian Simulation -> Quantum Phase Estimation (QPE) -> Domain Specific Application
+classiq-library/algorithms/quantum_phase_estimation/qpe_with_qubitization/qpe_for_molecule_with_qubitization.py;Initialization -> Basis Change -> Quantum Phase Estimation (QPE) -> Domain Specific Application
+classiq-library/algorithms/quantum_state_preparation/adapt_vqe/adapt_vqe.py;Hamiltonian Simulation
+classiq-library/algorithms/quantum_state_preparation/gibbs/quantum_thermal_state_preparation.py;Hamiltonian Simulation -> Circuit Construction Utility -> Basis Change -> Initialization
+classiq-library/algorithms/quantum_differential_equations_solvers/discrete_poisson_solver/discrete_poisson_solver.py;Hamiltonian Simulation -> Basis Change -> Quantum Phase Estimation (QPE)
+classiq-library/algorithms/quantum_differential_equations_solvers/time_marching/time_marching.py;Basis Change -> Domain Specific Application -> Data Encoding
+classiq-library/algorithms/number_theory_and_cryptography/discrete_log/discrete_log.py;Basis Change
+classiq-library/algorithms/number_theory_and_cryptography/shor/shor.py;Quantum Phase Estimation (QPE)
+classiq-library/algorithms/number_theory_and_cryptography/hidden_shift/hidden_shift.py;Oracle -> Basis Change
+classiq-library/algorithms/number_theory_and_cryptography/elliptic_curves/elliptic_curve_discrete_log.py;Basis Change -> Quantum Arithmetic
+classiq-library/algorithms/qml/quantum_autoencoder/quantum_autoencoder.py;SWAP Test
+classiq-library/algorithms/qml/hybrid_qnn/hybrid_qnn_for_subset_majority.py;Data Encoding -> Quantum Neural Network (QNN)
+classiq-library/algorithms/qml/qsvm/qsvm.py;Basis Change
+classiq-library/algorithms/quantum_linear_solvers/qsvt_matrix_inversion/qsvt_matrix_inversion.py;Domain Specific Application
+classiq-library/algorithms/quantum_linear_solvers/vqls/vqls_with_lcu.py;Circuit Construction Utility -> Linear Combination of Unitaries
+classiq-library/algorithms/quantum_linear_solvers/adiabatic_linear_solvers/solving_qlsp_with_aqc.py;Hamiltonian Simulation
+classiq-library/algorithms/quantum_linear_solvers/hhl/hhl.py;Hamiltonian Simulation -> Quantum Phase Estimation (QPE) -> Domain Specific Application
+classiq-library/algorithms/foundational/simon/simon.py;Basis Change
+classiq-library/algorithms/foundational/bernstein_vazirani/bernstein_vazirani.py;Basis Change
+classiq-library/algorithms/foundational/deutsch_jozsa/deutsch_jozsa.py;Oracle -> Basis Change -> Quantum Arithmetic
+classiq-library/algorithms/hamiltonian_simulation/hamiltonian_simulation_with_block_encoding/hamiltonian_simulation_with_block_encoding.py;Linear Combination of Unitaries -> Domain Specific Application -> Basis Change
+classiq-library/algorithms/hamiltonian_simulation/hamiltonian_simulation_guide/hamiltonian_simulation_guide.py;Hamiltonian Simulation
+classiq-library/algorithms/quantum_primitives/hadamard_test/hadamard_test.py;Basis Change
+classiq-library/algorithms/quantum_primitives/gqsp/gqsp.py;Basis Change -> Domain Specific Application -> Quantum Phase Estimation (QPE) -> Quantum Arithmetic
+classiq-library/algorithms/quantum_primitives/swap_test/swap_test.py;SWAP Test
+classiq-library/algorithms/amplitude_amplification_and_estimation/qsvt_fixed_point_amplitude_amplification/qsvt_fixed_point_amplitude_amplification.py;Basis Change -> Domain Specific Application -> Amplitude Amplification
+classiq-library/algorithms/amplitude_amplification_and_estimation/qmc_user_defined/qmc_user_defined.py;Amplitude Amplification -> Data Encoding -> Quantum Phase Estimation (QPE) -> Domain Specific Application
+classiq-library/algorithms/amplitude_amplification_and_estimation/oblivious_amplitude_amplification/oblivious_amplitude_amplification.py;Oracle -> Linear Combination of Unitaries -> Amplitude Amplification
+classiq-library/algorithms/amplitude_amplification_and_estimation/quantum_counting/quantum_counting.py;Oracle -> Basis Change -> Amplitude Amplification -> Quantum Phase Estimation (QPE)
+classiq-library/algorithms/search_and_optimization/qaoa/qaoa.py;Circuit Construction Utility -> Basis Change -> Quantum Approximate Optimization Algorithm (QAOA)
+classiq-library/algorithms/search_and_optimization/grover/grover.py;Oracle -> Basis Change -> Amplitude Amplification -> Grover
+classiq-library/algorithms/search_and_optimization/dqi/dqi_max_xorsat.py;Initialization -> Basis Change
+classiq-library/algorithms/search_and_optimization/grover_mixer_qaoa/gm_qaoa.py;Circuit Construction Utility -> Initialization -> Basis Change
+classiq-library/functions/qmod_library_reference/classiq_open_library/grover_operator/grover_operator.py;Oracle -> Basis Change -> Amplitude Amplification -> Grover
+classiq-library/functions/qmod_library_reference/classiq_open_library/amplitude_amplification/exact_amplitude_amplification.py;Amplitude Amplification
+classiq-library/functions/qmod_library_reference/classiq_open_library/qft/qft.py;Basis Change
+classiq-library/functions/qmod_library_reference/classiq_open_library/qct_qst/qct_qst.py;Basis Change
+classiq-library/functions/qmod_library_reference/classiq_open_library/qpe/qpe.py;Hamiltonian Simulation -> Basis Change -> Quantum Phase Estimation (QPE)
+classiq-library/functions/qmod_library_reference/classiq_open_library/linear_pauli_rotations/linear_pauli_rotations.py;Data Encoding -> Circuit Construction Utility
+classiq-library/functions/qmod_library_reference/classiq_open_library/special_state_preparations/prepare_bell_state.py;Creating Entanglement
+classiq-library/functions/qmod_library_reference/classiq_open_library/special_state_preparations/prepare_partial_uniform_state.py;Initialization
+classiq-library/functions/qmod_library_reference/classiq_open_library/special_state_preparations/prepare_exponential_state.py;Initialization
+classiq-library/functions/qmod_library_reference/classiq_open_library/special_state_preparations/prepare_ghz_state.py;Creating Entanglement
+classiq-library/functions/qmod_library_reference/classiq_open_library/hadamard_transform/hadamard_transform.py;Basis Change
+classiq-library/functions/qmod_library_reference/classiq_open_library/variational_data_encoding/variational_data_encoding.py;Data Encoding
+classiq-library/functions/qmod_library_reference/classiq_open_library/qsvt/qsvt.py;Basis Change -> Domain Specific Application
+classiq-library/functions/qmod_library_reference/qmod_core_library/prepare_state_and_amplitudes/prepare_state_and_amplitudes.py;Initialization
+classiq-library/functions/qmod_library_reference/qmod_core_library/hamiltonian_evolution/suzuki_trotter/suzuki_trotter.py;Hamiltonian Simulation
+classiq-library/functions/qmod_library_reference/qmod_core_library/hamiltonian_evolution/qdrift/qdrift.py;Hamiltonian Simulation
+classiq-library/functions/function_usage_examples/mcx/mcx_example.py;Quantum Logical Operators
+classiq-library/functions/function_usage_examples/arithmetic/modular_exp/modular_exp_example.py;Quantum Arithmetic -> Basis Change
+classiq-library/functions/function_usage_examples/arithmetic/negation/negation_example.py;Basis Change
+classiq-library/functions/function_usage_examples/arithmetic/extremum/extremum_example.py;Basis Change
+classiq-library/functions/function_usage_examples/arithmetic/multiplication/multiplication.py;Basis Change
+classiq-library/functions/function_usage_examples/arithmetic/comparator/comparator_example.py;Basis Change -> Quantum Arithmetic
+Pulser/tutorials/quantum_simulation/Spin chain of 3 atoms in XY mode.py;Variational Quantum Algorithm (VQA)
+quimb/docs/examples/ex_MERA.py;Dynamic Circuit
+quimb/docs/examples/ex_tn_train_circuit.py;Quantum Approximate Optimization Algorithm (QAOA)
+quimb/docs/tensor/tensor-circuit.py;Dynamic Circuit
+quimb/docs/tensor/tensor-1d.py;Dynamic Circuit
+quimb/docs/tensor/tensor-basics.py;Dynamic Circuit

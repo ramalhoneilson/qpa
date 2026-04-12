@@ -1,0 +1,8 @@
+I have classified quantum concepts from three frameworks: Qiskit, PennyLane, and Classiq.
+I have then created a list with the name of each concept as well as the classification that we assigned to it. 
+The base list is the list of quantum concepts from /home/neilson/projects/qpa/data/quantum_patterns.json file.
+I then created a semantic tool that takes the docstrings of the quantum concepts 
+and creates a semantic embedding for each one. The tool then searches other projects 
+for similar docstrings. In each project, the tool searches for methods, classes or functions 
+calculates the embeddings for them and compares them with the embeddings of base list which is what we consolidated in a single
+file /home/neilson/projects/qpa/knowledge_base/knowledge_base.json.

@@ -1,23 +1,23 @@
 pattern,Total Matches,Source Frameworks
-Basis Change,161,"classiq, pennylane, qiskit"
+Basis Change,159,"classiq, pennylane, qiskit"
+Domain Specific Application,66,"classiq, pennylane"
 Quantum Phase Estimation (QPE),57,"classiq, pennylane"
-Domain Specific Application,53,"classiq, pennylane"
-Quantum Arithmetic,43,"classiq, pennylane, qiskit"
-Circuit Construction Utility,40,"classiq, pennylane, qiskit"
-Data Encoding,37,"classiq, pennylane, qiskit"
-Amplitude Amplification,26,classiq
-Initialization,26,"classiq, pennylane, qiskit"
-Hamiltonian Simulation,20,"classiq, pennylane, qiskit"
-Variational Quantum Algorithm (VQA),19,"classiq, pennylane, qiskit"
-Quantum Logical Operators,13,qiskit
+Data Encoding,41,"classiq, pennylane, qiskit"
+Circuit Construction Utility,41,"classiq, pennylane, qiskit"
+Quantum Arithmetic,36,"classiq, pennylane, qiskit"
+Initialization,25,"classiq, pennylane, qiskit"
+Variational Quantum Algorithm (VQA),23,"classiq, pennylane, qiskit"
+Hamiltonian Simulation,22,"classiq, pennylane, qiskit"
+Amplitude Amplification,22,classiq
+Quantum Approximate Optimization Algorithm (QAOA),16,"classiq, pennylane, qiskit"
+Quantum Neural Network (QNN),14,pennylane
 Oracle,13,"classiq, qiskit"
-Quantum Neural Network (QNN),11,pennylane
-Quantum Approximate Optimization Algorithm (QAOA),10,"classiq, pennylane, qiskit"
-Grover,10,"classiq, pennylane, qiskit"
-Linear Combination of Unitaries,7,classiq
-Dynamic Circuit,6,pennylane
-SWAP Test,6,classiq
-Creating Entanglement,5,classiq
-Variational Quantum Eigensolver (VQE),5,pennylane
-Phase Shift,4,"classiq, pennylane"
+Grover,13,"classiq, pennylane, qiskit"
+Quantum Logical Operators,12,qiskit
+SWAP Test,7,classiq
+Dynamic Circuit,7,pennylane
+Creating Entanglement,6,classiq
+Linear Combination of Unitaries,6,classiq
+Phase Shift,6,"classiq, pennylane"
+Variational Quantum Eigensolver (VQE),3,pennylane
 Quantum Amplitude Estimation,1,classiq

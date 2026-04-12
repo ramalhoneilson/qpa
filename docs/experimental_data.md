@@ -1,6 +1,6 @@
 # Experimental Data
 
-This document contains the complete experimental datasets used in the quantum pattern analysis research. The data includes concept extractions from quantum computing frameworks, pattern matching results, and pattern definitions from the PlanQK Pattern Atlas.
+This document contains the complete experimental datasets used in the quantum pattern analysis research.
 
 ## Overview
 
@@ -13,12 +13,12 @@ All datasets are provided in their entirety to ensure reproducibility and enable
 
 ## Classiq Quantum Concepts
 
-❌ **Error**: Could not read Classiq concepts file: Error tokenizing data. C error: Expected 3 fields in line 38, saw 6
+**Error**: Could not read Classiq concepts file: Error tokenizing data. C error: Expected 3 fields in line 38, saw 6
 
 
 ## PennyLane Quantum Concepts
 
-❌ **Error**: Could not read PennyLane concepts file: Error tokenizing data. C error: Expected 1 fields in line 3, saw 2
+**Error**: Could not read PennyLane concepts file: Error tokenizing data. C error: Expected 1 fields in line 3, saw 2
 
 
 ## Qiskit Quantum Concepts
@@ -26,7 +26,7 @@ All datasets are provided in their entirety to ensure reproducibility and enable
 The complete dataset of quantum concepts extracted from the Qiskit framework.
 
 **File**: `qiskit_quantum_concepts.csv`
-**Total Concepts**: 86
+**Total Concepts**: 88
 
 |   Row | name                                                                                                                 | summary                                                                                                                                                                                                                                          |
 |------:|:---------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -88,34 +88,36 @@ The complete dataset of quantum concepts extracted from the Qiskit framework.
 |    56 | .qiskit.qiskit.circuit.library.generalized_gates.mcg_up_to_diagonal.MCGupDiag                                        | Decomposes a multi-controlled gate :math:`U` up to a diagonal :math:`D` acting on the control and target qubit (but not on the ancilla qubits), i.e., it implements a circuit corresponding to a unitary :math:`U'`, such that :math:`U = D U'`. |
 |    57 | .qiskit.qiskit.circuit.library.generalized_gates.mcmt.MCMTVChain                                                     | The MCMT implementation using the CCX V-chain.                                                                                                                                                                                                   |
 |    58 | .qiskit.qiskit.circuit.library.generalized_gates.pauli.PauliGate                                                     | A multi-qubit Pauli gate.                                                                                                                                                                                                                        |
-|    59 | .qiskit.qiskit.circuit.library.generalized_gates.permutation.Permutation                                             | An n_qubit circuit that permutes qubits.                                                                                                                                                                                                         |
-|    60 | .qiskit.qiskit.circuit.library.generalized_gates.permutation.PermutationGate                                         | A gate that permutes qubits.                                                                                                                                                                                                                     |
-|    61 | .qiskit.qiskit.circuit.library.generalized_gates.rv.RVGate                                                           | Rotation around arbitrary rotation axis :math:`\vec{v}` where :math:`\|\vec{v}\|_2` is angle of rotation in radians.                                                                                                                             |
-|    62 | .qiskit.qiskit.circuit.library.generalized_gates.uc.UCGate                                                           | Uniformly controlled gate (also called multiplexed gate).                                                                                                                                                                                        |
-|    63 | .qiskit.qiskit.circuit.library.generalized_gates.ucrz.UCRZGate                                                       | Uniformly controlled Pauli-Z rotations.                                                                                                                                                                                                          |
-|    64 | .qiskit.qiskit.circuit.library.generalized_gates.unitary.UnitaryGate                                                 | Class quantum gates specified by a unitary matrix.                                                                                                                                                                                               |
-|    65 | .qiskit.qiskit.circuit.library.graph_state.GraphState                                                                | Circuit to prepare a graph state.                                                                                                                                                                                                                |
-|    66 | .qiskit.qiskit.circuit.library.graph_state.GraphStateGate                                                            | A gate representing a graph state.                                                                                                                                                                                                               |
-|    67 | .qiskit.qiskit.circuit.library.grover_operator.GroverOperator                                                        | The Grover operator.                                                                                                                                                                                                                             |
-|    68 | .qiskit.qiskit.circuit.library.hamiltonian_gate.HamiltonianGate                                                      | Class for representing evolution by a Hamiltonian operator as a gate.                                                                                                                                                                            |
-|    69 | .qiskit.qiskit.circuit.library.hidden_linear_function.HiddenLinearFunction                                           | Circuit to solve the hidden linear function problem.                                                                                                                                                                                             |
-|    70 | .qiskit.qiskit.circuit.library.iqp.IQP                                                                               | Instantaneous quantum polynomial (IQP) circuit.                                                                                                                                                                                                  |
-|    71 | .qiskit.qiskit.circuit.library.iqp.random_iqp                                                                        | A random instantaneous quantum polynomial time (IQP) circuit.                                                                                                                                                                                    |
-|    72 | .qiskit.qiskit.circuit.library.n_local.efficient_su2.EfficientSU2                                                    | The hardware efficient SU(2) 2-local circuit.                                                                                                                                                                                                    |
-|    73 | .qiskit.qiskit.circuit.library.n_local.evolved_operator_ansatz.hamiltonian_variational_ansatz                        | Construct a Hamiltonian variational ansatz.                                                                                                                                                                                                      |
-|    74 | .qiskit.qiskit.circuit.library.n_local.evolved_operator_ansatz.EvolvedOperatorAnsatz                                 | The evolved operator ansatz.                                                                                                                                                                                                                     |
-|    75 | .qiskit.qiskit.circuit.library.n_local.excitation_preserving.ExcitationPreserving                                    | The heuristic excitation-preserving wave function ansatz.                                                                                                                                                                                        |
-|    76 | .qiskit.qiskit.circuit.library.n_local.n_local.NLocal                                                                | The n-local circuit class.                                                                                                                                                                                                                       |
-|    77 | .qiskit.qiskit.circuit.library.n_local.pauli_two_design.PauliTwoDesign                                               | The Pauli Two-Design ansatz.                                                                                                                                                                                                                     |
-|    78 | .qiskit.qiskit.circuit.library.n_local.qaoa_ansatz.QAOAAnsatz                                                        | A generalized QAOA quantum circuit with a support of custom initial states and mixers.                                                                                                                                                           |
-|    79 | .qiskit.qiskit.circuit.library.n_local.real_amplitudes.RealAmplitudes                                                | The real-amplitudes 2-local circuit.                                                                                                                                                                                                             |
-|    80 | .qiskit.qiskit.circuit.library.n_local.two_local.TwoLocal                                                            | The two-local circuit.                                                                                                                                                                                                                           |
-|    81 | .qiskit.qiskit.circuit.library.overlap.UnitaryOverlap                                                                | Circuit that returns the overlap between two unitaries :math:`U_2^{\dag} U_1`.                                                                                                                                                                   |
-|    82 | .qiskit.qiskit.circuit.library.pauli_evolution.PauliEvolutionGate                                                    | Time-evolution of an operator consisting of Paulis.                                                                                                                                                                                              |
-|    83 | .qiskit.qiskit.circuit.library.phase_estimation.PhaseEstimation                                                      | Phase Estimation circuit.                                                                                                                                                                                                                        |
-|    84 | .qiskit.qiskit.circuit.library.phase_oracle.PhaseOracle                                                              | Phase Oracle.                                                                                                                                                                                                                                    |
-|    85 | .qiskit.qiskit.circuit.library.phase_oracle.PhaseOracleGate                                                          | Implements a phase oracle.                                                                                                                                                                                                                       |
-|    86 | .qiskit.qiskit.circuit.library.quantum_volume.QuantumVolume                                                          | A quantum volume model circuit.                                                                                                                                                                                                                  |
+|    59 | .qiskit.qiskit.circuit.library.generalized_gates.pauli_product_rotation.PauliProductRotationGate                     | A generic Pauli rotation.                                                                                                                                                                                                                        |
+|    60 | .qiskit.qiskit.circuit.library.generalized_gates.permutation.Permutation                                             | An n_qubit circuit that permutes qubits.                                                                                                                                                                                                         |
+|    61 | .qiskit.qiskit.circuit.library.generalized_gates.permutation.PermutationGate                                         | A gate that permutes qubits.                                                                                                                                                                                                                     |
+|    62 | .qiskit.qiskit.circuit.library.generalized_gates.rv.RVGate                                                           | Rotation around arbitrary rotation axis :math:`\vec{v}` where :math:`\|\vec{v}\|_2` is angle of rotation in radians.                                                                                                                             |
+|    63 | .qiskit.qiskit.circuit.library.generalized_gates.uc.UCGate                                                           | Uniformly controlled gate (also called multiplexed gate).                                                                                                                                                                                        |
+|    64 | .qiskit.qiskit.circuit.library.generalized_gates.ucrz.UCRZGate                                                       | Uniformly controlled Pauli-Z rotations.                                                                                                                                                                                                          |
+|    65 | .qiskit.qiskit.circuit.library.generalized_gates.unitary.UnitaryGate                                                 | Class for quantum gates specified by a unitary matrix.                                                                                                                                                                                           |
+|    66 | .qiskit.qiskit.circuit.library.graph_state.GraphState                                                                | Circuit to prepare a graph state.                                                                                                                                                                                                                |
+|    67 | .qiskit.qiskit.circuit.library.graph_state.GraphStateGate                                                            | A gate representing a graph state.                                                                                                                                                                                                               |
+|    68 | .qiskit.qiskit.circuit.library.grover_operator.GroverOperator                                                        | The Grover operator.                                                                                                                                                                                                                             |
+|    69 | .qiskit.qiskit.circuit.library.hamiltonian_gate.HamiltonianGate                                                      | Class for representing evolution by a Hamiltonian operator as a gate.                                                                                                                                                                            |
+|    70 | .qiskit.qiskit.circuit.library.hidden_linear_function.HiddenLinearFunction                                           | Circuit to solve the hidden linear function problem.                                                                                                                                                                                             |
+|    71 | .qiskit.qiskit.circuit.library.iqp.IQP                                                                               | Instantaneous quantum polynomial (IQP) circuit.                                                                                                                                                                                                  |
+|    72 | .qiskit.qiskit.circuit.library.iqp.random_iqp                                                                        | A random instantaneous quantum polynomial time (IQP) circuit.                                                                                                                                                                                    |
+|    73 | .qiskit.qiskit.circuit.library.n_local.efficient_su2.EfficientSU2                                                    | The hardware efficient SU(2) 2-local circuit.                                                                                                                                                                                                    |
+|    74 | .qiskit.qiskit.circuit.library.n_local.evolved_operator_ansatz.hamiltonian_variational_ansatz                        | Construct a Hamiltonian variational ansatz.                                                                                                                                                                                                      |
+|    75 | .qiskit.qiskit.circuit.library.n_local.evolved_operator_ansatz.EvolvedOperatorAnsatz                                 | The evolved operator ansatz.                                                                                                                                                                                                                     |
+|    76 | .qiskit.qiskit.circuit.library.n_local.excitation_preserving.ExcitationPreserving                                    | The heuristic excitation-preserving wave function ansatz.                                                                                                                                                                                        |
+|    77 | .qiskit.qiskit.circuit.library.n_local.n_local.NLocal                                                                | The n-local circuit class.                                                                                                                                                                                                                       |
+|    78 | .qiskit.qiskit.circuit.library.n_local.pauli_two_design.PauliTwoDesign                                               | The Pauli Two-Design ansatz.                                                                                                                                                                                                                     |
+|    79 | .qiskit.qiskit.circuit.library.n_local.qaoa_ansatz.QAOAAnsatz                                                        | A generalized QAOA quantum circuit with a support of custom initial states and mixers.                                                                                                                                                           |
+|    80 | .qiskit.qiskit.circuit.library.n_local.real_amplitudes.RealAmplitudes                                                | The real-amplitudes 2-local circuit.                                                                                                                                                                                                             |
+|    81 | .qiskit.qiskit.circuit.library.n_local.two_local.TwoLocal                                                            | The two-local circuit.                                                                                                                                                                                                                           |
+|    82 | .qiskit.qiskit.circuit.library.overlap.UnitaryOverlap                                                                | Circuit that returns the overlap between two unitaries :math:`U_2^{\dag} U_1`.                                                                                                                                                                   |
+|    83 | .qiskit.qiskit.circuit.library.pauli_evolution.PauliEvolutionGate                                                    | Time-evolution of an operator consisting of Paulis.                                                                                                                                                                                              |
+|    84 | .qiskit.qiskit.circuit.library.pauli_product_measurement.PauliProductMeasurement                                     | Pauli Product Measurement instruction.                                                                                                                                                                                                           |
+|    85 | .qiskit.qiskit.circuit.library.phase_estimation.PhaseEstimation                                                      | Phase Estimation circuit.                                                                                                                                                                                                                        |
+|    86 | .qiskit.qiskit.circuit.library.phase_oracle.PhaseOracle                                                              | Phase Oracle.                                                                                                                                                                                                                                    |
+|    87 | .qiskit.qiskit.circuit.library.phase_oracle.PhaseOracleGate                                                          | Implements a phase oracle.                                                                                                                                                                                                                       |
+|    88 | .qiskit.qiskit.circuit.library.quantum_volume.QuantumVolume                                                          | A quantum volume model circuit.                                                                                                                                                                                                                  |
 
 ---
 
@@ -131,26 +133,26 @@ The most frequently matched quantum concepts across all frameworks and projects.
 
 |   Rank | Framework   | Concept               |   Matches |
 |-------:|:------------|:----------------------|----------:|
-|      1 | Classiq     | ...hadamard_transform |        52 |
-|      2 | Classiq     | ...qpe                |        30 |
-|      3 | Classiq     | ...qft                |        26 |
-|      4 | Classiq     | ...qpe_flexible       |        26 |
-|      5 | Qiskit      | ...QFT                |        24 |
-|      6 | Pennylane   | ...QFT                |        21 |
-|      7 | Classiq     | ...qsvt               |        19 |
-|      8 | Classiq     | ...apply_to_all       |        16 |
-|      9 | Classiq     | ...suzuki_trotter     |        15 |
-|     10 | Qiskit      | ...AND                |        11 |
+|      1 | Classiq     | ...hadamard_transform |        60 |
+|      2 | Classiq     | ...qpe                |        31 |
+|      3 | Classiq     | ...qpe_flexible       |        25 |
+|      4 | Classiq     | ...qft                |        24 |
+|      5 | Classiq     | ...apply_to_all       |        22 |
+|      6 | Qiskit      | ...QFT                |        22 |
+|      7 | Pennylane   | ...QFT                |        20 |
+|      8 | Classiq     | ...qsvt               |        20 |
+|      9 | Classiq     | ...suzuki_trotter     |        17 |
+|     10 | Pennylane   | ...MERA               |        10 |
 |     11 | Pennylane   | ...QuantumMonteCarlo  |        10 |
-|     12 | Classiq     | ...grover_operator    |         9 |
-|     13 | Qiskit      | ...Permutation        |         9 |
-|     14 | Classiq     | ...phase_oracle       |         9 |
-|     15 | Qiskit      | ...zz_feature_map     |         8 |
-|     16 | Qiskit      | ...z_feature_map      |         8 |
-|     17 | Pennylane   | ...RandomLayers       |         8 |
-|     18 | Classiq     | ...qft_no_swap        |         8 |
-|     19 | Pennylane   | ...GQSP               |         7 |
-|     20 | Classiq     | ...qct_qst_type2      |         7 |
+|     12 | Qiskit      | ...AND                |        10 |
+|     13 | Classiq     | ...phase_oracle       |        10 |
+|     14 | Classiq     | ...qsvt_lcu           |        10 |
+|     15 | Pennylane   | ...QAOAEmbedding      |         9 |
+|     16 | Pennylane   | ...RandomLayers       |         9 |
+|     17 | Classiq     | ...gqsp               |         8 |
+|     18 | Qiskit      | ...zz_feature_map     |         8 |
+|     19 | Qiskit      | ...z_feature_map      |         8 |
+|     20 | Classiq     | ...grover_operator    |         8 |
 
 
 ### Match Type Analysis
@@ -161,8 +163,8 @@ Distribution of matches by type (name-based, semantic, etc.).
 
 |   Row | match_type   |   count |
 |------:|:-------------|--------:|
-|     1 | name         |     384 |
-|     2 | summary      |     189 |
+|     1 | name         |     416 |
+|     2 | summary      |     182 |
 
 
 ### Framework Analysis
@@ -173,9 +175,9 @@ Distribution of matches by source framework.
 
 |   Row | framework   |   count |
 |------:|:------------|--------:|
-|     1 | classiq     |     344 |
-|     2 | qiskit      |     118 |
-|     3 | pennylane   |     111 |
+|     1 | classiq     |     368 |
+|     2 | pennylane   |     122 |
+|     3 | qiskit      |     108 |
 
 
 ### Pattern Frequency Analysis
@@ -186,33 +188,33 @@ Frequency of quantum patterns in the analysis.
 
 |   Row | pattern                                           |   count |
 |------:|:--------------------------------------------------|--------:|
-|     1 | Basis Change                                      |     161 |
-|     2 | Quantum Phase Estimation (QPE)                    |      57 |
-|     3 | Domain Specific Application                       |      53 |
-|     4 | Quantum Arithmetic                                |      43 |
-|     5 | Circuit Construction Utility                      |      40 |
-|     6 | Data Encoding                                     |      37 |
-|     7 | Amplitude Amplification                           |      26 |
-|     8 | Initialization                                    |      26 |
-|     9 | Hamiltonian Simulation                            |      20 |
-|    10 | Variational Quantum Algorithm (VQA)               |      19 |
-|    11 | Oracle                                            |      13 |
-|    12 | Quantum Logical Operators                         |      13 |
-|    13 | Quantum Neural Network (QNN)                      |      11 |
-|    14 | Grover                                            |      10 |
-|    15 | Quantum Approximate Optimization Algorithm (QAOA) |      10 |
-|    16 | Linear Combination of Unitaries                   |       7 |
-|    17 | Dynamic Circuit                                   |       6 |
-|    18 | SWAP Test                                         |       6 |
-|    19 | Variational Quantum Eigensolver (VQE)             |       5 |
-|    20 | Creating Entanglement                             |       5 |
-|    21 | Phase Shift                                       |       4 |
+|     1 | Basis Change                                      |     159 |
+|     2 | Domain Specific Application                       |      66 |
+|     3 | Quantum Phase Estimation (QPE)                    |      57 |
+|     4 | Circuit Construction Utility                      |      41 |
+|     5 | Data Encoding                                     |      41 |
+|     6 | Quantum Arithmetic                                |      36 |
+|     7 | Initialization                                    |      25 |
+|     8 | Variational Quantum Algorithm (VQA)               |      23 |
+|     9 | Amplitude Amplification                           |      22 |
+|    10 | Hamiltonian Simulation                            |      22 |
+|    11 | Quantum Approximate Optimization Algorithm (QAOA) |      16 |
+|    12 | Quantum Neural Network (QNN)                      |      14 |
+|    13 | Grover                                            |      13 |
+|    14 | Oracle                                            |      13 |
+|    15 | Quantum Logical Operators                         |      12 |
+|    16 | Dynamic Circuit                                   |       7 |
+|    17 | SWAP Test                                         |       7 |
+|    18 | Phase Shift                                       |       6 |
+|    19 | Linear Combination of Unitaries                   |       6 |
+|    20 | Creating Entanglement                             |       6 |
+|    21 | Variational Quantum Eigensolver (VQE)             |       3 |
 |    22 | Quantum Amplitude Estimation                      |       1 |
 
 
 ## Quantum Patterns from PlanQK Pattern Atlas
 
-This section contains the complete dataset of quantum patterns downloaded from the PlanQK Pattern Atlas. These patterns serve as the reference set for pattern matching analysis.
+This section contains the complete dataset of quantum patterns downloaded from the PlanQK Pattern Atlas.
 
 **Total Patterns**: 59
 **Source**: [PlanQK Pattern Atlas](https://patternatlas.planqk.de/pattern-languages/af7780d5-1f97-4536-8da7-4194b093ab1d)

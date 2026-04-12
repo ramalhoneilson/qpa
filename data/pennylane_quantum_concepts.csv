@@ -1,4 +1,7 @@
 name;summary
+/pennylane/pennylane.templates.core.AbstractArray;An abstract representation of an array that contains the shape and dtype attributes necessary for resource calculations.
+/pennylane/pennylane.templates.core.SubroutineOp;An operator constructed from a :class:`~.Subroutine` together with its bound arguments. This class should not be created directly, but is the byproduct of calling a ``Subroutine``.
+/pennylane/pennylane.templates.core.Subroutine;The definition of a Subroutine, compatible both with program capture and backwards compatible with operators.
 /pennylane/pennylane.templates.embeddings.amplitude.AmplitudeEmbedding;Encodes :math:`2^n` features into the amplitude vector of :math:`n` qubits.
 /pennylane/pennylane.templates.embeddings.angle.AngleEmbedding;Encodes :math:`N` features into the rotation angles of :math:`n` qubits, where :math:`N \leq n`.
 /pennylane/pennylane.templates.embeddings.basis.BasisEmbedding;Encodes :math:`n` binary features into a basis state of :math:`n` qubits.
@@ -18,8 +21,10 @@ name;summary
 /pennylane/pennylane.templates.state_preparations.basis_qutrit.QutritBasisStatePreparation;Prepares a basis state on the given wires using a sequence of TShift gates.
 /pennylane/pennylane.templates.state_preparations.cosine_window.CosineWindow;CosineWindow(wires) Prepares an initial state with a cosine wave function.
 /pennylane/pennylane.templates.state_preparations.mottonen.MottonenStatePreparation;Prepares an arbitrary state on the given wires using a decomposition into gates developed by `Möttönen et al. (2004) <https://arxiv.org/abs/quant-ph/0407010>`_.
+/pennylane/pennylane.templates.state_preparations.multiplexer_state_prep.MultiplexerStatePreparation;Prepares a quantum state using multiplexed rotations.
 /pennylane/pennylane.templates.state_preparations.qrom_state_prep.QROMStatePreparation;Prepares a quantum state using Quantum Read-Only Memory (QROM).
 /pennylane/pennylane.templates.state_preparations.state_prep_mps.MPSPrep;Prepares an initial state from a matrix product state (MPS) representation.
+/pennylane/pennylane.templates.state_preparations.sum_of_slaters.SumOfSlatersPrep;Prepare an arbitrary quantum state with the sum-of-Slaters technique.
 /pennylane/pennylane.templates.state_preparations.superposition.Superposition;Prepare a superposition of computational basis states.
 /pennylane/pennylane.templates.subroutines.amplitude_amplification.AmplitudeAmplification;Applies amplitude amplification.
 /pennylane/pennylane.templates.subroutines.aqft.AQFT;AQFT(order, wires) Apply an approximate quantum Fourier transform (AQFT).
@@ -41,10 +46,10 @@ name;summary
 /pennylane/pennylane.templates.subroutines.hilbert_schmidt.HilbertSchmidt;Create a Hilbert-Schmidt template that can be used to compute the Hilbert-Schmidt Test (HST).
 /pennylane/pennylane.templates.subroutines.hilbert_schmidt.LocalHilbertSchmidt;Create a Local Hilbert-Schmidt template that can be used to compute the Local Hilbert-Schmidt Test (LHST).
 /pennylane/pennylane.templates.subroutines.interferometer.Interferometer;General linear interferometer, an array of beamsplitters and phase shifters.
+/pennylane/pennylane.templates.subroutines.iqp.IQP;A template that builds an Instantaneous Quantum Polynomial (IQP) circuit. The gates of these circuits correspond to multi-qubit X rotations, whose generators are given by tensor products of Pauli X operators.
 /pennylane/pennylane.templates.subroutines.permute.Permute;Applies a permutation to a set of wires.
 /pennylane/pennylane.templates.subroutines.prepselprep.PrepSelPrep;Implements a block-encoding of a linear combination of unitaries.
 /pennylane/pennylane.templates.subroutines.qchem.all_singles_doubles.AllSinglesDoubles;Builds a quantum circuit to prepare correlated states of molecules by applying all :class:`~.pennylane.SingleExcitation` and :class:`~.pennylane.DoubleExcitation` operations to the initial Hartree-Fock state.
-/pennylane/pennylane.templates.subroutines.qchem.basis_rotation.BasisRotation;Implements a circuit that performs an exact single-body basis rotation using Givens rotations and phase shifts.
 /pennylane/pennylane.templates.subroutines.qchem.fermionic_double_excitation.FermionicDoubleExcitation;Circuit to exponentiate the tensor product of Pauli matrices representing the double-excitation operator entering the Unitary Coupled-Cluster Singles and Doubles (UCCSD) ansatz. UCCSD is a VQE ansatz commonly used to run quantum chemistry simulations.
 /pennylane/pennylane.templates.subroutines.qchem.fermionic_single_excitation.FermionicSingleExcitation;Circuit to exponentiate the tensor product of Pauli matrices representing the single-excitation operator entering the Unitary Coupled-Cluster Singles and Doubles (UCCSD) ansatz. UCCSD is a VQE ansatz commonly used to run quantum chemistry simulations.
 /pennylane/pennylane.templates.subroutines.qchem.kupccgsd.kUpCCGSD;Implements the k-Unitary Pair Coupled-Cluster Generalized Singles and Doubles (k-UpCCGSD) ansatz.
@@ -52,6 +57,9 @@ name;summary
 /pennylane/pennylane.templates.subroutines.qft.QFT;QFT(wires) Apply a quantum Fourier transform (QFT).
 /pennylane/pennylane.templates.subroutines.qmc.QuantumMonteCarlo;Performs the `quantum Monte Carlo estimation <https://arxiv.org/abs/1805.00109>`__ algorithm.
 /pennylane/pennylane.templates.subroutines.qpe.QuantumPhaseEstimation;Performs the `quantum phase estimation <https://en.wikipedia.org/wiki/Quantum_phase_estimation_algorithm>`__ circuit.
+/pennylane/pennylane.templates.subroutines.qram.BBQRAM;Bucket-brigade QRAM with explicit bus routing using 3 wires per node. Bucket-brigade QRAM achieves an :math:`O(\log N)` complexity instead of the typical :math:`N`, where :math:`N` is the size of the classical data register being queried. For more theoretical details on how this algorithm works, please consult `arXiv:0708.1879 <https://arxiv.org/pdf/0708.1879>`__.
+/pennylane/pennylane.templates.subroutines.qram.HybridQRAM;A QRAM implementation that provides a width-depth tradeoff by combining behaviour from :class:`~.SelectOnlyQRAM` and :class:`~.BBQRAM`. For more theoretical information, consult `section 3 of arXiv:2306.03242 <https://arxiv.org/abs/2306.03242>`__.
+/pennylane/pennylane.templates.subroutines.qram.SelectOnlyQRAM;A QRAM implementation comprising :class:`~.MultiControlledX` gates on target (bus) wires, controlled on all address wires. This implementation of QRAM requires :math:`O(\log N)` wires, where :math:`N` is the size of the classical data register being queried. For more theoretical information, consult `Figure 8 of arXiv:2012.05340 <https://arxiv.org/abs/2012.05340>`__.
 /pennylane/pennylane.templates.subroutines.qrom.QROM;Applies the QROM operator.
 /pennylane/pennylane.templates.subroutines.qsvt.QSVT;QSVT(UA,projectors) Implements the `quantum singular value transformation <https://arxiv.org/abs/1806.01838>`__ (QSVT) circuit.
 /pennylane/pennylane.templates.subroutines.qubitization.Qubitization;Applies the `Qubitization <https://arxiv.org/abs/2204.11890>`__ operator.

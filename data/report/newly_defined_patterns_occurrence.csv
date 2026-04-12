@@ -1,10 +1,10 @@
 Pattern,Matches
-Basis Change,161
-Domain Specific Application,53
-Quantum Arithmetic,43
-Circuit Construction Utility,40
-Data Encoding,37
-Hamiltonian Simulation,20
-Quantum Logical Operators,13
-Linear Combination of Unitaries,7
+Basis Change,159
+Domain Specific Application,66
+Circuit Construction Utility,41
+Data Encoding,41
+Quantum Arithmetic,36
+Hamiltonian Simulation,22
+Quantum Logical Operators,12
+Linear Combination of Unitaries,6
 Quantum Amplitude Estimation,1

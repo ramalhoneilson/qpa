@@ -1,4 +1,14 @@
 name,summary
 /classiq/open_library.functions.state_preparation.inplace_prepare_int,"This function is **deprecated**. Use in-place-xor assignment statement in the form _target-var_ **^=** _quantum-expression_ or **inplace_xor(**_quantum-expression_**,** _target-var_**)** instead."
 /classiq/open_library.functions.state_preparation.prepare_int,"This function is **deprecated**. Use assignment statement in the form _target-var_ **|=** _quantum-expression_ or **assign(**_quantum-expression_**,** _target-var_**)** instead."
+/pennylane/pennylane.templates.core.AbstractArray,An abstract representation of an array that contains the shape and dtype attributes necessary for resource calculations.
+/pennylane/pennylane.templates.core.SubroutineOp,"An operator constructed from a :class:`~.Subroutine` together with its bound arguments. This class should not be created directly, but is the byproduct of calling a ``Subroutine``."
+/pennylane/pennylane.templates.core.Subroutine,"The definition of a Subroutine, compatible both with program capture and backwards compatible with operators."
+/pennylane/pennylane.templates.state_preparations.multiplexer_state_prep.MultiplexerStatePreparation,Prepares a quantum state using multiplexed rotations.
+/pennylane/pennylane.templates.state_preparations.sum_of_slaters.SumOfSlatersPrep,Prepare an arbitrary quantum state with the sum-of-Slaters technique.
+/pennylane/pennylane.templates.subroutines.qram.BBQRAM,"Bucket-brigade QRAM with explicit bus routing using 3 wires per node. Bucket-brigade QRAM achieves an :math:`O(\log N)` complexity instead of the typical :math:`N`, where :math:`N` is the size of the classical data register being queried. For more theoretical details on how this algorithm works, please consult `arXiv:0708.1879 <https://arxiv.org/pdf/0708.1879>`__."
+/pennylane/pennylane.templates.subroutines.qram.HybridQRAM,"A QRAM implementation that provides a width-depth tradeoff by combining behaviour from :class:`~.SelectOnlyQRAM` and :class:`~.BBQRAM`. For more theoretical information, consult `section 3 of arXiv:2306.03242 <https://arxiv.org/abs/2306.03242>`__."
+/pennylane/pennylane.templates.subroutines.qram.SelectOnlyQRAM,"A QRAM implementation comprising :class:`~.MultiControlledX` gates on target (bus) wires, controlled on all address wires. This implementation of QRAM requires :math:`O(\log N)` wires, where :math:`N` is the size of the classical data register being queried. For more theoretical information, consult `Figure 8 of arXiv:2012.05340 <https://arxiv.org/abs/2012.05340>`__."
 /qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.self_product,Define a function map from R^n to R.
+/qiskit/qiskit.circuit.library.generalized_gates.pauli_product_rotation.PauliProductRotationGate,A generic Pauli rotation.
+/qiskit/qiskit.circuit.library.pauli_product_measurement.PauliProductMeasurement,Pauli Product Measurement instruction.

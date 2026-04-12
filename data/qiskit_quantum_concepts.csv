@@ -57,12 +57,13 @@ name;summary
 /qiskit/qiskit.circuit.library.generalized_gates.mcg_up_to_diagonal.MCGupDiag;Decomposes a multi-controlled gate :math:`U` up to a diagonal :math:`D` acting on the control and target qubit (but not on the ancilla qubits), i.e., it implements a circuit corresponding to a unitary :math:`U'`, such that :math:`U = D U'`.
 /qiskit/qiskit.circuit.library.generalized_gates.mcmt.MCMTVChain;The MCMT implementation using the CCX V-chain.
 /qiskit/qiskit.circuit.library.generalized_gates.pauli.PauliGate;A multi-qubit Pauli gate.
+/qiskit/qiskit.circuit.library.generalized_gates.pauli_product_rotation.PauliProductRotationGate;A generic Pauli rotation.
 /qiskit/qiskit.circuit.library.generalized_gates.permutation.Permutation;An n_qubit circuit that permutes qubits.
 /qiskit/qiskit.circuit.library.generalized_gates.permutation.PermutationGate;A gate that permutes qubits.
 /qiskit/qiskit.circuit.library.generalized_gates.rv.RVGate;Rotation around arbitrary rotation axis :math:`\vec{v}` where :math:`\|\vec{v}\|_2` is angle of rotation in radians.
 /qiskit/qiskit.circuit.library.generalized_gates.uc.UCGate;Uniformly controlled gate (also called multiplexed gate).
 /qiskit/qiskit.circuit.library.generalized_gates.ucrz.UCRZGate;Uniformly controlled Pauli-Z rotations.
-/qiskit/qiskit.circuit.library.generalized_gates.unitary.UnitaryGate;Class quantum gates specified by a unitary matrix.
+/qiskit/qiskit.circuit.library.generalized_gates.unitary.UnitaryGate;Class for quantum gates specified by a unitary matrix.
 /qiskit/qiskit.circuit.library.graph_state.GraphState;Circuit to prepare a graph state.
 /qiskit/qiskit.circuit.library.graph_state.GraphStateGate;A gate representing a graph state.
 /qiskit/qiskit.circuit.library.grover_operator.GroverOperator;The Grover operator.
@@ -81,6 +82,7 @@ name;summary
 /qiskit/qiskit.circuit.library.n_local.two_local.TwoLocal;The two-local circuit.
 /qiskit/qiskit.circuit.library.overlap.UnitaryOverlap;Circuit that returns the overlap between two unitaries :math:`U_2^{\dag} U_1`.
 /qiskit/qiskit.circuit.library.pauli_evolution.PauliEvolutionGate;Time-evolution of an operator consisting of Paulis.
+/qiskit/qiskit.circuit.library.pauli_product_measurement.PauliProductMeasurement;Pauli Product Measurement instruction.
 /qiskit/qiskit.circuit.library.phase_estimation.PhaseEstimation;Phase Estimation circuit.
 /qiskit/qiskit.circuit.library.phase_oracle.PhaseOracle;Phase Oracle.
 /qiskit/qiskit.circuit.library.phase_oracle.PhaseOracleGate;Implements a phase oracle.
