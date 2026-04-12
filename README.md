@@ -475,6 +475,28 @@ qpa/
 └── README.md                   # This file
 ```
 
+## 🔧 Troubleshooting
+
+### Prefect database migration error (`Can't locate revision ...`)
+
+If `just workflow-ui` fails with an Alembic error like:
+
+```
+alembic.util.exc.CommandError: Can't locate revision identified by '...'
+```
+
+This happens when Prefect is upgraded and the local database (`~/.prefect/prefect.db`) has migration history from a previous version. It only affects your local machine — collaborators who do a fresh install will never encounter this.
+
+**Fix:** delete the stale database and let Prefect recreate it:
+
+```bash
+just reset-prefect
+```
+
+> **Note:** this only removes run history from the Prefect UI. It has no effect on analysis results or any project data.
+
+---
+
 ## 🤝 Contributing
 
 This project follows best practices for scientific software:
