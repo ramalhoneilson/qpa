@@ -17,6 +17,7 @@ install: ensure-uv discover-and-clone
     @echo " Installing cloned repositories in editable mode..."
     @uv pip install --python {{VENV}}/bin/python -e ./target_github_projects/qiskit
     @uv pip install --python {{VENV}}/bin/python -e ./target_github_projects/pennylane
+    @uv pip install --python {{VENV}}/bin/python -e ./target_github_projects/qiskit-algorithms
     @echo ">>> Unified environment setup complete."
     @echo "To activate it manually, run: source {{VENV}}/bin/activate"
 
@@ -27,6 +28,7 @@ identify-concepts: install
     @just identify-qiskit
     @just identify-pennylane
     @just identify-classiq
+    @just identify-qiskit-algorithms
     @echo "\n All core concept identification tasks are complete."
     @echo "Results are saved in the 'data/' directory."
 
@@ -138,6 +140,11 @@ identify-pennylane:
 identify-classiq:
     @echo "\n--- Identifying core concepts in Classiq ---"
     @{{VENV}}/bin/python -m src.core_concepts.pipelines.extract_classiq
+
+# Identifies and extracts core concepts from the qiskit-algorithms source code.
+identify-qiskit-algorithms:
+    @echo "\n--- Identifying core concepts in qiskit-algorithms ---"
+    @{{VENV}}/bin/python -m src.core_concepts.pipelines.extract_qiskit_algorithms
 
 
 # A special recipe to create a  venv just for the data acquisition scripts.

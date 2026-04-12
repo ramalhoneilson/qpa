@@ -1,0 +1,40 @@
+name;summary
+/qiskit-algorithms/qiskit_algorithms.amplitude_amplifiers.amplification_problem.AmplificationProblem;The amplification problem is the input to amplitude amplification algorithms, like Grover.
+/qiskit-algorithms/qiskit_algorithms.amplitude_amplifiers.amplitude_amplifier.AmplitudeAmplifier;The interface for amplification algorithms.
+/qiskit-algorithms/qiskit_algorithms.amplitude_amplifiers.grover.Grover;Grover's Search algorithm.
+/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.ae.AmplitudeEstimation;The Quantum Phase Estimation-based Amplitude Estimation algorithm.
+/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.amplitude_estimator.AmplitudeEstimator;The Amplitude Estimation interface.
+/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem;The estimation problem is the input to amplitude estimation algorithm.
+/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.fae.FasterAmplitudeEstimation;The Faster Amplitude Estimation algorithm.
+/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.iae.IterativeAmplitudeEstimation;The Iterative Amplitude Estimation algorithm.
+/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.mlae.MaximumLikelihoodAmplitudeEstimation;The Maximum Likelihood Amplitude Estimation algorithm.
+/qiskit-algorithms/qiskit_algorithms.eigensolvers.eigensolver.Eigensolver;The eigensolver interface.
+/qiskit-algorithms/qiskit_algorithms.eigensolvers.vqd.VQD;The Variational Quantum Deflation algorithm. Implementation using primitives.
+/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.adapt_vqe.TerminationCriterion;A class enumerating the various finishing criteria.
+/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.adapt_vqe.AdaptVQE;The Adaptive Variational Quantum Eigensolver algorithm.
+/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.minimum_eigensolver.MinimumEigensolver;The minimum eigensolver interface.
+/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.qaoa.QAOA;The Quantum Approximate Optimization Algorithm (QAOA).
+/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.sampling_mes.SamplingMinimumEigensolver;The Sampling Minimum Eigensolver Interface.
+/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.sampling_vqe.SamplingVQE;The Variational Quantum Eigensolver algorithm, optimized for diagonal Hamiltonians.
+/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.vqe.VQE;The Variational Quantum Eigensolver (VQE) algorithm.
+/qiskit-algorithms/qiskit_algorithms.phase_estimators.hamiltonian_phase_estimation.HamiltonianPhaseEstimation;Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator.
+/qiskit-algorithms/qiskit_algorithms.phase_estimators.ipe.IterativePhaseEstimation;Run the Iterative quantum phase estimation (QPE) algorithm.
+/qiskit-algorithms/qiskit_algorithms.phase_estimators.phase_estimation.PhaseEstimation;Run the Quantum Phase Estimation (QPE) algorithm.
+/qiskit-algorithms/qiskit_algorithms.phase_estimators.phase_estimation_scale.PhaseEstimationScale;Set and use a bound on eigenvalues of a Hermitian operator in order to ensure phases are in the desired range and to convert measured phases into eigenvectors.
+/qiskit-algorithms/qiskit_algorithms.phase_estimators.phase_estimator.PhaseEstimator;The Phase Estimator interface.
+/qiskit-algorithms/qiskit_algorithms.state_fidelities.base_state_fidelity.BaseStateFidelity;An interface to calculate state fidelities (state overlaps) for pairs of (parametrized) quantum circuits. The calculation depends on the particular fidelity method implementation, but can be always defined as the state overlap:
+/qiskit-algorithms/qiskit_algorithms.state_fidelities.compute_uncompute.ComputeUncompute;This class leverages the sampler primitive to calculate the state fidelity of two quantum circuits following the compute-uncompute method (see [1] for further reference). The fidelity can be defined as the state overlap.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.imaginary_time_evolver.ImaginaryTimeEvolver;Interface for Quantum Imaginary Time Evolution.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.pvqd.pvqd.PVQD;The projected Variational Quantum Dynamics (p-VQD) Algorithm.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.real_time_evolver.RealTimeEvolver;Interface for Quantum Real Time Evolution.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.time_evolution_problem.TimeEvolutionProblem;Time evolution problem class.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.trotterization.trotter_qrte.TrotterQRTE;Quantum Real Time Evolution using Trotterization.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.var_qite.VarQITE;Variational Quantum Imaginary Time Evolution algorithm.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.var_qrte.VarQRTE;Variational Quantum Real Time Evolution algorithm.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.var_qte.VarQTE;Variational Quantum Time Evolution.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.variational_principles.imaginary_mc_lachlan_principle.ImaginaryMcLachlanPrinciple;Class for an Imaginary McLachlan's Variational Principle. It aims to minimize the distance between both sides of the Wick-rotated Schrödinger equation with a quantum state given as a parametrized trial state. The principle leads to a system of linear equations handled by a linear solver. The imaginary variant means that we consider imaginary time dynamics.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.variational_principles.imaginary_variational_principle.ImaginaryVariationalPrinciple;Abstract class for an Imaginary Variational Principle. The imaginary variant means that we consider imaginary time dynamics.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.variational_principles.real_mc_lachlan_principle.RealMcLachlanPrinciple;Class for a Real McLachlan's Variational Principle. It aims to minimize the distance between both sides of the Schrödinger equation with a quantum state given as a parametrized trial state. The principle leads to a system of linear equations handled by a linear solver. The real variant means that we consider real time dynamics.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.variational_principles.real_variational_principle.RealVariationalPrinciple;Class for a Real Variational Principle. The real variant means that we consider real time dynamics.
+/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.variational_principles.variational_principle.VariationalPrinciple;A Variational Principle class. It determines the time propagation of parameters in a quantum state provided as a parametrized quantum circuit (ansatz).
+/qiskit-algorithms/qiskit_algorithms.variational_algorithm.VariationalAlgorithm;The Variational Algorithm Base Class.

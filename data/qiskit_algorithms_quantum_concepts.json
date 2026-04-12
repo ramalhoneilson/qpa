@@ -1,0 +1,312 @@
+[
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.amplitude_amplifiers.amplification_problem.AmplificationProblem",
+    "summary": "The amplification problem is the input to amplitude amplification algorithms, like Grover.",
+    "docstring": "The amplification problem is the input to amplitude amplification algorithms, like Grover.\n\nThis class contains all problem-specific information required to run an amplitude amplification\nalgorithm. It minimally contains the Grover operator. It can further hold some post processing\non the optimal bitstring.",
+    "base_classes": []
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.amplitude_amplifiers.amplitude_amplifier.AmplitudeAmplifier",
+    "summary": "The interface for amplification algorithms.",
+    "docstring": "The interface for amplification algorithms.",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.amplitude_amplifiers.grover.Grover",
+    "summary": "Grover's Search algorithm.",
+    "docstring": "Grover's Search algorithm.\n\n.. note::\n\n    If you want to learn more about the theory behind Grover's Search algorithm, check\n    out the `Qiskit Textbook <https://qiskit.org/textbook/ch-algorithms/grover.html>`_.\n    or the `Qiskit Tutorials\n    <https://qiskit.org/documentation/tutorials/algorithms/07_grover_examples.html>`_\n    for more concrete how-to examples.\n\nGrover's Search [1, 2] is a well known quantum algorithm that can be used for\nsearching through unstructured collections of records for particular targets\nwith quadratic speedup compared to classical algorithms.\n\nGiven a set :math:`X` of :math:`N` elements :math:`X=\\{x_1,x_2,\\ldots,x_N\\}`\nand a boolean function :math:`f : X \\rightarrow \\{0,1\\}`, the goal of an\nunstructured-search problem is to find an element :math:`x^* \\in X` such\nthat :math:`f(x^*)=1`.\n\nThe search is called *unstructured* because there are no guarantees as to how\nthe database is ordered.  On a sorted database, for instance, one could perform\nbinary search to find an element in :math:`\\mathbb{O}(\\log N)` worst-case time.\nInstead, in an unstructured-search problem, there is no prior knowledge about\nthe contents of the database. With classical circuits, there is no alternative\nbut to perform a linear number of queries to find the target element.\nConversely, Grover's Search algorithm allows to solve the unstructured-search\nproblem on a quantum computer in :math:`\\mathcal{O}(\\sqrt{N})` queries.\n\nTo carry out this search a so-called oracle is required, that flags a good element/state.\nThe action of the oracle :math:`\\mathcal{S}_f` is\n\nThe details of how :math:`S_f` works are unimportant to the algorithm; Grover's\nsearch algorithm treats the oracle as a black box.\n\nThis class supports oracles in form of a :class:`~qiskit.circuit.QuantumCircuit`.\n\nWith the given oracle, Grover's Search constructs the Grover operator to amplify the\namplitudes of the good states:\n\non all other states. Sometimes the first three operands are summarized as diffusion operator,\nwhich implements a reflection over the equal superposition state.\n\nIf the number of solutions is known, we can calculate how often :math:`\\mathcal{Q}` should be\napplied to find a solution with very high probability, see the method\n`optimal_num_iterations`. If the number of solutions is unknown, the algorithm tries different\npowers of Grover's operator, see the `iterations` argument, and after each iteration checks\nif a good state has been measured using `good_state`.\n\nThe generalization of Grover's Search, Quantum Amplitude Amplification [3], uses a modified\nversion of :math:`\\mathcal{Q}` where the diffusion operator does not reflect about the\nequal superposition state, but another state specified via an operator :math:`\\mathcal{A}`:\n\ncircuit library.\n\nReferences:\n    [1]: L. K. Grover (1996), A fast quantum mechanical algorithm for database search,\n        `arXiv:quant-ph/9605043 <https://arxiv.org/abs/quant-ph/9605043>`_.\n    [2]: I. Chuang & M. Nielsen, Quantum Computation and Quantum Information,\n        Cambridge: Cambridge University Press, 2000. Chapter 6.1.2.\n    [3]: Brassard, G., Hoyer, P., Mosca, M., & Tapp, A. (2000).\n        Quantum Amplitude Amplification and Estimation.\n        `arXiv:quant-ph/0005055 <http://arxiv.org/abs/quant-ph/0005055>`_.",
+    "base_classes": [
+      "AmplitudeAmplifier"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.ae.AmplitudeEstimation",
+    "summary": "The Quantum Phase Estimation-based Amplitude Estimation algorithm.",
+    "docstring": "The Quantum Phase Estimation-based Amplitude Estimation algorithm.\n\nThis class implements the original Quantum Amplitude Estimation (QAE) algorithm, introduced by\n[1]. This canonical version uses quantum phase estimation along with a set of :math:`m`\nadditional evaluation qubits to find an estimate :math:`\\tilde{a}`, that is restricted to the\ngrid\n\nincreases with :math:`m`.\n\nUsing a maximum likelihood post processing, this grid constraint can be circumvented.\nThis improved estimator is implemented as well, see [2] Appendix A for more detail.\n\n.. note::\n\n    This class does not support the :attr:`.EstimationProblem.is_good_state` property,\n    as for phase estimation-based QAE, the oracle that identifies the good states\n    must be encoded in the Grover operator. To set custom oracles, the\n    :attr:`.EstimationProblem.grover_operator` attribute can be set directly.\n\nReferences:\n    [1]: Brassard, G., Hoyer, P., Mosca, M., & Tapp, A. (2000).\n         Quantum Amplitude Amplification and Estimation.\n         `arXiv:quant-ph/0005055 <http://arxiv.org/abs/quant-ph/0005055>`_.\n    [2]: Grinko, D., Gacon, J., Zoufal, C., & Woerner, S. (2019).\n         Iterative Quantum Amplitude Estimation.\n         `arXiv:1912.05559 <https://arxiv.org/abs/1912.05559>`_.",
+    "base_classes": [
+      "AmplitudeEstimator"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.amplitude_estimator.AmplitudeEstimator",
+    "summary": "The Amplitude Estimation interface.",
+    "docstring": "The Amplitude Estimation interface.",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem",
+    "summary": "The estimation problem is the input to amplitude estimation algorithm.",
+    "docstring": "The estimation problem is the input to amplitude estimation algorithm.\n\nThis class contains all problem-specific information required to run an amplitude estimation\nalgorithm. That means, it minimally contains the state preparation and the specification\nof the good state. It can further hold some post processing on the estimation of the amplitude\nor a custom Grover operator.",
+    "base_classes": []
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.fae.FasterAmplitudeEstimation",
+    "summary": "The Faster Amplitude Estimation algorithm.",
+    "docstring": "The Faster Amplitude Estimation algorithm.\n\nThe Faster Amplitude Estimation (FAE) [1] algorithm is a variant of Quantum Amplitude\nEstimation (QAE), where the Quantum Phase Estimation (QPE) by an iterative Grover search,\nsimilar to [2].\n\nDue to the iterative version of the QPE, this algorithm does not require any additional\nqubits, as the originally proposed QAE [3] and thus the resulting circuits are less complex.\n\nReferences:\n\n    [1]: K. Nakaji. Faster Amplitude Estimation, 2020;\n        `arXiv:2002.02417 <https://arxiv.org/pdf/2003.02417.pdf>`_\n    [2]: D. Grinko et al. Iterative Amplitude Estimation, 2019;\n        `arXiv:1912.05559 <http://arxiv.org/abs/1912.05559>`_\n    [3]: G. Brassard et al. Quantum Amplitude Amplification and Estimation, 2000;\n        `arXiv:quant-ph/0005055 <http://arxiv.org/abs/quant-ph/0005055>`_",
+    "base_classes": [
+      "AmplitudeEstimator"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.iae.IterativeAmplitudeEstimation",
+    "summary": "The Iterative Amplitude Estimation algorithm.",
+    "docstring": "The Iterative Amplitude Estimation algorithm.\n\nThis class implements the Iterative Quantum Amplitude Estimation (IQAE) algorithm, proposed\nin [1]. The output of the algorithm is an estimate that,\nwith at least probability :math:`1 - \\alpha`, differs by epsilon to the target value, where\nboth alpha and epsilon can be specified.\n\nIt differs from the original QAE algorithm proposed by Brassard [2] in that it does not rely on\nQuantum Phase Estimation, but is only based on Grover's algorithm. IQAE iteratively\napplies carefully selected Grover iterations to find an estimate for the target amplitude.\n\nReferences:\n    [1]: Grinko, D., Gacon, J., Zoufal, C., & Woerner, S. (2019).\n         Iterative Quantum Amplitude Estimation.\n         `arXiv:1912.05559 <https://arxiv.org/abs/1912.05559>`_.\n    [2]: Brassard, G., Hoyer, P., Mosca, M., & Tapp, A. (2000).\n         Quantum Amplitude Amplification and Estimation.\n         `arXiv:quant-ph/0005055 <http://arxiv.org/abs/quant-ph/0005055>`_.",
+    "base_classes": [
+      "AmplitudeEstimator"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.mlae.MaximumLikelihoodAmplitudeEstimation",
+    "summary": "The Maximum Likelihood Amplitude Estimation algorithm.",
+    "docstring": "The Maximum Likelihood Amplitude Estimation algorithm.\n\nThis class implements the quantum amplitude estimation (QAE) algorithm without phase\nestimation, as introduced in [1]. In comparison to the original QAE algorithm [2],\nthis implementation relies solely on different powers of the Grover operator and does not\nrequire additional evaluation qubits.\nFinally, the estimate is determined via a maximum likelihood estimation, which is why this\nclass in named ``MaximumLikelihoodAmplitudeEstimation``.\n\nReferences:\n    [1]: Suzuki, Y., Uno, S., Raymond, R., Tanaka, T., Onodera, T., & Yamamoto, N. (2019).\n         Amplitude Estimation without Phase Estimation.\n         `arXiv:1904.10246 <https://arxiv.org/abs/1904.10246>`_.\n    [2]: Brassard, G., Hoyer, P., Mosca, M., & Tapp, A. (2000).\n         Quantum Amplitude Amplification and Estimation.\n         `arXiv:quant-ph/0005055 <http://arxiv.org/abs/quant-ph/0005055>`_.",
+    "base_classes": [
+      "AmplitudeEstimator"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.eigensolvers.eigensolver.Eigensolver",
+    "summary": "The eigensolver interface.",
+    "docstring": "The eigensolver interface.\n\nAlgorithms that can compute eigenvalues for an operator\nmay implement this interface to allow different algorithms to be\nused interchangeably.",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.eigensolvers.vqd.VQD",
+    "summary": "The Variational Quantum Deflation algorithm. Implementation using primitives.",
+    "docstring": "The Variational Quantum Deflation algorithm. Implementation using primitives.\n\n`VQD <https://arxiv.org/abs/1805.08138>`__ is a quantum algorithm that uses a\nvariational technique to find\nthe k lowest eigenvalues of the Hamiltonian :math:`H` of a given system.\n\nThe algorithm computes excited state energies of generalised hamiltonians\nby optimizing over a modified cost function where each successive eigenvalue\nis calculated iteratively by introducing an overlap term with all\nthe previously computed eigenstates that must be minimised, thus ensuring\nhigher energy eigenstates are found.\n\nAn instance of VQD requires defining three algorithmic subcomponents:\nan integer k denoting the number of eigenstates to calculate, a trial\nstate (a.k.a. ansatz) which is a :class:`QuantumCircuit`,\nand one instance (or list of) classical :mod:`~qiskit_algorithms.optimizers`.\nThe optimizer varies the circuit parameters\nThe trial state :math:`|\\psi(\\vec\\theta)\\rangle` is varied by the optimizer,\nwhich modifies the set of ansatz parameters :math:`\\vec\\theta`\nsuch that the expectation value of the operator on the corresponding\nstate approaches a minimum. The algorithm does this by iteratively refining\neach excited state to be orthogonal to all the previous excited states.\n\nAn optional array of parameter values, via the *initial_point*, may be provided\nas the starting point for the search of the minimum eigenvalue. This feature is\nparticularly useful when there are reasons to believe that the solution point\nis close to a particular point.\n\nThe length of the *initial_point* list value must match the number of the parameters\nexpected by the ansatz. If the *initial_point* is left at the default\nof ``None``, then VQD will look to the ansatz for a preferred value, based on its\ngiven initial state. If the ansatz returns ``None``,\nthen a random point will be generated within the parameter bounds set, as per above.\nIt is also possible to give a list of initial points, one for every kth eigenvalue.\nIf the ansatz provides ``None`` as the lower bound, then VQD\nwill default it to :math:`-2\\pi`; similarly, if the ansatz returns ``None``\nas the upper bound, the default value will be :math:`2\\pi`.\n\nThe following attributes can be set via the initializer but can also be read and\nupdated once the VQD object has been constructed.\n\nAttributes:\n        estimator (BaseEstimatorV2): The primitive instance used to perform the expectation\n            estimation as indicated in the VQD paper.\n        fidelity (BaseStateFidelity): The fidelity class instance used to compute the\n            overlap estimation as indicated in the VQD paper.\n        optimizer(Optimizer | Sequence[Optimizer]): A classical optimizer or a list of optimizers,\n            one for every k-th eigenvalue. Can either be a Qiskit optimizer or a callable\n            that takes an array as input and returns a Qiskit or SciPy optimization result.\n        k (int): the number of eigenvalues to return. Returns the lowest k eigenvalues.\n        betas (list[float]): Beta parameters in the VQD paper.\n            Should have length k - 1, with k the number of excited states.\n            These hyper-parameters balance the contribution of each overlap term to the cost\n            function and have a default value computed as the mean square sum of the\n            coefficients of the observable.\n        callback (Callable[[int, np.ndarray, float, dict[str, Any]], None] | None):\n            A callback that can access the intermediate data\n            during the optimization. Four parameter values are passed to the callback as\n            follows during each evaluation by the optimizer: the evaluation count,\n            the optimizer parameters for the ansatz, the estimated value, the estimation\n            metadata, and the current step.\n        convergence_threshold: A threshold under which the algorithm is considered to have\n            converged. It corresponds to the maximal average fidelity an eigenstate is allowed\n            to have with the previous eigenstates. If set to None, no check is performed.",
+    "base_classes": [
+      "VariationalAlgorithm",
+      "Eigensolver"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.adapt_vqe.TerminationCriterion",
+    "summary": "A class enumerating the various finishing criteria.",
+    "docstring": "A class enumerating the various finishing criteria.",
+    "base_classes": [
+      "Enum"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.adapt_vqe.AdaptVQE",
+    "summary": "The Adaptive Variational Quantum Eigensolver algorithm.",
+    "docstring": "The Adaptive Variational Quantum Eigensolver algorithm.\n\n`AdaptVQE <https://arxiv.org/abs/1812.11173>`__ is a quantum algorithm which creates a compact\nansatz from a set of evolution operators. It iteratively extends the ansatz circuit, by\nselecting the building block that leads to the largest gradient from a set of candidates. In\nchemistry, this is usually a list of orbital excitations. Thus, a common choice of ansatz to be\nused with this algorithm is the Unitary Coupled Cluster ansatz implemented in Qiskit Nature.\nThis results in a wavefunction ansatz which is uniquely adapted to the operator whose minimum\neigenvalue is being determined. This class relies on a supplied instance of :class:`~.VQE` to\nfind the minimum eigenvalue. The performance of AdaptVQE significantly depends on the\nminimization routine.\n\n.. code-block:: python\n\n  from qiskit_algorithms.minimum_eigensolvers import AdaptVQE, VQE\n  from qiskit_algorithms.optimizers import SLSQP\n  from qiskit.primitives import StatevectorEstimator\n  from qiskit.circuit.library import EvolvedOperatorAnsatz\n  from qiskit import QuantumCircuit\n\n  # get your Hamiltonian\n  hamiltonian = ...\n\n  # construct your ansatz\n  ansatz = EvolvedOperatorAnsatz(...)\n\n  vqe = VQE(StatevectorEstimator(), ansatz, SLSQP())\n\n  adapt_vqe = AdaptVQE(vqe)\n\n  # or you can do it without EvolvedOperatorAnsatz\n  vqe = VQE(StatevectorEstimator(), QuantumCircuit(1), SLSQP())\n\n  adapt_vqe = AdaptVQE(vqe, operators=...)\n\n  eigenvalue, _ = adapt_vqe.compute_minimum_eigenvalue(hamiltonian)\n\nThe following attributes can be set via the initializer but can also be read and updated once\nthe AdaptVQE object has been constructed.\n\nAttributes:\n    solver: a :class:`~.VQE` instance used internally to compute the minimum eigenvalues.\n        It is a requirement that the :attr:`~.VQE.ansatz` of this solver is of type\n        :class:`~qiskit.circuit.library.EvolvedOperatorAnsatz` if the `operators` arguments is\n        not set.\n    gradient_threshold: once all gradients have an absolute value smaller than this threshold,\n        the algorithm has converged and terminates.\n    eigenvalue_threshold: once the eigenvalue has changed by less than this threshold from one\n        iteration to the next, the algorithm has converged and terminates. When this case\n        occurs, the excitation included in the final iteration did not result in a significant\n        improvement of the eigenvalue and, thus, the results from this iteration are not\n        considered.\n    max_iterations: the maximum number of iterations for the adaptive loop. If ``None``, the\n        algorithm is not bound in its number of iterations.",
+    "base_classes": [
+      "VariationalAlgorithm",
+      "MinimumEigensolver"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.minimum_eigensolver.MinimumEigensolver",
+    "summary": "The minimum eigensolver interface.",
+    "docstring": "The minimum eigensolver interface.\n\nAlgorithms that can compute a minimum eigenvalue for an operator may implement this interface to\nallow different algorithms to be used interchangeably.",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.qaoa.QAOA",
+    "summary": "The Quantum Approximate Optimization Algorithm (QAOA).",
+    "docstring": "The Quantum Approximate Optimization Algorithm (QAOA).\n\nQAOA is a well-known algorithm for finding approximate solutions to combinatorial-optimization\nproblems [1].\n\nThe QAOA implementation directly extends :class:`.SamplingVQE` and inherits its optimization\nstructure. However, unlike VQE, which can be configured with arbitrary ansatzes, QAOA uses its\nown fine-tuned ansatz, which comprises :math:`p` parameterized global :math:`x` rotations and\n:math:`p` different parameterizations of the problem hamiltonian. QAOA is thus principally\nconfigured  by the single integer parameter, ``reps``, which dictates the depth of the ansatz,\nand thus affects the approximation quality.\n\nAn optional array of :math:`2p` parameter values, as the :attr:`initial_point`, may be provided\nas the starting :math:`\\beta` and :math:`\\gamma` parameters for the QAOA ansatz [1].\n\nAn operator or a parameterized quantum circuit may optionally also be provided as a custom\n:attr:`mixer` Hamiltonian. This allows in the case of quantum annealing [2] and QAOA [3], to run\nconstrained optimization problems where the mixer constrains the evolution to a feasible\nsubspace of the full Hilbert space.\n\nThe following attributes can be set via the initializer but can also be read and updated once\nthe QAOA object has been constructed.\n\nAttributes:\n    sampler (BaseSamplerV2): The sampler primitive to sample the circuits.\n    optimizer (Optimizer | Minimizer): A classical optimizer to find the minimum energy. This\n        can either be an :class:`.Optimizer` or a callable implementing the\n        :class:`.Minimizer` protocol.\n    reps (int): The integer parameter :math:`p`. Has a minimum valid value of 1.\n    initial_state: An optional initial state to prepend the QAOA circuit with.\n    mixer (QuantumCircuit | BaseOperator): The mixer Hamiltonian to evolve with or\n        a custom quantum circuit. Allows support of optimizations in constrained subspaces [2,\n        3] as well as warm-starting the optimization [4].\n    aggregation (float | Callable[[list[float]], float] | None): A float or callable to specify\n        how the objective function evaluated on the basis states should be aggregated. If a\n        float, this specifies the :math:`\\alpha \\in [0,1]` parameter for a CVaR expectation\n        value.\n    callback (Callable[[int, np.ndarray, float, dict[str, Any]], None] | None): A callback\n        that can access the intermediate data at each optimization step. These data are: the\n        evaluation count, the optimizer parameters for the ansatz, the evaluated value, and\n        the metadata dictionary.\n\n\nReferences:\n    [1]: Farhi, E., Goldstone, J., Gutmann, S., \"A Quantum Approximate Optimization Algorithm\"\n        `arXiv:1411.4028 <https://arxiv.org/abs/1411.4028>`__\n    [2]: Hen, I., Spedalieri, F. M.,  \"Quantum Annealing for Constrained Optimization\"\n        `PhysRevApplied.5.034007 <https://doi.org/10.1103/PhysRevApplied.5.034007>`__\n    [3]: Hadfield, S. et al, \"From the Quantum Approximate Optimization Algorithm to a Quantum\n        Alternating Operator Ansatz\" `arXiv:1709.03489 <https://arxiv.org/abs/1709.03489>`__\n    [4]: Egger, D. J., Marecek, J., Woerner, S., \"Warm-starting quantum optimization\"\n        `arXiv: 2009.10095 <https://arxiv.org/abs/2009.10095>`__",
+    "base_classes": [
+      "SamplingVQE"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.sampling_mes.SamplingMinimumEigensolver",
+    "summary": "The Sampling Minimum Eigensolver Interface.",
+    "docstring": "The Sampling Minimum Eigensolver Interface.",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.sampling_vqe.SamplingVQE",
+    "summary": "The Variational Quantum Eigensolver algorithm, optimized for diagonal Hamiltonians.",
+    "docstring": "The Variational Quantum Eigensolver algorithm, optimized for diagonal Hamiltonians.\n\nVQE is a hybrid quantum-classical algorithm that uses a variational technique to find the\nminimum eigenvalue of a given diagonal Hamiltonian operator :math:`H_{\\text{diag}}`.\n\nIn contrast to the :class:`~qiskit_algorithms.minimum_eigensolvers.VQE` class, the\n``SamplingVQE`` algorithm is executed using a :attr:`sampler` primitive.\n\nAn instance of ``SamplingVQE`` also requires an :attr:`ansatz`, a parameterized\n:class:`.QuantumCircuit`, to prepare the trial state :math:`|\\psi(\\vec\\theta)\\rangle`. It also\nneeds a classical :attr:`optimizer` which varies the circuit parameters :math:`\\vec\\theta` to\nminimize the objective function, which depends on the chosen :attr:`aggregation`.\n\nThe optimizer can either be one of Qiskit's optimizers, such as\n:class:`~qiskit_algorithms.optimizers.SPSA` or a callable with the following signature:\n\n.. code-block:: python\n\n    from qiskit_algorithms.optimizers import OptimizerResult\n\n    def my_minimizer(fun, x0, jac=None, bounds=None) -> OptimizerResult:\n        # Note that the callable *must* have these argument names!\n        # Args:\n        #     fun (callable): the function to minimize\n        #     x0 (np.ndarray): the initial point for the optimization\n        #     jac (callable, optional): the gradient of the objective function\n        #     bounds (list, optional): a list of tuples specifying the parameter bounds\n\n        result = OptimizerResult()\n        result.x = # optimal parameters\n        result.fun = # optimal function value\n        return result\n\nThe above signature also allows one to use any SciPy minimizer, for instance as\n\n.. code-block:: python\n\n    from functools import partial\n    from scipy.optimize import minimize\n\n    optimizer = partial(minimize, method=\"L-BFGS-B\")\n\nThe following attributes can be set via the initializer but can also be read and updated once\nthe ``SamplingVQE`` object has been constructed.\n\nAttributes:\n    sampler (BaseSamplerV2): The sampler primitive to sample the circuits.\n    ansatz (QuantumCircuit): A parameterized quantum circuit to prepare the trial state.\n    optimizer (Optimizer | Minimizer): A classical optimizer to find the minimum energy. This\n        can either be an :class:`.Optimizer` or a callable implementing the\n        :class:`.Minimizer` protocol.\n    aggregation (float | Callable[[list[tuple[float, complex]], float] | None):\n        A float or callable to specify how the objective function evaluated on the basis states\n        should be aggregated. If a float, this specifies the :math:`\\alpha \\in [0,1]` parameter\n        for a CVaR expectation value [1]. If a callable, it takes a list of basis state\n        measurements specified as  ``[(probability, objective_value)]`` and return an objective\n        value as float. If None, all an ordinary expectation value is calculated.\n    callback (Callable[[int, np.ndarray, float, dict[str, Any]], None] | None): A callback that\n        can access the intermediate data at each optimization step. These data are: the\n        evaluation count, the optimizer parameters for the ansatz, the evaluated value, and the\n        metadata dictionary.\n\nReferences:\n    [1]: Barkoutsos, P. K., Nannicini, G., Robert, A., Tavernelli, I., and Woerner, S.,\n        \"Improving Variational Quantum Optimization using CVaR\"\n        `arXiv:1907.04769 <https://arxiv.org/abs/1907.04769>`_",
+    "base_classes": [
+      "VariationalAlgorithm",
+      "SamplingMinimumEigensolver"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.vqe.VQE",
+    "summary": "The Variational Quantum Eigensolver (VQE) algorithm.",
+    "docstring": "The Variational Quantum Eigensolver (VQE) algorithm.\n\nVQE is a hybrid quantum-classical algorithm that uses a variational technique to find the\nminimum eigenvalue of a given Hamiltonian operator :math:`H`.\n\nThe ``VQE`` algorithm is executed using an :attr:`estimator` primitive, which computes\nexpectation values of operators (observables).\n\nAn instance of ``VQE`` also requires an :attr:`ansatz`, a parameterized\n:class:`.QuantumCircuit`, to prepare the trial state :math:`|\\psi(\\vec\\theta)\\rangle`. It also\nneeds a classical :attr:`optimizer` which varies the circuit parameters :math:`\\vec\\theta` such\nthat the expectation value of the operator on the corresponding state approaches a minimum,\n\n:class:`~qiskit_algorithms.optimizers.SPSA` or a callable with the following signature:\n\n.. code-block:: python\n\n    from qiskit_algorithms.optimizers import OptimizerResult\n\n    def my_minimizer(fun, x0, jac=None, bounds=None) -> OptimizerResult:\n        # Note that the callable *must* have these argument names!\n        # Args:\n        #     fun (callable): the function to minimize\n        #     x0 (np.ndarray): the initial point for the optimization\n        #     jac (callable, optional): the gradient of the objective function\n        #     bounds (list, optional): a list of tuples specifying the parameter bounds\n\n        result = OptimizerResult()\n        result.x = # optimal parameters\n        result.fun = # optimal function value\n        return result\n\nThe above signature also allows one to use any SciPy minimizer, for instance as\n\n.. code-block:: python\n\n    from functools import partial\n    from scipy.optimize import minimize\n\n    optimizer = partial(minimize, method=\"L-BFGS-B\")\n\nThe following attributes can be set via the initializer but can also be read and updated once\nthe VQE object has been constructed.\n\nAttributes:\n    estimator (BaseEstimatorV2): The estimator primitive to compute the expectation value of the\n        Hamiltonian operator.\n    optimizer (Optimizer | Minimizer): A classical optimizer to find the minimum energy. This\n        can either be a Qiskit :class:`.Optimizer` or a callable implementing the\n        :class:`.Minimizer` protocol.\n    gradient (BaseEstimatorGradient | None): An optional estimator gradient to be used with the\n        optimizer.\n    callback (Callable[[int, np.ndarray, float, dict[str, Any]], None] | None): A callback that\n        can access the intermediate data at each optimization step. These data are: the\n        evaluation count, the optimizer parameters for the ansatz, the evaluated mean, and the\n        metadata dictionary.\n\nReferences:\n    [1]: Peruzzo, A., et al, \"A variational eigenvalue solver on a quantum processor\"\n        `arXiv:1304.3061 <https://arxiv.org/abs/1304.3061>`__",
+    "base_classes": [
+      "VariationalAlgorithm",
+      "MinimumEigensolver"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.phase_estimators.hamiltonian_phase_estimation.HamiltonianPhaseEstimation",
+    "summary": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator.",
+    "docstring": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator.\n\nThis class is nearly the same as :class:`~qiskit_algorithms.PhaseEstimation`, differing only\nin that the input in that class is a unitary operator, whereas here the input is a Hermitian\noperator from which a unitary will be obtained by scaling and exponentiating. The scaling is\nperformed in order to prevent the phases from wrapping around :math:`2\\pi`.\nThe problem of estimating eigenvalues :math:`\\lambda_j` of the Hermitian operator\n:math:`H` is solved by running a circuit representing\n\n:math:`[0,\\pi)` and negative :math:`\\lambda` to :math:`[\\pi,2\\pi)`. Each time the circuit is\nrun, one measures a phase corresponding to :math:`lambda_j` with probability :math:`|c_j|^2`.\n\nIf :math:`H` is a Pauli sum, the bound :math:`b` is computed from the sum of the absolute\nvalues of the coefficients of the terms. There is no way to reliably recover eigenvalues\nfrom phases very near the endpoints of these intervals. Because of this you should be aware\nthat for degenerate cases, such as :math:`H=Z`, the eigenvalues :math:`\\pm 1` will be\nmapped to the same phase, :math:`\\pi`, and so cannot be distinguished. In this case, you need\nto specify a larger bound as an argument to the method ``estimate``.\n\nThis class uses and works together with :class:`~qiskit_algorithms.PhaseEstimationScale` to\nmanage scaling the Hamiltonian and the phases that are obtained by the QPE algorithm. This\nincludes setting, or computing, a bound on the eigenvalues of the operator, using this\nbound to obtain a scale factor, scaling the operator, and shifting and scaling the measured\nphases to recover the eigenvalues.\n\nNote that, although we speak of \"evolving\" the state according the Hamiltonian, in the\npresent algorithm, we are not actually considering time evolution. Rather, the role of time is\nplayed by the scaling factor, which is chosen to best extract the eigenvalues of the\nHamiltonian.\n\nA few of the ideas in the algorithm may be found in Ref. [1].\n\n**Reference:**\n\n[1]: Quantum phase estimation of multiple eigenvalues for small-scale (noisy) experiments\n     T.E. O'Brien, B. Tarasinski, B.M. Terhal\n     `arXiv:1809.09697 <https://arxiv.org/abs/1809.09697>`_",
+    "base_classes": []
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.phase_estimators.ipe.IterativePhaseEstimation",
+    "summary": "Run the Iterative quantum phase estimation (QPE) algorithm.",
+    "docstring": "Run the Iterative quantum phase estimation (QPE) algorithm.\n\nGiven a unitary circuit and a circuit preparing an eigenstate, return the phase of the\neigenvalue as a number in :math:`[0,1)` using the iterative phase estimation algorithm.\n\n[1]: Dobsicek et al. (2006), Arbitrary accuracy iterative phase estimation algorithm as a two\n   qubit benchmark, `arxiv/quant-ph/0610214 <https://arxiv.org/abs/quant-ph/0610214>`_",
+    "base_classes": [
+      "PhaseEstimator"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.phase_estimators.phase_estimation.PhaseEstimation",
+    "summary": "Run the Quantum Phase Estimation (QPE) algorithm.",
+    "docstring": "Run the Quantum Phase Estimation (QPE) algorithm.\n\nThis runs QPE with a multi-qubit register for reading the phases [1]\nof input states.\n\nThe algorithm takes as input a unitary :math:`U` and a state :math:`|\\psi\\rangle`,\nwhich may be written\n\nin the state :math:`|\\psi\\rangle` then apply :math:`U` leaving the register in the state\n\n:math:`|c_j|^2`.  In practice, many (or all) of the bit strings may be measured due to\nnoise and the possibility that :math:`\\phi_j` may not be representable exactly by the\noutput register. In the latter case the probability for each eigenphase will be spread\nacross bitstrings, with amplitudes that decrease with distance from the bitstring most\nclosely approximating the eigenphase.\n\nThe main input to the constructor is the number of qubits in the phase-reading register.\nFor phase estimation, there are two methods:\n\nfirst. `estimate`, which takes a state preparation circuit to prepare an input state, and\n  a unitary that will act on the input state. In this case, an instance of\n  :class:`qiskit.circuit.PhaseEstimation`, a QPE circuit, containing\n  the state preparation and input unitary will be constructed.\nsecond. `estimate_from_pe_circuit`, which takes a quantum-phase-estimation circuit in which\n  the unitary and state preparation are already embedded.\n\nIn both estimation methods, the QPE circuit is run on a backend\nand the frequencies or counts of the phases represented by bitstrings\nare recorded. The results are returned as an instance of\n:class:`~qiskit_algorithms.phase_estimator_result.PhaseEstimationResult`.\n\n**Reference:**\n\n[1]: Michael A. Nielsen and Isaac L. Chuang. 2011.\n     Quantum Computation and Quantum Information: 10th Anniversary Edition (10th ed.).\n     Cambridge University Press, New York, NY, USA.",
+    "base_classes": [
+      "PhaseEstimator"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.phase_estimators.phase_estimation_scale.PhaseEstimationScale",
+    "summary": "Set and use a bound on eigenvalues of a Hermitian operator in order to ensure phases are in the desired range and to convert measured phases into eigenvectors.",
+    "docstring": "Set and use a bound on eigenvalues of a Hermitian operator in order to ensure phases are in\nthe desired range and to convert measured phases into eigenvectors.\n\nThe ``bound`` is set when constructing this class. Then the method ``scale`` is used to find the\nfactor by which to scale the operator.\n\nIf ``bound`` is equal exactly to the largest eigenvalue, and the smallest eigenvalue is minus\nthe largest, then these two eigenvalues will not be distinguished. For example, if the Hermitian\noperator is the Pauli Z operator with eigenvalues :math:`1` and :math:`-1`, and ``bound`` is\n:math:`1`, then both eigenvalues will be mapped to :math:`1`.\nThis can be avoided by making ``bound`` a bit larger.\n\nIncreasing ``bound`` decreases the part of the interval :math:`[0, 1)` that is used to map\neigenvalues to ``phi``. However, sometimes this results in a better determination of the\neigenvalues, because 1) although there are fewer discrete phases in the useful range, it may\nshift one of the discrete phases closer to the actual phase. And, 2) If one of the discrete\nphases is close to, or exactly equal to the actual phase, then artifacts (probability) in\nneighboring phases will be reduced.  This is important because the artifacts may be larger than\nthe probability in a phase representing another eigenvalue of interest whose corresponding\neigenstate has a relatively small weight in the input state.",
+    "base_classes": []
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.phase_estimators.phase_estimator.PhaseEstimator",
+    "summary": "The Phase Estimator interface.",
+    "docstring": "The Phase Estimator interface.\n\nAlgorithms that can compute a phase for a unitary operator and initial state may implement this\ninterface to allow different algorithms to be used interchangeably.\n\nThe phase returned is a canonical phase determined by the specific algorithm, such as the most\nlikely phase. In addition, the algorithm may provide an interface to retrieve phases by other\ncriteria.",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.state_fidelities.base_state_fidelity.BaseStateFidelity",
+    "summary": "An interface to calculate state fidelities (state overlaps) for pairs of (parametrized) quantum circuits. The calculation depends on the particular fidelity method implementation, but can be always defined as the state overlap:",
+    "docstring": "An interface to calculate state fidelities (state overlaps) for pairs of\n(parametrized) quantum circuits. The calculation depends on the particular\nfidelity method implementation, but can be always defined as the state overlap:\n\nstates :math:`\\psi` and :math:`\\phi` prepared by the circuits\n``circuit_1`` and ``circuit_2``, respectively.",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.state_fidelities.compute_uncompute.ComputeUncompute",
+    "summary": "This class leverages the sampler primitive to calculate the state fidelity of two quantum circuits following the compute-uncompute method (see [1] for further reference). The fidelity can be defined as the state overlap.",
+    "docstring": "This class leverages the sampler primitive to calculate the state\nfidelity of two quantum circuits following the compute-uncompute\nmethod (see [1] for further reference).\nThe fidelity can be defined as the state overlap.\n\nstates :math:`\\psi` and :math:`\\phi` prepared by the circuits\n``circuit_1`` and ``circuit_2``, respectively.\n\n**Reference:**\n[1] Havl\u00ed\u010dek, V., C\u00f3rcoles, A. D., Temme, K., Harrow, A. W., Kandala,\nA., Chow, J. M., & Gambetta, J. M. (2019). Supervised learning\nwith quantum-enhanced feature spaces. Nature, 567(7747), 209-212.\n`arXiv:1804.11326v2 [quant-ph] <https://arxiv.org/pdf/1804.11326.pdf>`_",
+    "base_classes": [
+      "BaseStateFidelity"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.imaginary_time_evolver.ImaginaryTimeEvolver",
+    "summary": "Interface for Quantum Imaginary Time Evolution.",
+    "docstring": "Interface for Quantum Imaginary Time Evolution.",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.pvqd.pvqd.PVQD",
+    "summary": "The projected Variational Quantum Dynamics (p-VQD) Algorithm.",
+    "docstring": "The projected Variational Quantum Dynamics (p-VQD) Algorithm.\n\nIn each timestep, this algorithm computes the next state with a Trotter formula\n(specified by the ``evolution`` argument) and projects the timestep onto a variational form\n(``ansatz``). The projection is determined by maximizing the fidelity of the Trotter-evolved\nstate and the ansatz, using a classical optimization routine. See Ref. [1] for details.\n\nThe following attributes can be set via the initializer but can also be read and\nupdated once the PVQD object has been constructed.\n\nAttributes:\n\n    initial_parameters (np.ndarray): The parameters of the ansatz at time 0.\n    optimizer (Optional[Union[Optimizer, Minimizer]]): The classical optimization routine\n        used to maximize the fidelity of the Trotter step and ansatz.\n    num_timesteps (Optional[int]): The number of timesteps to take. If None, it is automatically\n        selected to achieve a timestep of approximately 0.01.\n    evolution (Optional[EvolutionSynthesis]): The method to perform the Trotter step.\n        Defaults to first-order Lie-Trotter evolution.\n    use_parameter_shift (bool): If True, use the parameter shift rule for loss function\n        gradients (if the ansatz supports).\n    initial_guess (Optional[np.ndarray]): The starting point for the first classical optimization\n        run, at time 0. Defaults to random values in :math:`[-0.01, 0.01]`.\n\nExample:\n\n    This snippet computes the real time evolution of a quantum Ising model on two\n    neighboring sites and keeps track of the magnetization.\n\n    .. code-block:: python\n\n        import numpy as np\n\n        from qiskit_algorithms.state_fidelities import ComputeUncompute\n        from qiskit_algorithms.time_evolvers import TimeEvolutionProblem, PVQD\n        from qiskit.primitives import StatevectorEstimator, StatevectorSampler\n        from qiskit.circuit.library import efficient_su2\n        from qiskit.quantum_info import SparsePauliOp, Pauli\n        from qiskit_algorithms.optimizers import L_BFGS_B\n\n        sampler = StatevectorSampler()\n        fidelity = ComputeUncompute(sampler)\n        estimator = StatevectorEstimator()\n        hamiltonian = 0.1 * SparsePauliOp([\"ZZ\", \"IX\", \"XI\"])\n        observable = Pauli(\"ZZ\")\n        ansatz = efficient_su2(2, reps=1)\n        initial_parameters = np.zeros(ansatz.num_parameters)\n\n        time = 1\n        optimizer = L_BFGS_B()\n\n        # setup the algorithm\n        pvqd = PVQD(\n            fidelity,\n            ansatz,\n            initial_parameters,\n            estimator,\n            num_timesteps=100,\n            optimizer=optimizer,\n        )\n\n        # specify the evolution problem\n        problem = TimeEvolutionProblem(\n            hamiltonian, time, aux_operators=[hamiltonian, observable]\n        )\n\n        # and evolve!\n        result = pvqd.evolve(problem)\n\nReferences:\n\n    [1] Stefano Barison, Filippo Vicentini, and Giuseppe Carleo (2021), An efficient\n        quantum algorithm for the time evolution of parameterized circuits,\n        `Quantum 5, 512 <https://quantum-journal.org/papers/q-2021-07-28-512/>`_.",
+    "base_classes": [
+      "RealTimeEvolver"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.real_time_evolver.RealTimeEvolver",
+    "summary": "Interface for Quantum Real Time Evolution.",
+    "docstring": "Interface for Quantum Real Time Evolution.",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.time_evolution_problem.TimeEvolutionProblem",
+    "summary": "Time evolution problem class.",
+    "docstring": "Time evolution problem class.\n\nThis class is the input to time evolution algorithms and must contain information on the total\nevolution time, a quantum state to be evolved and under which Hamiltonian the state is evolved.\n\nAttributes:\n    hamiltonian (BaseOperator): The Hamiltonian under which to evolve the system.\n    initial_state (QuantumCircuit | Statevector | None): The quantum state to be evolved for\n        methods like Trotterization. For variational time evolutions, where the evolution\n        happens in an ansatz, this argument is not required.\n    aux_operators (ListOrDict[BaseOperator] | None): Optional list of auxiliary\n        operators to be evaluated with the evolved ``initial_state`` and their expectation\n        values returned.\n    truncation_threshold (float): Defines a threshold under which values can be assumed to be 0.\n        Used when ``aux_operators`` is provided.\n    t_param (Parameter | None): Time parameter in case of a time-dependent Hamiltonian. This\n        free parameter must be within the ``hamiltonian``.\n    param_value_map (dict[Parameter, complex] | None): Maps free parameters in the problem to\n        values. Depending on the algorithm, it might refer to e.g. a Hamiltonian or an initial\n        state.",
+    "base_classes": []
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.trotterization.trotter_qrte.TrotterQRTE",
+    "summary": "Quantum Real Time Evolution using Trotterization.",
+    "docstring": "Quantum Real Time Evolution using Trotterization.\n\nThe type of Trotterization is defined by the :class:`~qiskit.synthesis.ProductFormula`\nprovided to the algorithm.\n\nExamples:\n\n    .. code-block:: python\n\n        from qiskit.quantum_info import Pauli, SparsePauliOp\n        from qiskit import QuantumCircuit\n        from qiskit_algorithms import TrotterQRTE, TimeEvolutionProblem\n        from qiskit.primitives import StatevectorEstimator\n\n        operator = SparsePauliOp([Pauli(\"X\"), Pauli(\"Z\")])\n        initial_state = QuantumCircuit(1)\n        time = 1\n        evolution_problem = TimeEvolutionProblem(operator, time, initial_state)\n        # LieTrotter with 1 rep\n        estimator = StatevectorEstimator()\n        trotter_qrte = TrotterQRTE(estimator=estimator)\n        evolved_state = trotter_qrte.evolve(evolution_problem).evolved_state",
+    "base_classes": [
+      "RealTimeEvolver"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.var_qite.VarQITE",
+    "summary": "Variational Quantum Imaginary Time Evolution algorithm.",
+    "docstring": "Variational Quantum Imaginary Time Evolution algorithm.\n\n.. code-block::python\n\n    import numpy as np\n\n    from qiskit_algorithms import TimeEvolutionProblem, VarQITE\n    from qiskit_algorithms.time_evolvers.variational import ImaginaryMcLachlanPrinciple\n    from qiskit.circuit.library import efficient_su2\n    from qiskit.quantum_info import SparsePauliOp, Pauli\n    from qiskit.primitives import StatevectorEstimator\n\n    observable = SparsePauliOp.from_list(\n        [\n            (\"II\", 0.2252),\n            (\"ZZ\", 0.5716),\n            (\"IZ\", 0.3435),\n            (\"ZI\", -0.4347),\n            (\"YY\", 0.091),\n            (\"XX\", 0.091),\n        ]\n    )\n\n    ansatz = efficient_su2(observable.num_qubits, reps=1)\n    init_param_values = np.ones(len(ansatz.parameters)) * np.pi/2\n    var_principle = ImaginaryMcLachlanPrinciple()\n    time = 1\n\n    # without evaluating auxiliary operators\n    evolution_problem = TimeEvolutionProblem(observable, time)\n    var_qite = VarQITE(ansatz, init_param_values, var_principle)\n    evolution_result = var_qite.evolve(evolution_problem)\n\n    # evaluating auxiliary operators\n    aux_ops = [Pauli(\"XX\"), Pauli(\"YZ\")]\n    evolution_problem = TimeEvolutionProblem(observable, time, aux_operators=aux_ops)\n    var_qite = VarQITE(ansatz, init_param_values, var_principle, StatevectorEstimator())\n    evolution_result = var_qite.evolve(evolution_problem)",
+    "base_classes": [
+      "VarQTE",
+      "ImaginaryTimeEvolver"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.var_qrte.VarQRTE",
+    "summary": "Variational Quantum Real Time Evolution algorithm.",
+    "docstring": "Variational Quantum Real Time Evolution algorithm.\n\n.. code-block::python\n\n    import numpy as np\n\n    from qiskit_algorithms import TimeEvolutionProblem, VarQRTE\n    from qiskit.circuit.library import efficient_su2\n    from qiskit_algorithms.time_evolvers.variational import RealMcLachlanPrinciple\n    from qiskit.quantum_info import SparsePauliOp\n    from qiskit.quantum_info import SparsePauliOp, Pauli\n    from qiskit.primitives import StatevectorEstimator\n\n    observable = SparsePauliOp.from_list(\n        [\n            (\"II\", 0.2252),\n            (\"ZZ\", 0.5716),\n            (\"IZ\", 0.3435),\n            (\"ZI\", -0.4347),\n            (\"YY\", 0.091),\n            (\"XX\", 0.091),\n        ]\n    )\n\n    ansatz = efficient_su2(observable.num_qubits, reps=1)\n    init_param_values = np.ones(len(ansatz.parameters)) * np.pi/2\n    var_principle = RealMcLachlanPrinciple()\n    time = 1\n\n    # without evaluating auxiliary operators\n    evolution_problem = TimeEvolutionProblem(observable, time)\n    var_qrte = VarQRTE(ansatz, init_param_values, var_principle)\n    evolution_result = var_qrte.evolve(evolution_problem)\n\n    # evaluating auxiliary operators\n    aux_ops = [Pauli(\"XX\"), Pauli(\"YZ\")]\n    evolution_problem = TimeEvolutionProblem(observable, time, aux_operators=aux_ops)\n    var_qrte = VarQRTE(ansatz, init_param_values, var_principle, StatevectorEstimator())\n    evolution_result = var_qrte.evolve(evolution_problem)",
+    "base_classes": [
+      "VarQTE",
+      "RealTimeEvolver"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.var_qte.VarQTE",
+    "summary": "Variational Quantum Time Evolution.",
+    "docstring": "Variational Quantum Time Evolution.\n\nAlgorithms that use variational principles to compute a time evolution for a given\nHermitian operator (Hamiltonian) and a quantum state prepared by a parameterized quantum\ncircuit.\n\nAttributes:\n        ansatz (QuantumCircuit): Ansatz to be used for variational time evolution.\n        initial_parameters (Mapping[Parameter, float] | Sequence[float]): Initial\n            parameter values for an ansatz.\n        variational_principle (VariationalPrinciple): Variational Principle to be used.\n        estimator (BaseEstimator): An estimator primitive used for calculating expectation\n            values of ``TimeEvolutionProblem.aux_operators``.\n        ode_solver(Type[OdeSolver] | str): ODE solver callable that implements a SciPy\n            ``OdeSolver`` interface or a string indicating a valid method offered by SciPy.\n        lse_solver (Callable[[np.ndarray, np.ndarray], np.ndarray] | None): Linear system\n            of equations solver callable. It accepts ``A`` and ``b`` to solve ``Ax=b``\n            and returns ``x``.\n        num_timesteps (int | None): The number of timesteps to take. If None, it is\n            automatically selected to achieve a timestep of approximately 0.01. Only\n            relevant in case of the ``ForwardEulerSolver``.\n        imag_part_tol (float): Allowed value of an imaginary part that can be neglected if no\n            imaginary part is expected.\n        num_instability_tol (float): The amount of negative value that is allowed to be\n            rounded up to 0 for quantities that are expected to be\n            non-negative.\nReferences:\n\n    [1] Benjamin, Simon C. et al. (2019).\n    Theory of variational quantum simulation. `<https://doi.org/10.22331/q-2019-10-07-191>`_",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.variational_principles.imaginary_mc_lachlan_principle.ImaginaryMcLachlanPrinciple",
+    "summary": "Class for an Imaginary McLachlan's Variational Principle. It aims to minimize the distance between both sides of the Wick-rotated Schr\u00f6dinger equation with a quantum state given as a parametrized trial state. The principle leads to a system of linear equations handled by a linear solver. The imaginary variant means that we consider imaginary time dynamics.",
+    "docstring": "Class for an Imaginary McLachlan's Variational Principle. It aims to minimize the distance\nbetween both sides of the Wick-rotated Schr\u00f6dinger equation with a quantum state given as a\nparametrized trial state. The principle leads to a system of linear equations handled by a\nlinear solver. The imaginary variant means that we consider imaginary time dynamics.",
+    "base_classes": [
+      "ImaginaryVariationalPrinciple"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.variational_principles.imaginary_variational_principle.ImaginaryVariationalPrinciple",
+    "summary": "Abstract class for an Imaginary Variational Principle. The imaginary variant means that we consider imaginary time dynamics.",
+    "docstring": "Abstract class for an Imaginary Variational Principle. The imaginary variant\nmeans that we consider imaginary time dynamics.",
+    "base_classes": [
+      "VariationalPrinciple",
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.variational_principles.real_mc_lachlan_principle.RealMcLachlanPrinciple",
+    "summary": "Class for a Real McLachlan's Variational Principle. It aims to minimize the distance between both sides of the Schr\u00f6dinger equation with a quantum state given as a parametrized trial state. The principle leads to a system of linear equations handled by a linear solver. The real variant means that we consider real time dynamics.",
+    "docstring": "Class for a Real McLachlan's Variational Principle. It aims to minimize the distance\nbetween both sides of the Schr\u00f6dinger equation with a quantum state given as a parametrized\ntrial state. The principle leads to a system of linear equations handled by a linear solver.\nThe real variant means that we consider real time dynamics.",
+    "base_classes": [
+      "RealVariationalPrinciple"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.variational_principles.real_variational_principle.RealVariationalPrinciple",
+    "summary": "Class for a Real Variational Principle. The real variant means that we consider real time dynamics.",
+    "docstring": "Class for a Real Variational Principle. The real variant\nmeans that we consider real time dynamics.",
+    "base_classes": [
+      "VariationalPrinciple",
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.time_evolvers.variational.variational_principles.variational_principle.VariationalPrinciple",
+    "summary": "A Variational Principle class. It determines the time propagation of parameters in a quantum state provided as a parametrized quantum circuit (ansatz).",
+    "docstring": "A Variational Principle class. It determines the time propagation of parameters in a\nquantum state provided as a parametrized quantum circuit (ansatz).\n\nAttributes:\n        qgt (BaseQGT): Instance of a class used to compute the GQT.\n        gradient (BaseEstimatorGradient): Instance of a class used to compute the\n            state gradient.",
+    "base_classes": [
+      "ABC"
+    ]
+  },
+  {
+    "name": "/qiskit-algorithms/qiskit_algorithms.variational_algorithm.VariationalAlgorithm",
+    "summary": "The Variational Algorithm Base Class.",
+    "docstring": "The Variational Algorithm Base Class.",
+    "base_classes": [
+      "ABC"
+    ]
+  }
+]

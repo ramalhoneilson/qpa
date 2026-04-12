@@ -145,6 +145,9 @@ class PennylaneClassVisitor(BaseConceptVisitor):
             logging.debug(f"Found concept: {node.name}")
 
 
+# Suffixes that indicate a class is a result container, error, or job — not a quantum concept
+_SKIP_CLASS_SUFFIXES = ("Result", "Error", "Job", "Type", "Factory", "Protocol")
+
 TARGET_BASE_CLASSES = ["QuantumCircuit", "Gate"]
 
 
@@ -222,3 +225,51 @@ class QiskitVisitor(BaseConceptVisitor):
                             "type": "Function",
                         }
         self._visit_context_node(node)
+
+
+class QiskitAlgorithmsVisitor(BaseConceptVisitor):
+    """
+    An AST visitor that extracts quantum algorithm classes from qiskit-algorithms.
+
+    It visits class definitions and collects those with meaningful docstrings,
+    skipping result containers, error types, and job classes (identified by known
+    name suffixes) which are not quantum algorithm concepts.
+    """
+
+    def visit_ClassDef(self, node: ast.ClassDef):
+        """Extracts quantum algorithm classes, skipping containers and internals."""
+        # Skip private/internal classes
+        if node.name.startswith("_"):
+            self.generic_visit(node)
+            return
+
+        # Skip non-algorithm classes by naming convention
+        if any(node.name.endswith(suffix) for suffix in _SKIP_CLASS_SUFFIXES):
+            self.generic_visit(node)
+            return
+
+        raw_docstring = ast.get_docstring(node)
+        if raw_docstring:
+            cleaned_docstring = self.processor.clean_docstring(raw_docstring)
+            if cleaned_docstring:
+                self._add_concept(node, cleaned_docstring, "/qiskit-algorithms")
+
+        self.generic_visit(node)
+
+    def _add_concept(self, node: ast.ClassDef, cleaned_docstring: str, prefix: str):
+        """Helper to create and store a concept dictionary."""
+        summary = self.processor.create_summary(cleaned_docstring)
+        relative_path = self.file_path.relative_to(self.sdk_root)
+        module_path = ".".join(list(relative_path.parts)[:-1] + [relative_path.stem])
+        full_name = f"{prefix}/{module_path}.{node.name}"
+
+        if full_name not in self.found_concepts:
+            base_names = [b.id for b in node.bases if isinstance(b, ast.Name)]
+            self.found_concepts[full_name] = {
+                "name": full_name,
+                "summary": summary,
+                "docstring": cleaned_docstring,
+                "source_code": ast.get_source_segment(self.source_text, node),
+                "base_classes": base_names,
+            }
+            logging.debug(f"Found concept: {node.name}")
