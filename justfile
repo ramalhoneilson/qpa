@@ -160,16 +160,22 @@ upgrade:
 
 # == Workflow Orchestration ==================================================
 
-# Run the complete workflow using Prefect orchestration
+# Run the complete workflow using Prefect orchestration (ephemeral mode, no server required)
 workflow:
     @echo ">>> Starting QPA: Quantum Patterns Analyser Workflow..."
-    @{{VENV}}/bin/python -c "from src.workflows.qpa_flow import qpa_flow; qpa_flow()"
+    @PREFECT_PROFILE=ephemeral {{VENV}}/bin/python -c "from src.workflows.qpa_flow import qpa_flow; qpa_flow()"
 
 # Run workflow with Prefect UI (starts local server)
 workflow-ui:
     @echo ">>> Starting Prefect UI server..."
     @echo ">>> Open http://localhost:4200 in your browser to monitor the workflow"
     @{{VENV}}/bin/prefect server start --host 0.0.0.0 --port 4200
+
+# Reset the local Prefect database (fixes migration errors after Prefect upgrades)
+reset-prefect:
+    @echo ">>> Resetting local Prefect database..."
+    @rm -f ~/.prefect/prefect.db
+    @echo ">>> Prefect database deleted. A fresh one will be created on next server start."
 
 # Run workflow and deploy to Prefect Cloud (requires account)
 workflow-deploy:
