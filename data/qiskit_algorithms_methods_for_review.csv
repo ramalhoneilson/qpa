@@ -1,0 +1,64 @@
+file_path;class_name;method_name;docstring_summary;suggested_patterns
+qiskit_algorithms/amplitude_amplifiers/amplitude_amplifier.py;AmplitudeAmplifier;amplify;Run the amplification algorithm.;Amplitude Amplification
+qiskit_algorithms/amplitude_amplifiers/grover.py;Grover;amplify;Run the Grover algorithm.;"Amplitude Amplification; Grover; Oracle"
+qiskit_algorithms/amplitude_amplifiers/grover.py;Grover;construct_circuit;Construct the circuit for Grover's algorithm with ``power`` Grover operators.;"Amplitude Amplification; Initialization; Grover; Oracle; Quantum Phase Estimation (QPE)"
+qiskit_algorithms/amplitude_amplifiers/grover.py;Grover;optimal_num_iterations;Return the optimal number of iterations, if the number of solutions is known.;Grover
+qiskit_algorithms/amplitude_estimators/ae.py;AmplitudeEstimation;compute_confidence_interval;Compute the (1 - alpha) confidence interval.;
+qiskit_algorithms/amplitude_estimators/ae.py;AmplitudeEstimation;compute_mle;Compute the Maximum Likelihood Estimator (MLE).;
+qiskit_algorithms/amplitude_estimators/ae.py;AmplitudeEstimation;construct_circuit;Construct the Amplitude Estimation quantum circuit.;"Amplitude Amplification; Initialization; Grover"
+qiskit_algorithms/amplitude_estimators/ae.py;AmplitudeEstimation;estimate;Run the amplitude estimation algorithm on provided estimation problem.;"Amplitude Amplification; Initialization; Grover; Oracle"
+qiskit_algorithms/amplitude_estimators/ae.py;AmplitudeEstimation;evaluate_measurements;Evaluate the results from the circuit simulation.;
+qiskit_algorithms/amplitude_estimators/ae_utils.py;;bisect_max;Find the maximum of the real-valued function f in the interval [a, b] using bisection.;
+qiskit_algorithms/amplitude_estimators/ae_utils.py;;derivative_log_pdf_a;Return the derivative of the logarithm of the PDF of a.;
+qiskit_algorithms/amplitude_estimators/ae_utils.py;;pdf_a;Return the PDF of a, i.e. the probability of getting the estimate x;
+qiskit_algorithms/amplitude_estimators/amplitude_estimator.py;AmplitudeEstimator;estimate;Run the amplitude estimation algorithm.;
+qiskit_algorithms/amplitude_estimators/estimation_problem.py;EstimationProblem;rescale;Rescale the good state amplitude in the estimation problem.;"Amplitude Amplification; Initialization; Grover; Oracle"
+qiskit_algorithms/amplitude_estimators/fae.py;FasterAmplitudeEstimation;construct_circuit;Construct the circuit :math:`Q^k X |0\rangle>`.;"Amplitude Amplification; Initialization; Grover"
+qiskit_algorithms/amplitude_estimators/fae.py;FasterAmplitudeEstimation;estimate;Run the amplitude estimation algorithm on provided estimation problem.;Oracle
+qiskit_algorithms/amplitude_estimators/iae.py;IterativeAmplitudeEstimation;construct_circuit;Construct the circuit :math:`\mathcal{Q}^k \mathcal{A} |0\rangle`.;"Amplitude Amplification; Initialization; Grover"
+qiskit_algorithms/amplitude_estimators/iae.py;IterativeAmplitudeEstimation;estimate;Run the amplitude estimation algorithm on provided estimation problem.;"Oracle; Quantum Phase Estimation (QPE)"
+qiskit_algorithms/amplitude_estimators/mlae.py;MaximumLikelihoodAmplitudeEstimation;compute_confidence_interval;Compute the `alpha` confidence interval using the method `kind`.;
+qiskit_algorithms/amplitude_estimators/mlae.py;MaximumLikelihoodAmplitudeEstimation;compute_mle;Compute the MLE via a grid-search.;
+qiskit_algorithms/amplitude_estimators/mlae.py;MaximumLikelihoodAmplitudeEstimation;construct_circuits;Construct the Amplitude Estimation w/o QPE quantum circuits.;"Amplitude Amplification; Initialization; Grover; Oracle; Quantum Phase Estimation (QPE)"
+qiskit_algorithms/amplitude_estimators/mlae.py;MaximumLikelihoodAmplitudeEstimation;estimate;Run the amplitude estimation algorithm on provided estimation problem.;"Initialization; Oracle"
+qiskit_algorithms/eigensolvers/eigensolver.py;Eigensolver;compute_eigenvalues;Computes the minimum eigenvalue. The ``operator`` and ``aux_operators`` are supplied here.;
+qiskit_algorithms/eigensolvers/eigensolver.py;Eigensolver;supports_aux_operators;Whether computing the expectation value of auxiliary operators is supported.;
+qiskit_algorithms/eigensolvers/vqd.py;VQD;compute_eigenvalues;;"Angle Encoding; Variational Quantum Algorithm (VQA)"
+qiskit_algorithms/eigensolvers/vqd.py;VQD;supports_aux_operators;;
+qiskit_algorithms/minimum_eigensolvers/adapt_vqe.py;AdaptVQE;compute_minimum_eigenvalue;Computes the minimum eigenvalue.;"Angle Encoding; Initialization; Alternating Operator Ansatz (AOA); Variational Quantum Eigensolver (VQE); Variational Quantum Algorithm (VQA)"
+qiskit_algorithms/minimum_eigensolvers/adapt_vqe.py;AdaptVQE;supports_aux_operators;;
+qiskit_algorithms/minimum_eigensolvers/minimum_eigensolver.py;MinimumEigensolver;compute_minimum_eigenvalue;Computes the minimum eigenvalue. The ``operator`` and ``aux_operators`` are supplied here.;Variational Quantum Eigensolver (VQE)
+qiskit_algorithms/minimum_eigensolvers/minimum_eigensolver.py;MinimumEigensolver;supports_aux_operators;Whether computing the expectation value of auxiliary operators is supported.;
+qiskit_algorithms/minimum_eigensolvers/sampling_mes.py;SamplingMinimumEigensolver;compute_minimum_eigenvalue;Compute the minimum eigenvalue of a diagonal operator.;Variational Quantum Eigensolver (VQE)
+qiskit_algorithms/minimum_eigensolvers/sampling_mes.py;SamplingMinimumEigensolver;supports_aux_operators;Whether computing the expectation value of auxiliary operators is supported.;
+qiskit_algorithms/minimum_eigensolvers/sampling_vqe.py;SamplingVQE;compute_minimum_eigenvalue;;"Angle Encoding; Variational Quantum Eigensolver (VQE); Variational Quantum Algorithm (VQA)"
+qiskit_algorithms/minimum_eigensolvers/sampling_vqe.py;SamplingVQE;supports_aux_operators;;
+qiskit_algorithms/minimum_eigensolvers/vqe.py;VQE;compute_minimum_eigenvalue;;"Angle Encoding; Variational Quantum Eigensolver (VQE); Variational Quantum Algorithm (VQA)"
+qiskit_algorithms/minimum_eigensolvers/vqe.py;VQE;supports_aux_operators;;
+qiskit_algorithms/phase_estimators/hamiltonian_phase_estimation.py;HamiltonianPhaseEstimation;estimate;Run the Hamiltonian phase estimation algorithm.;"Initialization; Quantum Phase Estimation (QPE)"
+qiskit_algorithms/phase_estimators/hamiltonian_phase_estimation_result.py;HamiltonianPhaseEstimationResult;filter_phases;Filter phases as does `PhaseEstimatorResult.filter_phases`, with;Quantum Phase Estimation (QPE)
+qiskit_algorithms/phase_estimators/ipe.py;IterativePhaseEstimation;construct_circuit;Construct the kth iteration Quantum Phase Estimation circuit.;"Initialization; Quantum Phase Estimation (QPE)"
+qiskit_algorithms/phase_estimators/ipe.py;IterativePhaseEstimation;estimate;Estimate the eigenphase of the input unitary and initial-state pair.;"Initialization; Quantum Phase Estimation (QPE)"
+qiskit_algorithms/phase_estimators/phase_estimation.py;PhaseEstimation;construct_circuit;Return the circuit to be executed to estimate phases.;Initialization
+qiskit_algorithms/phase_estimators/phase_estimation.py;PhaseEstimation;estimate;Build a phase estimation circuit and run the corresponding algorithm.;"Initialization; Quantum Phase Estimation (QPE)"
+qiskit_algorithms/phase_estimators/phase_estimation.py;PhaseEstimation;estimate_from_pe_circuit;Run the phase estimation algorithm on a phase estimation circuit;Quantum Phase Estimation (QPE)
+qiskit_algorithms/phase_estimators/phase_estimation_result.py;PhaseEstimationResult;filter_phases;Return a filtered dict of phases (keys) and frequencies (values).;
+qiskit_algorithms/phase_estimators/phase_estimation_scale.py;PhaseEstimationScale;from_pauli_sum;Create a PhaseEstimationScale from a `SummedOp` representing a sum of Pauli Operators.;
+qiskit_algorithms/phase_estimators/phase_estimation_scale.py;PhaseEstimationScale;scale_phase;Convert a phase into an eigenvalue.;
+qiskit_algorithms/phase_estimators/phase_estimation_scale.py;PhaseEstimationScale;scale_phases;Convert a list or dict of phases to eigenvalues.;
+qiskit_algorithms/phase_estimators/phase_estimator.py;PhaseEstimator;estimate;Estimate the phase.;Initialization
+qiskit_algorithms/state_fidelities/base_state_fidelity.py;BaseStateFidelity;create_fidelity_circuit;Implementation-dependent method to create a fidelity circuit;Uncompute
+qiskit_algorithms/state_fidelities/base_state_fidelity.py;BaseStateFidelity;run;Runs asynchronously the state overlap (fidelity) calculation between two;
+qiskit_algorithms/state_fidelities/compute_uncompute.py;ComputeUncompute;create_fidelity_circuit;Combines ``circuit_1`` and ``circuit_2`` to create the;Uncompute
+qiskit_algorithms/time_evolvers/imaginary_time_evolver.py;ImaginaryTimeEvolver;evolve;Perform imaginary time evolution :math:`\exp(-\tau H)|\Psi\rangle`.;
+qiskit_algorithms/time_evolvers/pvqd/pvqd.py;PVQD;evolve;Perform real time evolution :math:`\exp(-i t H)|\Psi\rangle`.;"Initialization; Variational Quantum Eigensolver (VQE); Variational Quantum Algorithm (VQA)"
+qiskit_algorithms/time_evolvers/pvqd/pvqd.py;PVQD;get_loss;Get a function to evaluate the infidelity between Trotter step and ansatz.;Variational Quantum Algorithm (VQA)
+qiskit_algorithms/time_evolvers/pvqd/pvqd.py;PVQD;step;Perform a single time step.;Variational Quantum Algorithm (VQA)
+qiskit_algorithms/time_evolvers/real_time_evolver.py;RealTimeEvolver;evolve;Perform real time evolution :math:`\exp(-i t H)|\Psi\rangle`.;
+qiskit_algorithms/time_evolvers/trotterization/trotter_qrte.py;TrotterQRTE;evolve;Evolves a quantum state for a given time using the Trotterization method;Initialization
+qiskit_algorithms/time_evolvers/trotterization/trotter_qrte.py;TrotterQRTE;supports_aux_operators;Whether computing the expectation value of auxiliary operators is supported.;
+qiskit_algorithms/time_evolvers/variational/var_qte.py;VarQTE;evolve;Apply Variational Quantum Time Evolution to the given operator.;"Initialization; Variational Quantum Algorithm (VQA)"
+qiskit_algorithms/time_evolvers/variational/variational_principles/imaginary_mc_lachlan_principle.py;ImaginaryMcLachlanPrinciple;evolution_gradient;Calculates an evolution gradient according to the rules of this variational principle.;Variational Quantum Algorithm (VQA)
+qiskit_algorithms/time_evolvers/variational/variational_principles/real_mc_lachlan_principle.py;RealMcLachlanPrinciple;evolution_gradient;Calculates an evolution gradient according to the rules of this variational principle.;Variational Quantum Algorithm (VQA)
+qiskit_algorithms/time_evolvers/variational/variational_principles/variational_principle.py;VariationalPrinciple;evolution_gradient;Calculates an evolution gradient according to the rules of this variational principle.;Variational Quantum Algorithm (VQA)
+qiskit_algorithms/time_evolvers/variational/variational_principles/variational_principle.py;VariationalPrinciple;metric_tensor;Calculates a metric tensor according to the rules of this variational principle.;Variational Quantum Algorithm (VQA)

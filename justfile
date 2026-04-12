@@ -146,6 +146,11 @@ identify-qiskit-algorithms:
     @echo "\n--- Identifying core concepts in qiskit-algorithms ---"
     @{{VENV}}/bin/python -m src.core_concepts.pipelines.extract_qiskit_algorithms
 
+# Extracts all public methods/functions from qiskit-algorithms for manual pattern review.
+identify-qiskit-algorithms-methods:
+    @echo "\n--- Extracting qiskit-algorithms methods for manual review ---"
+    @{{VENV}}/bin/python -m src.core_concepts.pipelines.extract_qiskit_algorithms_methods
+
 
 # A special recipe to create a  venv just for the data acquisition scripts.
 _bootstrap-tools:

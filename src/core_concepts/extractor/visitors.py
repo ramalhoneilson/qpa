@@ -273,3 +273,107 @@ class QiskitAlgorithmsVisitor(BaseConceptVisitor):
                 "base_classes": base_names,
             }
             logging.debug(f"Found concept: {node.name}")
+
+
+# Decorator names that mark a method as a property accessor or setter — not a
+# quantum concept.
+_SKIP_DECORATORS: set[str] = {"property", "abstractproperty", "setter", "deleter"}
+
+# Method names that are definitely classical bookkeeping regardless of docstring.
+_SKIP_METHOD_NAMES: set[str] = {
+    "copy",
+    "clone",
+    "to_dict",
+    "from_dict",
+    "to_json",
+    "from_json",
+    "to_string",
+    "from_string",
+    "to_list",
+    "from_list",
+    "keys",
+    "values",
+    "items",
+}
+
+
+def _has_skip_decorator(node: ast.FunctionDef) -> bool:
+    """Return True if the function carries a property/setter decorator."""
+    for dec in node.decorator_list:
+        name = None
+        if isinstance(dec, ast.Name):
+            name = dec.id
+        elif isinstance(dec, ast.Attribute):
+            name = dec.attr
+        if name in _SKIP_DECORATORS:
+            return True
+    return False
+
+
+class QiskitAlgorithmsMethodVisitor(ast.NodeVisitor):
+    """
+    An AST visitor that extracts public methods and module-level functions from
+    qiskit-algorithms source files for manual pattern-review.
+
+    Filtering rules (a method/function is skipped if ANY of these hold):
+    - It is a dunder (``__name__``) or private (``_name``) method.
+    - It carries a ``@property``, ``@setter``, ``@deleter``, or
+      ``@abstractproperty`` decorator.
+    - Its name is in the known classical-bookkeeping set
+      (``copy``, ``to_dict``, etc.).
+
+    Everything else is collected with its enclosing class name (if any),
+    the first line of its docstring, and the raw source text — ready for
+    downstream pattern matching and manual review.
+    """
+
+    def __init__(self, source_text: str, file_path: Path, sdk_root: Path):
+        self.source_text = source_text
+        self.file_path = file_path
+        self.sdk_root = sdk_root
+        # List of dicts, one per extracted method/function.
+        self.found_methods: list[dict[str, Any]] = []
+        # Stack of enclosing class names for context tracking.
+        self._class_stack: list[str] = []
+
+    def visit_ClassDef(self, node: ast.ClassDef):
+        self._class_stack.append(node.name)
+        self.generic_visit(node)
+        self._class_stack.pop()
+
+    def visit_FunctionDef(self, node: ast.FunctionDef):
+        self._collect(node)
+        # Do NOT recurse into nested functions — only top-level and class methods.
+
+    visit_AsyncFunctionDef = visit_FunctionDef
+
+    def _collect(self, node: ast.FunctionDef):
+        name = node.name
+
+        # 1. Skip dunders and privates.
+        if name.startswith("_"):
+            return
+
+        # 2. Skip known classical bookkeeping names.
+        if name in _SKIP_METHOD_NAMES:
+            return
+
+        # 3. Skip property accessors and setters.
+        if _has_skip_decorator(node):
+            return
+
+        raw_doc = ast.get_docstring(node)
+        summary = raw_doc.strip().split("\n")[0].strip() if raw_doc else ""
+
+        relative_path = self.file_path.relative_to(self.sdk_root)
+        class_name = self._class_stack[-1] if self._class_stack else ""
+
+        self.found_methods.append(
+            {
+                "file_path": str(relative_path),
+                "class_name": class_name,
+                "method_name": name,
+                "docstring_summary": summary,
+                "source_code": ast.get_source_segment(self.source_text, node) or "",
+            }
+        )
