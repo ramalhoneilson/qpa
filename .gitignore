@@ -210,3 +210,6 @@ __marimo__/
 /.idea/
 /converted_notebooks/
 /notebooks/
+
+# Prefect (project-level flow storage and deployment configs)
+.prefect/
