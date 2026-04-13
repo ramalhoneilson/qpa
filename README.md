@@ -44,6 +44,34 @@ The analysis reveals several important patterns in quantum software development:
 3. **Pattern Adoption**: How quantum patterns are adopted across different projects
 4. **Concept Frequency**: Most frequently used quantum computing concepts
 
+---
+
+### Ideas to Be Discussed
+
+The following points came up during manual review of the qiskit-algorithms extraction and are worth discussing with collaborators before deciding on next steps.
+
+**1. Classical post-processing of measurement counts — is it a pattern?**
+
+When going through the qiskit-algorithms methods, we ran into `evaluate_measurements` (in `AmplitudeEstimation`), which takes raw quantum measurement counts and converts them into probability estimates. This is purely classical code that sits at the boundary between quantum execution and result interpretation.
+
+We checked whether anything similar appears in the other frameworks:
+
+- **PennyLane**: yes — `process_counts()` and `process_samples()` are defined in at least a dozen measurement classes (`CountsMP`, `ProbabilityMP`, `ExpectationMP`, `VarianceMP`, `SampleMP`, `ClassicalShadowMP`, and others).
+- **Qiskit**: yes — `marginal_counts()` and `marginal_distribution()` in `qiskit/result/utils.py`.
+- **Classiq**: nothing equivalent found.
+
+This pattern does not appear in the current 59-pattern catalogue (PlanQK Pattern Atlas), and it was not captured by any of the existing extractors. The question is whether it deserves to be added as a named pattern, or whether it is intentionally out of scope (since it is classical code, even if it only makes sense in a quantum context).
+
+**2. Should the extractors cover measurement and result classes?**
+
+The PennyLane and Qiskit extractors currently skip the measurement and result layers entirely. If the group decides that classical post-processing of quantum results is worth tracking, the extractors would need to be extended to cover:
+- `pennylane/measurements/` (PennyLane)
+- `qiskit/result/` (Qiskit)
+
+This is a deliberate scope decision — not a bug — so it should be agreed on before any changes are made.
+
+---
+
 
 
 ## 🚀 Workflow Orchestration (NEW!)

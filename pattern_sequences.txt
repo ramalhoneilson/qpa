@@ -1,0 +1,16 @@
+Grover Search,State Preparation -> Oracle -> Diffuser -> Measurement
+Shor Algorithm,State Preparation -> QPE (Modular Exponentiation) -> Inverse QFT -> Measurement -> Classical Continued Fractions
+HHL Algorithm,State Prep -> QPE -> Controlled Rotation -> Inverse QPE -> Measurement
+Quantum Amplitude Estimation,State Preparation -> Grover Operator -> Inverse QFT -> Measurement
+QAOA,State Preparation -> Cost Hamiltonian Evolution -> Mixer Hamiltonian Evolution -> Measurement -> Classical Parameter Update
+VQE,Ansatz -> Expectation Value Measurement -> Classical Optimizer
+QSVT,Block Encoding -> Projector-controlled Phase Shifts -> Block Encoding -> Measurement
+Bernstein-Vazirani,State Preparation -> Oracle -> State Preparation -> Measurement
+Simon Algorithm,State Preparation -> Oracle -> State Preparation -> Measurement -> Classical Linear Solve
+Quantum Phase Estimation,State Preparation -> Controlled Unitary -> Inverse QFT -> Measurement
+Quantum Walk,State Preparation -> Coin Flip Operator -> Shift Operator -> Measurement
+Swap Test,State Preparation -> Hadamard (Ancilla) -> Controlled-SWAP -> Hadamard (Ancilla) -> Measurement
+Quantum Fourier Transform,Hadamard -> Controlled Phase -> Swaps
+Quantum Teleportation,State Preparation -> Entanglement (Bell Pair) -> Bell Measurement -> Classical Feedback -> Unitary Correction
+Amplitude Amplification,State Preparation -> Oracle -> Diffuser -> Check Condition
+Iterative Phase Estimation,State Preparation -> Controlled Unitary -> Measurement (Ancilla) -> Feedback Rotation (Repeat)

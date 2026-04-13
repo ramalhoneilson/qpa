@@ -19,12 +19,14 @@ CONCEPT_FILES = [
     config.RESULTS_DIR / "classiq_quantum_concepts.json",
     config.RESULTS_DIR / "pennylane_quantum_concepts.json",
     config.RESULTS_DIR / "qiskit_quantum_concepts.json",
+    config.RESULTS_DIR / "qiskit_algorithms_quantum_concepts.json",
 ]
 
 PATTERN_FILES = [
     config.RESULTS_DIR / "knowledge_base/enriched_classiq_quantum_patterns.csv",
     config.RESULTS_DIR / "knowledge_base/enriched_pennylane_quantum_patterns.csv",
     config.RESULTS_DIR / "knowledge_base/enriched_qiskit_quantum_patterns.csv",
+    config.RESULTS_DIR / "knowledge_base/enriched_qiskit_algorithms_quantum_patterns.csv",
 ]
 
 
@@ -232,8 +234,113 @@ def main(target_dir: Path | None = None, output_file: Path | None = None):
     concept_name_embeddings = model.encode(concept_short_names, convert_to_tensor=True)
     concept_summary_embeddings = model.encode(concept_summaries, convert_to_tensor=True)
 
-    out_csv.parent.mkdir(parents=True, exist_ok=True)
+    script_files = list(scan_dir.rglob("*.py"))
+    total_files = len(script_files)
+    print(f"Found {total_files} Python files to analyze.")
 
+    # For each file, keep the best-scoring match per concept.
+    # The `first_line` field records where in the file the winning match
+    # appeared so that the output can later be sorted into call order —
+    # useful for building sequence graphs.
+    # Key: (relative_file_path, concept_name)
+    # Value: dict with the highest-score row seen for that pair.
+    best_matches: dict[tuple[str, str], dict] = {}
+
+    for i, file_path in enumerate(script_files):
+        if (i + 1) % 100 == 0 or (i + 1) == total_files:
+            print(f"Processing {i + 1}/{total_files}...")
+
+        try:
+            script_content = file_path.read_text(encoding="utf-8", errors="ignore")
+        except Exception as e:
+            print(f"Could not read file {file_path}: {e}")
+            continue
+
+        relative_path = str(file_path.relative_to(scan_dir))
+
+        # ── Name-based matching ──────────────────────────────────────────────
+        # Walk the AST to collect (element_name, first_line) pairs so we know
+        # where in the file each call site appears.
+        try:
+            tree = ast.parse(script_content)
+        except SyntaxError:
+            tree = None
+
+        located_elements: list[tuple[str, int]] = []
+        if tree:
+            for node in ast.walk(tree):
+                if isinstance(node, ast.Call):
+                    func = node.func
+                    name = None
+                    if isinstance(func, ast.Name):
+                        name = func.id
+                    elif isinstance(func, ast.Attribute):
+                        name = func.attr
+                    if name:
+                        located_elements.append((name, node.lineno))
+
+        if located_elements:
+            element_names = [e[0] for e in located_elements]
+            code_element_embeddings = model.encode(
+                element_names, convert_to_tensor=True
+            )
+            cosine_sim_names = 1 - cdist(
+                code_element_embeddings.cpu(),
+                concept_name_embeddings.cpu(),
+                "cosine",
+            )
+            for elem_idx, (element, lineno) in enumerate(located_elements):
+                for concept_idx, concept in enumerate(quantum_concepts):
+                    score = float(cosine_sim_names[elem_idx, concept_idx])
+                    if score >= SIMILARITY_THRESHOLDS["name"]:
+                        key = (relative_path, concept["name"])
+                        if key not in best_matches or score > best_matches[key]["score"]:
+                            best_matches[key] = {
+                                "file_path": relative_path,
+                                "concept_name": concept["name"],
+                                "pattern": concept["pattern"],
+                                "match_type": "name",
+                                "matched_text": element,
+                                "score": score,
+                                "first_line": lineno,
+                            }
+
+        # ── Summary-based matching (comment blocks) ──────────────────────────
+        comment_block = extract_comments_from_script(file_path)
+        if comment_block:
+            comment_embedding = model.encode(
+                [comment_block], convert_to_tensor=True
+            )
+            cosine_sim_summaries = 1 - cdist(
+                comment_embedding.cpu(), concept_summary_embeddings.cpu(), "cosine"
+            )
+            truncated_comment = (
+                (comment_block[:150] + "...") if len(comment_block) > 150 else comment_block
+            )
+            # Comments are treated as a single block; assign line 0 so they
+            # sort before call-site matches when building sequences.
+            for concept_idx, concept in enumerate(quantum_concepts):
+                score = float(cosine_sim_summaries[0, concept_idx])
+                if score >= SIMILARITY_THRESHOLDS["summary"]:
+                    key = (relative_path, concept["name"])
+                    if key not in best_matches or score > best_matches[key]["score"]:
+                        best_matches[key] = {
+                            "file_path": relative_path,
+                            "concept_name": concept["name"],
+                            "pattern": concept["pattern"],
+                            "match_type": "summary",
+                            "matched_text": truncated_comment.replace(";", ","),
+                            "score": score,
+                            "first_line": 0,
+                        }
+
+    # Sort by file then by position within the file so that the CSV naturally
+    # reflects the order in which concepts appear — ready for sequence analysis.
+    sorted_rows = sorted(
+        best_matches.values(), key=lambda r: (r["file_path"], r["first_line"])
+    )
+
+    out_csv.parent.mkdir(parents=True, exist_ok=True)
     with open(out_csv, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f, delimiter=";")
         writer.writerow(
@@ -244,76 +351,26 @@ def main(target_dir: Path | None = None, output_file: Path | None = None):
                 "match_type",
                 "matched_text",
                 "similarity_score",
+                "first_line",
             ]
         )
+        for row in sorted_rows:
+            writer.writerow(
+                [
+                    row["file_path"],
+                    row["concept_name"],
+                    row["pattern"],
+                    row["match_type"],
+                    row["matched_text"],
+                    f"{row['score']:.4f}",
+                    row["first_line"],
+                ]
+            )
 
-        script_files = list(scan_dir.rglob("*.py"))
-        total_files = len(script_files)
-        print(f"Found {total_files} Python files to analyze.")
-
-        for i, file_path in enumerate(script_files):
-            if (i + 1) % 100 == 0 or (i + 1) == total_files:
-                print(f"Processing {i + 1}/{total_files}...")
-
-            try:
-                script_content = file_path.read_text(encoding="utf-8", errors="ignore")
-            except Exception as e:
-                print(f"Could not read file {file_path}: {e}")
-                continue
-
-            code_elements = get_code_elements_from_script(script_content)
-            if code_elements:
-                code_element_embeddings = model.encode(
-                    code_elements, convert_to_tensor=True
-                )
-                cosine_sim_names = 1 - cdist(
-                    code_element_embeddings.cpu(),
-                    concept_name_embeddings.cpu(),
-                    "cosine",
-                )
-                for elem_idx, element in enumerate(code_elements):
-                    for concept_idx, concept in enumerate(quantum_concepts):
-                        score = cosine_sim_names[elem_idx, concept_idx]
-                        if score >= SIMILARITY_THRESHOLDS["name"]:
-                            writer.writerow(
-                                [
-                                    str(file_path.relative_to(scan_dir)),
-                                    concept["name"],
-                                    concept["pattern"],
-                                    "name",
-                                    element,
-                                    f"{score:.4f}",
-                                ]
-                            )
-
-            comment_block = extract_comments_from_script(file_path)
-            if comment_block:
-                comment_embedding = model.encode(
-                    [comment_block], convert_to_tensor=True
-                )
-                cosine_sim_summaries = 1 - cdist(
-                    comment_embedding.cpu(), concept_summary_embeddings.cpu(), "cosine"
-                )
-                for concept_idx, concept in enumerate(quantum_concepts):
-                    score = cosine_sim_summaries[0, concept_idx]
-                    if score >= SIMILARITY_THRESHOLDS["summary"]:
-                        truncated_comment = (
-                            (comment_block[:150] + "...")
-                            if len(comment_block) > 150
-                            else comment_block
-                        )
-                        writer.writerow(
-                            [
-                                str(file_path.relative_to(scan_dir)),
-                                concept["name"],
-                                concept["pattern"],
-                                "summary",
-                                truncated_comment.replace(";", ","),
-                                f"{score:.4f}",
-                            ]
-                        )
-
-    print(f"Analysis complete. Results saved to '{out_csv}'.")
+    print(
+        f"Analysis complete. Results saved to '{out_csv}' "
+        f"({len(best_matches)} unique file–concept pairs across {total_files} files)."
+    )
 
 
 def _parse_args() -> argparse.Namespace:

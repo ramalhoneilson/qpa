@@ -1,0 +1,28 @@
+cd /home/neilson/projects/qpa
+
+# Step 0 — install everything (clones repos, creates .venv, installs deps)
+just install
+
+# Step 1 — download quantum pattern definitions from PlanQK Atlas
+just download_pattern_list
+
+# Step 2 — extract core concepts from Qiskit / PennyLane / Classiq source
+just identify-concepts
+
+# Step 3 — (optional) manual concept classification; pre-classified files already exist
+
+# Step 4 — discover & clone target GitHub projects
+just search-repos
+
+# Step 4.1 — preprocess Jupyter notebooks
+just preprocess-notebooks
+just convert-archived-notebooks
+
+# Step 5 — run the main semantic analysis
+just run_main
+
+# Step 6 — generate the final report
+just report
+
+# Step 7 — (optional) generate the complete experimental data report
+just experimental-data
