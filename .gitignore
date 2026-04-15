@@ -207,9 +207,11 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 /target_github_projects/*
+/target_multilanguage_projects/*
 /.idea/
 /converted_notebooks/
 /notebooks/
 
 # Prefect (project-level flow storage and deployment configs)
 .prefect/
+data/chroma_db/*
