@@ -1,0 +1,20 @@
+file_path,concept_name,ground_truth_pattern
+Grovers_Search.py,grovers_search,Grover
+Quantum_Phase_Estimation_Algorithm.py,quantum_phase_estimation,Quantum Phase Estimation (QPE)
+Quantum_Fourier_Transform.py,quantum_fourier_transform,Basis Change
+Quantum_Approximate_Optimization_Algorithm.py,qaoa,Quantum Approximate Optimization Algorithm (QAOA)
+Shors_Algorithm.py,shors_algorithm,Domain Specific Application
+Bernstein_Vazirani_Algorithm.py,bernstein_vazirani,Oracle
+Deutsch_Jozsa_Algorithm.py,deutsch_jozsa,Oracle
+Simons_Algorithm.py,simons_algorithm,Oracle
+Quantum_Walk.py,quantum_walk,Domain Specific Application
+Quantum_Counting_Algorithm.py,quantum_counting,Quantum Amplitude Estimation
+Quantum_Circuit_Born_Machine.py,qcbm,Variational Quantum Algorithm (VQA)
+Bells_Inequality.py,bells_inequality,Creating Entanglement
+CHSH_Inequality.py,chsh_inequality,Creating Entanglement
+HHL_Algorithm.py,hhl,Domain Specific Application
+Quantum_Computing_Quantum_Monte_Carlo.py,qc_qmc,Domain Specific Application
+Quantum_Principal_Component_Analysis.py,qpca,Quantum Phase Estimation (QPE)
+1_Shot_Allocation.py,shot_allocation,Variational Quantum Algorithm (VQA)
+2_Adaptive_Shot_Allocation.py,adaptive_shot_allocation,Variational Quantum Algorithm (VQA)
+Random_Circuit.py,random_circuit,Circuit Construction Utility

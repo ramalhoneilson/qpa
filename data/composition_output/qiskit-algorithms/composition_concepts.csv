@@ -1,0 +1,53 @@
+concept_name,pattern,resolution_type,score,file_path
+AmplificationProblem,Amplitude Amplification,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_amplifiers/amplification_problem.py
+AmplitudeAmplifier,Amplitude Amplification,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_amplifiers/amplitude_amplifier.py
+AmplitudeAmplifierResult,Amplitude Amplification,docstring,0.7403,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_amplifiers/amplitude_amplifier.py
+Grover,Grover,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_amplifiers/grover.py
+GroverResult,Grover,docstring,0.7684,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_amplifiers/grover.py
+TrotterQRTE,Initialization,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/trotterization/trotter_qrte.py
+AmplitudeEstimation,Quantum Amplitude Estimation,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/ae.py
+AmplitudeEstimationResult,Quantum Amplitude Estimation,docstring,0.7627,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/ae.py
+AmplitudeEstimator,Quantum Amplitude Estimation,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/amplitude_estimator.py
+AmplitudeEstimatorResult,Quantum Amplitude Estimation,docstring,0.9065,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/amplitude_estimator.py
+EstimationProblem,Quantum Amplitude Estimation,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/estimation_problem.py
+FasterAmplitudeEstimation,Quantum Amplitude Estimation,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/fae.py
+FasterAmplitudeEstimationResult,Quantum Amplitude Estimation,docstring,0.9598,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/fae.py
+IterativeAmplitudeEstimation,Quantum Amplitude Estimation,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/iae.py
+MaximumLikelihoodAmplitudeEstimation,Quantum Amplitude Estimation,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/mlae.py
+QAOA,Quantum Approximate Optimization Algorithm (QAOA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/qaoa.py
+HamiltonianPhaseEstimation,Quantum Phase Estimation (QPE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/phase_estimators/hamiltonian_phase_estimation.py
+HamiltonianPhaseEstimationResult,Quantum Phase Estimation (QPE),name,0.9305,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/phase_estimators/hamiltonian_phase_estimation_result.py
+IterativePhaseEstimation,Quantum Phase Estimation (QPE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/phase_estimators/ipe.py
+IterativePhaseEstimationResult,Quantum Phase Estimation (QPE),docstring,0.7296,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/phase_estimators/ipe.py
+PhaseEstimation,Quantum Phase Estimation (QPE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/phase_estimators/phase_estimation.py
+PhaseEstimationScale,Quantum Phase Estimation (QPE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/phase_estimators/phase_estimation_scale.py
+PhaseEstimator,Quantum Phase Estimation (QPE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/phase_estimators/phase_estimator.py
+PhaseEstimatorResult,Quantum Phase Estimation (QPE),docstring,0.7788,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/phase_estimators/phase_estimator.py
+BaseStateFidelity,Uncompute,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/state_fidelities/base_state_fidelity.py
+ComputeUncompute,Uncompute,name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/state_fidelities/compute_uncompute.py
+Eigensolver,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/eigensolvers/eigensolver.py
+ImaginaryMcLachlanPrinciple,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/variational/variational_principles/imaginary_mc_lachlan_principle.py
+ImaginaryTimeEvolver,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/imaginary_time_evolver.py
+ImaginaryVariationalPrinciple,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/variational/variational_principles/imaginary_variational_principle.py
+PVQD,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/pvqd/pvqd.py
+RealMcLachlanPrinciple,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/variational/variational_principles/real_mc_lachlan_principle.py
+RealTimeEvolver,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/real_time_evolver.py
+RealVariationalPrinciple,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/variational/variational_principles/real_variational_principle.py
+TimeEvolutionProblem,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/time_evolution_problem.py
+VQD,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/eigensolvers/vqd.py
+VarQITE,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/variational/var_qite.py
+VarQRTE,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/variational/var_qrte.py
+VarQTE,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/variational/var_qte.py
+VarQTEResult,Variational Quantum Algorithm (VQA),docstring,0.7297,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/variational/var_qte_result.py
+VariationalAlgorithm,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/variational_algorithm.py
+VariationalPrinciple,Variational Quantum Algorithm (VQA),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/variational/variational_principles/variational_principle.py
+AdaptVQE,Variational Quantum Eigensolver (VQE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/adapt_vqe.py
+MinimumEigensolver,Variational Quantum Eigensolver (VQE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/minimum_eigensolver.py
+MinimumEigensolverResult,Variational Quantum Eigensolver (VQE),name,0.9628,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/minimum_eigensolver.py
+SamplingMinimumEigensolver,Variational Quantum Eigensolver (VQE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/sampling_mes.py
+SamplingMinimumEigensolverResult,Variational Quantum Eigensolver (VQE),name,0.9777,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/sampling_mes.py
+SamplingVQE,Variational Quantum Eigensolver (VQE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/sampling_vqe.py
+SamplingVQEResult,Variational Quantum Eigensolver (VQE),name,0.9337,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/sampling_vqe.py
+TerminationCriterion,Variational Quantum Eigensolver (VQE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/adapt_vqe.py
+VQE,Variational Quantum Eigensolver (VQE),name,1.0000,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/vqe.py
+VQEResult,Variational Quantum Eigensolver (VQE),docstring,0.8397,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/vqe.py

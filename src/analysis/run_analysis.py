@@ -2,6 +2,7 @@ import argparse
 import ast
 import csv
 import json
+import re
 from pathlib import Path
 
 from scipy.spatial.distance import cdist
@@ -20,6 +21,7 @@ CONCEPT_FILES = [
     config.RESULTS_DIR / "pennylane_quantum_concepts.json",
     config.RESULTS_DIR / "qiskit_quantum_concepts.json",
     config.RESULTS_DIR / "qiskit_algorithms_quantum_concepts.json",
+    config.RESULTS_DIR / "qiskit_machine_learning_quantum_concepts.json",
 ]
 
 PATTERN_FILES = [
@@ -27,7 +29,24 @@ PATTERN_FILES = [
     config.RESULTS_DIR / "knowledge_base/enriched_pennylane_quantum_patterns.csv",
     config.RESULTS_DIR / "knowledge_base/enriched_qiskit_quantum_patterns.csv",
     config.RESULTS_DIR / "knowledge_base/enriched_qiskit_algorithms_quantum_patterns.csv",
+    config.RESULTS_DIR / "knowledge_base/enriched_qiskit_machine_learning_quantum_patterns.csv",
 ]
+
+
+def normalize_identifier(name: str) -> str:
+    """Normalise a code identifier for embedding.
+
+    Splits snake_case and CamelCase into space-separated lowercase tokens so
+    that e.g. ``ApplyQuantumFourierTransform`` and ``apply_qft`` land close to
+    ``QFT`` in embedding space.  Applied only to the strings passed to
+    ``model.encode()``; original names are preserved in the output CSV.
+    """
+    # snake_case → tokens
+    name = name.replace("_", " ")
+    # CamelCase / PascalCase → tokens (insert space before each uppercase run)
+    name = re.sub(r"([a-z])([A-Z])", r"\1 \2", name)
+    name = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1 \2", name)
+    return name.lower().strip()
 
 
 class CodeElementVisitor(ast.NodeVisitor):
@@ -54,6 +73,11 @@ def get_code_elements_from_script(script_content: str) -> list[str]:
 
 
 def extract_comments_from_script(file_path: Path) -> str:
+    """Concatenate all ``#``-comment lines in the script into a single string.
+
+    Used for whole-file summary matching: the resulting text is embedded once
+    and compared against all KB concept summaries.
+    """
     comments = []
     try:
         with open(file_path, encoding="utf-8", errors="ignore") as f:
@@ -195,7 +219,10 @@ def extract_and_save_unique_patterns(input_files: list[Path], output_file: Path)
         print(f"Error saving unique patterns to {output_file}: {e}")
 
 
-def main(target_dir: Path | None = None, output_file: Path | None = None):
+def main(
+    target_dir: Path | None = None,
+    output_file: Path | None = None,
+):
     scan_dir = target_dir if target_dir else NOTEBOOKS_ROOT_DIR
     out_csv = output_file if output_file else OUTPUT_CSV_FILE
 
@@ -231,7 +258,9 @@ def main(target_dir: Path | None = None, output_file: Path | None = None):
 
     concept_short_names = [c["short_name"] for c in quantum_concepts]
     concept_summaries = [c["summary"] for c in quantum_concepts]
-    concept_name_embeddings = model.encode(concept_short_names, convert_to_tensor=True)
+    concept_name_embeddings = model.encode(
+        [normalize_identifier(n) for n in concept_short_names], convert_to_tensor=True
+    )
     concept_summary_embeddings = model.encode(concept_summaries, convert_to_tensor=True)
 
     script_files = list(scan_dir.rglob("*.py"))
@@ -282,7 +311,7 @@ def main(target_dir: Path | None = None, output_file: Path | None = None):
         if located_elements:
             element_names = [e[0] for e in located_elements]
             code_element_embeddings = model.encode(
-                element_names, convert_to_tensor=True
+                [normalize_identifier(n) for n in element_names], convert_to_tensor=True
             )
             cosine_sim_names = 1 - cdist(
                 code_element_embeddings.cpu(),
@@ -305,7 +334,13 @@ def main(target_dir: Path | None = None, output_file: Path | None = None):
                                 "first_line": lineno,
                             }
 
-        # ── Summary-based matching (comment blocks) ──────────────────────────
+        # ── Summary-based matching (whole-file comment block) ────────────────
+        # All # -comment lines are concatenated into one string and embedded
+        # as a single vector, then compared against all KB concept summaries.
+        # This captures the dominant topic of the file (notebook title, section
+        # headers, algorithm descriptions) and works well when the KB covers
+        # the target vocabulary.  Comments are assigned line 0 so they sort
+        # before call-site matches in sequence output.
         comment_block = extract_comments_from_script(file_path)
         if comment_block:
             comment_embedding = model.encode(
@@ -317,8 +352,6 @@ def main(target_dir: Path | None = None, output_file: Path | None = None):
             truncated_comment = (
                 (comment_block[:150] + "...") if len(comment_block) > 150 else comment_block
             )
-            # Comments are treated as a single block; assign line 0 so they
-            # sort before call-site matches when building sequences.
             for concept_idx, concept in enumerate(quantum_concepts):
                 score = float(cosine_sim_summaries[0, concept_idx])
                 if score >= SIMILARITY_THRESHOLDS["summary"]:

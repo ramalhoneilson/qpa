@@ -1,12 +1,13 @@
 pattern,count
-Basis Change,23
-Quantum Arithmetic,17
-Data Encoding,16
-Circuit Construction Utility,14
-Quantum Logical Operators,12
-Variational Quantum Algorithm (VQA),9
-Quantum Approximate Optimization Algorithm (QAOA),6
+Variational Quantum Algorithm (VQA),30
+Basis Change,20
+Data Encoding,18
+Circuit Construction Utility,15
+Oracle,13
+Grover,10
+Quantum Logical Operators,10
+Quantum Arithmetic,6
 Initialization,4
-Oracle,3
-Grover,2
+Quantum Approximate Optimization Algorithm (QAOA),3
+Quantum Phase Estimation (QPE),3
 Hamiltonian Simulation,1

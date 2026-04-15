@@ -1,0 +1,40 @@
+file_path;concept_name;pattern;match_type;matched_text;similarity_score;first_line;name_score;summary_score
+01_neural_networks.py;/pennylane/pennylane.templates.embeddings.qaoaembedding.QAOAEmbedding;Quantum Approximate Optimization Algorithm (QAOA);summary;!/usr/bin/env python coding: utf-8 Quantum Neural Networks Overview This notebook demonstrates different quantum neural network (QNN) implementations ...;0.6747;0;;0.6747
+01_neural_networks.py;/pennylane/pennylane.templates.layers.cv_neural_net.CVNeuralNetLayers;Quantum Neural Network (QNN);summary;!/usr/bin/env python coding: utf-8 Quantum Neural Networks Overview This notebook demonstrates different quantum neural network (QNN) implementations ...;0.6760;0;;0.6760
+02_neural_network_classifier_and_regressor.py;/pennylane/pennylane.templates.embeddings.qaoaembedding.QAOAEmbedding;Quantum Approximate Optimization Algorithm (QAOA);summary;!/usr/bin/env python coding: utf-8 Neural Network Classifier & Regressor In this tutorial we show how the `NeuralNetworkClassifier` and `NeuralNetwork...;0.6573;0;;0.6573
+02_neural_network_classifier_and_regressor.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.z_feature_map;Data Encoding;name;zz_feature_map;0.9408;272;0.9408;
+02_neural_network_classifier_and_regressor.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.zz_feature_map;Data Encoding;name;zz_feature_map;1.0000;272;1.0000;
+02_neural_network_classifier_and_regressor.py;/qiskit/qiskit.circuit.library.n_local.real_amplitudes.RealAmplitudes;Variational Quantum Algorithm (VQA);name;real_amplitudes;1.0000;273;1.0000;
+02a_training_a_quantum_model_on_a_real_dataset.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.z_feature_map;Data Encoding;name;zz_feature_map;0.9408;149;0.9408;
+02a_training_a_quantum_model_on_a_real_dataset.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.zz_feature_map;Data Encoding;name;zz_feature_map;1.0000;149;1.0000;
+02a_training_a_quantum_model_on_a_real_dataset.py;/qiskit/qiskit.circuit.library.n_local.real_amplitudes.RealAmplitudes;Variational Quantum Algorithm (VQA);name;real_amplitudes;1.0000;162;1.0000;
+02a_training_a_quantum_model_on_a_real_dataset.py;/qiskit/qiskit.circuit.library.n_local.efficient_su2.EfficientSU2;Variational Quantum Algorithm (VQA);name;efficient_su2;1.0000;362;1.0000;
+03_quantum_kernel.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.z_feature_map;Data Encoding;name;zz_feature_map;0.9408;183;0.9408;
+03_quantum_kernel.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.zz_feature_map;Data Encoding;name;zz_feature_map;1.0000;183;1.0000;
+03_quantum_kernel.py;/qiskit-algorithms/qiskit_algorithms.state_fidelities.compute_uncompute.ComputeUncompute;Uncompute;name;ComputeUncompute;1.0000;187;1.0000;
+03_quantum_kernel.py;expanded/min;Variational Quantum Eigensolver (VQE);name;min;1.0000;498;1.0000;
+04_torch_qgan.py;/qiskit/qiskit.circuit.library.n_local.efficient_su2.EfficientSU2;Variational Quantum Algorithm (VQA);name;efficient_su2;1.0000;144;1.0000;
+05_torch_connector.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.z_feature_map;Data Encoding;name;zz_feature_map;0.9408;92;0.9408;
+05_torch_connector.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.zz_feature_map;Data Encoding;name;zz_feature_map;1.0000;92;1.0000;
+05_torch_connector.py;/qiskit/qiskit.circuit.library.n_local.real_amplitudes.RealAmplitudes;Variational Quantum Algorithm (VQA);name;real_amplitudes;1.0000;93;1.0000;
+07_pegasos_qsvc.py;/qiskit-algorithms/qiskit_algorithms.state_fidelities.compute_uncompute.ComputeUncompute;Uncompute;name;ComputeUncompute;1.0000;76;1.0000;
+07_pegasos_qsvc.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.z_feature_map;Data Encoding;name;z_feature_map;1.0000;80;1.0000;
+07_pegasos_qsvc.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.zz_feature_map;Data Encoding;name;z_feature_map;0.9408;80;0.9408;
+08_quantum_kernel_trainer.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.z_feature_map;Data Encoding;name;zz_feature_map;0.9408;151;0.9408;
+08_quantum_kernel_trainer.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.zz_feature_map;Data Encoding;name;zz_feature_map;1.0000;151;1.0000;
+08_quantum_kernel_trainer.py;/qiskit-algorithms/qiskit_algorithms.state_fidelities.compute_uncompute.ComputeUncompute;Uncompute;name;ComputeUncompute;1.0000;175;1.0000;
+08_quantum_kernel_trainer.py;expanded/array;Quantum Phase Estimation (QPE);name;array;1.0000;249;1.0000;
+09_saving_and_loading_models.py;expanded/min;Variational Quantum Eigensolver (VQE);name;min;1.0000;192;1.0000;
+09_saving_and_loading_models.py;/qiskit/qiskit.circuit.library.n_local.real_amplitudes.RealAmplitudes;Variational Quantum Algorithm (VQA);name;real_amplitudes;1.0000;217;1.0000;
+10_effective_dimension.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.z_feature_map;Data Encoding;name;z_feature_map;1.0000;70;1.0000;
+10_effective_dimension.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.zz_feature_map;Data Encoding;name;z_feature_map;0.9408;70;0.9408;
+10_effective_dimension.py;/qiskit/qiskit.circuit.library.n_local.real_amplitudes.RealAmplitudes;Variational Quantum Algorithm (VQA);name;real_amplitudes;1.0000;71;1.0000;
+10_effective_dimension.py;expanded/array;Quantum Phase Estimation (QPE);name;array;1.0000;184;1.0000;
+11_quantum_convolutional_neural_networks.py;expanded/array;Quantum Phase Estimation (QPE);name;array;1.0000;280;1.0000;
+11_quantum_convolutional_neural_networks.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.z_feature_map;Data Encoding;name;z_feature_map;1.0000;334;1.0000;
+11_quantum_convolutional_neural_networks.py;/qiskit/qiskit.circuit.library.data_preparation.pauli_feature_map.zz_feature_map;Data Encoding;name;z_feature_map;0.9408;334;0.9408;
+12_quantum_autoencoder.py;/qiskit/qiskit.circuit.library.n_local.real_amplitudes.RealAmplitudes;Variational Quantum Algorithm (VQA);name;real_amplitudes;1.0000;152;1.0000;
+12_quantum_autoencoder.py;expanded/minimize;Variational Quantum Eigensolver (VQE);name;minimize;1.0000;297;1.0000;
+12_quantum_autoencoder.py;expanded/sqrt;Domain Specific Application;name;sqrt;1.0000;343;1.0000;
+12_quantum_autoencoder.py;expanded/array;Quantum Phase Estimation (QPE);name;array;1.0000;419;1.0000;
+13_quantum_bayesian_inference.py;expanded/sqrt;Domain Specific Application;name;sqrt;1.0000;73;1.0000;

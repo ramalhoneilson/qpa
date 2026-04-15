@@ -3,124 +3,126 @@
 ================================================================================
 
 --- I. Overall Summary ---
-Total Matches Found:          751
-Unique Files with Matches:    313
-Unique Concepts Matched:      142
+Total Matches Found:          703
+Unique Files with Matches:    296
+Unique Concepts Matched:      141
 Total Patterns Defined:       24
 Total Patterns Found:         23
-Average Similarity Score:     0.8839
+Average Similarity Score:     0.9483
 
 --- II. Match Type Breakdown ---
 
 match_type  count
-      name    475
-   summary    276
+      name    595
+   summary    108
 
 Average Score by Match Type:
 match_type  similarity_score
-      name            0.9948
-   summary            0.6931
+      name             0.995
+   summary             0.691
 
 --------------------------------------------------------------------------------
 
 --- III. Source Framework & Target Project Breakdown ---
 
 Matches by Source Framework:
-        framework  count
-          classiq    331
-qiskit-algorithms    194
-        pennylane    119
-           qiskit    107
+              framework  count
+                classiq    264
+                 qiskit    133
+      qiskit-algorithms    124
+qiskit_machine_learning     99
+              pennylane     83
 
 Matches by Target Project:
                         project  count
-                classiq-library    370
-                       Qualtran     70
-              qiskit-algorithms     43
-                 qiskit-finance     38
-                          Qrisp     33
-amazon-braket-algorithm-library     22
-        qiskit-machine-learning     22
-            qiskit-optimization     17
-               tensorcircuit-ng     17
-                  tensorcircuit     16
-                   torchquantum     11
-                       catalyst     10
-                       ProjectQ     10
-                      guppylang      9
-                       covalent      9
-                           qibo      7
+                classiq-library    334
+        qiskit-machine-learning     77
+              qiskit-algorithms     45
+                       Qualtran     32
+                 qiskit-finance     32
+                          Qrisp     23
+               tensorcircuit-ng     20
+                  tensorcircuit     20
+            qiskit-optimization     19
+                       covalent     16
+                   torchquantum     10
+amazon-braket-algorithm-library     10
+                       catalyst      8
                   qiskit-nature      7
+                       squlearn      6
          qiskit-braket-provider      6
-                       Perceval      6
-                          quimb      5
-                         ReCirq      4
-                       squlearn      4
-                          mitiq      3
-                           Cirq      3
+                      guppylang      5
+                           qibo      5
+           qiskit-addon-cutting      4
+                          quimb      4
+                       Perceval      4
+                         ReCirq      2
+               client-superstaq      2
+                       ProjectQ      2
                        piquasso      2
-           qiskit-addon-cutting      2
                       thewalrus      2
-               client-superstaq      1
+                          mitiq      2
                     OpenFermion      1
+                           Cirq      1
                          Pulser      1
+             tensorflow-quantum      1
 
 --------------------------------------------------------------------------------
 
 --- IV. Cross-Framework Pattern Analysis ---
 
 Table 4.1: Source Pattern Analysis (Where patterns originate)
-                                          pattern  Total Matches                             Source Frameworks
-                                     Basis Change            142                    classiq, pennylane, qiskit
-                   Quantum Phase Estimation (QPE)             75         classiq, pennylane, qiskit-algorithms
-            Variational Quantum Eigensolver (VQE)             63                  pennylane, qiskit-algorithms
-                      Domain Specific Application             59                            classiq, pennylane
-Quantum Approximate Optimization Algorithm (QAOA)             51 classiq, pennylane, qiskit, qiskit-algorithms
-              Variational Quantum Algorithm (VQA)             46 classiq, pennylane, qiskit, qiskit-algorithms
-                          Amplitude Amplification             46                    classiq, qiskit-algorithms
-                     Circuit Construction Utility             41                    classiq, pennylane, qiskit
-                                    Data Encoding             38                    classiq, pennylane, qiskit
-                               Quantum Arithmetic             35                    classiq, pennylane, qiskit
-                                   Initialization             26 classiq, pennylane, qiskit, qiskit-algorithms
-                           Hamiltonian Simulation             22                    classiq, pennylane, qiskit
-                                           Oracle             20            classiq, qiskit, qiskit-algorithms
-                                           Grover             19 classiq, pennylane, qiskit, qiskit-algorithms
-                     Quantum Neural Network (QNN)             12                                     pennylane
-                        Quantum Logical Operators             12                                        qiskit
-                                        Uncompute             11                             qiskit-algorithms
-                                  Dynamic Circuit              7                                     pennylane
-                  Linear Combination of Unitaries              6                                       classiq
-                                        SWAP Test              6                                       classiq
-                                      Phase Shift              6                            classiq, pennylane
-                            Creating Entanglement              5                                       classiq
-                     Quantum Amplitude Estimation              1                                       classiq
+                                          pattern  Total Matches                                                      Source Frameworks
+                                     Basis Change            130                                             classiq, pennylane, qiskit
+              Variational Quantum Algorithm (VQA)             81 classiq, pennylane, qiskit, qiskit-algorithms, qiskit_machine_learning
+                   Quantum Phase Estimation (QPE)             46                          classiq, pennylane, qiskit, qiskit-algorithms
+                     Quantum Neural Network (QNN)             44                                     pennylane, qiskit_machine_learning
+                     Circuit Construction Utility             40                                             classiq, pennylane, qiskit
+                                        SWAP Test             39                                       classiq, qiskit_machine_learning
+            Variational Quantum Eigensolver (VQE)             38                                           pennylane, qiskit-algorithms
+                                    Data Encoding             34                    classiq, pennylane, qiskit, qiskit_machine_learning
+                                           Grover             33                          classiq, pennylane, qiskit, qiskit-algorithms
+Quantum Approximate Optimization Algorithm (QAOA)             32                                     classiq, qiskit, qiskit-algorithms
+                      Domain Specific Application             25                            classiq, pennylane, qiskit_machine_learning
+                     Quantum Amplitude Estimation             24                                             classiq, qiskit-algorithms
+                                           Oracle             24                                                        classiq, qiskit
+                                   Initialization             23                                     classiq, qiskit, qiskit-algorithms
+                          Amplitude Amplification             22                                             classiq, qiskit-algorithms
+                           Hamiltonian Simulation             19                                                        classiq, qiskit
+                               Quantum Arithmetic             14                                             classiq, pennylane, qiskit
+                        Quantum Logical Operators             10                                                                 qiskit
+                                  Dynamic Circuit              7                                                              pennylane
+                                        Uncompute              5                                                      qiskit-algorithms
+                  Linear Combination of Unitaries              5                                                                classiq
+                            Creating Entanglement              4                                                                classiq
+                                      Phase Shift              4                                                     classiq, pennylane
 
 
 Table 4.2: Adoption Pattern Analysis (Where patterns are used)
-                                          pattern  Project Coverage                                                                                                                                                                                                                                        Found In Projects
-Quantum Approximate Optimization Algorithm (QAOA)                16 ProjectQ, Qrisp, ReCirq, amazon-braket-algorithm-library, catalyst, classiq-library, covalent, qiskit-algorithms, qiskit-braket-provider, qiskit-finance, qiskit-machine-learning, qiskit-optimization, quimb, squlearn, tensorcircuit, tensorcircuit-ng
-              Variational Quantum Algorithm (VQA)                14                                           Perceval, ProjectQ, Pulser, classiq-library, covalent, qiskit-addon-cutting, qiskit-algorithms, qiskit-braket-provider, qiskit-finance, qiskit-nature, squlearn, tensorcircuit, tensorcircuit-ng, torchquantum
-            Variational Quantum Eigensolver (VQE)                14                                        Perceval, ProjectQ, Qrisp, classiq-library, client-superstaq, mitiq, qiskit-algorithms, qiskit-braket-provider, qiskit-finance, qiskit-nature, qiskit-optimization, tensorcircuit, tensorcircuit-ng, torchquantum
-                     Circuit Construction Utility                10                                                                                              OpenFermion, Perceval, Qualtran, ReCirq, amazon-braket-algorithm-library, classiq-library, covalent, qiskit-braket-provider, qiskit-optimization, thewalrus
-                          Amplitude Amplification                 8                                                                                                                                    Qrisp, Qualtran, amazon-braket-algorithm-library, classiq-library, guppylang, qibo, qiskit-algorithms, qiskit-finance
-                      Domain Specific Application                 8                                                                                                                                             Qrisp, Qualtran, amazon-braket-algorithm-library, classiq-library, guppylang, piquasso, qibo, qiskit-finance
-                                    Data Encoding                 7                                                                                                                                                                  Qrisp, Qualtran, catalyst, classiq-library, covalent, qiskit-machine-learning, squlearn
-                                        Uncompute                 7                                                                                                                                            ProjectQ, Qualtran, ReCirq, classiq-library, qiskit-addon-cutting, qiskit-algorithms, qiskit-machine-learning
-                   Quantum Phase Estimation (QPE)                 7                                                                                                                                                   ProjectQ, Qrisp, Qualtran, amazon-braket-algorithm-library, classiq-library, guppylang, qiskit-finance
-                                           Grover                 7                                                                                                                                      Perceval, Qrisp, amazon-braket-algorithm-library, catalyst, classiq-library, qiskit-algorithms, qiskit-optimization
-                                     Basis Change                 6                                                                                                                                                                        Qrisp, Qualtran, amazon-braket-algorithm-library, catalyst, classiq-library, qibo
-                     Quantum Neural Network (QNN)                 5                                                                                                                                                                          Cirq, classiq-library, qiskit-machine-learning, tensorcircuit, tensorcircuit-ng
-                               Quantum Arithmetic                 5                                                                                                                                                                                               Qrisp, Qualtran, catalyst, classiq-library, qiskit-finance
-                                   Initialization                 5                                                                                                                                                                                         ProjectQ, Qualtran, classiq-library, covalent, qiskit-algorithms
-                                  Dynamic Circuit                 3                                                                                                                                                                                                                             Cirq, classiq-library, quimb
-                                           Oracle                 3                                                                                                                                                                                                       classiq-library, qiskit-algorithms, qiskit-finance
-                        Quantum Logical Operators                 2                                                                                                                                                                                                                                Qualtran, classiq-library
-                           Hamiltonian Simulation                 2                                                                                                                                                                                                                       classiq-library, qiskit-algorithms
-                                      Phase Shift                 2                                                                                                                                                                                                                                catalyst, classiq-library
-                            Creating Entanglement                 1                                                                                                                                                                                                                                          classiq-library
-                  Linear Combination of Unitaries                 1                                                                                                                                                                                                                                          classiq-library
-                     Quantum Amplitude Estimation                 1                                                                                                                                                                                                                                          classiq-library
-                                        SWAP Test                 1                                                                                                                                                                                                                                          classiq-library
+                                          pattern  Project Coverage                                                                                                                                                                                                                                    Found In Projects
+              Variational Quantum Algorithm (VQA)                14 classiq-library, covalent, qiskit-addon-cutting, qiskit-algorithms, qiskit-braket-provider, qiskit-finance, qiskit-machine-learning, qiskit-nature, qiskit-optimization, squlearn, tensorcircuit, tensorcircuit-ng, tensorflow-quantum, torchquantum
+            Variational Quantum Eigensolver (VQE)                13                                           Perceval, ProjectQ, classiq-library, client-superstaq, mitiq, qiskit-algorithms, qiskit-braket-provider, qiskit-finance, qiskit-nature, qiskit-optimization, tensorcircuit, tensorcircuit-ng, torchquantum
+                     Circuit Construction Utility                10                                                                                                         OpenFermion, Perceval, Qualtran, ReCirq, classiq-library, client-superstaq, covalent, qiskit-braket-provider, qiskit-optimization, thewalrus
+Quantum Approximate Optimization Algorithm (QAOA)                10                                                                     Pulser, Qrisp, amazon-braket-algorithm-library, classiq-library, qiskit-algorithms, qiskit-braket-provider, qiskit-finance, qiskit-optimization, tensorcircuit, tensorcircuit-ng
+                                        SWAP Test                 8                                                                                                                           Perceval, classiq-library, covalent, qiskit-algorithms, qiskit-machine-learning, squlearn, tensorcircuit, tensorcircuit-ng
+                     Quantum Neural Network (QNN)                 7                                                                                                                                                  classiq-library, covalent, qibo, qiskit-machine-learning, squlearn, tensorcircuit, tensorcircuit-ng
+                                     Basis Change                 6                                                                                                                                                                    Qrisp, Qualtran, amazon-braket-algorithm-library, catalyst, classiq-library, qibo
+                                    Data Encoding                 6                                                                                                                                                                        Qrisp, Qualtran, catalyst, classiq-library, covalent, qiskit-machine-learning
+                                           Grover                 6                                                                                                                                            Qrisp, amazon-braket-algorithm-library, catalyst, classiq-library, qiskit-algorithms, qiskit-optimization
+                   Quantum Phase Estimation (QPE)                 5                                                                                                                                                                         Qrisp, Qualtran, amazon-braket-algorithm-library, classiq-library, guppylang
+                          Amplitude Amplification                 4                                                                                                                                                                                               Qualtran, catalyst, classiq-library, qiskit-algorithms
+                               Quantum Arithmetic                 4                                                                                                                                                                                                     Qrisp, Qualtran, classiq-library, qiskit-finance
+                                   Initialization                 4                                                                                                                                                                                    ProjectQ, classiq-library, qiskit-algorithms, qiskit-optimization
+                      Domain Specific Application                 4                                                                                                                                                                                            Qrisp, classiq-library, piquasso, qiskit-machine-learning
+                                  Dynamic Circuit                 3                                                                                                                                                                                                                         Cirq, classiq-library, quimb
+                     Quantum Amplitude Estimation                 3                                                                                                                                                                                                            Qualtran, classiq-library, qiskit-finance
+                                        Uncompute                 2                                                                                                                                                                                                           qiskit-algorithms, qiskit-machine-learning
+                           Hamiltonian Simulation                 2                                                                                                                                                                                                                   classiq-library, qiskit-algorithms
+                                      Phase Shift                 2                                                                                                                                                                                                                            catalyst, classiq-library
+                                           Oracle                 2                                                                                                                                                                                                                   classiq-library, qiskit-algorithms
+                            Creating Entanglement                 1                                                                                                                                                                                                                                      classiq-library
+                  Linear Combination of Unitaries                 1                                                                                                                                                                                                                                      classiq-library
+                        Quantum Logical Operators                 1                                                                                                                                                                                                                                             Qualtran
 
 --------------------------------------------------------------------------------
 
@@ -129,162 +131,168 @@ Quantum Approximate Optimization Algorithm (QAOA)                16 ProjectQ, Qr
 Analysis of Newly Defined Patterns
 Found 9 out of 9 newly defined patterns in the target projects.
                         Pattern  Matches
-                   Basis Change      142
-    Domain Specific Application       59
-   Circuit Construction Utility       41
-                  Data Encoding       38
-             Quantum Arithmetic       35
-         Hamiltonian Simulation       22
-      Quantum Logical Operators       12
-Linear Combination of Unitaries        6
-   Quantum Amplitude Estimation        1
+                   Basis Change      130
+   Circuit Construction Utility       40
+                  Data Encoding       34
+    Domain Specific Application       25
+   Quantum Amplitude Estimation       24
+         Hamiltonian Simulation       19
+             Quantum Arithmetic       14
+      Quantum Logical Operators       10
+Linear Combination of Unitaries        5
 
 
 Patterns by Match Count (Overall):
                                           pattern  count
-                                     Basis Change    142
-                   Quantum Phase Estimation (QPE)     75
-            Variational Quantum Eigensolver (VQE)     63
-                      Domain Specific Application     59
-Quantum Approximate Optimization Algorithm (QAOA)     51
-                          Amplitude Amplification     46
-              Variational Quantum Algorithm (VQA)     46
-                     Circuit Construction Utility     41
-                                    Data Encoding     38
-                               Quantum Arithmetic     35
-                                   Initialization     26
-                           Hamiltonian Simulation     22
-                                           Oracle     20
-                                           Grover     19
-                     Quantum Neural Network (QNN)     12
-                        Quantum Logical Operators     12
-                                        Uncompute     11
+                                     Basis Change    130
+              Variational Quantum Algorithm (VQA)     81
+                   Quantum Phase Estimation (QPE)     46
+                     Quantum Neural Network (QNN)     44
+                     Circuit Construction Utility     40
+                                        SWAP Test     39
+            Variational Quantum Eigensolver (VQE)     38
+                                    Data Encoding     34
+                                           Grover     33
+Quantum Approximate Optimization Algorithm (QAOA)     32
+                      Domain Specific Application     25
+                     Quantum Amplitude Estimation     24
+                                           Oracle     24
+                                   Initialization     23
+                          Amplitude Amplification     22
+                           Hamiltonian Simulation     19
+                               Quantum Arithmetic     14
+                        Quantum Logical Operators     10
                                   Dynamic Circuit      7
-                                      Phase Shift      6
-                  Linear Combination of Unitaries      6
-                                        SWAP Test      6
-                            Creating Entanglement      5
-                     Quantum Amplitude Estimation      1
+                                        Uncompute      5
+                  Linear Combination of Unitaries      5
+                                      Phase Shift      4
+                            Creating Entanglement      4
 
 Average Score by Pattern:
                                           pattern  similarity_score
                                   Dynamic Circuit            1.0000
+                                        Uncompute            1.0000
+                        Quantum Logical Operators            1.0000
+                               Quantum Arithmetic            1.0000
                                            Oracle            1.0000
-                     Quantum Amplitude Estimation            1.0000
-                                        SWAP Test            1.0000
-                           Hamiltonian Simulation            0.9842
-                                     Basis Change            0.9711
-                            Creating Entanglement            0.9648
-                                   Initialization            0.9617
-                                      Phase Shift            0.9539
-                  Linear Combination of Unitaries            0.9472
-                     Circuit Construction Utility            0.9452
-                        Quantum Logical Operators            0.9430
-                                    Data Encoding            0.9065
-                          Amplitude Amplification            0.8941
-                     Quantum Neural Network (QNN)            0.8935
-                                           Grover            0.8808
-              Variational Quantum Algorithm (VQA)            0.8615
-                                        Uncompute            0.8138
-            Variational Quantum Eigensolver (VQE)            0.8056
-                               Quantum Arithmetic            0.8019
-                      Domain Specific Application            0.8008
-Quantum Approximate Optimization Algorithm (QAOA)            0.7972
-                   Quantum Phase Estimation (QPE)            0.7901
+                  Linear Combination of Unitaries            1.0000
+                           Hamiltonian Simulation            1.0000
+                                     Basis Change            0.9980
+                                   Initialization            0.9917
+                          Amplitude Amplification            0.9914
+                      Domain Specific Application            0.9794
+                     Circuit Construction Utility            0.9785
+                            Creating Entanglement            0.9766
+                                      Phase Shift            0.9748
+                     Quantum Amplitude Estimation            0.9718
+                                    Data Encoding            0.9685
+              Variational Quantum Algorithm (VQA)            0.9442
+                                           Grover            0.9371
+                     Quantum Neural Network (QNN)            0.8996
+            Variational Quantum Eigensolver (VQE)            0.8770
+                   Quantum Phase Estimation (QPE)            0.8723
+                                        SWAP Test            0.8555
+Quantum Approximate Optimization Algorithm (QAOA)            0.8375
 
 All Patterns within each Source Framework (Sorted by Frequency):
 
   -- classiq --
                                           pattern  count
-                                     Basis Change     94
-                   Quantum Phase Estimation (QPE)     47
-                      Domain Specific Application     44
+                                     Basis Change     87
+                   Quantum Phase Estimation (QPE)     27
                      Circuit Construction Utility     24
-                          Amplitude Amplification     22
-                                   Initialization     20
-                           Hamiltonian Simulation     17
-                               Quantum Arithmetic     12
-                                           Oracle     10
+                          Amplitude Amplification     20
+                      Domain Specific Application     19
+                           Hamiltonian Simulation     18
+                                   Initialization     18
+                                           Oracle     11
                                     Data Encoding      8
-                                           Grover      7
-                  Linear Combination of Unitaries      6
+                                           Grover      6
                                         SWAP Test      6
-                            Creating Entanglement      5
-                                      Phase Shift      5
+                  Linear Combination of Unitaries      5
+                            Creating Entanglement      4
+                                      Phase Shift      3
+                     Quantum Amplitude Estimation      2
+Quantum Approximate Optimization Algorithm (QAOA)      2
+                               Quantum Arithmetic      2
               Variational Quantum Algorithm (VQA)      2
-                     Quantum Amplitude Estimation      1
-Quantum Approximate Optimization Algorithm (QAOA)      1
 
   -- pennylane --
-                                          pattern  count
-                                     Basis Change     25
-                      Domain Specific Application     15
-                                    Data Encoding     14
-                     Quantum Neural Network (QNN)     12
-              Variational Quantum Algorithm (VQA)     12
-Quantum Approximate Optimization Algorithm (QAOA)      9
-                                  Dynamic Circuit      7
-                               Quantum Arithmetic      6
-                                           Grover      4
-                           Hamiltonian Simulation      4
-                     Circuit Construction Utility      3
-            Variational Quantum Eigensolver (VQE)      3
-                                   Initialization      1
-                                      Phase Shift      1
-                   Quantum Phase Estimation (QPE)      1
+                              pattern  count
+                         Basis Change     23
+                               Grover     12
+  Variational Quantum Algorithm (VQA)     10
+         Quantum Neural Network (QNN)      8
+                      Dynamic Circuit      7
+                        Data Encoding      6
+                   Quantum Arithmetic      6
+          Domain Specific Application      5
+       Quantum Phase Estimation (QPE)      2
+Variational Quantum Eigensolver (VQE)      2
+         Circuit Construction Utility      1
+                          Phase Shift      1
 
   -- qiskit --
                                           pattern  count
-                                     Basis Change     23
-                               Quantum Arithmetic     17
-                                    Data Encoding     16
-                     Circuit Construction Utility     14
-                        Quantum Logical Operators     12
-              Variational Quantum Algorithm (VQA)      9
-Quantum Approximate Optimization Algorithm (QAOA)      6
+              Variational Quantum Algorithm (VQA)     30
+                                     Basis Change     20
+                                    Data Encoding     18
+                     Circuit Construction Utility     15
+                                           Oracle     13
+                                           Grover     10
+                        Quantum Logical Operators     10
+                               Quantum Arithmetic      6
                                    Initialization      4
-                                           Oracle      3
-                                           Grover      2
+Quantum Approximate Optimization Algorithm (QAOA)      3
+                   Quantum Phase Estimation (QPE)      3
                            Hamiltonian Simulation      1
 
   -- qiskit-algorithms --
                                           pattern  count
-            Variational Quantum Eigensolver (VQE)     60
-Quantum Approximate Optimization Algorithm (QAOA)     35
-                   Quantum Phase Estimation (QPE)     27
-                          Amplitude Amplification     24
-              Variational Quantum Algorithm (VQA)     23
-                                        Uncompute     11
-                                           Oracle      7
-                                           Grover      6
+            Variational Quantum Eigensolver (VQE)     36
+Quantum Approximate Optimization Algorithm (QAOA)     27
+                     Quantum Amplitude Estimation     22
+                   Quantum Phase Estimation (QPE)     14
+              Variational Quantum Algorithm (VQA)     12
+                                           Grover      5
+                                        Uncompute      5
+                          Amplitude Amplification      2
                                    Initialization      1
+
+  -- qiskit_machine_learning --
+                            pattern  count
+       Quantum Neural Network (QNN)     36
+                          SWAP Test     33
+Variational Quantum Algorithm (VQA)     27
+                      Data Encoding      2
+        Domain Specific Application      1
 
 --------------------------------------------------------------------------------
 
 --- VI. Top Matched Concepts ---
 
 Top 20 Most Frequently Matched Concepts:
-        Framework                         Concept  Matches
-          Classiq           ...hadamard_transform       59
-Qiskit-algorithms                         ...QAOA       35
-Qiskit-algorithms                          ...VQE       29
-          Classiq                          ...qpe       26
-          Classiq                 ...apply_to_all       22
-          Classiq                          ...qft       22
-          Classiq                 ...qpe_flexible       21
-           Qiskit                          ...QFT       21
-        Pennylane                          ...QFT       20
-          Classiq                         ...qsvt       19
-Qiskit-algorithms                  ...SamplingVQE       19
-          Classiq               ...suzuki_trotter       17
-Qiskit-algorithms                     ...AdaptVQE       12
-Qiskit-algorithms          ...AmplitudeEstimation       11
-Qiskit-algorithms     ...IterativePhaseEstimation       11
-          Classiq                 ...phase_oracle       10
-Qiskit-algorithms              ...PhaseEstimation       10
-           Qiskit                          ...AND       10
-        Pennylane            ...QuantumMonteCarlo       10
-Qiskit-algorithms ...IterativeAmplitudeEstimation        9
+              Framework                         Concept  Matches
+                Classiq           ...hadamard_transform       59
+      Qiskit-algorithms                         ...QAOA       27
+                Classiq                 ...apply_to_all       23
+      Qiskit-algorithms                          ...VQE       22
+                Classiq                          ...qft       20
+                 Qiskit                          ...QFT       20
+              Pennylane                          ...QFT       20
+                Classiq               ...suzuki_trotter       18
+                Classiq                          ...qpe       18
+Qiskit_machine_learning      ...NeuralNetworkClassifier       12
+Qiskit_machine_learning                         ...QSVC       11
+                 Qiskit                  ...PhaseOracle       11
+                Classiq                 ...phase_oracle       11
+                 Qiskit               ...GroverOperator       10
+                Classiq              ...grover_operator       10
+              Pennylane               ...GroverOperator       10
+                 Qiskit                          ...AND       10
+      Qiskit-algorithms                  ...SamplingVQE       10
+                 Qiskit               ...RealAmplitudes        9
+      Qiskit-algorithms ...IterativeAmplitudeEstimation        9
 
 --------------------------------------------------------------------------------
 

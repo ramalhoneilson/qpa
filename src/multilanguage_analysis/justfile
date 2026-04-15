@@ -1,0 +1,36 @@
+# justfile — Multilanguage Semantic Analysis
+#
+# Standalone runner for the multilanguage analysis module.
+# Run from project root:
+#
+#   just --justfile src/multilanguage_analysis/justfile --working-directory . analyse-cpp
+
+set shell := ["bash", "-c"]
+export PATH := env_var('PATH') + ":" + env_var('HOME') + "/.local/bin:" + env_var('HOME') + "/.cargo/bin"
+
+PROJECT_ROOT := justfile_directory() + "/../.."
+VENV         := PROJECT_ROOT + "/.venv"
+OUTPUT_DIR   := PROJECT_ROOT + "/data/multilanguage_analysis"
+
+# Run semantic analysis on C++ quantum frameworks
+analyse-cpp:
+    @echo ">>> Running C++ semantic analysis..."
+    @cd {{PROJECT_ROOT}} && {{VENV}}/bin/python -m src.multilanguage_analysis.run_analysis_cpp
+
+# Run C++ analysis on a custom directory
+analyse-cpp-dir dir:
+    @echo ">>> Running C++ analysis on '{{dir}}'..."
+    @cd {{PROJECT_ROOT}} && {{VENV}}/bin/python -m src.multilanguage_analysis.run_analysis_cpp --target-dir "{{dir}}"
+
+# Show a summary of the latest C++ results
+summary-cpp:
+    @cd {{PROJECT_ROOT}} && {{VENV}}/bin/python src/multilanguage_analysis/_summary.py
+
+# Clean generated analysis outputs
+clean:
+    @echo ">>> Cleaning multilanguage analysis outputs..."
+    @rm -rf {{OUTPUT_DIR}}
+    @echo ">>> Done."
+
+default:
+    @just --justfile {{justfile()}} --list

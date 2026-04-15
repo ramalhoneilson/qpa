@@ -1,0 +1,51 @@
+# justfile — Multilanguage Quantum Framework Discovery
+#
+# Standalone runner for the non-Python discovery module.
+# Can be invoked directly from this directory:
+#
+#   cd src/multilanguage && just search-repos
+#
+# or from the project root:
+#
+#   just --justfile src/multilanguage/justfile --working-directory . <recipe>
+
+set shell := ["bash", "-c"]
+export PATH := env_var('PATH') + ":" + env_var('HOME') + "/.local/bin:" + env_var('HOME') + "/.cargo/bin"
+
+# Resolve the project root (two levels up from this file's directory)
+PROJECT_ROOT  := justfile_directory() + "/../.."
+VENV          := PROJECT_ROOT + "/.venv"
+OUTPUT_DIR    := PROJECT_ROOT + "/data/multilanguage"
+CLONE_DIR     := PROJECT_ROOT + "/target_multilanguage_projects"
+
+# Search GitHub for non-Python quantum computing frameworks and save results
+search-repos:
+    @echo ">>> Searching GitHub for non-Python quantum computing frameworks..."
+    @cd {{PROJECT_ROOT}} && {{VENV}}/bin/python -m src.multilanguage.discover_multilanguage_projects
+
+# Clone/update repositories found by search-repos into target_multilanguage_projects/
+clone-repos:
+    @echo ">>> Cloning/updating repositories into '{{CLONE_DIR}}'..."
+    @cd {{PROJECT_ROOT}} && {{VENV}}/bin/python -m src.preprocessing.clone_repos {{OUTPUT_DIR}}/multilanguage_repo_list.txt {{CLONE_DIR}}
+
+# Run the full discovery pipeline: search then clone
+discover-and-clone: search-repos clone-repos
+    @echo ">>> All non-Python quantum repositories are ready."
+
+# Show the current repo list (if it exists)
+list-repos:
+    @if [ -f "{{OUTPUT_DIR}}/multilanguage_repo_list.txt" ]; then \
+        echo ">>> Discovered non-Python repositories:"; \
+        cat "{{OUTPUT_DIR}}/multilanguage_repo_list.txt"; \
+    else \
+        echo "No repo list found. Run 'just search-repos' first."; \
+    fi
+
+# Remove all outputs produced by this module
+clean:
+    @echo ">>> Cleaning multilanguage discovery outputs..."
+    @rm -rf {{OUTPUT_DIR}}
+    @echo ">>> Done."
+
+default:
+    @just --justfile {{justfile()}} --list

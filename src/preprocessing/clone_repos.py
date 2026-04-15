@@ -2,7 +2,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-TARGET_DIR = Path("target_github_projects")
+DEFAULT_TARGET_DIR = Path("target_github_projects")
 
 
 def run_command(command: list[str], cwd: Path | None = None):
@@ -40,7 +40,11 @@ def main():
         )
         sys.exit(1)
 
+    # Optional second argument overrides the clone destination directory.
+    TARGET_DIR = Path(sys.argv[2]) if len(sys.argv) >= 3 else DEFAULT_TARGET_DIR
+
     print(f">>> Cloning/updating repositories from '{repo_list_file}'...")
+    print(f">>> Target directory: '{TARGET_DIR}'")
 
     # --- 2. Ensure Target Directory Exists ---
     TARGET_DIR.mkdir(parents=True, exist_ok=True)

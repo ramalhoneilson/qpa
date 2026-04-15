@@ -1,0 +1,55 @@
+Quantum Algorithm Composition Hierarchies
+
+1. Grover's Search
+Grover → Oracle → Amplitude Amplification → Basis Change (Hadamard) → Quantum Arithmetic
+
+2. Quantum Phase Estimation (QPE)
+QPE → Basis Change (QFT) → Controlled Unitary → Initialization (state prep) → Quantum Arithmetic (phase kickback)
+
+3. Quantum Amplitude Estimation (QAE)
+QAE → QPE → Amplitude Amplification (Grover operator) → Oracle → Basis Change (QFT) → Initialization
+
+4. Shor's Algorithm
+Shor → QPE → Basis Change (QFT) → Quantum Arithmetic (modular exponentiation) → Quantum Logical Operators
+
+5. HHL (Linear Systems)
+HHL → Linear Combination of Unitaries (LCU) → QPE → Amplitude Amplification → Basis Change (QFT) → Initialization → Oracle (flag qubit rotation)
+
+6. Quantum Approximate Optimization Algorithm (QAOA)
+QAOA → Variational Quantum Algorithm (VQA) → Initialization → Oracle (phase separator) → Basis Change (mixer) → Domain Specific Application (cost Hamiltonian encoding) → Quantum Arithmetic
+
+7. Variational Quantum Eigensolver (VQE)
+VQE → Variational Quantum Algorithm (VQA) → Initialization (ansatz prep) → Hamiltonian Simulation → Basis Change (measurement rotation) → Quantum Amplitude Estimation (gradient estimation)
+
+8. Amplitude Amplification (general)
+Amplitude Amplification → Oracle → Basis Change (Hadamard diffuser) → Initialization → Quantum Arithmetic (inversion about mean)
+
+9. Hamiltonian Simulation (Trotterization)
+Hamiltonian Simulation → Quantum Logical Operators (Pauli exponentials) → Basis Change (rotations) → Quantum Arithmetic (time step) → Initialization
+
+10. Linear Combination of Unitaries (LCU)
+LCU → Amplitude Amplification → Oracle (SELECT) → Data Encoding (PREPARE) → Initialization → Basis Change
+
+11. Quantum Monte Carlo Integration (QMCI)
+QMCI → QAE → Amplitude Amplification → Data Encoding (probability distribution loading) → Oracle (payoff circuit) → Quantum Arithmetic → Basis Change (QFT)
+
+12. Generalised Quantum Signal Processing (GQSP)
+GQSP → LCU → Basis Change (QFT) → QPE → Hamiltonian Simulation → Quantum Arithmetic (polynomial approximation) → Quantum Logical Operators
+
+13. Quantum Backtracking
+Quantum Backtracking → Grover → Amplitude Amplification → Oracle (predicate) → Quantum Logical Operators → Initialization → Basis Change
+
+14. Variational Quantum Deflation (VQD)
+VQD → VQE → Variational Quantum Algorithm (VQA) → Uncompute (overlap via compute-uncompute) → Initialization → Hamiltonian Simulation → Basis Change
+
+15. Iterative QPE (Kitaev)
+Iterative QPE → QPE → Basis Change (single-qubit QFT) → Quantum Arithmetic (phase accumulation) → Initialization → Oracle (controlled unitary repetition)
+
+Cross-cutting building blocks (appear in multiple algorithms):
+
+Basis Change (QFT, Hadamard layer) — used by QPE, Shor, Grover, Hamiltonian Simulation, GQSP
+Amplitude Amplification — used by QAE, Grover, LCU, Quantum Backtracking, QMCI
+Initialization (state/ansatz preparation) — used by VQE, QAOA, HHL, QPE, LCU
+Oracle — used by Grover, QAE, QMCI, HHL, Quantum Backtracking
+Quantum Arithmetic — used by Shor, QMCI, Hamiltonian Simulation, QAOA
+Hamiltonian Simulation — used by VQE, HHL, Quantum Backtracking, GQSP

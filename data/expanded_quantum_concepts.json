@@ -1,0 +1,217 @@
+[
+  {
+    "name": "expanded/qaoa",
+    "summary": "The Quantum Approximate Optimization Algorithm (QAOA).",
+    "docstring": "The Quantum Approximate Optimization Algorithm (QAOA)."
+  },
+  {
+    "name": "expanded/my_qpe_flexible",
+    "summary": "Implements the Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$. This is a flexible version that allows the user to provide a callable that generates the unitary operator $U^k$ for a given integer $k$, offering greater flexibility in handling different quantum circuits using some powering rule.",
+    "docstring": "Implements the Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$. This is a flexible version that allows the user to provide a callable that generates the unitary operator $U^k$ for a given integer $k$, offering greater flexibility in handling different quantum circuits using some powering rule."
+  },
+  {
+    "name": "expanded/QUBO_QAOA",
+    "summary": "The Quantum Approximate Optimization Algorithm (QAOA).",
+    "docstring": "The Quantum Approximate Optimization Algorithm (QAOA)."
+  },
+  {
+    "name": "expanded/adapt_vqe_ansatz",
+    "summary": "The Adaptive Variational Quantum Eigensolver algorithm.",
+    "docstring": "The Adaptive Variational Quantum Eigensolver algorithm."
+  },
+  {
+    "name": "expanded/run_quantum_phase_estimation",
+    "summary": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator.",
+    "docstring": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator."
+  },
+  {
+    "name": "expanded/get_quantum_phase_estimation_results",
+    "summary": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator.",
+    "docstring": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator."
+  },
+  {
+    "name": "expanded/gqsp_phases",
+    "summary": "Implements Generalized Quantum Signal Processing (GQSP), which realizes a (Laurent) polynomial transformation of degree d on the eigenvalues of the given signal unitary `u`. The protocol is according to https://arxiv.",
+    "docstring": "Implements Generalized Quantum Signal Processing (GQSP), which realizes a (Laurent) polynomial transformation of degree d on the eigenvalues of the given signal unitary `u`. The protocol is according to https://arxiv."
+  },
+  {
+    "name": "expanded/QUBO_QAOA_cvar",
+    "summary": "The Quantum Approximate Optimization Algorithm (QAOA).",
+    "docstring": "The Quantum Approximate Optimization Algorithm (QAOA)."
+  },
+  {
+    "name": "expanded/quantum_phase_estimation_circuit",
+    "summary": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator.",
+    "docstring": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator."
+  },
+  {
+    "name": "expanded/qsvt_phases",
+    "summary": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,.",
+    "docstring": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,."
+  },
+  {
+    "name": "expanded/repeat_grover_until_success",
+    "summary": "Grover's Search algorithm.",
+    "docstring": "Grover's Search algorithm."
+  },
+  {
+    "name": "expanded/parse_qsvt_results",
+    "summary": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,.",
+    "docstring": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,."
+  },
+  {
+    "name": "expanded/GroverOptimizer",
+    "summary": "Grover's Search algorithm.",
+    "docstring": "Grover's Search algorithm."
+  },
+  {
+    "name": "expanded/qsvt_sqrt_polynomial",
+    "summary": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,.",
+    "docstring": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,."
+  },
+  {
+    "name": "expanded/get_qpe_precision",
+    "summary": "Implements the standard Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$.",
+    "docstring": "Implements the standard Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$."
+  },
+  {
+    "name": "expanded/optimize_qaoa_params",
+    "summary": "The Quantum Approximate Optimization Algorithm (QAOA).",
+    "docstring": "The Quantum Approximate Optimization Algorithm (QAOA)."
+  },
+  {
+    "name": "expanded/VqlsOptimizer",
+    "summary": "The Variational Quantum Eigensolver (VQE) algorithm.",
+    "docstring": "The Variational Quantum Eigensolver (VQE) algorithm."
+  },
+  {
+    "name": "expanded/QControlBox",
+    "summary": "Implements the Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$. This is a flexible version that allows the user to provide a callable that generates the unitary operator $U^k$ for a given integer $k$, offering greater flexibility in handling different quantum circuits using some powering rule.",
+    "docstring": "Implements the Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$. This is a flexible version that allows the user to provide a callable that generates the unitary operator $U^k$ for a given integer $k$, offering greater flexibility in handling different quantum circuits using some powering rule."
+  },
+  {
+    "name": "expanded/QAOA_ansatz_for_Ising",
+    "summary": "The Quantum Approximate Optimization Algorithm (QAOA).",
+    "docstring": "The Quantum Approximate Optimization Algorithm (QAOA)."
+  },
+  {
+    "name": "expanded/be_qfunc",
+    "summary": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,.",
+    "docstring": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,."
+  },
+  {
+    "name": "expanded/normalize_hamiltonian",
+    "summary": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator.",
+    "docstring": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator."
+  },
+  {
+    "name": "expanded/get_qc",
+    "summary": "The Variational Quantum Eigensolver (VQE) algorithm.",
+    "docstring": "The Variational Quantum Eigensolver (VQE) algorithm."
+  },
+  {
+    "name": "expanded/QArray",
+    "summary": "Implements the standard Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$.",
+    "docstring": "Implements the standard Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$."
+  },
+  {
+    "name": "expanded/adapt_layer",
+    "summary": "The Adaptive Variational Quantum Eigensolver algorithm.",
+    "docstring": "The Adaptive Variational Quantum Eigensolver algorithm."
+  },
+  {
+    "name": "expanded/run_qiro",
+    "summary": "The Quantum Approximate Optimization Algorithm (QAOA).",
+    "docstring": "The Quantum Approximate Optimization Algorithm (QAOA)."
+  },
+  {
+    "name": "expanded/from_qsp_polynomial",
+    "summary": "Implements Generalized Quantum Signal Processing (GQSP), which realizes a (Laurent) polynomial transformation of degree d on the eigenvalues of the given signal unitary `u`. The protocol is according to https://arxiv.",
+    "docstring": "Implements Generalized Quantum Signal Processing (GQSP), which realizes a (Laurent) polynomial transformation of degree d on the eigenvalues of the given signal unitary `u`. The protocol is according to https://arxiv."
+  },
+  {
+    "name": "expanded/qsp_approximate",
+    "summary": "Implements matrix inversion on a given block-encoding of a square matrix, using the QSVT framework. Applies a polynomial approximation of the inverse of the singular values of the matrix encoded in `u`.",
+    "docstring": "Implements matrix inversion on a given block-encoding of a square matrix, using the QSVT framework. Applies a polynomial approximation of the inverse of the singular values of the matrix encoded in `u`."
+  },
+  {
+    "name": "expanded/QIROProblem",
+    "summary": "The Quantum Approximate Optimization Algorithm (QAOA).",
+    "docstring": "The Quantum Approximate Optimization Algorithm (QAOA)."
+  },
+  {
+    "name": "expanded/array",
+    "summary": "Implements the standard Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$.",
+    "docstring": "Implements the standard Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$."
+  },
+  {
+    "name": "expanded/get_normalization",
+    "summary": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator.",
+    "docstring": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator."
+  },
+  {
+    "name": "expanded/sqrt",
+    "summary": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,.",
+    "docstring": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,."
+  },
+  {
+    "name": "expanded/QUBO_to_Ising",
+    "summary": "The Quantum Approximate Optimization Algorithm (QAOA).",
+    "docstring": "The Quantum Approximate Optimization Algorithm (QAOA)."
+  },
+  {
+    "name": "expanded/optimize",
+    "summary": "The Variational Quantum Eigensolver (VQE) algorithm.",
+    "docstring": "The Variational Quantum Eigensolver (VQE) algorithm."
+  },
+  {
+    "name": "expanded/quantum_tasks_statistics",
+    "summary": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator.",
+    "docstring": "Run the Quantum Phase Estimation algorithm to find the eigenvalues of a Hermitian operator."
+  },
+  {
+    "name": "expanded/MinimumEigenOptimizer",
+    "summary": "Grover's Search algorithm.",
+    "docstring": "Grover's Search algorithm."
+  },
+  {
+    "name": "expanded/measure_array",
+    "summary": "Implements the standard Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$.",
+    "docstring": "Implements the standard Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$."
+  },
+  {
+    "name": "expanded/u_sqrt",
+    "summary": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,.",
+    "docstring": "Implements the Quantum Singular Value Transformation (QSVT) - an algorithmic framework, used to apply polynomial transformations of degree `d` on the singular values of a block encoded matrix, given as the unitary `u`. Given a unitary $U$, a list of phase angles $\\phi_1, \\phi_2,."
+  },
+  {
+    "name": "expanded/discard_array",
+    "summary": "Implements the standard Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$.",
+    "docstring": "Implements the standard Quantum Phase Estimation (QPE) algorithm, which estimates the phase (eigenvalue) associated with an eigenstate of a given unitary operator $U$."
+  },
+  {
+    "name": "expanded/NumPyMinimumEigensolver",
+    "summary": "Grover's Search algorithm.",
+    "docstring": "Grover's Search algorithm."
+  },
+  {
+    "name": "expanded/minimize",
+    "summary": "The Variational Quantum Eigensolver (VQE) algorithm.",
+    "docstring": "The Variational Quantum Eigensolver (VQE) algorithm."
+  },
+  {
+    "name": "expanded/reduce",
+    "summary": "The Variational Quantum Eigensolver (VQE) algorithm.",
+    "docstring": "The Variational Quantum Eigensolver (VQE) algorithm."
+  },
+  {
+    "name": "expanded/min",
+    "summary": "The Variational Quantum Eigensolver (VQE) algorithm.",
+    "docstring": "The Variational Quantum Eigensolver (VQE) algorithm."
+  },
+  {
+    "name": "expanded/argmin",
+    "summary": "The Variational Quantum Eigensolver (VQE) algorithm.",
+    "docstring": "The Variational Quantum Eigensolver (VQE) algorithm."
+  }
+]

@@ -1,0 +1,14 @@
+from_concept,from_pattern,to_concept,to_pattern,relationship,file_path
+AmplificationProblem,Amplitude Amplification,GroverOperator,Grover,calls,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_amplifiers/amplification_problem.py
+Grover,Grover,AmplitudeAmplifier,Amplitude Amplification,inherits,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_amplifiers/grover.py
+TrotterQRTE,Initialization,PauliEvolutionGate,Hamiltonian Simulation,calls,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/trotterization/trotter_qrte.py
+TrotterQRTE,Initialization,RealTimeEvolver,Variational Quantum Algorithm (VQA),inherits,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/trotterization/trotter_qrte.py
+EstimationProblem,Quantum Amplitude Estimation,GroverOperator,Grover,calls,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/estimation_problem.py
+AmplitudeEstimation,Quantum Amplitude Estimation,PhaseEstimation,Quantum Phase Estimation (QPE),calls,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/amplitude_estimators/ae.py
+QAOA,Quantum Approximate Optimization Algorithm (QAOA),SamplingVQE,Variational Quantum Eigensolver (VQE),inherits,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/qaoa.py
+HamiltonianPhaseEstimation,Quantum Phase Estimation (QPE),PauliEvolutionGate,Hamiltonian Simulation,calls,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/phase_estimators/hamiltonian_phase_estimation.py
+PVQD,Variational Quantum Algorithm (VQA),PauliEvolutionGate,Hamiltonian Simulation,calls,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/time_evolvers/pvqd/pvqd.py
+AdaptVQE,Variational Quantum Eigensolver (VQE),evolved_operator_ansatz,Variational Quantum Algorithm (VQA),calls,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/adapt_vqe.py
+AdaptVQE,Variational Quantum Eigensolver (VQE),VariationalAlgorithm,Variational Quantum Algorithm (VQA),inherits,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/adapt_vqe.py
+SamplingVQE,Variational Quantum Eigensolver (VQE),VariationalAlgorithm,Variational Quantum Algorithm (VQA),inherits,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/sampling_vqe.py
+VQE,Variational Quantum Eigensolver (VQE),VariationalAlgorithm,Variational Quantum Algorithm (VQA),inherits,/home/neilson/projects/qpa/target_github_projects/qiskit-algorithms/qiskit_algorithms/minimum_eigensolvers/vqe.py

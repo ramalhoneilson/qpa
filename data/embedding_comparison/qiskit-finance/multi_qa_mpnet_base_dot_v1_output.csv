@@ -1,0 +1,23 @@
+file_path;concept_name;pattern;match_type;matched_text;similarity_score;first_line
+qiskit_finance/applications/estimation/european_call_delta.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem;Quantum Amplitude Estimation;name;EstimationProblem;1.0000;69
+qiskit_finance/applications/estimation/european_call_pricing.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem;Quantum Amplitude Estimation;name;EstimationProblem;1.0000;74
+qiskit_finance/applications/estimation/fixed_income_pricing.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem;Quantum Amplitude Estimation;name;EstimationProblem;1.0000;92
+qiskit_finance/circuit/library/payoff_functions/european_call_delta_objective.py;/qiskit/qiskit.circuit.library.arithmetic.integer_comparator.IntegerComparator;Quantum Arithmetic;name;IntegerComparator;1.0000;42
+qiskit_finance/circuit/library/payoff_functions/european_call_pricing_objective.py;/qiskit/qiskit.circuit.library.arithmetic.linear_amplitude_function.LinearAmplitudeFunctionGate;Quantum Arithmetic;summary;This code is part of a Qiskit project. (C) Copyright IBM 2018, 2024. This code is licensed under the Apache License, Version 2.0. You may obtain a cop...;0.6697;0
+qiskit_finance/circuit/library/probability_distributions/gaussian_conditional_independence_model.py;/classiq/open_library.functions.linear_pauli_rotation.linear_pauli_rotations;Data Encoding;name;LinearPauliRotations;1.0000;91
+qiskit_finance/circuit/library/probability_distributions/lognormal.py;/qiskit/qiskit.circuit.library.generalized_gates.isometry.Isometry;Circuit Construction Utility;name;Isometry;1.0000;169
+qiskit_finance/circuit/library/probability_distributions/lognormal.py;/qiskit/qiskit.circuit.library.data_preparation.initializer.Initialize;Initialization;name;Initialize;1.0000;172
+qiskit_finance/circuit/library/probability_distributions/normal.py;/qiskit/qiskit.circuit.library.generalized_gates.isometry.Isometry;Circuit Construction Utility;name;Isometry;1.0000;207
+qiskit_finance/circuit/library/probability_distributions/normal.py;/qiskit/qiskit.circuit.library.data_preparation.initializer.Initialize;Initialization;name;Initialize;1.0000;210
+test/applications/test_european_call_delta.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem;Quantum Amplitude Estimation;name;to_estimation_problem;0.9061;35
+test/applications/test_european_call_delta.py;/qiskit/qiskit.circuit.library.arithmetic.integer_comparator.IntegerComparator;Quantum Arithmetic;name;IntegerComparator;1.0000;38
+test/applications/test_european_call_pricing.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem;Quantum Amplitude Estimation;name;to_estimation_problem;0.9061;38
+test/applications/test_fixed_income_pricing.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem;Quantum Amplitude Estimation;name;to_estimation_problem;0.9061;49
+test/circuit/test_european_call_delta_objective.py;/qiskit/qiskit.circuit.library.arithmetic.integer_comparator.IntegerComparator;Quantum Arithmetic;name;IntegerComparator;1.0000;44
+test/circuit/test_european_call_delta_objective.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem;Quantum Amplitude Estimation;name;EstimationProblem;1.0000;88
+test/circuit/test_european_call_delta_objective.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.iae.IterativeAmplitudeEstimation;Quantum Amplitude Estimation;name;IterativeAmplitudeEstimation;1.0000;95
+test/circuit/test_european_call_pricing_objective.py;/qiskit/qiskit.circuit.library.n_local.two_local.TwoLocal;Variational Quantum Algorithm (VQA);name;TwoLocal;1.0000;66
+test/circuit/test_european_call_pricing_objective.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem;Quantum Amplitude Estimation;name;EstimationProblem;1.0000;92
+test/circuit/test_european_call_pricing_objective.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.iae.IterativeAmplitudeEstimation;Quantum Amplitude Estimation;name;IterativeAmplitudeEstimation;1.0000;99
+test/circuit/test_fixed_income_pricing_objective.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.estimation_problem.EstimationProblem;Quantum Amplitude Estimation;name;EstimationProblem;1.0000;83
+test/circuit/test_fixed_income_pricing_objective.py;/qiskit-algorithms/qiskit_algorithms.amplitude_estimators.iae.IterativeAmplitudeEstimation;Quantum Amplitude Estimation;name;IterativeAmplitudeEstimation;1.0000;90

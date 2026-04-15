@@ -1,0 +1,14 @@
+file_path,concept_name,ground_truth_pattern
+01_neural_networks.py,EstimatorQNN_SamplerQNN,Quantum Neural Network (QNN)
+02a_training_a_quantum_model_on_a_real_dataset.py,VQC_ZZFeatureMap,Variational Quantum Algorithm (VQA)
+02_neural_network_classifier_and_regressor.py,NeuralNetworkClassifier_VQC,Quantum Neural Network (QNN)
+03_quantum_kernel.py,FidelityQuantumKernel_QSVC,SWAP Test
+04_torch_qgan.py,SamplerQNN_TorchConnector,Quantum Neural Network (QNN)
+05_torch_connector.py,TorchConnector_hybrid_QNN,Quantum Neural Network (QNN)
+07_pegasos_qsvc.py,PegasosQSVC_kernel,SWAP Test
+08_quantum_kernel_trainer.py,QuantumKernelTrainer_trainable,Variational Quantum Algorithm (VQA)
+09_saving_and_loading_models.py,VQC_persistence,Variational Quantum Algorithm (VQA)
+10_effective_dimension.py,EffectiveDimension_QNN,Quantum Neural Network (QNN)
+11_quantum_convolutional_neural_networks.py,QCNN_NeuralNetworkClassifier,Quantum Neural Network (QNN)
+12_quantum_autoencoder.py,SamplerQNN_autoencoder,Quantum Neural Network (QNN)
+13_quantum_bayesian_inference.py,QBayesian,Domain Specific Application

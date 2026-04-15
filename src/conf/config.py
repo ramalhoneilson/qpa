@@ -11,7 +11,7 @@ CORE_CONCEPT_SEARCH_DIRS = [
     TARGET_PROJECTS_BASE_PATH / "classiq-library/classiq/applications",
 ]
 
-EMBEDDING_MODEL_NAME = "all-mpnet-base-v2"
+EMBEDDING_MODEL_NAME = "all-MiniLM-L12-v2"
 
 SIMILARITY_THRESHOLD = 0.6
 

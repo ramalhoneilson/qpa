@@ -1,0 +1,14 @@
+file_path,concept_name,ground_truth_pattern,predicted_pattern,pred_score,match
+qiskit_finance/applications/estimation/estimation_application.py,EstimationApplication,Quantum Amplitude Estimation,,,
+qiskit_finance/applications/estimation/european_call_delta.py,EuropeanCallDelta,Quantum Amplitude Estimation,Quantum Amplitude Estimation,1.0,1
+qiskit_finance/applications/estimation/european_call_pricing.py,EuropeanCallPricing,Quantum Amplitude Estimation,Quantum Amplitude Estimation,1.0,1
+qiskit_finance/applications/estimation/fixed_income_pricing.py,FixedIncomePricing,Quantum Amplitude Estimation,Quantum Amplitude Estimation,1.0,1
+qiskit_finance/applications/optimization/portfolio_diversification.py,PortfolioDiversification,Domain Specific Application,,,
+qiskit_finance/applications/optimization/portfolio_optimization.py,PortfolioOptimization,Domain Specific Application,,,
+qiskit_finance/circuit/library/payoff_functions/european_call_delta_objective.py,EuropeanCallDeltaObjective,Oracle,Quantum Arithmetic,1.0,0
+qiskit_finance/circuit/library/payoff_functions/european_call_pricing_objective.py,EuropeanCallPricingObjective,Oracle,,,
+qiskit_finance/circuit/library/payoff_functions/fixed_income_pricing_objective.py,FixedIncomePricingObjective,Oracle,,,
+qiskit_finance/circuit/library/probability_distributions/gaussian_conditional_independence_model.py,GaussianConditionalIndependenceModel,Data Encoding,Data Encoding,1.0,1
+qiskit_finance/circuit/library/probability_distributions/lognormal.py,LogNormalDistribution,Data Encoding,Circuit Construction Utility,1.0,0
+qiskit_finance/circuit/library/probability_distributions/normal.py,NormalDistribution,Data Encoding,Circuit Construction Utility,1.0,0
+qiskit_finance/circuit/library/probability_distributions/uniform.py,UniformDistribution,Data Encoding,,,

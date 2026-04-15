@@ -60,6 +60,57 @@ run_main_target target_dir output_file="":
         {{VENV}}/bin/python -m src.analysis.run_analysis --target-dir "{{target_dir}}" --output "{{output_file}}"; \
     fi
 
+# ── Precision / Recall Evaluation ──────────────────────────────────────────
+
+# Run full evaluation (analysis + metrics + report) for qiskit-finance
+evaluate-qiskit-finance:
+    @echo "\n>>> Evaluating qiskit-finance..."
+    @{{VENV}}/bin/python -m src.evaluation.pipelines.evaluate_qiskit_finance
+
+# Run full evaluation for Qrisp
+evaluate-qrisp:
+    @echo "\n>>> Evaluating Qrisp..."
+    @{{VENV}}/bin/python -m src.evaluation.pipelines.evaluate_qrisp
+
+# Run full evaluation for Qualtran
+evaluate-qualtran:
+    @echo "\n>>> Evaluating Qualtran..."
+    @{{VENV}}/bin/python -m src.evaluation.pipelines.evaluate_qualtran
+
+# Run all three evaluations in sequence
+evaluate-all: evaluate-qiskit-finance evaluate-qrisp evaluate-qualtran
+
+# ── Embedding Model Comparison ──────────────────────────────────────────────
+
+# Compare embedding models on qiskit-finance (fastest, smallest GT)
+compare-embeddings:
+    @echo "\n>>> Comparing embedding models on qiskit-finance..."
+    @{{VENV}}/bin/python -m src.evaluation.embedding_comparison.run_comparison
+
+# Compare embedding models on a specific project
+# Usage: just compare-embeddings-project qualtran | qrisp | qiskit-finance
+compare-embeddings-project project:
+    @echo "\n>>> Comparing embedding models on '{{project}}'..."
+    @{{VENV}}/bin/python -m src.evaluation.embedding_comparison.run_comparison --project {{project}}
+
+# Rebuild ChromaDB index and re-run comparison (use after KB changes)
+compare-embeddings-rebuild:
+    @echo "\n>>> Rebuilding ChromaDB index and comparing embedding models..."
+    @{{VENV}}/bin/python -m src.evaluation.embedding_comparison.run_comparison --rebuild
+
+# Build ChromaDB index for all models without running the comparison
+index-embeddings:
+    @echo "\n>>> Building ChromaDB collections for all embedding models..."
+    @{{VENV}}/bin/python -m src.evaluation.embedding_comparison.indexer
+
+# Re-run metrics only (skip re-running analysis) for a project
+# Usage: just evaluate-metrics-only qiskit-finance | qrisp | qualtran
+evaluate-metrics-only project:
+    @echo "\n>>> Re-computing metrics for '{{project}}' (skipping analysis)..."
+    @{{VENV}}/bin/python -m src.evaluation.pipelines.evaluate_{{project}} --skip-analysis
+
+# ── Project Categorization ──────────────────────────────────────────────────
+
 analyze-projects:
     @echo "\n>>> Running project categorization analysis..."
     @{{VENV}}/bin/python -m src.analysis.analyze_projects

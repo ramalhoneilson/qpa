@@ -1,0 +1,80 @@
+name,summary,pattern
+/braket/braket.experimental.algorithms.grovers_search.grovers_search,Generate Grover's search circuit for a target solution by applying an oracle and amplitude amplification steps.,Grover
+/braket/braket.experimental.algorithms.grovers_search.build_oracle,Oracle circuit that marks a target solution by flipping the phase of its corresponding basis state.,Oracle
+/braket/braket.experimental.algorithms.grovers_search.amplify,Perform a single iteration of amplitude amplification using the diffusion operator (H · oracle_0 · H).,Amplitude Amplification
+/braket/braket.experimental.algorithms.grovers_search.multi_control_z,Multi-controlled Z gate acting as a phase-flip oracle on the all-zeros state.,Circuit Construction Utility
+/braket/braket.experimental.algorithms.grovers_search.multi_control_not,Recursive multi-controlled NOT (generalized Toffoli) gate circuit constructor.,Circuit Construction Utility
+/braket/braket.experimental.algorithms.quantum_phase_estimation.quantum_phase_estimation_circuit,Construct a Quantum Phase Estimation circuit with result type attached to the precision register.,Quantum Phase Estimation (QPE)
+/braket/braket.experimental.algorithms.quantum_phase_estimation.quantum_phase_estimation,Subroutine implementing Quantum Phase Estimation using Hadamards on the precision register and controlled unitary applications followed by inverse QFT.,Quantum Phase Estimation (QPE)
+/braket/braket.experimental.algorithms.quantum_phase_estimation.run_quantum_phase_estimation,Execute a Quantum Phase Estimation circuit on a Braket device and return the quantum task.,Quantum Phase Estimation (QPE)
+/braket/braket.experimental.algorithms.quantum_phase_estimation.get_quantum_phase_estimation_results,Post-process QPE task results to extract eigenphase estimates from the measured probability distribution.,Quantum Phase Estimation (QPE)
+/braket/braket.experimental.algorithms.quantum_phase_estimation.inverse_qft,Inverse Quantum Fourier Transform subroutine used in post-processing of QPE phase measurements.,Basis Change
+/braket/braket.experimental.algorithms.quantum_fourier_transform.quantum_fourier_transform_circuit,"Construct a Quantum Fourier Transform circuit using Hadamard gates, controlled phase shifts, and SWAP gates.",Basis Change
+/braket/braket.experimental.algorithms.quantum_fourier_transform.qft,Register a QFT as a named circuit subroutine that can be appended to any circuit.,Basis Change
+/braket/braket.experimental.algorithms.quantum_fourier_transform.inverse_quantum_fourier_transform_circuit,Construct the inverse Quantum Fourier Transform circuit for converting from frequency to computational basis.,Basis Change
+/braket/braket.experimental.algorithms.quantum_fourier_transform.iqft,Register the inverse QFT as a named circuit subroutine.,Basis Change
+/braket/braket.experimental.algorithms.quantum_fourier_transform.run_quantum_fourier_transform,Run a Quantum Fourier Transform circuit on a Braket device and collect measurement results.,Basis Change
+/braket/braket.experimental.algorithms.quantum_approximate_optimization.qaoa,"QAOA circuit template consisting of alternating cost Hamiltonian and driver Hamiltonian (mixer) layers, parameterized by gamma and beta.",Quantum Approximate Optimization Algorithm (QAOA)
+/braket/braket.experimental.algorithms.quantum_approximate_optimization.cost_layer,Parameterized circuit layer implementing evolution under the cost Hamiltonian for one QAOA round.,Quantum Approximate Optimization Algorithm (QAOA)
+/braket/braket.experimental.algorithms.quantum_approximate_optimization.driver_layer,Circuit layer implementing evolution under the driver (mixer) Hamiltonian U(Hb; beta) for one QAOA round.,Quantum Approximate Optimization Algorithm (QAOA)
+/braket/braket.experimental.algorithms.quantum_approximate_optimization.run_qaoa_circuit,Evaluate a QAOA circuit on a Braket device for a given set of variational parameters.,Quantum Approximate Optimization Algorithm (QAOA)
+/braket/braket.experimental.algorithms.quantum_approximate_optimization.cost_function,Compute the QAOA cost function value and append it to the optimization loss history.,Quantum Approximate Optimization Algorithm (QAOA)
+/braket/braket.experimental.algorithms.quantum_approximate_optimization.get_cost,Compute the expectation value of the cost Hamiltonian from a QAOA quantum task result.,Quantum Approximate Optimization Algorithm (QAOA)
+/braket/braket.experimental.algorithms.shors.shors_algorithm,"Shor's integer factoring algorithm: initializes counting and auxiliary registers, applies modular exponentiation, then performs inverse QFT to extract the period.",Domain Specific Application
+/braket/braket.experimental.algorithms.shors.run_shors_algorithm,Execute Shor's algorithm on a Braket device for a given integer N and coprime base a.,Domain Specific Application
+/braket/braket.experimental.algorithms.shors.get_factors_from_results,Classical post-processing of QPE results from Shor's algorithm to extract integer factors via continued fraction expansion.,Domain Specific Application
+/braket/braket.experimental.algorithms.shors.inverse_qft_noswaps,Inverse QFT without final SWAP gates used as a subroutine inside Shor's algorithm.,Basis Change
+/braket/braket.experimental.algorithms.shors.modular_exponentiation_amod15,Quantum circuit implementing modular exponentiation a^x mod 15 for Shor's factoring of 15.,Quantum Arithmetic
+/braket/braket.experimental.algorithms.bernstein_vazirani.bernstein_vazirani_circuit,"Bernstein–Vazirani circuit that recovers a hidden binary string in a single query, using Hadamard gates and a phase oracle.",Oracle
+/braket/braket.experimental.algorithms.bernstein_vazirani.run_bernstein_vazirani,Run the Bernstein–Vazirani circuit on a Braket device and return the quantum task result.,Oracle
+/braket/braket.experimental.algorithms.bernstein_vazirani.get_bernstein_vazirani_results,Extract the recovered hidden bitstring from the Bernstein–Vazirani measurement probability distribution.,Oracle
+/braket/braket.experimental.algorithms.deutsch_jozsa.constant_oracle,Oracle circuit implementing a constant function (outputs 0 or 1 regardless of input) for the Deutsch–Jozsa algorithm.,Oracle
+/braket/braket.experimental.algorithms.deutsch_jozsa.balanced_oracle,Oracle circuit implementing a balanced function (outputs 0 for half inputs and 1 for the other half) for the Deutsch–Jozsa algorithm.,Oracle
+/braket/braket.experimental.algorithms.deutsch_jozsa.deutsch_jozsa_circuit,Deutsch–Jozsa circuit that determines in a single query whether an oracle function is constant or balanced.,Oracle
+/braket/braket.experimental.algorithms.deutsch_jozsa.deutsch_jozsa,Registered circuit subroutine for the Deutsch–Jozsa algorithm.,Oracle
+/braket/braket.experimental.algorithms.deutsch_jozsa.get_deutsch_jozsa_results,Post-process Deutsch–Jozsa measurement results to classify the oracle as constant or balanced.,Oracle
+/braket/braket.experimental.algorithms.hhl.hhl_circuit,Construct the full HHL (Harrow-Hassidim-Lloyd) circuit for solving the linear system Ax=b using QPE and Hamiltonian simulation.,Domain Specific Application
+/braket/braket.experimental.algorithms.hhl.run_hhl,Execute the HHL circuit on a Braket device for a 2x2 Hermitian linear system.,Domain Specific Application
+/braket/braket.experimental.algorithms.hhl.get_hhl_results,Post-process HHL circuit results to extract the solution vector x from the ancilla-conditioned state.,Domain Specific Application
+/braket/braket.experimental.algorithms.hhl._qpe_for_hhl,Quantum Phase Estimation subroutine used inside HHL to estimate eigenvalues of the Hermitian matrix A.,Quantum Phase Estimation (QPE)
+/braket/braket.experimental.algorithms.hhl._compute_hamiltonian_simulation,Compute the unitary matrix e^{iAt} for Hamiltonian simulation inside the HHL algorithm.,Hamiltonian Simulation
+/braket/braket.experimental.algorithms.hhl._inverse_qpe_for_hhl,Inverse QPE subroutine to uncompute the clock register after eigenvalue encoding in HHL.,Quantum Phase Estimation (QPE)
+/braket/braket.experimental.algorithms.hhl._prepare_state_b,Prepare the quantum state |b> on the input qubit register as the right-hand side of the linear system.,Initialization
+/braket/braket.experimental.algorithms.simons.simons_oracle,"Oracle circuit for Simon's problem: copies input register and applies XOR with the secret string controlled on the flag bit, encoding the period.",Oracle
+/braket/braket.experimental.algorithms.simons.simons_algorithm,"Simon's algorithm circuit: applies Hadamard layers and the period-finding oracle to identify a hidden period s such that f(x) = f(x XOR s).",Oracle
+/braket/braket.experimental.algorithms.simons.run_simons_algorithm,Execute Simon's algorithm on a Braket device for the given oracle and return measurement results.,Oracle
+/braket/braket.experimental.algorithms.simons.get_simons_algorithm_results,Classical post-processing of Simon's algorithm measurements to recover the hidden period string using linear algebra.,Oracle
+/braket/braket.experimental.algorithms.quantum_walk.quantum_walk,Quantum random walk circuit over a cyclic graph using a coin operator and conditional shift implemented via QFT.,Domain Specific Application
+/braket/braket.experimental.algorithms.quantum_walk.run_quantum_walk,Execute a quantum walk circuit on a Braket device for the given number of nodes and steps.,Domain Specific Application
+/braket/braket.experimental.algorithms.quantum_walk.qft_conditional_add_1,Conditional increment/decrement circuit that adds +1 or -1 in the QFT basis controlled on a coin qubit.,Quantum Arithmetic
+/braket/braket.experimental.algorithms.quantum_counting.build_oracle_circuit,Compose individual phase-flip oracles from grovers_search to mark multiple computational-basis states.,Oracle
+/braket/braket.experimental.algorithms.quantum_counting.build_grover_circuit,Build the Grover operator G = D·O combining the phase oracle and diffusion operator.,Amplitude Amplification
+/braket/braket.experimental.algorithms.quantum_counting.controlled_grover_circuit,Controlled Grover operator circuit used as the unitary in QPE for quantum counting.,Amplitude Amplification
+/braket/braket.experimental.algorithms.quantum_counting.inverse_qft_for_counting,Inverse QFT applied to the precision register as the final step of quantum counting.,Basis Change
+/braket/braket.experimental.algorithms.quantum_counting.quantum_counting_circuit,Full quantum counting circuit combining QPE over the Grover operator to estimate the number of marked states.,Quantum Amplitude Estimation
+/braket/braket.experimental.algorithms.quantum_counting.quantum_counting,Execute the quantum counting circuit and return the estimated count of marked states.,Quantum Amplitude Estimation
+/braket/braket.experimental.algorithms.quantum_counting.run_quantum_counting,Run the quantum counting circuit on a Braket device and collect the quantum task result.,Quantum Amplitude Estimation
+/braket/braket.experimental.algorithms.quantum_counting.get_quantum_counting_results,Post-process quantum counting results to extract the estimated number of marked states from QPE phase measurements.,Quantum Amplitude Estimation
+/braket/braket.experimental.algorithms.quantum_circuit_born_machine.QCBM,Quantum Circuit Born Machine: a variational generative model trained to match a target probability distribution using MMD loss.,Variational Quantum Algorithm (VQA)
+/braket/braket.experimental.algorithms.quantum_circuit_born_machine.qcbm_layers,Parameterized QCBM circuit layers consisting of alternating rotation and entanglement layers.,Variational Quantum Algorithm (VQA)
+/braket/braket.experimental.algorithms.quantum_circuit_born_machine.mmd_loss,Maximum Mean Discrepancy loss function for training the QCBM to match a target probability distribution.,Variational Quantum Algorithm (VQA)
+/braket/braket.experimental.algorithms.quantum_circuit_born_machine.rotation_layer,Parameterized single-qubit rotation layer used in the QCBM ansatz.,Variational Quantum Algorithm (VQA)
+/braket/braket.experimental.algorithms.quantum_circuit_born_machine.entangler,Entangling layer using CNOT gates between specified qubit pairs for the QCBM circuit ansatz.,Creating Entanglement
+/braket/braket.experimental.algorithms.bells_inequality.bell_singlet,Prepare a maximally entangled Bell singlet state on two qubits.,Creating Entanglement
+/braket/braket.experimental.algorithms.bells_inequality.bell_singlet_rotated_basis,Prepare a Bell singlet state measured in a rotated basis parameterized by a local Rx rotation.,Creating Entanglement
+/braket/braket.experimental.algorithms.bells_inequality.create_bell_inequality_circuits,Create the three circuits needed to test Bell's inequality by measuring correlations in different bases.,Creating Entanglement
+/braket/braket.experimental.algorithms.bells_inequality.run_bell_inequality,Submit the three Bell inequality test circuits to a Braket device.,Creating Entanglement
+/braket/braket.experimental.algorithms.bells_inequality.get_bell_inequality_results,Post-process Bell inequality task results to compute expectation values and check violation of classical bounds.,Creating Entanglement
+/braket/braket.experimental.algorithms.chsh_inequality.create_chsh_inequality_circuits,Create circuits for testing the CHSH inequality using entangled qubit pairs in varying measurement bases.,Creating Entanglement
+/braket/braket.experimental.algorithms.chsh_inequality.run_chsh_inequality,Submit CHSH inequality circuits to a Braket device and return measurement tasks.,Creating Entanglement
+/braket/braket.experimental.algorithms.chsh_inequality.get_chsh_results,Compute the CHSH parameter S from measurement results to verify violation of the classical bound S ≤ 2.,Creating Entanglement
+/braket/braket.experimental.algorithms.qc_qmc.qc_qmc,Quantum-assisted Auxiliary-Field Quantum Monte Carlo for ground state energy estimation of molecular systems.,Domain Specific Application
+/braket/braket.experimental.algorithms.qc_qmc.q_full_imag_time_evolution,Imaginary time evolution of a single Monte Carlo walker using quantum circuit evaluations.,Hamiltonian Simulation
+/braket/braket.experimental.algorithms.qc_qmc.imag_time_propogator_qaee,Imaginary time propagator using quantum-assisted energy evaluations for the QMC walker update.,Hamiltonian Simulation
+/braket/braket.experimental.algorithms.qc_qmc.prepare_slater_circuit,Prepare an arbitrary Slater determinant state using Givens rotation circuits as the fermionic trial state.,Initialization
+/braket/braket.experimental.algorithms.qc_qmc.amplitude_real,Construct the vacuum reference circuit for measuring the real part of the overlap amplitude between trial and walker states.,Quantum Amplitude Estimation
+/braket/braket.experimental.algorithms.qc_qmc.amplitude_imag,Construct the vacuum reference circuit for measuring the imaginary part of the overlap amplitude between trial and walker states.,Quantum Amplitude Estimation
+/braket/braket.experimental.algorithms.adaptive_shot_allocation.AdaptiveShotAllocator,"Adaptive shot allocator that distributes measurement shots across Hamiltonian terms proportional to variance estimates, minimizing statistical error in VQE energy evaluation.",Variational Quantum Algorithm (VQA)
+/braket/braket.experimental.algorithms.adaptive_shot_allocation.term_variance_estimate,Estimate the variance of a single Pauli term from prior measurement results to guide adaptive shot allocation.,Variational Quantum Algorithm (VQA)
+/braket/braket.experimental.algorithms.adaptive_shot_allocation.terms_covariance_estimate,Estimate covariances between Pauli terms to improve the shot budget allocation for VQE Hamiltonian evaluations.,Variational Quantum Algorithm (VQA)
+/braket/braket.experimental.auxiliary_functions.random_circuit.random_circuit,Generate a random quantum circuit by sampling gates uniformly for benchmarking and noise characterization.,Circuit Construction Utility

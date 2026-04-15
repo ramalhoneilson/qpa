@@ -1,5 +1,6 @@
 framework,count
-classiq,331
-qiskit-algorithms,194
-pennylane,119
-qiskit,107
+classiq,264
+qiskit,133
+qiskit-algorithms,124
+qiskit_machine_learning,99
+pennylane,83

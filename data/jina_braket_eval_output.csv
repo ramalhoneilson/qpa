@@ -1,0 +1,14 @@
+file_path;concept_name;pattern;match_type;matched_text;similarity_score;first_line
+Deutsch_Jozsa_Algorithm.py;/pennylane/pennylane.templates.layers.gate_fabric.GateFabric;Variational Quantum Algorithm (VQA);summary;!/usr/bin/env python coding: utf-8 Deutsch-Jozsa Algorithm In this notebook, we introduce one of the first quantum algorithm’s developed by pioneers D...;0.6989;0
+Deutsch_Jozsa_Algorithm.py;/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.qaoa.QAOA;Quantum Approximate Optimization Algorithm (QAOA);summary;!/usr/bin/env python coding: utf-8 Deutsch-Jozsa Algorithm In this notebook, we introduce one of the first quantum algorithm’s developed by pioneers D...;0.6693;0
+Grovers_Search.py;/classiq/open_library.functions.grover.grover_search;Grover;name;grovers_search;0.9846;46
+Quantum_Approximate_Optimization_Algorithm.py;/qiskit-algorithms/qiskit_algorithms.minimum_eigensolvers.qaoa.QAOA;Quantum Approximate Optimization Algorithm (QAOA);name;qaoa;1.0000;41
+Quantum_Fourier_Transform.py;/classiq/open_library.functions.qft_functions.qft;Basis Change;name;qft;1.0000;55
+Quantum_Fourier_Transform.py;/pennylane/pennylane.templates.subroutines.qft.QFT;Basis Change;name;qft;1.0000;55
+Quantum_Fourier_Transform.py;/qiskit/qiskit.circuit.library.basis_change.qft.QFT;Basis Change;name;qft;1.0000;55
+Quantum_Phase_Estimation_Algorithm.py;/classiq/open_library.functions.qpe.qpe_flexible;Quantum Phase Estimation (QPE);summary;!/usr/bin/env python coding: utf-8 Quantum Phase Estimation This example provides an implementation of the Quantum Phase Estimation (QPE) algorithm us...;0.6540;0
+Quantum_Phase_Estimation_Algorithm.py;/classiq/open_library.functions.qpe.qpe;Quantum Phase Estimation (QPE);summary;!/usr/bin/env python coding: utf-8 Quantum Phase Estimation This example provides an implementation of the Quantum Phase Estimation (QPE) algorithm us...;0.6701;0
+Quantum_Phase_Estimation_Algorithm.py;/qiskit-algorithms/qiskit_algorithms.phase_estimators.ipe.IterativePhaseEstimation;Quantum Phase Estimation (QPE);summary;!/usr/bin/env python coding: utf-8 Quantum Phase Estimation This example provides an implementation of the Quantum Phase Estimation (QPE) algorithm us...;0.6793;0
+Quantum_Phase_Estimation_Algorithm.py;/qiskit-algorithms/qiskit_algorithms.phase_estimators.phase_estimation.PhaseEstimation;Quantum Phase Estimation (QPE);summary;!/usr/bin/env python coding: utf-8 Quantum Phase Estimation This example provides an implementation of the Quantum Phase Estimation (QPE) algorithm us...;0.7189;0
+Quantum_Phase_Estimation_Algorithm.py;/pennylane/pennylane.templates.subroutines.qpe.QuantumPhaseEstimation;Quantum Phase Estimation (QPE);name;quantum_phase_estimation_circuit;0.9319;75
+Quantum_Principal_Component_Analysis.py;/pennylane/pennylane.templates.subroutines.arbitrary_unitary.ArbitraryUnitary;Schmidt Decomposition;name;unitary;0.9212;416

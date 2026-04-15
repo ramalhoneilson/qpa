@@ -1,0 +1,62 @@
+file_path;concept_name;pattern;match_type;matched_text;similarity_score;first_line
+qualtran/_infra/controlled.py;/pennylane/pennylane.templates.subroutines.arithmetic.adder.Adder;Quantum Arithmetic;name;adder;1.0000;650
+qualtran/_infra/controlled.py;/qiskit/qiskit.circuit.library.arithmetic.adders.adder.Adder;Quantum Arithmetic;name;adder;1.0000;650
+qualtran/bloqs/arithmetic/addition.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;208
+qualtran/bloqs/arithmetic/addition_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;341
+qualtran/bloqs/arithmetic/comparison.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;901
+qualtran/bloqs/arithmetic/controlled_addition.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;167
+qualtran/bloqs/arithmetic/controlled_addition_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;133
+qualtran/bloqs/arithmetic/hamming_weight.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;123
+qualtran/bloqs/arithmetic/hamming_weight_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;29
+qualtran/bloqs/arithmetic/permutation.py;/qiskit/qiskit.circuit.library.generalized_gates.permutation.Permutation;Circuit Construction Utility;name;Permutation;1.0000;308
+qualtran/bloqs/arithmetic/permutation_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;96
+qualtran/bloqs/arithmetic/sorting_test.py;/qiskit/qiskit.circuit.library.generalized_gates.permutation.Permutation;Circuit Construction Utility;name;permutations;0.9706;136
+qualtran/bloqs/basic_gates/power_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;29
+qualtran/bloqs/basic_gates/rotation.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;222
+qualtran/bloqs/basic_gates/toffoli_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;109
+qualtran/bloqs/basic_gates/x_basis_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;132
+qualtran/bloqs/block_encoding/chebyshev_polynomial.py;/classiq/open_library.functions.grover.reflect_about_zero;Amplitude Amplification;name;reflection_around_zero;0.9078;122
+qualtran/bloqs/bookkeeping/always.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;100
+qualtran/bloqs/chemistry/df/double_factorization.py;/classiq/open_library.functions.grover.reflect_about_zero;Amplitude Amplification;name;reflection_around_zero;0.9078;485
+qualtran/bloqs/chemistry/hubbard_model/qubitization/select_hubbard.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;346
+qualtran/bloqs/chemistry/sf/single_factorization.py;/classiq/open_library.functions.grover.reflect_about_zero;Amplitude Amplification;name;reflection_around_zero;0.9078;436
+qualtran/bloqs/chemistry/thc/prepare.py;/classiq/open_library.functions.grover.reflect_about_zero;Amplitude Amplification;name;reflection_around_zero;0.9078;159
+qualtran/bloqs/chemistry/trotter/grid_ham/potential.py;/pennylane/pennylane.templates.subroutines.qrom.QROM;Data Encoding;name;QROM;1.0000;126
+qualtran/bloqs/cryptography/rsa/rsa_mod_exp.py;/pennylane/pennylane.templates.subroutines.arithmetic.mod_exp.ModExp;Quantum Arithmetic;name;ModExp;1.0000;166
+qualtran/bloqs/cryptography/rsa/rsa_mod_exp_test.py;/pennylane/pennylane.templates.subroutines.arithmetic.mod_exp.ModExp;Quantum Arithmetic;name;ModExp;1.0000;54
+qualtran/bloqs/data_loading/qrom.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;241
+qualtran/bloqs/data_loading/qrom.py;/pennylane/pennylane.templates.subroutines.qrom.QROM;Data Encoding;name;QROM;1.0000;250
+qualtran/bloqs/data_loading/qrom_test.py;/pennylane/pennylane.templates.subroutines.qrom.QROM;Data Encoding;name;QROM;1.0000;126
+qualtran/bloqs/data_loading/qrom_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;250
+qualtran/bloqs/for_testing/large_bloq.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;45
+qualtran/bloqs/hamiltonian_simulation/guided_hamiltonian.py;/qiskit-algorithms/qiskit_algorithms.phase_estimators.hamiltonian_phase_estimation.HamiltonianPhaseEstimation;Quantum Phase Estimation (QPE);name;GuidedHamiltonianPhaseEstimation;0.9191;114
+qualtran/bloqs/hamiltonian_simulation/guided_hamiltonian.py;/classiq/open_library.functions.grover.reflect_about_zero;Amplitude Amplification;name;reflection_around_zero;0.9078;232
+qualtran/bloqs/mcmt/and_bloq.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;238
+qualtran/bloqs/mcmt/and_bloq_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;202
+qualtran/bloqs/mcmt/controlled_via_and.py;/pennylane/pennylane.templates.subroutines.arithmetic.adder.Adder;Quantum Arithmetic;name;adder;1.0000;117
+qualtran/bloqs/mcmt/controlled_via_and.py;/qiskit/qiskit.circuit.library.arithmetic.adders.adder.Adder;Quantum Arithmetic;name;adder;1.0000;117
+qualtran/bloqs/mcmt/ctrl_spec_and.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;149
+qualtran/bloqs/mcmt/specialized_ctrl.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;63
+qualtran/bloqs/mcmt/specialized_ctrl_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;176
+qualtran/bloqs/mod_arithmetic/mod_addition.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;426
+qualtran/bloqs/mod_arithmetic/mod_division.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;298
+qualtran/bloqs/mod_arithmetic/mod_subtraction.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;169
+qualtran/bloqs/multiplexers/apply_lth_bloq_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;70
+qualtran/bloqs/multiplexers/unary_iteration_bloq.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;341
+qualtran/bloqs/optimization/k_xor_sat/kikuchi_adjacency_list.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;125
+qualtran/bloqs/phase_estimation/lp_resource_state.py;/classiq/open_library.functions.grover.reflect_about_zero;Amplitude Amplification;name;reflection_around_zero;0.9078;180
+qualtran/bloqs/reflections/reflection_using_prepare.py;/classiq/open_library.functions.grover.reflect_about_zero;Amplitude Amplification;name;reflection_around_zero;0.9078;227
+qualtran/bloqs/rotations/programmable_rotation_gate_array.py;/pennylane/pennylane.templates.subroutines.qrom.QROM;Data Encoding;name;QROM;1.0000;181
+qualtran/bloqs/state_preparation/prepare_uniform_superposition.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;140
+qualtran/bloqs/state_preparation/state_preparation_alias_sampling.py;/pennylane/pennylane.templates.subroutines.qrom.QROM;Data Encoding;name;QROM;1.0000;239
+qualtran/bloqs/state_preparation/state_preparation_via_rotation.py;/pennylane/pennylane.templates.subroutines.qrom.QROM;Data Encoding;name;QROM;1.0000;426
+qualtran/cirq_interop/_bloq_to_cirq_test.py;/classiq/open_library.functions.swap_test.swap_test;SWAP Test;name;SwapTest;1.0000;110
+qualtran/cirq_interop/_bloq_to_cirq_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;182
+qualtran/cirq_interop/_bloq_to_cirq_test.py;/qiskit-algorithms/qiskit_algorithms.state_fidelities.compute_uncompute.ComputeUncompute;Uncompute;name;ComputeUncompute;1.0000;328
+qualtran/cirq_interop/_cirq_to_bloq_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;87
+qualtran/cirq_interop/t_complexity_protocol_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;141
+qualtran/resource_counting/_bloq_counts_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;105
+qualtran/resource_counting/classify_bloqs_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;98
+qualtran/resource_counting/generalizers_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;43
+qualtran/rotation_synthesis/protocols/_clifford_t_synthesis.py;/qiskit/qiskit.circuit.library.generalized_gates.diagonal.Diagonal;Circuit Construction Utility;name;Diagonal;1.0000;116
+qualtran/surface_code/algorithm_summary_test.py;/qiskit/qiskit.circuit.library.boolean_logic.quantum_and.AND;Quantum Logical Operators;name;And;1.0000;37

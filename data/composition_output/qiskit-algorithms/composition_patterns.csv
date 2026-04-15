@@ -1,0 +1,12 @@
+from_pattern,to_pattern,relationship,edge_count
+Variational Quantum Eigensolver (VQE),Variational Quantum Algorithm (VQA),inherits,3
+Amplitude Amplification,Grover,calls,1
+Grover,Amplitude Amplification,inherits,1
+Quantum Amplitude Estimation,Quantum Phase Estimation (QPE),calls,1
+Quantum Amplitude Estimation,Grover,calls,1
+Variational Quantum Eigensolver (VQE),Variational Quantum Algorithm (VQA),calls,1
+Quantum Approximate Optimization Algorithm (QAOA),Variational Quantum Eigensolver (VQE),inherits,1
+Quantum Phase Estimation (QPE),Hamiltonian Simulation,calls,1
+Variational Quantum Algorithm (VQA),Hamiltonian Simulation,calls,1
+Initialization,Hamiltonian Simulation,calls,1
+Initialization,Variational Quantum Algorithm (VQA),inherits,1

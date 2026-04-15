@@ -1,0 +1,146 @@
+file_path,concept_name,ground_truth_pattern,predicted_pattern,pred_score,match
+src/qrisp/algorithms/cks.py,cks_params,Linear Combination of Unitaries,Grover,1.0,0
+src/qrisp/algorithms/cold/AGP_params.py,build_AGP_templates_NC,Variational Quantum Algorithm (VQA),,,
+src/qrisp/algorithms/cold/cold_benchmark.py,avg_qubo_cost,Variational Quantum Algorithm (VQA),,,
+src/qrisp/algorithms/cold/dcqo_problem.py,DCQOProblem,Variational Quantum Algorithm (VQA),,,
+src/qrisp/algorithms/cold/problems/qubo_problems.py,Q3,Variational Quantum Algorithm (VQA),,,
+src/qrisp/algorithms/cold/problems/QUBO.py,create_COLD_instance,Variational Quantum Algorithm (VQA),,,
+src/qrisp/algorithms/gqsp/convolution.py,convolve,Linear Combination of Unitaries,Basis Change,1.0,0
+src/qrisp/algorithms/gqsp/fourier_series_loader.py,fourier_series_loader,Data Encoding,Basis Change,1.0,0
+src/qrisp/algorithms/gqsp/gqet.py,GQET,Linear Combination of Unitaries,Basis Change,1.0,0
+src/qrisp/algorithms/gqsp/gqsp_angles.py,gqsp_angles,Linear Combination of Unitaries,,,
+src/qrisp/algorithms/gqsp/gqsp.py,GQSP,Linear Combination of Unitaries,,,
+src/qrisp/algorithms/gqsp/hamiltonian_simulation.py,hamiltonian_simulation,Hamiltonian Simulation,Basis Change,1.0,0
+src/qrisp/algorithms/gqsp/helper_functions.py,poly2cheb,Linear Combination of Unitaries,,,
+src/qrisp/algorithms/gqsp/inversion.py,inversion,Linear Combination of Unitaries,,,
+src/qrisp/algorithms/gqsp/qet.py,QET,Linear Combination of Unitaries,Grover,1.0,0
+src/qrisp/algorithms/grover/grover_tools.py,diffuser,Grover,Grover,1.0,1
+src/qrisp/algorithms/hhl.py,HHL,Linear Combination of Unitaries,Quantum Phase Estimation (QPE),1.0,0
+src/qrisp/algorithms/lanczos.py,lanczos_even,Hamiltonian Simulation,Data Encoding,1.0,0
+src/qrisp/algorithms/qaoa/mixers.py,RX_mixer,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/problems/eThrLinTwo.py,create_e3lin2_cost_operator,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/problems/maxClique.py,create_max_clique_cl_cost_function,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/problems/maxCut.py,maxcut_obj,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/problems/maxIndepSet.py,create_max_indep_set_cl_cost_function,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/problems/maxKColorableSubgraph.py,create_maxkcolorablesubgraph_cost_operator,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/problems/maxSat.py,create_max_sat_mixer,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/problems/maxSetPacking.py,create_max_set_packing_cost_operator,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/problems/minSetCover.py,create_min_set_cover_cost_operator,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/problems/portfolio_rebalancing.py,create_portfolio_rebalancing_cost_operator,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/problems/QUBO.py,create_QUBO_cost_operator,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qaoa/qaoa_benchmark_data.py,QAOABenchmark,Quantum Approximate Optimization Algorithm (QAOA),Circuit Construction Utility,0.9227,0
+src/qrisp/algorithms/qaoa/qaoa_problem.py,QAOAProblem,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qiro/qiro_mixers.py,qiro_RXMixer,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qiro/qiro_problem.py,QIROProblem,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qiro/qiroproblems/qiroMaxClique.py,create_max_clique_replacement_routine,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qiro/qiroproblems/qiroMaxIndepSet.py,create_max_indep_set_replacement_routine,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qiro/qiroproblems/qiroMaxSat.py,create_max_sat_replacement_routine,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qiro/qiroproblems/qiroMaxSetPack.py,create_max_set_packing_replacement_routine,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qiro/qiroproblems/qiro_utils.py,find_solution_qubits,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/algorithms/qite.py,QITE,Hamiltonian Simulation,Grover,1.0,0
+src/qrisp/algorithms/qmci.py,QMCI,Quantum Amplitude Estimation,,,
+src/qrisp/algorithms/quantum_backtracking/backtracking_tree.py,QuantumBacktrackingTree,Grover,Basis Change,1.0,0
+src/qrisp/algorithms/quantum_counting.py,quantum_counting,Quantum Amplitude Estimation,Quantum Phase Estimation (QPE),1.0,0
+src/qrisp/algorithms/shor/crypto_tools.py,modinv,Quantum Phase Estimation (QPE),,,
+src/qrisp/algorithms/shor/shors_algorithm.py,find_optimal_a,Quantum Phase Estimation (QPE),Basis Change,1.0,0
+src/qrisp/algorithms/vqe/problems/electronic_structure.py,electronic_structure_hamiltonian,Variational Quantum Eigensolver (VQE),,,
+src/qrisp/algorithms/vqe/problems/heisenberg.py,create_heisenberg_init_function,Variational Quantum Eigensolver (VQE),,,
+src/qrisp/algorithms/vqe/vqe_benchmark_data.py,VQEBenchmark,Variational Quantum Eigensolver (VQE),Circuit Construction Utility,0.9227,0
+src/qrisp/algorithms/vqe/vqe_problem.py,VQEProblem,Variational Quantum Eigensolver (VQE),,,
+src/qrisp/alg_primitives/amplitude_amplification.py,amplitude_amplification,Amplitude Amplification,Grover,1.0,0
+src/qrisp/alg_primitives/arithmetic/adders/adder_tools.py,adder_cost,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/cuccaro.py,cuccaro_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/fourier_adder.py,fourier_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/gidney/cq_gidney_adder.py,cq_gidney_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/gidney/gidney_adder.py,gidney_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/gidney/qq_gidney_adder.py,qq_gidney_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/incrementation.py,inpl_add,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/qcla/classical_quantum/cq_carry_path.py,cq_carry_path,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/qcla/classical_quantum/cq_qcla_adder.py,cq_qcla_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/qcla/classical_quantum/cq_sum_path.py,cq_sum_path,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/qcla/quantum_quantum/qq_carry_path.py,qq_carry_path,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/qcla/quantum_quantum/qq_qcla_adder.py,qq_qcla_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/qcla/quantum_quantum/qq_sum_path.py,qq_sum_path,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/qcla/wrapper_function.py,qcla_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/remaud.py,remaud_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/adders/ripple_carry_adder.py,ripple_carry_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/arithmetic_tools.py,shift_array_left,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/comparisons.py,less_than_gate,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/isqrt/isqrt_algorithm.py,q_isqrt,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/matrix_multiplication.py,matrix_multiplication,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/modular_arithmetic/mod_tools.py,q_mod,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/modular_arithmetic/modular_multiplication.py,modular_multiplication,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/modular_arithmetic/modular_qft_addition.py,modular_qft_addition,Quantum Arithmetic,Quantum Arithmetic,0.6837,1
+src/qrisp/alg_primitives/arithmetic/modular_arithmetic/modular_qft_multiplication.py,modular_qft_multiplication,Quantum Arithmetic,Basis Change,1.0,0
+src/qrisp/alg_primitives/arithmetic/poly_tools.py,q_poly_eval,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/qcla_adder.py,qcla_adder,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/ripple_division.py,ripple_div,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/ripple_mult.py,ripple_mult,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/arithmetic/SBP_arithmetic.py,SBPDistribution,Quantum Arithmetic,Basis Change,1.0,0
+src/qrisp/alg_primitives/arithmetic/uint_clifford_t_comparisons.py,clifford_t_less_than,Quantum Arithmetic,,,
+src/qrisp/alg_primitives/dicke_state_prep.py,dicke_state,Initialization,,,
+src/qrisp/alg_primitives/iterable_processing.py,q_sum,Circuit Construction Utility,Circuit Construction Utility,1.0,1
+src/qrisp/alg_primitives/iterative_qae.py,IQAE,Quantum Amplitude Estimation,Amplitude Amplification,1.0,0
+src/qrisp/alg_primitives/iterative_qpe.py,IQPE,Quantum Phase Estimation (QPE),,,
+src/qrisp/alg_primitives/lcu.py,inner_LCU,Linear Combination of Unitaries,Amplitude Amplification,1.0,0
+src/qrisp/alg_primitives/logic_synthesis/gray_synthesis.py,gray_synthesis,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/logic_synthesis/pprm_synthesis.py,pprm_synthesis,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/logic_synthesis/truth_tables.py,TruthTable,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/amy.py,mcx_amy,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/balauca.py,balauca_decomposition,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/circuit_library.py,gidney_qc,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/gidney.py,GidneyLogicalAND,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/gms.py,gms_multi_cz,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/gray_pt.py,gray_pt_decomposition,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/gray.py,gray_decomposition,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/jones.py,jones_decomposition,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/khattar.py,khattar_decomposition,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/maslov.py,mcx_maslov,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/multi_cx.py,multi_cx,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/mcx_algs/yong.py,yong_decomposition,Quantum Logical Operators,,,
+src/qrisp/alg_primitives/program_control/quantum_switch.py,q_switch,Circuit Construction Utility,,,
+src/qrisp/alg_primitives/program_control/switch_case.py,switch_case,Circuit Construction Utility,,,
+src/qrisp/alg_primitives/qae.py,QAE,Quantum Amplitude Estimation,Quantum Phase Estimation (QPE),1.0,0
+src/qrisp/alg_primitives/qft.py,QFT_inner,Basis Change,,,
+src/qrisp/alg_primitives/qpe.py,QPE,Quantum Phase Estimation (QPE),Basis Change,1.0,0
+src/qrisp/alg_primitives/reflection.py,reflection,Amplitude Amplification,,,
+src/qrisp/alg_primitives/state_preparation/prepare_func.py,prepare,Initialization,,,
+src/qrisp/alg_primitives/state_preparation/qiskit_state_preparation.py,prepare_qiskit,Initialization,Initialization,1.0,1
+src/qrisp/alg_primitives/state_preparation/qswitch_state_preparation.py,prepare_qswitch,Initialization,,,
+src/qrisp/examples/backtracking.py,reject,Domain Specific Application,Quantum Phase Estimation (QPE),0.9079,0
+src/qrisp/examples/classiq_qsvt_paper_comparison.py,LinearSystemSolver,Linear Combination of Unitaries,,,
+src/qrisp/examples/diagonal_hamiltonian_application.py,test_function,Hamiltonian Simulation,Basis Change,1.0,0
+src/qrisp/examples/grovers_algorithm.py,test_oracle,Grover,,,
+src/qrisp/examples/hhl_example.py,hamiltonian_ev,Linear Combination of Unitaries,,,
+src/qrisp/examples/inpl_matrix_multiplication_example.py,qf_a,Quantum Arithmetic,,,
+src/qrisp/examples/matrix_multiplication_example.py,qf_a,Quantum Arithmetic,,,
+src/qrisp/examples/MaxCut_qaoa.py,cl_cost_function,Quantum Approximate Optimization Algorithm (QAOA),Quantum Approximate Optimization Algorithm (QAOA),0.658,1
+src/qrisp/examples/MkCS_qaoa.py,MkCS_problem,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/examples/open_fermion_comparison.py,get_h2_hamiltonian,Hamiltonian Simulation,,,
+src/qrisp/examples/portfolio_rebalancingExample.py,problem_instance,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/examples/QIROMaxCliqueExample.py,G,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/examples/QIROMaxIndepControlledMixerExample.py,G,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/examples/QIROMaxIndepExample.py,G,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/examples/QIROMaxSatExample.py,G,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/examples/QIROMaxSetPackTrafoToMIS.py,G,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/examples/quantum_arithmetic_example.py,qf_res,Quantum Arithmetic,,,
+src/qrisp/examples/quantum_counting.py,qf,Quantum Amplitude Estimation,,,
+src/qrisp/examples/quantum_division.py,q_divmod,Quantum Arithmetic,,,
+src/qrisp/examples/quantum_teleportation.py,share_bell_pair,Creating Entanglement,,,
+src/qrisp/examples/QUBO_qaoa.py,qubo_obj,Quantum Approximate Optimization Algorithm (QAOA),,,
+src/qrisp/examples/sat_solver.py,load,Domain Specific Application,,,
+src/qrisp/examples/state_preparation.py,state_dic,Initialization,,,
+src/qrisp/examples/tsp.py,TSPMaxCut,Domain Specific Application,Quantum Phase Estimation (QPE),1.0,0
+src/qrisp/operators/fermionic/fermionic_operator.py,FermionicOperator,Hamiltonian Simulation,,,
+src/qrisp/operators/fermionic/fermionic_term.py,FermionicTerm,Hamiltonian Simulation,,,
+src/qrisp/operators/fermionic/transformations.py,a_jw,Hamiltonian Simulation,,,
+src/qrisp/operators/fermionic/trotterization.py,fermionic_trotterization,Hamiltonian Simulation,,,
+src/qrisp/operators/hamiltonian.py,Hamiltonian,Circuit Construction Utility,,,
+src/qrisp/operators/hamiltonian_tools.py,group_up_iterable,Circuit Construction Utility,,,
+src/qrisp/operators/qubit/bound_qubit_operator.py,BoundQubitOperator,Quantum Logical Operators,,,
+src/qrisp/operators/qubit/bound_qubit_term.py,BoundQubitTerm,Quantum Logical Operators,,,
+src/qrisp/operators/qubit/commutativity_tools.py,construct_change_of_basis,Quantum Logical Operators,,,
+src/qrisp/operators/qubit/measurement.py,get_measurement,Circuit Construction Utility,,,
+src/qrisp/operators/qubit/operator_factors.py,OperatorFactors,Circuit Construction Utility,,,
+src/qrisp/operators/qubit/qubit_operator.py,QubitOperator,Quantum Logical Operators,,,
+src/qrisp/operators/qubit/qubit_term.py,QubitTerm,Quantum Logical Operators,,,
